@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="Localization\ILocalizationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IEncryptionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">

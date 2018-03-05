@@ -1,5 +1,7 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using MySql.Data.Entity;
+using MySql.Data.MySqlClient;
 using RANSUROTTO.BLOG.Core.Data;
 
 namespace RANSUROTTO.BLOG.Data.Provider
