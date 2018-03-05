@@ -17,27 +17,27 @@ namespace RANSUROTTO.BLOG.Core.Data
         #region Properties
 
         /// <summary>
-        /// 实体主键
+        /// 获取或设置实体主键
         /// </summary>
         public virtual long Id { get; set; }
 
         /// <summary>
-        /// 全球唯一标识符
+        /// 获取或设置实体全球唯一标识符
         /// </summary>
         public virtual Guid Guid { get; set; }
 
         /// <summary>
-        /// 实体创建时间
+        /// 获取或设置实体创建时间
         /// </summary>
-        public virtual DateTime CreateAt { get; set; } = DateTime.UtcNow;
+        public virtual DateTime CreateAt { get; set; }
 
         /// <summary>
-        /// 并发标识
+        /// 获取或设置实体并发标识
         /// </summary>
         public virtual DateTime TimeStamp { get; set; }
 
         /// <summary>
-        /// 实体是否已被删除
+        /// 获取或设置实体是否已被软删除
         /// </summary>
         public virtual bool IsDeleted { get; set; }
 

@@ -40,7 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Localization\ILocalizationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">
+      <Project>{C8433697-18E2-41D5-A890-4FC735486229}</Project>
+      <Name>RANSUROTTO.BLOG.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
