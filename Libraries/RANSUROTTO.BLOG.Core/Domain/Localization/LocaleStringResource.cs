@@ -16,11 +16,19 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         /// </summary>
         public string ResourceValue { get; set; }
 
-        public long LanguageId { get; set; }
         /// <summary>
-        /// 获取或设置语言身份
+        /// 获取或设置对应语言ID
+        /// </summary>
+        public long LanguageId { get; set; }
+
+        #region Navigation Properties
+
+        /// <summary>
+        /// 获取或设置对应语言
         /// </summary>
         public Language Language { get; set; }
+
+        #endregion
 
     }
 

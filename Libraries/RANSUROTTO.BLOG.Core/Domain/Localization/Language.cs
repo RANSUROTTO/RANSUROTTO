@@ -11,6 +11,8 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
     public class Language : BaseEntity
     {
 
+        private ICollection<LocaleStringResource> _localeStringResources;
+
         /// <summary>
         /// 获取或设置名称
         /// </summary>
@@ -31,7 +33,8 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         /// </summary>
         public int DisplayOrder { get; set; }
 
-        private ICollection<LocaleStringResource> _localeStringResources;
+        #region Navigation Properties
+
         /// <summary>
         /// 获取或设置对应的语言字符串资源
         /// </summary>
@@ -46,6 +49,8 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
                 _localeStringResources = value;
             }
         }
+
+        #endregion
 
     }
 

@@ -27,9 +27,9 @@ namespace RANSUROTTO.BLOG.Core.Data
         public virtual Guid Guid { get; set; }
 
         /// <summary>
-        /// 获取或设置实体创建时间
+        /// 获取或设置实体创建时的UTC时间
         /// </summary>
-        public virtual DateTime CreateAt { get; set; }
+        public virtual DateTime CreateUtc { get; set; }
 
         /// <summary>
         /// 获取或设置实体并发标识
