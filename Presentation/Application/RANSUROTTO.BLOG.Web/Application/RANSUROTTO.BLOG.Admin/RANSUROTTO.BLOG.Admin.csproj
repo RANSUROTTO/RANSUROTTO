@@ -1182,6 +1182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1318,9 +1319,15 @@
     <Folder Include="Content\tinymce\plugins\jbimages\img\" />
     <Folder Include="Content\tinymce\plugins\jbimages\js\" />
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\RANSUROTTO.BLOG.Framework\RANSUROTTO.BLOG.Framework.csproj">
+      <Project>{8C72BEB7-97F8-4C6D-A744-CF98445D29F1}</Project>
+      <Name>RANSUROTTO.BLOG.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
