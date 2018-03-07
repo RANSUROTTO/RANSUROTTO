@@ -1,10 +1,11 @@
 using System;
+using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blog
 {
 
-    public class BlogPost
+    public class BlogPost : BaseEntity
     {
 
         /// <summary>

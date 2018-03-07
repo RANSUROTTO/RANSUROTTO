@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using RANSUROTTO.BLOG.Core.Data;
 
 namespace RANSUROTTO.BLOG.Data.Mapping
@@ -11,7 +12,9 @@ namespace RANSUROTTO.BLOG.Data.Mapping
         {
             this.Initialize();
             this.HasKey(p => p.Id);
-            this.Property(p => p.TimeStamp).IsConcurrencyToken(true);
+            this.Property(p => p.TimeStamp)
+                .IsConcurrencyToken(true)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
         }
 
         /// <summary>
