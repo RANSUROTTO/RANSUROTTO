@@ -1,7 +1,9 @@
+using RANSUROTTO.BLOG.Core.Data;
+
 namespace RANSUROTTO.BLOG.Core.Domain.Configuration
 {
 
-    public class Setting
+    public class Setting : BaseEntity
     {
 
         public Setting() { }

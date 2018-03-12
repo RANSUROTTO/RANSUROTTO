@@ -1,6 +1,9 @@
 namespace RANSUROTTO.BLOG.Core.Domain.Members.Enum
 {
 
+    /// <summary>
+    /// 密码处理格式
+    /// </summary>
     public enum PasswordFormat
     {
 

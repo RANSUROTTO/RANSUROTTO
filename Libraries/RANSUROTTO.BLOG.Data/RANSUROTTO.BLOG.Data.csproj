@@ -74,6 +74,8 @@
     <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\Localization\LanguageMap.cs" />
     <Compile Include="Mapping\Localization\LocaleStringResourceMap.cs" />
+    <Compile Include="Mapping\Logging\LogMap.cs" />
+    <Compile Include="Mapping\Members\CustomerMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\BaseDataProviderManager.cs" />
     <Compile Include="Provider\EFDataProviderManager.cs" />
@@ -106,9 +108,6 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapping\Logging\" />
-    <Folder Include="Mapping\Members\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

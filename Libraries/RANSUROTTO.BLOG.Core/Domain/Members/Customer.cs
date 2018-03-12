@@ -4,6 +4,9 @@ using RANSUROTTO.BLOG.Core.Data;
 namespace RANSUROTTO.BLOG.Core.Domain.Members
 {
 
+    /// <summary>
+    /// ”√ªß
+    /// </summary>
     public class Customer : BaseEntity
     {
 

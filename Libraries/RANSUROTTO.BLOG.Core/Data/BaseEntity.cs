@@ -17,7 +17,7 @@ namespace RANSUROTTO.BLOG.Core.Data
         #region Properties
 
         /// <summary>
-        /// 获取或设置实体主键
+        /// 获取或设置实体主键标识符
         /// </summary>
         public virtual long Id { get; set; }
 
@@ -29,7 +29,7 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// <summary>
         /// 获取或设置实体创建时的UTC时间
         /// </summary>
-        public virtual DateTime CreateUtc { get; set; }
+        public virtual DateTime CreateDateUtc { get; set; }
 
         /// <summary>
         /// 获取或设置实体并发标识

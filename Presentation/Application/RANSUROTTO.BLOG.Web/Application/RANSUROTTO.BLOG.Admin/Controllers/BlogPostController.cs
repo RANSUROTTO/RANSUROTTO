@@ -5,8 +5,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 {
     public class BlogPostController : Controller
     {
-
-
+        
         public virtual ActionResult Index()
         {
             return RedirectToAction("List");
