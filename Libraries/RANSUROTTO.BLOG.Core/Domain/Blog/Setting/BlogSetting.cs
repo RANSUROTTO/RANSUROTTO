@@ -14,6 +14,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog.Setting
         /// </summary>
         public int MaxNumberOfTags { get; set; }
 
+        /// <summary>
+        /// 获取或设置博客评论是否需要经过审批
+        /// </summary>
+        public bool BlogCommentsMustBeApproved { get; set; }
+
     }
 
 }

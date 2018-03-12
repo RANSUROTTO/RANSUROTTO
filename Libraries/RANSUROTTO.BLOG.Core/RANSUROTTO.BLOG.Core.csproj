@@ -88,6 +88,7 @@
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Domain\Blog\BlogComment.cs" />
     <Compile Include="Domain\Blog\BlogPost.cs" />
     <Compile Include="Domain\Blog\BlogPostExtensions.cs" />
     <Compile Include="Domain\Blog\Setting\BlogSetting.cs" />
