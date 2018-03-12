@@ -87,7 +87,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                entity.CreateAt = DateTime.UtcNow;
+                entity.CreateDateUtc = DateTime.UtcNow;
                 Entities.Add(entity);
                 _context.SaveChanges();
             }
@@ -106,7 +106,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
 
                 foreach (var entity in entities)
                 {
-                    entity.CreateAt = DateTime.UtcNow;
+                    entity.CreateDateUtc = DateTime.UtcNow;
                     Entities.Add(entity);
                 }
 
@@ -125,7 +125,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                entity.CreateAt = DateTime.UtcNow;
+                entity.CreateDateUtc = DateTime.UtcNow;
                 Entities.Add(entity);
                 await _context.SaveChangesAsync();
             }
@@ -144,7 +144,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
 
                 foreach (var entity in entities)
                 {
-                    entity.CreateAt = DateTime.UtcNow;
+                    entity.CreateDateUtc = DateTime.UtcNow;
                     Entities.Add(entity);
                 }
 
