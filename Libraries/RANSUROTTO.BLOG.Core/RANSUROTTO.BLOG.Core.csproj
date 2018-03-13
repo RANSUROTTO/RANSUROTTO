@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Common\IPagedList.cs" />
     <Compile Include="Common\MimeTypes.cs" />
     <Compile Include="Common\PagedList.cs" />
