@@ -1,6 +1,8 @@
 using System;
 using RANSUROTTO.BLOG.Core.Data;
+using RANSUROTTO.BLOG.Core.Domain.Blog.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
+using RANSUROTTO.BLOG.Core.Domain.Members;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blog
 {
@@ -12,6 +14,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         /// 获取或设置对应语言ID
         /// </summary>
         public long LanguageId { get; set; }
+
+        /// <summary>
+        /// 获取或设置作者ID
+        /// </summary>
+        public long AuthorId { get; set; }
 
         /// <summary>
         /// 获取或设置标题
@@ -32,6 +39,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         /// 获取或设置标签
         /// </summary>
         public string Tag { get; set; }
+
+        /// <summary>
+        /// 获取或设置格式ID
+        /// </summary>
+        public int FormatId { get; set; }
 
         /// <summary>
         /// 获取或设置是否允许评论标识
@@ -55,7 +67,18 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
 
         #region Navigation Properties
 
+        public BlogPostFormat Format
+        {
+            get
+            {
+                return (BlogPostFormat)this.FormatId;
+            }
+            set { this.FormatId = (int)value; }
+        }
+
         public virtual Language Language { get; set; }
+
+        public virtual Customer Author { get; set; }
 
         #endregion
 

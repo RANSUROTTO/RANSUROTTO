@@ -92,6 +92,7 @@
     <Compile Include="Domain\Blog\BlogComment.cs" />
     <Compile Include="Domain\Blog\BlogPost.cs" />
     <Compile Include="Domain\Blog\BlogPostExtensions.cs" />
+    <Compile Include="Domain\Blog\Enum\BlogPostFormat.cs" />
     <Compile Include="Domain\Blog\Setting\BlogSetting.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
     <Compile Include="Domain\Localization\Language.cs" />
@@ -124,7 +125,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\Blog\Enum\" />
     <Folder Include="Domain\Members\Setting\" />
   </ItemGroup>
   <ItemGroup>

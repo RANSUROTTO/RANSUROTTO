@@ -70,6 +70,7 @@
     <Compile Include="Context\DbObjectContext.cs" />
     <Compile Include="Context\EntityContext.cs" />
     <Compile Include="Context\IDbContext.cs" />
+    <Compile Include="Mapping\Blog\BlogCommentMap.cs" />
     <Compile Include="Mapping\Blog\BlogPostMap.cs" />
     <Compile Include="Mapping\Configuration\SettingMap.cs" />
     <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Mapping\Localization\LocaleStringResourceMap.cs" />
     <Compile Include="Mapping\Logging\LogMap.cs" />
     <Compile Include="Mapping\Members\CustomerMap.cs" />
+    <Compile Include="Mapping\Members\CustomerPasswordMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\BaseDataProviderManager.cs" />
