@@ -76,6 +76,8 @@
     <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\Localization\LanguageMap.cs" />
     <Compile Include="Mapping\Localization\LocaleStringResourceMap.cs" />
+    <Compile Include="Mapping\Logging\ActivityLogMap.cs" />
+    <Compile Include="Mapping\Logging\ActivityLogTypeMap.cs" />
     <Compile Include="Mapping\Logging\LogMap.cs" />
     <Compile Include="Mapping\Members\CustomerMap.cs" />
     <Compile Include="Mapping\Members\CustomerPasswordMap.cs" />

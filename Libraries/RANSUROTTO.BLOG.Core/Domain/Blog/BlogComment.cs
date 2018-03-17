@@ -23,7 +23,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         /// <summary>
         /// 获取或设置用户ID
         /// </summary>
-        public long CustomerId { get; set; }
+        public long? CustomerId { get; set; }
 
         /// <summary>
         /// 获取或设置文章ID

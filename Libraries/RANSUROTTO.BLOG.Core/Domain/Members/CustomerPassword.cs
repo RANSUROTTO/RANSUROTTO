@@ -13,7 +13,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Members
         /// <summary>
         /// 获取或设置用户ID
         /// </summary>
-        public int CustomerId { get; set; }
+        public long CustomerId { get; set; }
 
         /// <summary>
         /// 获取或设置密码
