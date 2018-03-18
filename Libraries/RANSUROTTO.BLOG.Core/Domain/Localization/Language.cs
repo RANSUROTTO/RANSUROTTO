@@ -33,6 +33,16 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         /// </summary>
         public int DisplayOrder { get; set; }
 
+        /// <summary>
+        /// 获取或设置该语言是否支持“从右到左”显示方式
+        /// </summary>
+        public bool Rtl { get; set; }
+
+        /// <summary>
+        /// 获取或设置该语言是否已发布
+        /// </summary>
+        public bool Published { get; set; }
+
         #region Navigation Properties
 
         /// <summary>

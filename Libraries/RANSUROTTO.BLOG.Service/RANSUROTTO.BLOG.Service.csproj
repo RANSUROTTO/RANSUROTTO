@@ -49,6 +49,7 @@
     <Compile Include="Events\IEventPublisher.cs" />
     <Compile Include="Localization\ILanguageService.cs" />
     <Compile Include="Localization\ILocalizationService.cs" />
+    <Compile Include="Localization\LanguageService.cs" />
     <Compile Include="Localization\LocalizationService.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

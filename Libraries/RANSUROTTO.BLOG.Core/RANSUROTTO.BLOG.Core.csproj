@@ -98,6 +98,7 @@
     <Compile Include="Domain\Configuration\Setting.cs" />
     <Compile Include="Domain\Localization\Language.cs" />
     <Compile Include="Domain\Localization\LocaleStringResource.cs" />
+    <Compile Include="Domain\Localization\Setting\LocalizationSettings.cs" />
     <Compile Include="Domain\Logging\ActivityLog.cs" />
     <Compile Include="Domain\Logging\ActivityLogType.cs" />
     <Compile Include="Domain\Logging\Enum\LogLevel.cs" />
