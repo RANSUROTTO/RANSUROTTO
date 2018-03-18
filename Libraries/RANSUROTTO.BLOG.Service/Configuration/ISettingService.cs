@@ -36,9 +36,8 @@ namespace RANSUROTTO.BLOG.Service.Configuration
         /// 通过键获取设定项
         /// </summary>
         /// <param name="key">键</param>
-        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all stores) value should be loaded if a value specific for a certain is not found</param>
         /// <returns>设定项</returns>
-        Setting GetSetting(string key, bool loadSharedValueIfNotFound = false);
+        Setting GetSetting(string key);
 
         /// <summary>
         /// 通过键获取指定设定项值
@@ -46,10 +45,8 @@ namespace RANSUROTTO.BLOG.Service.Configuration
         /// <typeparam name="T">值的类型</typeparam>
         /// <param name="key">键</param>
         /// <param name="defaultValue">默认值</param>
-        /// <param name="loadSharedValueIfNotFound">A value indicating whether a shared (for all stores) value should be loaded if a value specific for a certain is not found</param>
         /// <returns>设定项值</returns>
-        T GetSettingByKey<T>(string key, T defaultValue = default(T),
-             bool loadSharedValueIfNotFound = false);
+        T GetSettingByKey<T>(string key, T defaultValue = default(T));
 
         /// <summary>
         /// 设置设定项值
@@ -70,7 +67,7 @@ namespace RANSUROTTO.BLOG.Service.Configuration
         /// 检查是否存在某个设定项
         /// </summary>
         /// <typeparam name="T">设定类型</typeparam>
-        /// <typeparam name="TPropType">设定项</typeparam>
+        /// <typeparam name="TPropType">设定项类型</typeparam>
         /// <param name="settings">设定实例</param>
         /// <param name="keySelector">设定项选择</param>
         /// <returns>如果存在返回true,否则返回false</returns>
@@ -95,26 +92,13 @@ namespace RANSUROTTO.BLOG.Service.Configuration
         /// 保存设定 (保存特定的项)
         /// </summary>
         /// <typeparam name="T">设定类型</typeparam>
-        /// <typeparam name="TPropType">设定项</typeparam>
+        /// <typeparam name="TPropType">设定项类型</typeparam>
         /// <param name="settings">设定实例</param>
         /// <param name="keySelector">设定项选择</param>
         /// <param name="clearCache">是否需要清除缓存</param>
         void SaveSetting<T, TPropType>(T settings,
             Expression<Func<T, TPropType>> keySelector,
             bool clearCache = true) where T : ISettings, new();
-
-        /// <summary>
-        /// Save settings object (per store). If the setting is not overridden per storem then it'll be delete
-        /// </summary>
-        /// <typeparam name="T">Entity type</typeparam>
-        /// <typeparam name="TPropType">Property type</typeparam>
-        /// <param name="settings">Settings</param>
-        /// <param name="keySelector">Key selector</param>
-        /// <param name="overrideForStore">A value indicating whether to setting is overridden in some store</param>
-        /// <param name="clearCache">A value indicating whether to clear cache after setting update</param>
-        void SaveSettingOverridablePerStore<T, TPropType>(T settings,
-            Expression<Func<T, TPropType>> keySelector,
-            bool overrideForStore, bool clearCache = true) where T : ISettings, new();
 
         /// <summary>
         /// 删除设定

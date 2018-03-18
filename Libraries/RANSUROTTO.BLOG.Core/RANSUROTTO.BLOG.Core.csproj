@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\CacheManagerExtensions.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Common\IPagedList.cs" />
     <Compile Include="Common\MimeTypes.cs" />
@@ -93,7 +94,7 @@
     <Compile Include="Domain\Blog\BlogPost.cs" />
     <Compile Include="Domain\Blog\BlogPostExtensions.cs" />
     <Compile Include="Domain\Blog\Enum\BlogPostFormat.cs" />
-    <Compile Include="Domain\Blog\Setting\BlogSetting.cs" />
+    <Compile Include="Domain\Blog\Setting\BlogSettings.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
     <Compile Include="Domain\Localization\Language.cs" />
     <Compile Include="Domain\Localization\LocaleStringResource.cs" />
@@ -104,6 +105,10 @@
     <Compile Include="Domain\Members\Customer.cs" />
     <Compile Include="Domain\Members\CustomerPassword.cs" />
     <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
+    <Compile Include="Domain\Security\Setting\SecuritySettings.cs" />
+    <Compile Include="Events\EntityDeleted.cs" />
+    <Compile Include="Events\EntityInserted.cs" />
+    <Compile Include="Events\EntityUpdated.cs" />
     <Compile Include="Extensions\CommonExtensions.cs" />
     <Compile Include="Fakes\FakeHttpContext.cs" />
     <Compile Include="Fakes\FakeHttpRequest.cs" />

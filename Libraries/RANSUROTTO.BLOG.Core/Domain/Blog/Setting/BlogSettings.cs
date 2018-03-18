@@ -1,7 +1,9 @@
+using RANSUROTTO.BLOG.Core.Configuration;
+
 namespace RANSUROTTO.BLOG.Core.Domain.Blog.Setting
 {
 
-    public class BlogSetting
+    public class BlogSettings : ISettings
     {
 
         /// <summary>

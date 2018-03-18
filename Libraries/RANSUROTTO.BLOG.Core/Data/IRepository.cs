@@ -96,6 +96,11 @@ namespace RANSUROTTO.BLOG.Core.Data
         IQueryable<T> Table { get; }
 
         /// <summary>
+        /// 获取实体数据集(不跟踪状态)
+        /// </summary>
+        IQueryable<T> TableNoTracking { get; }
+
+        /// <summary>
         /// 全部数据
         /// </summary>
         List<T> Data { get; }

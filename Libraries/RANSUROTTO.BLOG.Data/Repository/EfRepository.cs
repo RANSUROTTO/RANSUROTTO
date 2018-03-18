@@ -45,6 +45,11 @@ namespace RANSUROTTO.BLOG.Data.Repository
             }
         }
 
+        public IQueryable<T> TableNoTracking
+        {
+            get { return Table.AsNoTracking(); }
+        }
+
         public List<T> Data { get { return Entities.ToList(); } }
 
         #endregion

@@ -40,9 +40,9 @@ namespace RANSUROTTO.BLOG.Service.Security
         /// 解密文本
         /// </summary>
         /// <param name="plainText">需解密的文本</param>
-        /// <param name="encryotionPrivateKey">解密密钥</param>
+        /// <param name="encryptionPrivateKey">解密密钥</param>
         /// <returns>解密后的文本</returns>
-        string DecryptText(string plainText, string encryotionPrivateKey = "");
+        string DecryptText(string plainText, string encryptionPrivateKey = "");
 
     }
 
