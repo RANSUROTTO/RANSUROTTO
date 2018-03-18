@@ -45,8 +45,12 @@
     <Compile Include="Configuration\SettingExtensions.cs" />
     <Compile Include="Configuration\SettingService.cs" />
     <Compile Include="Events\EventExtensions.cs" />
+    <Compile Include="Events\EventPublisher.cs" />
     <Compile Include="Events\IEventPublisher.cs" />
+    <Compile Include="Localization\ILanguageService.cs" />
     <Compile Include="Localization\ILocalizationService.cs" />
+    <Compile Include="Localization\LocalizationService.cs" />
+    <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\EncryptionService.cs" />
     <Compile Include="Security\IEncryptionService.cs" />
@@ -55,6 +59,10 @@
     <ProjectReference Include="..\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">
       <Project>{C8433697-18E2-41D5-A890-4FC735486229}</Project>
       <Name>RANSUROTTO.BLOG.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RANSUROTTO.BLOG.Data\RANSUROTTO.BLOG.Data.csproj">
+      <Project>{358042CD-0244-467F-8635-61078EE6A1F1}</Project>
+      <Name>RANSUROTTO.BLOG.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
