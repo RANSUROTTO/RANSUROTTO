@@ -2,6 +2,10 @@
 
 namespace RANSUROTTO.BLOG.Core.Domain.Localization.Setting
 {
+
+    /// <summary>
+    /// 区域化设置
+    /// </summary>
     public class LocalizationSettings : ISettings
     {
 

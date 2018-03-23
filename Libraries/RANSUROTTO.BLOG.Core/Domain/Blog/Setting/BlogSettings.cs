@@ -3,6 +3,9 @@ using RANSUROTTO.BLOG.Core.Configuration;
 namespace RANSUROTTO.BLOG.Core.Domain.Blog.Setting
 {
 
+    /// <summary>
+    /// ≤©øÕ…Ë÷√
+    /// </summary>
     public class BlogSettings : ISettings
     {
 

@@ -103,6 +103,7 @@
     <Compile Include="Domain\Logging\ActivityLogType.cs" />
     <Compile Include="Domain\Logging\Enum\LogLevel.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
+    <Compile Include="Domain\Logging\Setting\LogSettings.cs" />
     <Compile Include="Domain\Members\Customer.cs" />
     <Compile Include="Domain\Members\CustomerPassword.cs" />
     <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />

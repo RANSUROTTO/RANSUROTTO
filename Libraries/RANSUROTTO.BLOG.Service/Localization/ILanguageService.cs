@@ -3,6 +3,10 @@ using RANSUROTTO.BLOG.Core.Domain.Localization;
 
 namespace RANSUROTTO.BLOG.Service.Localization
 {
+
+    /// <summary>
+    /// 语言业务层接口
+    /// </summary>
     public interface ILanguageService
     {
 

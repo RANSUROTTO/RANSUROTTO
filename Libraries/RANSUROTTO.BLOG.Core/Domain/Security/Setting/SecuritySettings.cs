@@ -2,6 +2,10 @@
 
 namespace RANSUROTTO.BLOG.Core.Domain.Security.Setting
 {
+
+    /// <summary>
+    /// 安全设置
+    /// </summary>
     public class SecuritySettings : ISettings
     {
 
