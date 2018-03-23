@@ -1,5 +1,5 @@
 ﻿using RANSUROTTO.BLOG.Core.Data;
-using RANSUROTTO.BLOG.Core.Domain.Members;
+using RANSUROTTO.BLOG.Core.Domain.Customers;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Logging
 {

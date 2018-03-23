@@ -1,7 +1,7 @@
 using RANSUROTTO.BLOG.Core.Data;
-using RANSUROTTO.BLOG.Core.Domain.Members.Enum;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 
-namespace RANSUROTTO.BLOG.Core.Domain.Members
+namespace RANSUROTTO.BLOG.Core.Domain.Customers
 {
 
     /// <summary>
@@ -44,7 +44,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Members
         /// <summary>
         /// 获取或设置用户
         /// </summary>
-        public virtual Customer Customer { get; set; }
+        public virtual Customers.Customer Customer { get; set; }
 
         #endregion
 

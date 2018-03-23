@@ -96,6 +96,7 @@
     <Compile Include="Domain\Blog\Enum\BlogPostFormat.cs" />
     <Compile Include="Domain\Blog\Setting\BlogSettings.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
+    <Compile Include="Domain\Customers\Setting\CustomerSettings.cs" />
     <Compile Include="Domain\Localization\Language.cs" />
     <Compile Include="Domain\Localization\LocaleStringResource.cs" />
     <Compile Include="Domain\Localization\Setting\LocalizationSettings.cs" />
@@ -104,9 +105,9 @@
     <Compile Include="Domain\Logging\Enum\LogLevel.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\Setting\LogSettings.cs" />
-    <Compile Include="Domain\Members\Customer.cs" />
-    <Compile Include="Domain\Members\CustomerPassword.cs" />
-    <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
+    <Compile Include="Domain\Customers\Customer.cs" />
+    <Compile Include="Domain\Customers\CustomerPassword.cs" />
+    <Compile Include="Domain\Customers\Enum\PasswordFormat.cs" />
     <Compile Include="Domain\Security\Setting\SecuritySettings.cs" />
     <Compile Include="Events\EntityDeleted.cs" />
     <Compile Include="Events\EntityInserted.cs" />
@@ -133,9 +134,7 @@
     <Compile Include="Infrastructure\TypeFinder\WebAppTypeFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\Members\Setting\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

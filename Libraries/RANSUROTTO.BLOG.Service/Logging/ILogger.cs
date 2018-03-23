@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Common;
+using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
 using RANSUROTTO.BLOG.Core.Domain.Logging.Enum;
-using RANSUROTTO.BLOG.Core.Domain.Members;
 
 namespace RANSUROTTO.BLOG.Service.Logging
 {

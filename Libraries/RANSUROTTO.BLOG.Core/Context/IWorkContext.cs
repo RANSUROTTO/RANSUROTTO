@@ -1,5 +1,5 @@
-﻿using RANSUROTTO.BLOG.Core.Domain.Localization;
-using RANSUROTTO.BLOG.Core.Domain.Members;
+﻿using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Localization;
 
 namespace RANSUROTTO.BLOG.Core.Context
 {

@@ -1,4 +1,4 @@
-namespace RANSUROTTO.BLOG.Core.Domain.Members.Enum
+namespace RANSUROTTO.BLOG.Core.Domain.Customers.Enum
 {
 
     /// <summary>

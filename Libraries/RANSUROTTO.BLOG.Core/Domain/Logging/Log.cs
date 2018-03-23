@@ -1,6 +1,6 @@
 using RANSUROTTO.BLOG.Core.Data;
+using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Logging.Enum;
-using RANSUROTTO.BLOG.Core.Domain.Members;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Logging
 {

@@ -1,4 +1,4 @@
-﻿using RANSUROTTO.BLOG.Core.Domain.Members;
+﻿using RANSUROTTO.BLOG.Core.Domain.Customers;
 
 namespace RANSUROTTO.BLOG.Data.Mapping.Members
 {

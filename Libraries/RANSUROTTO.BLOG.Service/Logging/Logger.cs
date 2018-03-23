@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Data;
+using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
 using RANSUROTTO.BLOG.Core.Domain.Logging.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Logging.Setting;
-using RANSUROTTO.BLOG.Core.Domain.Members;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Data.Context;
 

@@ -1,7 +1,7 @@
 using System;
 using RANSUROTTO.BLOG.Core.Data;
 
-namespace RANSUROTTO.BLOG.Core.Domain.Members
+namespace RANSUROTTO.BLOG.Core.Domain.Customers
 {
 
     /// <summary>

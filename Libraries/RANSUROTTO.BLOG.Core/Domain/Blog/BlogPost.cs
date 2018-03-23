@@ -1,8 +1,8 @@
 using System;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blog.Enum;
+using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
-using RANSUROTTO.BLOG.Core.Domain.Members;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blog
 {
