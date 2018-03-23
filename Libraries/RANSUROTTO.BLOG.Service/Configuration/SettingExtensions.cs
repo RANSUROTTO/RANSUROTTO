@@ -7,6 +7,7 @@ namespace RANSUROTTO.BLOG.Service.Configuration
 {
     public static class SettingExtensions
     {
+
         /// <summary>
         /// 获取设定选择器选中的设定项的键
         /// </summary>
@@ -38,5 +39,6 @@ namespace RANSUROTTO.BLOG.Service.Configuration
             var key = typeof(T).Name + "." + propInfo.Name;
             return key;
         }
+
     }
 }

@@ -11,7 +11,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Logging.Setting
     {
 
         /// <summary>
-        /// 获取或设置是否忽略软删除,开启后删除日志将为硬件删除永久消失
+        /// 获取或设置系统日志是否忽略软删除,开启后删除日志将为硬件删除永久消失
         /// </summary>
         public bool IgnoreSoftDelete { get; set; }
 

@@ -11,7 +11,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Logging
         /// <summary>
         /// 获取或设置系统关键字
         /// </summary>
-        public string SystemKeywork { get; set; }
+        public string SystemKeyword { get; set; }
 
         /// <summary>
         /// 获取或设置显示名称
@@ -21,7 +21,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Logging
         /// <summary>
         /// 获取或设置该类型是否启用记录
         /// </summary>
-        public bool Enable { get; set; }
+        public bool Enabled { get; set; }
 
     }
 }
