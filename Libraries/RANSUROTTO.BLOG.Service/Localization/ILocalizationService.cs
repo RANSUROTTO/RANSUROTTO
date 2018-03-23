@@ -11,78 +11,78 @@ namespace RANSUROTTO.BLOG.Service.Localization
     {
 
         /// <summary>
-        /// 删除区域设置语言字符串资源
+        /// 删除区域语言字符串资源
         /// </summary>
-        /// <param name="localeStringResource">区域资源字符串</param>
+        /// <param name="localeStringResource">区域语言字符串资源</param>
         void DeleteLocaleStringResource(LocaleStringResource localeStringResource);
 
         /// <summary>
-        /// 获取区域设置字符串资源
+        /// 获取区域设置区域语言字符串资源
         /// </summary>
-        /// <param name="localeStringResourceId">字符串资源标识符</param>
-        /// <returns>区域资源字符串</returns>
-        LocaleStringResource GetLocaleStringResourceById(int localeStringResourceId);
+        /// <param name="localeStringResourceId">区域语言字符串资源标识符</param>
+        /// <returns>区域语言字符串资源</returns>
+        LocaleStringResource GetLocaleStringResourceById(long localeStringResourceId);
 
         /// <summary>
-        /// 获取区域设置字符串资源
+        /// 通过资源名称与当前工作语言获取区域语言字符串资源
         /// </summary>
-        /// <param name="resourceName">表示资源名的字符串</param>
-        /// <returns>区域资源字符串</returns>
+        /// <param name="resourceName">资源名称</param>
+        /// <returns>区域语言字符串资源</returns>
         LocaleStringResource GetLocaleStringResourceByName(string resourceName);
 
         /// <summary>
-        /// 获取区域设置字符串资源
+        /// 获取区域语言字符串资源
         /// </summary>
-        /// <param name="resourceName">表示资源名的字符串。</param>
+        /// <param name="resourceName">资源名称</param>
         /// <param name="languageId">语言标识符</param>
-        /// <param name="logIfNotFound">如果找不到区域字符串资源,指示是否要记录错误</param>
-        /// <returns>区域资源字符串</returns>
-        LocaleStringResource GetLocaleStringResourceByName(string resourceName, int languageId,
+        /// <param name="logIfNotFound">如果找不到区域语言字符串资源,指示是否要记录错误</param>
+        /// <returns>区域语言字符串资源</returns>
+        LocaleStringResource GetLocaleStringResourceByName(string resourceName, long languageId,
             bool logIfNotFound = true);
 
         /// <summary>
-        /// 通过语言标识符获取所有区域字符串资源
+        /// 通过语言标识符获取所有区域语言字符串资源
         /// </summary>
         /// <param name="languageId">语言标识符</param>
-        /// <returns>区域资源字符串</returns>
-        IList<LocaleStringResource> GetAllResources(int languageId);
+        /// <returns>区域语言字符串资源列表</returns>
+        IList<LocaleStringResource> GetAllResources(long languageId);
 
         /// <summary>
-        /// 插入区域设置字符串资源
+        /// 插入区域语言字符串资源
         /// </summary>
-        /// <param name="localeStringResource">区域资源字符串</param>
+        /// <param name="localeStringResource">区域语言字符串资源</param>
         void InsertLocaleStringResource(LocaleStringResource localeStringResource);
 
         /// <summary>
-        /// 更新区域设置字符串资源
+        /// 更新区域语言字符串资源
         /// </summary>
-        /// <param name="localeStringResource">区域资源字符串</param>
+        /// <param name="localeStringResource">区域语言字符串资源</param>
         void UpdateLocaleStringResource(LocaleStringResource localeStringResource);
 
         /// <summary>
-        /// 通过语言标识符获取所有区域字符串资源
+        /// 通过语言标识符获取所有区域语言字符串资源
         /// </summary>
         /// <param name="languageId">语言标识符</param>
-        /// <returns>区域资源字符串</returns>
-        Dictionary<string, KeyValuePair<int, string>> GetAllResourceValues(int languageId);
+        /// <returns>语言与区域语言字符串资源字典</returns>
+        Dictionary<string, KeyValuePair<long, string>> GetAllResourceValues(long languageId);
 
         /// <summary>
-        /// 通过资源键值获取区域字符串
+        /// 通过资源键值获取区域语言字符串资源值
         /// </summary>
         /// <param name="resourceKey">资源键值</param>
-        /// <returns>区域字符串</returns>
+        /// <returns>区域语言字符串资源值</returns>
         string GetResource(string resourceKey);
 
         /// <summary>
-        /// 通过资源键值获取区域字符串
+        /// 通过资源键值获取区域语言字符串资源值
         /// </summary>
         /// <param name="resourceKey">资源键值</param>
         /// <param name="languageId">语言标识符</param>
-        /// <param name="logIfNotFound">如果找不到区域字符串资源,指示是否要记录错误</param>
+        /// <param name="logIfNotFound">如果找不到区域语言字符串资源值,指示是否要记录错误</param>
         /// <param name="defaultValue">默认值</param>
         /// <param name="returnEmptyIfNotFound">指示未找到资源时是否返回空字符串,并将默认值设置为空字符串</param>
-        /// <returns>区域字符串</returns>
-        string GetResource(string resourceKey, int languageId,
+        /// <returns>区域语言字符串资源值</returns>
+        string GetResource(string resourceKey, long languageId,
             bool logIfNotFound = true, string defaultValue = "", bool returnEmptyIfNotFound = false);
 
         /// <summary>

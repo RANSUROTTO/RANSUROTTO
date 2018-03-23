@@ -6,9 +6,9 @@ namespace RANSUROTTO.BLOG.Core.Context
     {
 
         /// <summary>
-        /// 获取或设置工作区语言
+        /// 获取或设置当前工作语言
         /// </summary>
-        Language Language { get; set; }
+        Language WorkingLanguage { get; set; }
 
     }
 

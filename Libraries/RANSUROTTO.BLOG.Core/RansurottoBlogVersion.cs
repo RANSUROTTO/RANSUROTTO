@@ -1,7 +1,7 @@
 namespace RANSUROTTO.BLOG.Core
 {
 
-    public class SystemVersion
+    public class RansurottoBlogVersion
     {
 
         public static string CurrentVersion => "1.0";
