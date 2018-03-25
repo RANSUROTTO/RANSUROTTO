@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 
 namespace RANSUROTTO.BLOG.Service.Customers
 {
@@ -14,11 +15,18 @@ namespace RANSUROTTO.BLOG.Service.Customers
         #region Customers
 
         /// <summary>
+        /// 通过标识符获取用户
+        /// </summary>
+        /// <param name="customerId">用户标识符</param>
+        /// <returns>用户</returns>
+        Customer GetCustomerById(long customerId);
+
+        /// <summary>
         /// 通过标识符列表获取用户列表
         /// </summary>
         /// <param name="customerIds">用户标识符列表</param>
         /// <returns>用户列表</returns>
-        IList<Customer> GetCustomersByIds(int[] customerIds);
+        IList<Customer> GetCustomersByIds(long[] customerIds);
 
         /// <summary>
         /// 通过GUID获取用户
@@ -49,13 +57,6 @@ namespace RANSUROTTO.BLOG.Service.Customers
         Customer GetCustomerByUsername(string username);
 
         /// <summary>
-        /// 通过标识符获取用户
-        /// </summary>
-        /// <param name="customerId">用户标识符</param>
-        /// <returns>用户</returns>
-        Customer GetCustomerById(long customerId);
-
-        /// <summary>
         /// 删除用户
         /// </summary>
         /// <param name="customer">用户</param>
@@ -83,7 +84,34 @@ namespace RANSUROTTO.BLOG.Service.Customers
 
         #region Customer passwords
 
+        /// <summary>
+        /// 获取用户的密码列表
+        /// </summary>
+        /// <param name="customerId">用户标识符; null为不限制</param>
+        /// <param name="passwordFormat">密码格式化类型; null为不限制</param>
+        /// <param name="passwordsToReturn">返回的记录数量; null为不限制</param>
+        /// <returns>用户密码列表</returns>
+        IList<CustomerPassword> GetCustomerPasswords(long? customerId = null,
+            PasswordFormat? passwordFormat = null, int? passwordsToReturn = null);
 
+        /// <summary>
+        /// 通过用户标识符获取对应用户当前的密码
+        /// </summary>
+        /// <param name="customerId">用户标识符</param>
+        /// <returns>用户密码</returns>
+        CustomerPassword GetCurrentPassword(long customerId);
+
+        /// <summary>
+        /// 添加用户密码
+        /// </summary>
+        /// <param name="customerPassword">用户密码</param>
+        void InsertCustomerPassword(CustomerPassword customerPassword);
+
+        /// <summary>
+        /// 更新用户密码
+        /// </summary>
+        /// <param name="customerPassword">用户密码</param>
+        void UpdateCustomerPassword(CustomerPassword customerPassword);
 
         #endregion
 

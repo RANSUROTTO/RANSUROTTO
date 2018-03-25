@@ -54,6 +54,7 @@
     <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="Configuration\SettingExtensions.cs" />
     <Compile Include="Configuration\SettingService.cs" />
+    <Compile Include="Customers\CustomerService.cs" />
     <Compile Include="Customers\ICustomerService.cs" />
     <Compile Include="Events\EventExtensions.cs" />
     <Compile Include="Events\EventPublisher.cs" />

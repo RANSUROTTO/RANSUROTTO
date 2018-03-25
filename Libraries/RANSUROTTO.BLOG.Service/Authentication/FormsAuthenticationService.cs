@@ -37,24 +37,80 @@ namespace RANSUROTTO.BLOG.Service.Authentication
 
         public void SignIn(Customer customer, bool createPersistentCookie)
         {
-            throw new NotImplementedException();
+            var now = DateTime.UtcNow.ToLocalTime();
+
+            var ticket = new FormsAuthenticationTicket(
+                1 /*version*/,
+                customer.Username,
+                now,
+                now.Add(_expirationTimeSpan),
+                createPersistentCookie,
+                customer.Guid.ToString(),
+                FormsAuthentication.FormsCookiePath);
+
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+            cookie.HttpOnly = true;
+            if (ticket.IsPersistent)
+            {
+                cookie.Expires = ticket.Expiration;
+            }
+            cookie.Secure = FormsAuthentication.RequireSSL;
+            cookie.Path = FormsAuthentication.FormsCookiePath;
+            if (FormsAuthentication.CookieDomain != null)
+            {
+                cookie.Domain = FormsAuthentication.CookieDomain;
+            }
+
+            _httpContext.Response.Cookies.Add(cookie);
+            _cachedCustomer = customer;
         }
 
         public void SignOut()
         {
-            throw new NotImplementedException();
+            _cachedCustomer = null;
+            FormsAuthentication.SignOut();
         }
 
         public Customer GetAuthenticatedCustomer()
         {
-            throw new NotImplementedException();
+            if (_cachedCustomer != null)
+                return _cachedCustomer;
+
+            if (_httpContext == null ||
+                !_httpContext.Request.IsAuthenticated ||
+                !(_httpContext.User.Identity is FormsIdentity))
+            {
+                return null;
+            }
+
+            var formsIdentity = (FormsIdentity)_httpContext.User.Identity;
+            var customer = GetAuthenticatedCustomerFromTicket(formsIdentity.Ticket);
+            if (customer != null && customer.Active)
+                _cachedCustomer = customer;
+
+            return _cachedCustomer;
         }
 
         #endregion
 
         #region Utilities
 
+        protected virtual Customer GetAuthenticatedCustomerFromTicket(FormsAuthenticationTicket ticket)
+        {
+            if (ticket == null)
+                throw new ArgumentNullException(nameof(ticket));
 
+            var customerGuid = Guid.Parse(ticket.UserData);
+
+            if (customerGuid == Guid.Empty)
+                return null;
+
+            var customer = _customerService.GetCustomerByGuid(customerGuid);
+
+            return customer;
+        }
 
         #endregion
 
