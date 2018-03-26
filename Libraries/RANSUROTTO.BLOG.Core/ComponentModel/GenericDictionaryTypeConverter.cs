@@ -10,8 +10,8 @@ namespace RANSUROTTO.BLOG.Core.ComponentModel
     public class GenericDictionaryTypeConverter<TK, TV> : TypeConverter
     {
 
-        protected readonly TypeConverter typeConverterKey;
-        protected readonly TypeConverter typeConverterValue;
+        protected readonly TypeConverter TypeConverterKey;
+        protected readonly TypeConverter TypeConverterValue;
 
         #region Constructor
 
@@ -20,12 +20,12 @@ namespace RANSUROTTO.BLOG.Core.ComponentModel
         /// </summary>
         public GenericDictionaryTypeConverter()
         {
-            typeConverterKey = TypeDescriptor.GetConverter(typeof(TK));
-            if (typeConverterKey == null)
+            TypeConverterKey = TypeDescriptor.GetConverter(typeof(TK));
+            if (TypeConverterKey == null)
                 throw new InvalidOperationException(("No type converter exists for type " + typeof(TK).FullName));
 
-            typeConverterValue = TypeDescriptor.GetConverter(typeof(TV));
-            if (typeConverterValue == null)
+            TypeConverterValue = TypeDescriptor.GetConverter(typeof(TV));
+            if (TypeConverterValue == null)
                 throw new InvalidOperationException(("No type converter exists for type " + typeof(TV).FullName));
         }
 
@@ -68,8 +68,8 @@ namespace RANSUROTTO.BLOG.Core.ComponentModel
 
                     if (keyValueStr.Length == 2)
                     {
-                        object dictionaryKey = (TK)typeConverterKey.ConvertFromInvariantString(keyValueStr[0]);
-                        object dictionaryValue = (TV)typeConverterValue.ConvertFromInvariantString(keyValueStr[1]);
+                        object dictionaryKey = (TK)TypeConverterKey.ConvertFromInvariantString(keyValueStr[0]);
+                        object dictionaryValue = (TV)TypeConverterValue.ConvertFromInvariantString(keyValueStr[1]);
                         if (dictionaryKey != null && dictionaryValue != null)
                         {
                             if (!result.ContainsKey((TK)dictionaryKey))

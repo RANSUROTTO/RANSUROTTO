@@ -313,7 +313,7 @@ namespace RANSUROTTO.BLOG.Service.Localization
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("Language");
             xmlWriter.WriteAttributeString("Name", language.Name);
-            xmlWriter.WriteAttributeString("SupportedVersion", RansurottoBlogVersion.CurrentVersion);
+            xmlWriter.WriteAttributeString("SupportedVersion", RansurottoVersion.CurrentVersion);
 
             var resources = GetAllResources(language.Id);
             foreach (var resource in resources)

@@ -68,6 +68,11 @@ namespace RANSUROTTO.BLOG.Core.Configuration
         /// </summary>
         public bool MemcachedEnable { get; set; }
 
+        /// <summary>
+        /// 是否在应用程序启动时清空插件的bin目录
+        /// </summary>
+        public bool ClearPluginShadowDirectoryOnStartup { get; set; }
+
         #endregion
 
         #region Utilities
