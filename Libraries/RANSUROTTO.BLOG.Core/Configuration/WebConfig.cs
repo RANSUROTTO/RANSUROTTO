@@ -21,15 +21,9 @@ namespace RANSUROTTO.BLOG.Core.Configuration
             var startupNode = section.SelectSingleNode("Startup");
             Config.IgnoreStartupTasks = GetBool(startupNode, "IgnoreStartupTasks");
 
-            var clusterNode = section.SelectSingleNode("Cluster");
-            Config.OpenClusterPattern = GetBool(clusterNode, "OpenClusterPattern");
-
             var redisCachingNode = section.SelectSingleNode("RedisCaching");
             Config.RedisCachingEnable = GetBool(redisCachingNode, "Enable");
             Config.RedisCachingConfig = GetString(redisCachingNode, "ConfigString");
-
-            var memcachingNode = section.SelectSingleNode("MemCaching");
-            Config.MemcachedEnable = GetBool(memcachingNode, "Enable");
 
             return Config;
         }
@@ -47,13 +41,6 @@ namespace RANSUROTTO.BLOG.Core.Configuration
         public bool IgnoreStartupTasks { get; set; }
 
         /// <summary>
-        /// 是否开启集群运行方式
-        /// more information:
-        /// https://github.com/ZhengZicong/MyBlog
-        /// </summary>
-        public bool OpenClusterPattern { get; set; }
-
-        /// <summary>
         /// 是否开启Redis缓存
         /// </summary>
         public bool RedisCachingEnable { get; set; }
@@ -64,9 +51,9 @@ namespace RANSUROTTO.BLOG.Core.Configuration
         public string RedisCachingConfig { get; set; }
 
         /// <summary>
-        /// 是否开启Memcached缓存
+        /// 标识该站点是否在多个实例上运行(例如Web站点、多实例WindowsAzure、集群概念)
         /// </summary>
-        public bool MemcachedEnable { get; set; }
+        public bool MultipleInstancesEnabled { get; private set; }
 
         /// <summary>
         /// 是否在应用程序启动时清空插件的bin目录
