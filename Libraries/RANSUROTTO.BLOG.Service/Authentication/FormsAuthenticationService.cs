@@ -102,14 +102,15 @@ namespace RANSUROTTO.BLOG.Service.Authentication
             if (ticket == null)
                 throw new ArgumentNullException(nameof(ticket));
 
-            var customerGuid = Guid.Parse(ticket.UserData);
+            if (Guid.TryParse(ticket.UserData, out var customerGuid))
+            {
+                if (customerGuid == Guid.Empty)
+                    return null;
 
-            if (customerGuid == Guid.Empty)
-                return null;
+                return _customerService.GetCustomerByGuid(customerGuid);
+            }
 
-            var customer = _customerService.GetCustomerByGuid(customerGuid);
-
-            return customer;
+            return null;
         }
 
         #endregion
