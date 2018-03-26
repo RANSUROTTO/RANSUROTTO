@@ -114,6 +114,7 @@
     <Compile Include="Domain\Customers\CustomerPassword.cs" />
     <Compile Include="Domain\Customers\Enum\PasswordFormat.cs" />
     <Compile Include="Domain\Security\Setting\SecuritySettings.cs" />
+    <Compile Include="Domain\Tasks\ScheduleTask.cs" />
     <Compile Include="Events\EntityDeleted.cs" />
     <Compile Include="Events\EntityInserted.cs" />
     <Compile Include="Events\EntityUpdated.cs" />
