@@ -16,7 +16,7 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// <summary>
         /// 获取一个值,标识数据库数据设置是否有效
         /// </summary>
-        public static bool DatabaseInstalled()
+        public static bool DatabaseIsInstalled()
         {
             if (!_databaseIsInstalled.HasValue)
             {
