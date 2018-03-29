@@ -82,8 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CustomerLastActivityAttribute.cs" />
+    <Compile Include="Attributes\FormValueRequiredAttribute.cs" />
+    <Compile Include="Attributes\ParameterBasedOnFormNameAndValueAttribute.cs" />
+    <Compile Include="Attributes\ParameterBasedOnFormNameAttribute.cs" />
     <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BasePluginController.cs" />
     <Compile Include="Kendoui\DataSourceRequest.cs" />
     <Compile Include="Kendoui\DataSourceResult.cs" />
     <Compile Include="Localization\LocalizedString.cs" />
