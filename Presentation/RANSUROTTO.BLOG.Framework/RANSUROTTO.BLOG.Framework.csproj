@@ -81,6 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CustomerLastActivityAttribute.cs" />
+    <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Kendoui\DataSourceRequest.cs" />
     <Compile Include="Kendoui\DataSourceResult.cs" />
     <Compile Include="Localization\LocalizedString.cs" />
@@ -112,5 +115,6 @@
       <Name>RANSUROTTO.BLOG.Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
