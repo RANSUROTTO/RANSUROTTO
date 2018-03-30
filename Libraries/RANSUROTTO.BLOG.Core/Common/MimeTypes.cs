@@ -50,6 +50,8 @@ namespace RANSUROTTO.BLOG.Core.Common
 
         public const string TextJavascript = "text/javascript";
 
+        public const string TextXml = "text/xml";
+
         public const string TextPlain = "text/plain";
 
         public const string TextXlsx = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
