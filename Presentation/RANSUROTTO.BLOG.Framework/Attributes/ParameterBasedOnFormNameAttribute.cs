@@ -4,7 +4,7 @@ using System.Web.Mvc;
 namespace RANSUROTTO.BLOG.Framework.Attributes
 {
     /// <summary>
-    /// 该特性将验证 表单是否存在指定名称项 的结果赋值到指定动作方法参数
+    /// 该特性将确保验证 表单是否存在指定名称项 的结果赋值到指定动作方法参数
     /// </summary>
     public class ParameterBasedOnFormNameAttribute : FilterAttribute, IActionFilter
     {

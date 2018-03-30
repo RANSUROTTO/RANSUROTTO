@@ -4,7 +4,7 @@ using System.Web.Mvc;
 namespace RANSUROTTO.BLOG.Framework.Attributes
 {
     /// <summary>
-    /// 该特性将验证 表单值是否与预设值 是否相等的结果赋值到指定动作方法参数
+    /// 该特性将确保验证 表单值是否与预设值 是否相等的结果赋值到指定动作方法参数
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class ParameterBasedOnFormNameAndValueAttribute : FilterAttribute, IActionFilter

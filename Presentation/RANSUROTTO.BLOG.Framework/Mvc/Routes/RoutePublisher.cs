@@ -19,6 +19,7 @@ namespace RANSUROTTO.BLOG.Framework.Mvc.Routes
         {
             this.TypeFinder = typeFinder;
         }
+
         public virtual void RegisterRoutes(RouteCollection routes)
         {
             var routeProviderTypes = TypeFinder.FindClassesOfType<IRouteProvider>();

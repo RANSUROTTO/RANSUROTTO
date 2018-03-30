@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace RANSUROTTO.BLOG.Framework.Attributes
 {
     /// <summary>
-    /// 该特性筛选进入指定的动作方法必须存在某个表单项(或及其值)
+    /// 该特性筛选确保进入指定的动作方法必须存在某个表单项(或及其值)
     /// </summary>
     public class FormValueRequiredAttribute : ActionMethodSelectorAttribute
     {
