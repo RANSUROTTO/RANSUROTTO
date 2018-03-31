@@ -20,6 +20,11 @@ namespace RANSUROTTO.BLOG.Core.Context
         /// </summary>
         Customer CurrentCustomer { get; set; }
 
+        /// <summary>
+        /// 获取或设置当前身份是否为管理员
+        /// </summary>
+        bool IsAdmin { get; set; }
+
     }
 
 }

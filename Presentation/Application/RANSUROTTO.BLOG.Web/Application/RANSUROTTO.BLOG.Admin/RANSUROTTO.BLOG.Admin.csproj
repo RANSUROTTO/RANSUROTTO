@@ -49,6 +49,9 @@
       <HintPath>..\..\..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -1181,6 +1184,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseAdminController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1317,11 +1321,20 @@
     <Folder Include="Content\tinymce\plugins\jbimages\js\" />
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Security\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Libraries\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">
+      <Project>{C8433697-18E2-41D5-A890-4FC735486229}</Project>
+      <Name>RANSUROTTO.BLOG.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\Libraries\RANSUROTTO.BLOG.Service\RANSUROTTO.BLOG.Service.csproj">
+      <Project>{579CB98F-E361-48E3-BBF5-9AA5D74A1FE1}</Project>
+      <Name>RANSUROTTO.BLOG.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\RANSUROTTO.BLOG.Framework\RANSUROTTO.BLOG.Framework.csproj">
       <Project>{8C72BEB7-97F8-4C6D-A744-CF98445D29F1}</Project>
       <Name>RANSUROTTO.BLOG.Framework</Name>
