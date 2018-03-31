@@ -95,10 +95,12 @@
     <Compile Include="Localization\LocalizedString.cs" />
     <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Mvc\ActionConfirmationModel.cs" />
+    <Compile Include="Mvc\BaseMetadataProvider.cs" />
     <Compile Include="Mvc\BaseModel.cs" />
     <Compile Include="Mvc\BaseModelBinder.cs" />
     <Compile Include="Mvc\ConverterJsonResult.cs" />
     <Compile Include="Mvc\DeleteConfirmationModel.cs" />
+    <Compile Include="Mvc\IModelAttribute.cs" />
     <Compile Include="Mvc\NoTrimAttribute.cs" />
     <Compile Include="Mvc\NullJsonResult.cs" />
     <Compile Include="Mvc\Routes\GuidConstraint.cs" />
@@ -111,6 +113,9 @@
     <Compile Include="Security\AdminValidateIpAddressAttribute.cs" />
     <Compile Include="Security\HttpsRequirementAttribute.cs" />
     <Compile Include="Security\PublicAntiForgeryAttribute.cs" />
+    <Compile Include="Themes\IThemeContext.cs" />
+    <Compile Include="Themes\ThemeableRazorViewEngine.cs" />
+    <Compile Include="Themes\ThemeableVirtualPathProviderViewEngine.cs" />
     <Compile Include="UI\AsIsBundleOrderer.cs" />
     <Compile Include="UI\IPageHeadBuilder.cs" />
     <Compile Include="UI\NotifyType.cs" />
