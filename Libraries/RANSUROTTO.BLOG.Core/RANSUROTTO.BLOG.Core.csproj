@@ -110,6 +110,7 @@
     <Compile Include="Domain\Blog\BlogComment.cs" />
     <Compile Include="Domain\Blog\BlogPost.cs" />
     <Compile Include="Domain\Blog\BlogPostExtensions.cs" />
+    <Compile Include="Domain\Blog\Category.cs" />
     <Compile Include="Domain\Blog\Enum\BlogPostFormat.cs" />
     <Compile Include="Domain\Blog\Setting\BlogSettings.cs" />
     <Compile Include="Domain\Common\Setting\AdminAreaSettings.cs" />

@@ -16,6 +16,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         public long LanguageId { get; set; }
 
         /// <summary>
+        /// 获取或设置所在类目ID
+        /// </summary>
+        public long CategoryId { get; set; }
+
+        /// <summary>
         /// 获取或设置作者ID
         /// </summary>
         public long AuthorId { get; set; }
@@ -79,6 +84,8 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         public virtual Language Language { get; set; }
 
         public virtual Customer Author { get; set; }
+
+        public virtual Category Category { get; set; }
 
         #endregion
 
