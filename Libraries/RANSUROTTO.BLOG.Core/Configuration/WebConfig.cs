@@ -14,10 +14,6 @@ namespace RANSUROTTO.BLOG.Core.Configuration
         {
             Config = new WebConfig();
 
-            //初始化属性值
-            var debugNode = section.SelectSingleNode("Debug");
-            Config.Debug = GetBool(debugNode, "Enable");
-
             var startupNode = section.SelectSingleNode("Startup");
             Config.IgnoreStartupTasks = GetBool(startupNode, "IgnoreStartupTasks");
 
@@ -25,30 +21,33 @@ namespace RANSUROTTO.BLOG.Core.Configuration
             Config.RedisCachingEnable = GetBool(redisCachingNode, "Enable");
             Config.RedisCachingConfig = GetString(redisCachingNode, "ConfigString");
 
+            var webFarmsNode = section.SelectSingleNode("WebFarms");
+            Config.MultipleInstancesEnabled = GetBool(webFarmsNode, "MultipleInstancesEnabled");
+            Config.RunOnAzureWebApps = GetBool(webFarmsNode, "RunOnAzureWebApps");
+
+            var userAgentStringsNode = section.SelectSingleNode("UserAgentStrings");
+            Config.UserAgentStringsPath = GetString(userAgentStringsNode, "databasePath");
+            Config.CrawlerOnlyUserAgentStringsPath = GetString(userAgentStringsNode, "crawlersOnlyDatabasePath");
+
             return Config;
         }
 
         #region Properties
 
         /// <summary>
-        /// 调试模式[部分功能将沉默：权限等]
-        /// </summary>
-        public bool Debug { get; set; }
-
-        /// <summary>
         /// 是否忽略运行应用程序启动任务
         /// </summary>
-        public bool IgnoreStartupTasks { get; set; }
+        public bool IgnoreStartupTasks { get; private set; }
 
         /// <summary>
-        /// 是否开启Redis缓存
+        /// 标识是否开启Redis缓存
         /// </summary>
-        public bool RedisCachingEnable { get; set; }
+        public bool RedisCachingEnable { get; private set; }
 
         /// <summary>
         /// Redis缓存配置字符串
         /// </summary>
-        public string RedisCachingConfig { get; set; }
+        public string RedisCachingConfig { get; private set; }
 
         /// <summary>
         /// 标识该站点是否在多个实例上运行(例如Web站点、多实例WindowsAzure、集群概念)
@@ -56,9 +55,24 @@ namespace RANSUROTTO.BLOG.Core.Configuration
         public bool MultipleInstancesEnabled { get; private set; }
 
         /// <summary>
-        /// 是否在应用程序启动时清空插件的bin目录
+        /// 标识是否在应用程序启动时清空插件的bin目录
         /// </summary>
-        public bool ClearPluginShadowDirectoryOnStartup { get; set; }
+        public bool ClearPluginShadowDirectoryOnStartup { get; private set; }
+
+        /// <summary>
+        /// 标识应用程序是否在Windows Azure Web Apps上运行
+        /// </summary>
+        public bool RunOnAzureWebApps { get; private set; }
+
+        /// <summary>
+        /// 包含用户代理字符串的数据库路径
+        /// </summary>
+        public string UserAgentStringsPath { get; private set; }
+
+        /// <summary>
+        /// 使用仅搜寻器用户代理字符串的数据库路径
+        /// </summary>
+        public string CrawlerOnlyUserAgentStringsPath { get; private set; }
 
         #endregion
 

@@ -9,6 +9,7 @@ using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Framework.Mvc.Routes;
+using RANSUROTTO.BLOG.Framework.Themes;
 using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Service.Tasks;
 
@@ -34,7 +35,10 @@ namespace RANSUROTTO.BLOG.Web
             bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
             if (databaseInstalled)
             {
-                //TODO ViewEngines
+                //删除全部视图引擎
+                ViewEngines.Engines.Clear();
+                //使用我们自己提供的主题视图引擎
+                ViewEngines.Engines.Add(new ThemeableRazorViewEngine());
             }
 
             //在默认ModelMetadataProvider上添加新的功能
@@ -42,8 +46,8 @@ namespace RANSUROTTO.BLOG.Web
 
             //注册所有路由
             AreaRegistration.RegisterAllAreas();
-
             RegisterRoutes(RouteTable.Routes);
+
             if (databaseInstalled)
             {
                 //启动计划任务
