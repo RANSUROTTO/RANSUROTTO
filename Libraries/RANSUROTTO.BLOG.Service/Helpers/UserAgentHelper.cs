@@ -65,7 +65,7 @@ namespace RANSUROTTO.BLOG.Service.Helpers
                     return Singleton<BrowscapXmlHelper>.Instance;
 
                 var userAgentStringsPath = CommonHelper.MapPath(_webConfig.UserAgentStringsPath);
-                var crawlerOnlyUserAgentStringsPath = string.IsNullOrEmpty(_webConfig.CrawlerOnlyUserAgentStringsPath) ? string.Empty : CommonHelper.MapPath(_config.CrawlerOnlyUserAgentStringsPath);
+                var crawlerOnlyUserAgentStringsPath = string.IsNullOrEmpty(_webConfig.CrawlerOnlyUserAgentStringsPath) ? string.Empty : CommonHelper.MapPath(_webConfig.CrawlerOnlyUserAgentStringsPath);
 
                 var browscapXmlHelper = new BrowscapXmlHelper(userAgentStringsPath, crawlerOnlyUserAgentStringsPath);
                 Singleton<BrowscapXmlHelper>.Instance = browscapXmlHelper;

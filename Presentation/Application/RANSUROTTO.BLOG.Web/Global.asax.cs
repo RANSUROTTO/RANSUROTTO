@@ -6,6 +6,7 @@ using System.Web.Routing;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
+using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Framework.Mvc.Routes;
@@ -88,6 +89,30 @@ namespace RANSUROTTO.BLOG.Web
         }
 
         /// <summary>
+        /// 每次请求开始事件
+        /// </summary>
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+            if (webHelper.IsStaticResource(this.Request))
+                return;
+
+            if (!DataSettingsHelper.DatabaseIsInstalled())
+            {
+                var location = webHelper.GetLocation();
+                string installUrl = $"{location}install";
+                if (!webHelper.GetThisPageUrl(false).StartsWith(installUrl, StringComparison.OrdinalIgnoreCase))
+                {
+                    this.Response.Redirect(installUrl);
+                }
+            }
+
+            if (!DataSettingsHelper.DatabaseIsInstalled())
+                return;
+
+        }
+
+        /// <summary>
         /// 程序全局异常事件
         /// </summary>
         protected void Application_Error(Object sender, EventArgs e)
@@ -133,8 +158,7 @@ namespace RANSUROTTO.BLOG.Web
             if (!DataSettingsHelper.DatabaseIsInstalled())
                 return;
 
-            var httpException = exc as HttpException;
-            if (httpException != null && httpException.GetHttpCode() == 404 &&
+            if (exc is HttpException httpException && httpException.GetHttpCode() == 404 &&
                 !EngineContext.Current.Resolve<CommonSettings>().Log404Errors)
                 return;
 

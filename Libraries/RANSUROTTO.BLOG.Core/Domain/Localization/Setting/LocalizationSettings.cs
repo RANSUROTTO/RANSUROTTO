@@ -17,7 +17,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization.Setting
         /// <summary>
         /// 标识是否开启对URL进行多语言化SEO优化
         /// </summary>
-        public bool SeoFriendlyUrlsForLanguagesEnable { get; set; }
+        public bool SeoFriendlyUrlsForLanguagesEnabled { get; set; }
 
         /// <summary>
         /// 标识是否通过客户区域（浏览器设置）检测当前语言
