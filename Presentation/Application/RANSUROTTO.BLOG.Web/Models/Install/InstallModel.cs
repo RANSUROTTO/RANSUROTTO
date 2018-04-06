@@ -11,6 +11,11 @@ namespace RANSUROTTO.BLOG.Web.Models.Install
     public class InstallModel : BaseModel
     {
 
+        public InstallModel()
+        {
+            AvailableLanguages = new List<SelectListItem>();
+        }
+
         [AllowHtml]
         public string AdminEmail { get; set; }
 

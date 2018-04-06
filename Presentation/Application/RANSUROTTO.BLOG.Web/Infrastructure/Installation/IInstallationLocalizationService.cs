@@ -22,7 +22,7 @@ namespace RANSUROTTO.BLOG.Web.Infrastructure.Installation
         InstallationLanguage GetCurrentLanguage();
 
         /// <summary>
-        /// 通过语言代码获取指定语言保存到当前运行时
+        /// 通过语言代码获取指定语言保存到当前环境
         /// </summary>
         /// <param name="languageCode">语言</param>
         void SaveCurrentLanguage(string languageCode);

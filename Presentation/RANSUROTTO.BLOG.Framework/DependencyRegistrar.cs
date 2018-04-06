@@ -20,12 +20,15 @@ using RANSUROTTO.BLOG.Data.Context;
 using RANSUROTTO.BLOG.Data.Provider;
 using RANSUROTTO.BLOG.Data.Repository;
 using RANSUROTTO.BLOG.Framework.Mvc.Routes;
+using RANSUROTTO.BLOG.Framework.UI;
 using RANSUROTTO.BLOG.Service.Authentication;
 using RANSUROTTO.BLOG.Service.Configuration;
 using RANSUROTTO.BLOG.Service.Events;
 using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Service.Infrastructure;
+using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Service.Security;
+using RANSUROTTO.BLOG.Service.Tasks;
 
 namespace RANSUROTTO.BLOG.Framework
 {
@@ -119,13 +122,20 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerLifetimeScope();
 
             //Settings
+            builder.RegisterType<SettingService>().As<ISettingService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
             builder.RegisterSource(new SettingsSource());
 
             //Services
 
+            builder.RegisterType<PageHeadBuilder>().As<IPageHeadBuilder>().InstancePerLifetimeScope();
+            builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>().InstancePerLifetimeScope();
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
+            builder.RegisterType<Logger>().As<ILogger>().InstancePerLifetimeScope();
 
+            //Route
             builder.RegisterType<RoutePublisher>().As<IRoutePublisher>().SingleInstance();
 
             //Event

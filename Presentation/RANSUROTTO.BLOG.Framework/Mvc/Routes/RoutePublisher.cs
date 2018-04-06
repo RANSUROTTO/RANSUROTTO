@@ -44,13 +44,16 @@ namespace RANSUROTTO.BLOG.Framework.Mvc.Routes
             if (providerType == null)
                 throw new ArgumentNullException(nameof(providerType));
 
-            foreach (var plugin in PluginManager.ReferencedPlugins)
+            if (PluginManager.ReferencedPlugins != null)
             {
-                if (plugin.ReferencedAssembly == null)
-                    continue;
+                foreach (var plugin in PluginManager.ReferencedPlugins)
+                {
+                    if (plugin.ReferencedAssembly == null)
+                        continue;
 
-                if (plugin.ReferencedAssembly.FullName == providerType.Assembly.FullName)
-                    return plugin;
+                    if (plugin.ReferencedAssembly.FullName == providerType.Assembly.FullName)
+                        return plugin;
+                }
             }
 
             return null;
