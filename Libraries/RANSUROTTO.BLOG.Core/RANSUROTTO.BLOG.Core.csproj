@@ -113,6 +113,7 @@
     <Compile Include="Domain\Blog\Category.cs" />
     <Compile Include="Domain\Blog\Enum\BlogPostFormat.cs" />
     <Compile Include="Domain\Blog\Setting\BlogSettings.cs" />
+    <Compile Include="Domain\Common\GenericAttribute.cs" />
     <Compile Include="Domain\Common\Setting\AdminAreaSettings.cs" />
     <Compile Include="Domain\Common\Setting\CommonSettings.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
