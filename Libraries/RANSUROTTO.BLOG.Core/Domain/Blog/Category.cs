@@ -24,6 +24,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         public string Icon { get; set; }
 
         /// <summary>
+        /// 获取或设置顺序
+        /// </summary>
+        public int Order { get; set; }
+
+        /// <summary>
         /// 获取或设置管理员赋予的备注
         /// </summary>
         public string AdminComment { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Service.Common;
 using RANSUROTTO.BLOG.Service.Configuration;
 
 namespace RANSUROTTO.BLOG.Service.Helpers
@@ -9,6 +10,9 @@ namespace RANSUROTTO.BLOG.Service.Helpers
     public class DateTimeHelper : IDateTimeHelper
     {
 
+        private readonly IWorkContext _workContext;
+        private readonly IGenericAttributeService _genericAttributeService;
+        private readonly ISettingService _settingService;
 
         public TimeZoneInfo FindTimeZoneById(string id)
         {
