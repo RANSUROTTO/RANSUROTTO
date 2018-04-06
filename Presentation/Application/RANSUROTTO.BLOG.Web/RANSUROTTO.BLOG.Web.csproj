@@ -110,39 +110,33 @@
   <ItemGroup>
     <Content Include="App_Data\browscap.crawlersonly.xml" />
     <Content Include="App_Data\browscap.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.ar.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.bg.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.bn-bd.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.bs-Latn-BA.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.cz.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.da.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.de.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.en.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.fr.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.gr.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.he.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.hi.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.hr-HR.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.hu.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.hy-am.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.id.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.is.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.it.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.jp.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.lt.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.nl.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.pl.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.pt-br.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.ro.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.ru.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.sk.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.sp.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.sv.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.tr.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.ur.xml" />
-    <Content Include="App_Data\Localization\Installation\installation.vi.xml" />
     <Content Include="App_Data\Localization\Installation\installation.zh.xml" />
+    <Content Include="Content\install\images\install-synchronizing.gif" />
+    <Content Include="Content\install\images\logo.png" />
+    <Content Include="Content\install\style.css" />
+    <Content Include="Content\install\style.rtl.css" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery.magnific-popup.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\public.accordion.js" />
+    <Content Include="Scripts\public.ajaxcart.js" />
+    <Content Include="Scripts\public.common.js" />
+    <Content Include="Scripts\public.onepagecheckout.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\selectivizr.min.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +162,7 @@
     <Compile Include="Infrastructure\RouteProvider.cs" />
     <None Include="packages.config" />
     <Content Include="Views\Install\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

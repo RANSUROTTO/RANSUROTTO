@@ -1,4 +1,4 @@
-﻿<Language Name="简体中文" IsDefault="false" IsRightToLeft="false">
+﻿<Language Name="简体中文" IsDefault="true" IsRightToLeft="false">
   <LocaleResource Name="AdminEmail">
     <Value>管理员邮箱</Value>
   </LocaleResource>
@@ -41,9 +41,6 @@
   <LocaleResource Name="CreateSampleData">
     <Value>导入测试数据</Value>
   </LocaleResource>
-  <LocaleResource Name="CustomCollation">
-    <Value>指定自定义的Sql Server排序规则</Value>
-  </LocaleResource>
   <LocaleResource Name="DatabaseCreationError">
     <Value>创建数据库: {0}的时候发生错误</Value>
   </LocaleResource>
@@ -51,7 +48,7 @@
     <Value>数据库</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseInformation">
-    <Value>数据库信心</Value>
+    <Value>数据库信息</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseName">
     <Value>数据库名称</Value>
@@ -65,12 +62,6 @@
   <LocaleResource Name="DataProviderRequired">
     <Value>选择数据提供程序</Value>
   </LocaleResource>
-  <LocaleResource Name="Documentation1">
-    <Value>如果需要了解如何使用nopCommerce, 请访问</Value>
-  </LocaleResource>
-  <LocaleResource Name="Documentation2">
-    <Value>nopCommerce.com上的文档部分</Value>
-  </LocaleResource>
   <LocaleResource Name="Example">
     <Value>例子</Value>
   </LocaleResource>
@@ -78,7 +69,7 @@
     <Value>安装</Value>
   </LocaleResource>
   <LocaleResource Name="Installing">
-    <Value>正在安装nopCommerce...</Value>
+    <Value>正在安装博客系统...</Value>
   </LocaleResource>
   <LocaleResource Name="PasswordsDoNotMatch">
     <Value>密码不匹配</Value>
@@ -87,7 +78,7 @@
     <Value>输入原始连接字符串(高级)</Value>
   </LocaleResource>
   <LocaleResource Name="Recommended">
-    <Value>[推荐]</Value>
+    <Value>[必选]</Value>
   </LocaleResource>
   <LocaleResource Name="RestartInstallation">
     <Value>重启安装</Value>
@@ -98,46 +89,37 @@
   <LocaleResource Name="SetupFailed">
     <Value>安装失败: {0}</Value>
   </LocaleResource>
-  <LocaleResource Name="SqlAuthentication">
-    <Value>使用SQL Server 账户</Value>
+  <LocaleResource Name="MySqlAuthentication">
+    <Value>使用MySQL 账户</Value>
   </LocaleResource>
-  <LocaleResource Name="SqlCompact">
-    <Value>使用内置的数据存储(SQL Server Compact)</Value>
+  <LocaleResource Name="MySqlServerName">
+    <Value>MySQL 实例名</Value>
   </LocaleResource>
-  <LocaleResource Name="SqlServerName">
-    <Value>SQL Server 实例名</Value>
+  <LocaleResource Name="MySqlServerNameRequired">
+    <Value>请输入MySQL 实例名</Value>
   </LocaleResource>
-  <LocaleResource Name="SqlServerNameRequired">
-    <Value>请输入SQL Server 实例名</Value>
+  <LocaleResource Name="MySqlServerPassword">
+    <Value>MySQL 密码</Value>
   </LocaleResource>
-  <LocaleResource Name="SqlServerPassword">
-    <Value>SQL Server密码</Value>
+  <LocaleResource Name="MySqlServerPasswordRequired">
+    <Value>请输入MySQL 密码 </Value>
   </LocaleResource>
-  <LocaleResource Name="SqlServerPasswordRequired">
-    <Value>请输入SQL Server密码 </Value>
+  <LocaleResource Name="MySqlServerUsername">
+    <Value>MySQL 用户名</Value>
   </LocaleResource>
-  <LocaleResource Name="SqlServerUsername">
-    <Value>SQL Server用户名</Value>
-  </LocaleResource>
-  <LocaleResource Name="SqlServerUsernameRequired">
-    <Value>请输入SQL Server用户名</Value>
+  <LocaleResource Name="MySqlServerUsernameRequired">
+    <Value>请输入MySQL 用户名</Value>
   </LocaleResource>
   <LocaleResource Name="SqlStandard">
-    <Value>使用SQL Server(或SQL Express)数据库</Value>
+    <Value>使用MySQL 数据库</Value>
   </LocaleResource>
   <LocaleResource Name="StoreInformation">
-    <Value>商店信息</Value>
+    <Value>系统信息</Value>
   </LocaleResource>
   <LocaleResource Name="Title">
-    <Value>nopCommerce 安装</Value>
+    <Value>博客系统安装</Value>
   </LocaleResource>
-  <LocaleResource Name="Tooltip1">
-    <Value>nopCommerce是最优秀的Asp.net 在线电子商务解决方案。这个向导将引导你完成配置过程。</Value>
-  </LocaleResource>
-  <LocaleResource Name="Tooltip2">
+  <LocaleResource Name="Tooltip">
     <Value>完成这个向导，你必须知道如何连接数据库("即连接字符串").如有必要，请联系你的服务提供商。如果在本机或服务器上安装，你可能还需要一些管理员的信息 .</Value>
-  </LocaleResource>
-  <LocaleResource Name="WindowsAuthentication">
-    <Value>使用集成windows身份认证</Value>
   </LocaleResource>
 </Language>

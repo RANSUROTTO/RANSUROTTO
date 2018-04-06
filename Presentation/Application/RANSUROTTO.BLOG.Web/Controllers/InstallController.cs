@@ -38,7 +38,9 @@ namespace RANSUROTTO.BLOG.Web.Controllers
             var model = new InstallModel
             {
                 AdminEmail = "admin@ransurotto.com",
-
+                DataProvider = "mysql",
+                MySqlAuthenticationType = "sqlauthentication",
+                MySqlConnectionInfo = "sqlconnectioninfo_values"
             };
 
             foreach (var lang in _locService.GetAvailableLanguages())
@@ -52,6 +54,12 @@ namespace RANSUROTTO.BLOG.Web.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult Index(InstallModel model)
+        {
+            return View();
         }
 
         public virtual ActionResult ChangeLanguage(string language)

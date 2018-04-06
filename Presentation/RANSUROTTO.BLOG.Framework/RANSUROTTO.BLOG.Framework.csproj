@@ -103,6 +103,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BasePluginController.cs" />
     <Compile Include="DependencyRegistrar.cs" />
+    <Compile Include="HtmlExtensions.cs" />
     <Compile Include="Kendoui\DataSourceRequest.cs" />
     <Compile Include="Kendoui\DataSourceResult.cs" />
     <Compile Include="Localization\LocalizedRoute.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Mvc\Routes\RoutePublisher.cs" />
     <Compile Include="Mvc\XmlDownloadResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceDisplayName.cs" />
     <Compile Include="Security\AdminAntiForgeryAttribute.cs" />
     <Compile Include="Security\AdminValidateIpAddressAttribute.cs" />
     <Compile Include="Security\HttpsRequirementAttribute.cs" />

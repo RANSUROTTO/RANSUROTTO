@@ -20,8 +20,10 @@ using RANSUROTTO.BLOG.Data.Context;
 using RANSUROTTO.BLOG.Data.Provider;
 using RANSUROTTO.BLOG.Data.Repository;
 using RANSUROTTO.BLOG.Framework.Mvc.Routes;
+using RANSUROTTO.BLOG.Framework.Themes;
 using RANSUROTTO.BLOG.Framework.UI;
 using RANSUROTTO.BLOG.Service.Authentication;
+using RANSUROTTO.BLOG.Service.Common;
 using RANSUROTTO.BLOG.Service.Configuration;
 using RANSUROTTO.BLOG.Service.Events;
 using RANSUROTTO.BLOG.Service.Helpers;
@@ -63,10 +65,10 @@ namespace RANSUROTTO.BLOG.Framework
                 .As<HttpSessionStateBase>()
                 .InstancePerLifetimeScope();
 
-            //webHelper
+            //Web helper
             builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
 
-            //useragentHelper
+            //UserAgent helper
             builder.RegisterType<UserAgentHelper>().As<IUserAgentHelper>().InstancePerLifetimeScope();
 
             //Controller
@@ -118,7 +120,7 @@ namespace RANSUROTTO.BLOG.Framework
                 builder.RegisterType<DefaultMachineNameProvider>().As<IMachineNameProvider>().SingleInstance();
             }
 
-            //Work Context
+            //Work context
             builder.RegisterType<WebWorkContext>().As<IWorkContext>().InstancePerLifetimeScope();
 
             //Settings
@@ -129,11 +131,19 @@ namespace RANSUROTTO.BLOG.Framework
 
             //Services
 
+            builder.RegisterType<GenericAttributeService>().As<IGenericAttributeService>().InstancePerLifetimeScope();
+
             builder.RegisterType<PageHeadBuilder>().As<IPageHeadBuilder>().InstancePerLifetimeScope();
+            builder.RegisterType<DateTimeHelper>().As<IDateTimeHelper>().InstancePerLifetimeScope();
+
             builder.RegisterType<ScheduleTaskService>().As<IScheduleTaskService>().InstancePerLifetimeScope();
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
             builder.RegisterType<Logger>().As<ILogger>().InstancePerLifetimeScope();
+
+            //Theme services
+            builder.RegisterType<ThemeProvider>().As<IThemeProvider>().InstancePerLifetimeScope();
+            builder.RegisterType<ThemeContext>().As<IThemeContext>().InstancePerLifetimeScope();
 
             //Route
             builder.RegisterType<RoutePublisher>().As<IRoutePublisher>().SingleInstance();
