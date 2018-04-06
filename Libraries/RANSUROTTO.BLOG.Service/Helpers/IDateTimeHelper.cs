@@ -86,12 +86,12 @@ namespace RANSUROTTO.BLOG.Service.Helpers
         TimeZoneInfo GetCustomerTimeZone(Customer customer);
 
         /// <summary>
-        /// 获取系统默认的时区
+        /// 获取或设置系统默认的时区
         /// </summary>
         TimeZoneInfo DefaultTimeZone { get; set; }
 
         /// <summary>
-        /// 获取当前用户的时区
+        /// 获取或设置当前用户的时区
         /// </summary>
         TimeZoneInfo CurrentTimeZone { get; set; }
 

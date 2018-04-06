@@ -5,7 +5,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeNames
     public class SystemCustomerAttributeNames : IAttributeNames
     {
 
-        public static string DiscountCouponCode => "DiscountCouponCode";
+        /// <summary>
+        /// 时区标识符
+        /// </summary>
+        public static string TimeZoneId => "TimeZoneId";
 
     }
 }
