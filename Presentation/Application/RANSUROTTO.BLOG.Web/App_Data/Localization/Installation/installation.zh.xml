@@ -113,6 +113,9 @@
   <LocaleResource Name="SqlStandard">
     <Value>使用MySQL 数据库</Value>
   </LocaleResource>
+  <LocaleResource Name="NotSupportDataProvider">
+    <Value>不支持的数据提供商</Value>
+  </LocaleResource>
   <LocaleResource Name="StoreInformation">
     <Value>系统信息</Value>
   </LocaleResource>

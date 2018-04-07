@@ -11,6 +11,7 @@ using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Data.Provider;
 using RANSUROTTO.BLOG.Framework.Security;
+using RANSUROTTO.BLOG.Service.Installation;
 using RANSUROTTO.BLOG.Web.Infrastructure.Installation;
 using RANSUROTTO.BLOG.Web.Models.Install;
 
@@ -113,7 +114,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                 else
                 {
                     if (string.IsNullOrEmpty(model.MySqlServerName))
-                        ModelState.AddModelError("", _locService.GetResource("SqlServerNameRequired"));
+                        ModelState.AddModelError("", _locService.GetResource("MySqlServerNameRequired"));
                     if (string.IsNullOrEmpty(model.MySqlDatabaseName))
                         ModelState.AddModelError("", _locService.GetResource("DatabaseNameRequired"));
 
@@ -121,11 +122,15 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                         StringComparison.InvariantCultureIgnoreCase))
                     {
                         if (string.IsNullOrEmpty(model.MySqlServerUsername))
-                            ModelState.AddModelError("", _locService.GetResource("SqlServerUsernameRequired"));
+                            ModelState.AddModelError("", _locService.GetResource("MySqlServerUsernameRequired"));
                         if (string.IsNullOrEmpty(model.MySqlServerPassword))
-                            ModelState.AddModelError("", _locService.GetResource("SqlServerPasswordRequired"));
+                            ModelState.AddModelError("", _locService.GetResource("MySqlServerPasswordRequired"));
                     }
                 }
+            }
+            else
+            {
+                ModelState.AddModelError("", _locService.GetResource("NotSupportDataProvider"));
             }
 
             //验证是否有特定文件夹与文件操作权限
@@ -189,7 +194,9 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                     var dataProviderInstance = EngineContext.Current.Resolve<BaseDataProviderManager>().LoadDataProvider();
                     dataProviderInstance.InitDatabase();
 
-                    //TODO 添加测试数据
+                    //添加数据
+                    var installationService = EngineContext.Current.Resolve<IInstallationService>();
+                    installationService.InstallData(model.AdminEmail, model.AdminPassword, model.InstallSampleData);
 
                     //TODO 安装插件
 
@@ -208,7 +215,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                 {
                     DataSettingsHelper.ResetCache();
 
-                    var cacheManager = EngineContext.Current.ContainerManager.Resolve<ICacheManager>("Ransurotto_cache_static");
+                    var cacheManager = EngineContext.Current.ContainerManager.Resolve<ICacheManager>("ransurotto_cache_static");
                     cacheManager.Clear();
 
                     settingsManager.SaveSettings(new DataSettings
@@ -325,10 +332,10 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
                 string query = $"CREATE DATABASE `{databaseName}`";
 
-                using (var conn = new SqlConnection(masterCatalogConnectionString))
+                using (var conn = new MySqlConnection(masterCatalogConnectionString))
                 {
                     conn.Open();
-                    using (var command = new SqlCommand(query, conn))
+                    using (var command = new MySqlCommand(query, conn))
                     {
                         command.ExecuteNonQuery();
                     }
@@ -355,7 +362,6 @@ namespace RANSUROTTO.BLOG.Web.Controllers
             {
                 return string.Format(_locService.GetResource("DatabaseCreationError"), ex.Message);
             }
-            return null;
         }
 
         #endregion

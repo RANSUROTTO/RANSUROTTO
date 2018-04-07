@@ -28,6 +28,7 @@ using RANSUROTTO.BLOG.Service.Configuration;
 using RANSUROTTO.BLOG.Service.Events;
 using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Service.Infrastructure;
+using RANSUROTTO.BLOG.Service.Installation;
 using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Service.Security;
 using RANSUROTTO.BLOG.Service.Tasks;
@@ -140,6 +141,13 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
             builder.RegisterType<Logger>().As<ILogger>().InstancePerLifetimeScope();
+
+            //Install services
+            bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
+            if (!databaseInstalled)
+            {
+                builder.RegisterType<CodeFirstInstallationService>().As<IInstallationService>().InstancePerLifetimeScope();
+            }
 
             //Theme services
             builder.RegisterType<ThemeProvider>().As<IThemeProvider>().InstancePerLifetimeScope();

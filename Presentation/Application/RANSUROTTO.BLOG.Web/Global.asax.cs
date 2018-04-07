@@ -3,6 +3,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FluentValidation.Mvc;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
@@ -11,6 +12,7 @@ using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Framework.Mvc.Routes;
 using RANSUROTTO.BLOG.Framework.Themes;
+using RANSUROTTO.BLOG.Framework.Validators;
 using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Service.Tasks;
 
@@ -48,6 +50,10 @@ namespace RANSUROTTO.BLOG.Web
             //注册所有路由
             AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
+
+            //使用Fluent Validation验证器
+            DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
+            ModelValidatorProviders.Providers.Add(new FluentValidationModelValidatorProvider(new ValidatorFactory()));
 
             if (databaseInstalled)
             {

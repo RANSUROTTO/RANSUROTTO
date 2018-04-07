@@ -98,8 +98,8 @@ namespace RANSUROTTO.BLOG.Core.Data
             var xmlDocument = new XDocument(
                 new XElement(
                     "configuration",
-                    new XElement("item", new XAttribute("key", "DataProvider"), new XAttribute("value", shellSettings.DataProvider)),
-                    new XElement("item", new XAttribute("key", "DataConnectionString"), new XAttribute("value", shellSettings.DataConnectionString))
+                    new XElement("item", new XAttribute("key", "DataProvider"), new XAttribute("value", shellSettings.DataProvider ?? string.Empty)),
+                    new XElement("item", new XAttribute("key", "DataConnectionString"), new XAttribute("value", shellSettings.DataConnectionString ?? string.Empty))
                     )
                 );
             shellSettings.RawDataSettings?.Keys.ToList().ForEach(p =>

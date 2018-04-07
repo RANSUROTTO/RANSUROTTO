@@ -7,7 +7,7 @@ namespace RANSUROTTO.BLOG.Web.Validators.Install
 {
     public class InstallValidator : BaseValidator<InstallModel>
     {
-        protected InstallValidator(IInstallationLocalizationService locService)
+        public InstallValidator(IInstallationLocalizationService locService)
         {
             RuleFor(x => x.AdminEmail).NotEmpty().WithMessage(locService.GetResource("AdminEmailRequired"));
             RuleFor(x => x.AdminEmail).EmailAddress();

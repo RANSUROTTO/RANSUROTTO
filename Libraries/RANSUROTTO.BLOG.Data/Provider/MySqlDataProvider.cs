@@ -48,7 +48,7 @@ namespace RANSUROTTO.BLOG.Data.Provider
         /// </summary>
         public virtual void SetDatabaseInitializer()
         {
-
+            //TODO 创建数据库表及其相关配置
         }
 
         /// <summary>
