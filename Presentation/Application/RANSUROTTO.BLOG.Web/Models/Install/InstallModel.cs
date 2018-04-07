@@ -80,10 +80,6 @@ namespace RANSUROTTO.BLOG.Web.Models.Install
         /// </summary>
         public bool MySqlServerCreateDatabase { get; set; }
 
-        public bool UseCustomCollation { get; set; }
-        [AllowHtml]
-        public string Collation { get; set; }
-
         /// <summary>
         /// 指示是否禁用"导入测试数据"选项
         /// </summary>

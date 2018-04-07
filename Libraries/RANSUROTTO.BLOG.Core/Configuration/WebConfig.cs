@@ -29,6 +29,9 @@ namespace RANSUROTTO.BLOG.Core.Configuration
             Config.UserAgentStringsPath = GetString(userAgentStringsNode, "databasePath");
             Config.CrawlerOnlyUserAgentStringsPath = GetString(userAgentStringsNode, "crawlersOnlyDatabasePath");
 
+            var installationNode = section.SelectSingleNode("Installation");
+            Config.DisableSampleDataDuringInstallation = GetBool(installationNode, "DisableSampleDataDuringInstallation");
+
             return Config;
         }
 
@@ -73,6 +76,11 @@ namespace RANSUROTTO.BLOG.Core.Configuration
         /// 使用仅搜寻器用户代理字符串的数据库路径
         /// </summary>
         public string CrawlerOnlyUserAgentStringsPath { get; private set; }
+
+        /// <summary>
+        /// 标识是否禁用应用安装页面"导入测试数据"选项
+        /// </summary>
+        public bool DisableSampleDataDuringInstallation { get; private set; }
 
         #endregion
 

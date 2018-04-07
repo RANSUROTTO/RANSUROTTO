@@ -129,6 +129,7 @@
     <Compile Include="ResourceDisplayName.cs" />
     <Compile Include="Security\AdminAntiForgeryAttribute.cs" />
     <Compile Include="Security\AdminValidateIpAddressAttribute.cs" />
+    <Compile Include="Security\FilePermissionHelper.cs" />
     <Compile Include="Security\HttpsRequirementAttribute.cs" />
     <Compile Include="Security\PublicAntiForgeryAttribute.cs" />
     <Compile Include="Themes\ThemeConfiguration.cs" />
