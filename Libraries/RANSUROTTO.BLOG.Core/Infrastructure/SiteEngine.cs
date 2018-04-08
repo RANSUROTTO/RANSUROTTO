@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
 using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Core.Infrastructure.DependencyManagement;
+using RANSUROTTO.BLOG.Core.Infrastructure.Mapper;
 using RANSUROTTO.BLOG.Core.Infrastructure.TypeFinder;
 
 namespace RANSUROTTO.BLOG.Core.Infrastructure
@@ -39,6 +42,9 @@ namespace RANSUROTTO.BLOG.Core.Infrastructure
         {
             //依赖注册
             RegisterDependencies(config);
+
+            //映射配置注册
+            RegisterMapperConfiguration(config);
 
             //运行启动任务
             if (!config.IgnoreStartupTasks)
@@ -110,6 +116,26 @@ namespace RANSUROTTO.BLOG.Core.Infrastructure
             startUpTasks = startUpTasks.AsQueryable().OrderBy(st => st.Order).ToList();
             //Execute
             startUpTasks.ForEach(p => p.Execute());
+        }
+
+        protected virtual void RegisterMapperConfiguration(WebConfig config)
+        {
+            //dependencies
+            var typeFinder = new WebAppTypeFinder();
+
+            //register mapper configurations provided by other assemblies
+            var mcTypes = typeFinder.FindClassesOfType<IMapperConfiguration>();
+            var mcInstances = new List<IMapperConfiguration>();
+            foreach (var mcType in mcTypes)
+                mcInstances.Add((IMapperConfiguration)Activator.CreateInstance(mcType));
+            //sort
+            mcInstances = mcInstances.AsQueryable().OrderBy(t => t.Order).ToList();
+            //get configurations
+            var configurationActions = new List<Action<IMapperConfigurationExpression>>();
+            foreach (var mc in mcInstances)
+                configurationActions.Add(mc.GetConfiguration());
+            //register
+            AutoMapperConfiguration.Init(configurationActions);
         }
 
         #endregion
