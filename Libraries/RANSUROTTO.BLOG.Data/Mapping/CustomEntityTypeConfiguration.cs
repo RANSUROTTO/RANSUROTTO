@@ -13,8 +13,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping
             this.Initialize();
             this.HasKey(p => p.Id);
             this.Property(p => p.TimeStamp)
-                .IsConcurrencyToken(true)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
+                .IsConcurrencyToken(true);
         }
 
         /// <summary>

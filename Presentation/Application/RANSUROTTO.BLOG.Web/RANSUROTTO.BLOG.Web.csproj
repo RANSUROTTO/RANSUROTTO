@@ -116,6 +116,8 @@
   <ItemGroup>
     <Content Include="App_Data\browscap.crawlersonly.xml" />
     <Content Include="App_Data\browscap.xml" />
+    <Content Include="App_Data\Install\MySQL.Indexs.sql" />
+    <Content Include="App_Data\Install\MySQL.Procedures.sql" />
     <Content Include="App_Data\Localization\Installation\installation.zh.xml" />
     <Content Include="Content\install\images\install-synchronizing.gif" />
     <Content Include="Content\install\images\logo.png" />
@@ -177,7 +179,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Install\" />
     <Folder Include="Views\BasePublic\" />
     <Folder Include="Views\Common\" />
     <Folder Include="Views\Customer\" />
