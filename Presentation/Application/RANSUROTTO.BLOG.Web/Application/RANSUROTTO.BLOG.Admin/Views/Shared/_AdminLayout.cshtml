@@ -63,6 +63,10 @@
     const string hideSidebarAttributeName = "HideSidebar";
     var hideSidebar = EngineContext.Current.Resolve<IWorkContext>().CurrentCustomer.GetAttribute<bool>(hideSidebarAttributeName);
 
+    //avatar
+    var currentCustomer = EngineContext.Current.Resolve<IWorkContext>().CurrentCustomer;
+
+
 }
 
 <!DOCTYPE html>
@@ -102,7 +106,72 @@
         }
         else
         {
+            <div class="main-header">
+                <a href="@Url.Content("~/Admin")" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"></span>
+                </a>
+                <div class="navbar navbar-static-top" role="navigation">
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">&nbsp;</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                @Html.Action("LanguageSelector", "Common", new { area = "Admin" })
+                            </li>
+                            <li class="account-info">
+                                @currentCustomer.Username
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Customer", new {area = ""}, null)">
+                                    @T("Admin.Header.Logout")
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Home", new {area = ""})">
+                                    @T("Admin.Header.PublicBlog")
+                                </a>
+                            </li>
 
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown"><i class="fa fa-gears"></i></a>
+                                <ul class="maintenance-menu dropdown-menu bg-light-blue" role="menu">
+                                    <li>
+                                        @using (Html.BeginForm("ClearCache", "Common", new { area = "Admin" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("returnurl", HttpContext.Current.Request.RawUrl)
+                                            <button type="submit" class="bg-light-blue">
+                                                <span>@T("Admin.Header.ClearCache")</span>
+                                            </button>
+                                        }
+                                    </li>
+                                    <li>
+                                        @using (Html.BeginForm("RestartApplication", "Common", new { area = "Admin" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("returnurl", HttpContext.Current.Request.RawUrl)
+                                            <button id="restart-application" type="submit" class="bg-light-blue">
+                                                <span>@T("Admin.Header.RestartApplication")</span>
+                                            </button>
+                                            <script type="text/javascript">
+                                                        $(document).ready(function () {
+                                                            $("#restart-application").click(function (e) {
+                                                                showThrobber('@Html.Raw(HttpUtility.JavaScriptStringEncode(T("Admin.Header.RestartApplication.Progress").Text))');
+                                                            });
+                                                        });
+                                            </script>
+                                        }
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         }
 
         @if (IsSectionDefined("headermenu"))
@@ -111,7 +180,21 @@
         }
         else
         {
-
+            <div class="main-sidebar">
+                <div class="sidebar">
+                    <div class="sidebar-form">
+                        <div id="search-box">
+                            <input type="text" class="form-control admin-search-box typeahead" placeholder="@T("Admin.Menu.Search")">
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            Admin.Search.init();
+                        });
+                    </script>
+                    @Html.Partial("Menu")
+                </div>
+            </div>
         }
 
         <div class="content-wrapper">

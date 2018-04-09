@@ -1184,6 +1184,9 @@
     <Content Include="Scripts\tagEditor\jquery.tag-editor.js" />
     <Content Include="Scripts\tagEditor\jquery.tag-editor.min.js" />
     <Content Include="Scripts\typeahead\typeahead.bundle.min.js" />
+    <None Include="sitemap.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
