@@ -15,7 +15,15 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common.Setting
         /// </summary>
         public bool Log404Errors { get; set; }
 
+        /// <summary>
+        /// 获取或设置是否呈现X-UA-Compatible标签
+        /// </summary>
+        public bool RenderXuaCompatible { get; set; }
 
+        /// <summary>
+        /// 获取或设置X-UA-Compatible标签值
+        /// </summary>
+        public string XuaCompatibleValue { get; set; }
 
     }
 }

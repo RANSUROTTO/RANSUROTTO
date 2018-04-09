@@ -142,6 +142,7 @@
     <Compile Include="Themes\ThemeProvider.cs" />
     <Compile Include="UI\AsIsBundleOrderer.cs" />
     <Compile Include="UI\IPageHeadBuilder.cs" />
+    <Compile Include="UI\LayoutExtensions.cs" />
     <Compile Include="UI\NotifyType.cs" />
     <Compile Include="UI\PageHeadBuilder.cs" />
     <Compile Include="UI\ResourceLocation.cs" />
