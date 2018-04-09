@@ -6,7 +6,7 @@ using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Service.Customers;
 
-namespace RANSUROTTO.BLOG.Framework.Attributes
+namespace RANSUROTTO.BLOG.Framework.Controllers
 {
     public class StoreIpAddressAttribute : ActionFilterAttribute
     {

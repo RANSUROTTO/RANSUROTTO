@@ -1203,6 +1203,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Mapper\AdminMapperConfiguration.cs" />
+    <Compile Include="Models\Logging\LogListModel.cs" />
+    <Compile Include="Models\Logging\LogModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1317,7 +1319,17 @@
     <Content Include="Scripts\kendo\2014.1.318\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\2014.1.318\kendo.window.min.js.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateNullable.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTimeNullable.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DecimalNullable.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32Nullable.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1338,7 +1350,6 @@
     <Folder Include="Models\Configuration\" />
     <Folder Include="Models\Customers\" />
     <Folder Include="Models\Localization\" />
-    <Folder Include="Models\Logging\" />
     <Folder Include="Models\Security\" />
     <Folder Include="Models\Tasks\" />
     <Folder Include="Views\ActivityLog\" />
@@ -1351,7 +1362,6 @@
     <Folder Include="Views\Log\" />
     <Folder Include="Views\ScheduleTask\" />
     <Folder Include="Views\Security\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Libraries\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">

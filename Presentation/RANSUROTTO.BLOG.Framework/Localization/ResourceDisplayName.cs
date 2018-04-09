@@ -4,7 +4,7 @@ using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Service.Localization;
 
-namespace RANSUROTTO.BLOG.Framework
+namespace RANSUROTTO.BLOG.Framework.Localization
 {
     public class ResourceDisplayName : DisplayNameAttribute, IModelAttribute
     {

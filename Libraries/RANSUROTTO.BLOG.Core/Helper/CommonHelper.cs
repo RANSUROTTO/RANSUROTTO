@@ -17,7 +17,7 @@ namespace RANSUROTTO.BLOG.Core.Helper
 {
 
     /// <summary>
-    /// 公共助手
+    /// 常用帮助类
     /// </summary>
     public class CommonHelper
     {
@@ -124,6 +124,26 @@ namespace RANSUROTTO.BLOG.Core.Helper
             }
 
             return str;
+        }
+
+        /// <summary>
+        /// 转换枚举显示值
+        /// 例:HelloWorld => Hello World
+        /// </summary>
+        /// <param name="str">输入字符串</param>
+        /// <returns>转换后字符串</returns>
+        public static string ConvertEnum(string str)
+        {
+            if (string.IsNullOrEmpty(str)) return string.Empty;
+            string result = string.Empty;
+            foreach (var c in str)
+                if (c.ToString() != c.ToString().ToLower())
+                    result += " " + c;
+                else
+                    result += c.ToString();
+
+            result = result.TrimStart();
+            return result;
         }
 
         /// <summary>

@@ -7,7 +7,6 @@ using RANSUROTTO.BLOG.Framework.UI;
 using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Framework.Attributes;
 
 namespace RANSUROTTO.BLOG.Framework.Controllers
 {

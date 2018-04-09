@@ -5,7 +5,7 @@ using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Service.Customers;
 
-namespace RANSUROTTO.BLOG.Framework.Attributes
+namespace RANSUROTTO.BLOG.Framework.Controllers
 {
     public class CustomerLastActivityAttribute : ActionFilterAttribute
     {

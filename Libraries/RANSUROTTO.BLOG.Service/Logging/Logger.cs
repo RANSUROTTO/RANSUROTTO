@@ -105,7 +105,7 @@ namespace RANSUROTTO.BLOG.Service.Logging
                 var logLevelId = (int)logLevel.Value;
                 query = query.Where(l => logLevelId == l.LogLevelId);
             }
-            if (!String.IsNullOrEmpty(message))
+            if (!string.IsNullOrEmpty(message))
                 query = query.Where(l => l.ShortMessage.Contains(message) || l.FullMessage.Contains(message));
 
             query = query.OrderByDescending(l => l.CreateDateUtc);

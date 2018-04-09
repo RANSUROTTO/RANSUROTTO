@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Infrastructure;
+using RANSUROTTO.BLOG.Framework.Localization;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Service.Localization;
 
-namespace RANSUROTTO.BLOG.Framework
+namespace RANSUROTTO.BLOG.Framework.Extensions
 {
     public static class HtmlExtensions
     {
 
         #region Admin area extensions
-
 
         public static MvcHtmlString DeleteConfirmation<T>(this HtmlHelper<T> helper, string buttonsSelector) where T : BaseEntityModel
         {

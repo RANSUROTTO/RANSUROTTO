@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace RANSUROTTO.BLOG.Framework.Attributes
+namespace RANSUROTTO.BLOG.Framework.Controllers
 {
     /// <summary>
     /// 该特性将确保验证 表单值是否与预设值 是否相等的结果赋值到指定动作方法参数
