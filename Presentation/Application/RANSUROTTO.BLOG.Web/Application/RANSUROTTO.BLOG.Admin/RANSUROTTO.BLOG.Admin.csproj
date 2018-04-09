@@ -1333,7 +1333,14 @@
     <Folder Include="Content\tinymce\plugins\jbimages\img\" />
     <Folder Include="Content\tinymce\plugins\jbimages\js\" />
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\Blog\" />
+    <Folder Include="Models\Common\" />
+    <Folder Include="Models\Configuration\" />
+    <Folder Include="Models\Customers\" />
+    <Folder Include="Models\Localization\" />
+    <Folder Include="Models\Logging\" />
+    <Folder Include="Models\Security\" />
+    <Folder Include="Models\Tasks\" />
     <Folder Include="Views\ActivityLog\" />
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
