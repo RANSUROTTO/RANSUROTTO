@@ -122,6 +122,7 @@
     <Compile Include="Domain\Common\Setting\CommonSettings.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
     <Compile Include="Domain\Customers\AttributeNames\SystemCustomerAttributeNames.cs" />
+    <Compile Include="Domain\Customers\CustomerRole.cs" />
     <Compile Include="Domain\Customers\Enum\AuthenticationType.cs" />
     <Compile Include="Domain\Customers\Setting\CustomerSettings.cs" />
     <Compile Include="Configuration\IAttributeNames.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Customers\CustomerPassword.cs" />
     <Compile Include="Domain\Customers\Enum\PasswordFormat.cs" />
+    <Compile Include="Domain\Security\PermissionRecord.cs" />
     <Compile Include="Domain\Security\Setting\SecuritySettings.cs" />
     <Compile Include="Domain\Seo\Enum\PageTitleSeoAdjustment.cs" />
     <Compile Include="Domain\Seo\Setting\SeoSettings.cs" />

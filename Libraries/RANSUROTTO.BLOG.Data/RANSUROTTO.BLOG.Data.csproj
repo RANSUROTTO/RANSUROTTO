@@ -78,6 +78,9 @@
     <Compile Include="Mapping\Common\GenericAttributeMap.cs" />
     <Compile Include="Mapping\Configuration\SettingMap.cs" />
     <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />
+    <Compile Include="Mapping\Customers\CustomerMap.cs" />
+    <Compile Include="Mapping\Customers\CustomerPasswordMap.cs" />
+    <Compile Include="Mapping\Customers\CustomerRoleMap.cs" />
     <Compile Include="Mapping\Localization\LanguageMap.cs" />
     <Compile Include="Mapping\Localization\LocaleStringResourceMap.cs" />
     <Compile Include="Mapping\Logging\ActivityLogMap.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Mapping\Logging\LogMap.cs" />
     <Compile Include="Mapping\Members\CustomerMap.cs" />
     <Compile Include="Mapping\Members\CustomerPasswordMap.cs" />
+    <Compile Include="Mapping\Security\PermissionRecordMap.cs" />
     <Compile Include="Mapping\Tasks\ScheduleTaskMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

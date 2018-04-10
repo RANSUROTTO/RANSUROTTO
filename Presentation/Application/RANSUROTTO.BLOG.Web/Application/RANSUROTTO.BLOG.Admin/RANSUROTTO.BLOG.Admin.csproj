@@ -1334,6 +1334,7 @@
     <Content Include="Views\Shared\EditorTemplates\Int32Nullable.cshtml" />
     <Content Include="Views\Shared\Menu.cshtml" />
     <Content Include="Views\Shared\Notifications.cshtml" />
+    <Content Include="Views\Log\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1363,7 +1364,6 @@
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Language\" />
-    <Folder Include="Views\Log\" />
     <Folder Include="Views\ScheduleTask\" />
     <Folder Include="Views\Security\" />
   </ItemGroup>

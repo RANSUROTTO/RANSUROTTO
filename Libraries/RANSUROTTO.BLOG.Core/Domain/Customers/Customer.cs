@@ -26,6 +26,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         public bool EmailToRevalidate { get; set; }
 
         /// <summary>
+        /// 获取或设置系统名称
+        /// </summary>
+        public string SystemName { get; set; }
+
+        /// <summary>
         /// 获取或设置该用户已连续尝试登陆失败次数 (密码错误)
         /// </summary>
         public int FailedLoginAttempts { get; set; }

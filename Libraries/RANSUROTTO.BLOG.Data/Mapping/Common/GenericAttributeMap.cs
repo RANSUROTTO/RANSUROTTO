@@ -8,9 +8,9 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Common
         {
             this.ToTable("GenericAttribute");
 
-            this.Property(ga => ga.KeyGroup).IsRequired().HasMaxLength(400);
-            this.Property(ga => ga.Key).IsRequired().HasMaxLength(400);
-            this.Property(ga => ga.Value).IsRequired();
+            this.Property(p => p.KeyGroup).IsRequired().HasMaxLength(400);
+            this.Property(p => p.Key).IsRequired().HasMaxLength(400);
+            this.Property(p => p.Value).IsRequired();
         }
     }
 }
