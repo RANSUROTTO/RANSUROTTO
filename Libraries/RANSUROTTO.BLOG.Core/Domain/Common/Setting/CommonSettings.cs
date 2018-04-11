@@ -6,6 +6,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common.Setting
     {
 
         /// <summary>
+        /// 获取或设置是否显示有关新的欧盟Cookie法(Cookie隐私保护)的警告
+        /// </summary>
+        public bool DisplayEuCookieLawWarning { get; set; }
+
+        /// <summary>
         /// 获取或设置默认主题
         /// </summary>
         public string DefaultTheme { get; set; }

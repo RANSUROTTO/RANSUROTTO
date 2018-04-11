@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
+using RANSUROTTO.BLOG.Core.Context;
+using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
@@ -9,6 +11,7 @@ using RANSUROTTO.BLOG.Service.Authentication;
 using RANSUROTTO.BLOG.Service.Customers;
 using RANSUROTTO.BLOG.Service.Events;
 using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Web.Models.Customer;
 
 namespace RANSUROTTO.BLOG.Web.Controllers
@@ -18,22 +21,30 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
         #region Fields
 
+        private readonly IWorkContext _workContext;
         private readonly ICustomerService _customerService;
         private readonly ICustomerRegistrationService _customerRegistrationService;
+        private readonly ICustomerActivityService _customerActivityService;
         private readonly IAuthenticationService _authenticationService;
         private readonly IEventPublisher _eventPublisher;
         private readonly ILocalizationService _localizationService;
+        private readonly CommonSettings _commonSettings;
         private readonly CustomerSettings _customerSettings;
 
         #endregion
 
         #region Constructor
 
-        public CustomerController(ICustomerService customerService, ICustomerRegistrationService customerRegistrationService, ILocalizationService localizationService, CustomerSettings customerSettings)
+        public CustomerController(IWorkContext workContext, ICustomerService customerService, ICustomerRegistrationService customerRegistrationService, ICustomerActivityService customerActivityService, IAuthenticationService authenticationService, IEventPublisher eventPublisher, ILocalizationService localizationService, CommonSettings commonSettings, CustomerSettings customerSettings)
         {
+            _workContext = workContext;
             _customerService = customerService;
             _customerRegistrationService = customerRegistrationService;
+            _customerActivityService = customerActivityService;
+            _authenticationService = authenticationService;
+            _eventPublisher = eventPublisher;
             _localizationService = localizationService;
+            _commonSettings = commonSettings;
             _customerSettings = customerSettings;
         }
 
@@ -77,6 +88,8 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
                             _eventPublisher.Publish(new CustomerLoggedinEvent(customer));
 
+                            _customerActivityService.InsertActivity(customer, "Public.Login", _localizationService.GetResource("ActivityLog.Public.Login"));
+
                             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
                                 return RedirectToRoute("HomePage");
 
@@ -102,11 +115,25 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
         public virtual ActionResult Logout()
         {
-            return View();
+
+            _eventPublisher.Publish(new CustomerLoggedOutEvent(_workContext.CurrentCustomer));
+
+            _customerActivityService.InsertActivity("PublicStore.Logout", _localizationService.GetResource("ActivityLog.PublicStore.Logout"));
+
+            _authenticationService.SignOut();
+
+            if (_commonSettings.DisplayEuCookieLawWarning)
+            {
+                //不在页面跳转到主页时显示警告
+                //可能是同一个人
+                //我们仅需要保证下一次网站请求显示警告
+                TempData["ransurotto.IgnoreEuCookieLawWarning"] = true;
+            }
+
+            return RedirectToRoute("HomePage");
         }
 
         #endregion
-
 
     }
 }
