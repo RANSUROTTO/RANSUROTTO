@@ -1,6 +1,6 @@
 ﻿using RANSUROTTO.BLOG.Core.Configuration;
 
-namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeNames
+namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
 {
     public class SystemCustomerAttributeNames : IAttributeNames
     {

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
-using RANSUROTTO.BLOG.Core.Domain.Customers.AttributeNames;
+using RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName;
 using RANSUROTTO.BLOG.Service.Common;
 using RANSUROTTO.BLOG.Service.Configuration;
 using RANSUROTTO.BLOG.Service.Helpers.Setting;

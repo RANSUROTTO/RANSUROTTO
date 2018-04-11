@@ -8,6 +8,9 @@ using RANSUROTTO.BLOG.Service.Customers;
 
 namespace RANSUROTTO.BLOG.Framework.Controllers
 {
+    /// <summary>
+    /// 该特性确保请求时IP地址被记录
+    /// </summary>
     public class StoreIpAddressAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)

@@ -11,6 +11,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Security.Setting
     {
 
         /// <summary>
+        /// 获取或设置标识是否启用SSL
+        /// </summary>
+        public bool SslEnabled { get; set; }
+
+        /// <summary>
         /// 获取或设置标识是否强制所有页面使用SSL
         /// </summary>
         public bool ForceSslForAllPages { get; set; }

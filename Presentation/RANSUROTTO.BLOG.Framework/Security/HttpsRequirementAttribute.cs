@@ -49,8 +49,11 @@ namespace RANSUROTTO.BLOG.Framework.Security
                         var currentConnectionSecured = webHelper.IsCurrentConnectionSecured();
                         if (!currentConnectionSecured)
                         {
-                            string url = webHelper.GetThisPageUrl(true, true);
-                            filterContext.Result = new RedirectResult(url, true);
+                            if (securitySettings.SslEnabled)
+                            {
+                                string url = webHelper.GetThisPageUrl(true, true);
+                                filterContext.Result = new RedirectResult(url, true);
+                            }
                         }
                     }
                     break;

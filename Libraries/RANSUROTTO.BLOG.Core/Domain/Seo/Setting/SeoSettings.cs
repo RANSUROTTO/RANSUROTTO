@@ -49,5 +49,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Seo.Setting
         /// </summary>
         public bool EnableCssBundling { get; set; }
 
+        /// <summary>
+        /// 获取或设置网站Url是否需要www前缀标识
+        /// </summary>
+        public WwwRequirement WwwRequirement { get; set; }
+
     }
 }
