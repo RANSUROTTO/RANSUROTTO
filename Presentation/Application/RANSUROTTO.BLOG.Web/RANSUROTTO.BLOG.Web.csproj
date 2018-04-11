@@ -180,6 +180,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Factories\" />
     <Folder Include="Validators\Customer\" />
     <Folder Include="Views\BasePublic\" />
     <Folder Include="Views\Common\" />
