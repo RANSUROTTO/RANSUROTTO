@@ -161,6 +161,7 @@
     <Compile Include="Infrastructure\Installation\IInstallationLocalizationService.cs" />
     <Compile Include="Infrastructure\Installation\InstallationLanguage.cs" />
     <Compile Include="Infrastructure\Installation\InstallationLocalizationService.cs" />
+    <Compile Include="Models\Customer\LoginModel.cs" />
     <Compile Include="Models\Install\InstallModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\Install\InstallValidator.cs" />
@@ -179,6 +180,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Validators\Customer\" />
     <Folder Include="Views\BasePublic\" />
     <Folder Include="Views\Common\" />
     <Folder Include="Views\Customer\" />
@@ -213,7 +215,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5118</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

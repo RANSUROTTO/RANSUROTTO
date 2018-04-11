@@ -140,6 +140,7 @@
     <Compile Include="Domain\Security\PermissionRecord.cs" />
     <Compile Include="Domain\Security\Setting\SecuritySettings.cs" />
     <Compile Include="Domain\Seo\Enum\PageTitleSeoAdjustment.cs" />
+    <Compile Include="Domain\Seo\Enum\WwwRequirement.cs" />
     <Compile Include="Domain\Seo\Setting\SeoSettings.cs" />
     <Compile Include="Domain\Tasks\ScheduleTask.cs" />
     <Compile Include="Events\EntityDeleted.cs" />

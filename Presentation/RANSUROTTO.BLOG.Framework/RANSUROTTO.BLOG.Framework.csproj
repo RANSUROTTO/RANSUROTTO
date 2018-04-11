@@ -107,6 +107,7 @@
     <Compile Include="Extensions\SelectListExtensions.cs" />
     <Compile Include="Kendoui\DataSourceRequest.cs" />
     <Compile Include="Kendoui\DataSourceResult.cs" />
+    <Compile Include="Localization\LanguageSeoCodeAttribute.cs" />
     <Compile Include="Localization\LocalizedRoute.cs" />
     <Compile Include="Localization\LocalizedRouteExtensions.cs" />
     <Compile Include="Localization\LocalizedString.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Security\FilePermissionHelper.cs" />
     <Compile Include="Security\HttpsRequirementAttribute.cs" />
     <Compile Include="Security\PublicAntiForgeryAttribute.cs" />
+    <Compile Include="Seo\WwwRequirementAttribute.cs" />
     <Compile Include="Themes\ThemeConfiguration.cs" />
     <Compile Include="Themes\IThemeContext.cs" />
     <Compile Include="Themes\IThemeProvider.cs" />
