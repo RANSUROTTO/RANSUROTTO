@@ -172,6 +172,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Install\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -185,7 +186,6 @@
     <Folder Include="Views\BasePublic\" />
     <Folder Include="Views\Common\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">
