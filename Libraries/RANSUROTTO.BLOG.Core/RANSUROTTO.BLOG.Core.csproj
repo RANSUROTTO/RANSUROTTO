@@ -121,9 +121,10 @@
     <Compile Include="Domain\Common\Setting\AdminAreaSettings.cs" />
     <Compile Include="Domain\Common\Setting\CommonSettings.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
-    <Compile Include="Domain\Customers\AttributeNames\SystemCustomerAttributeNames.cs" />
+    <Compile Include="Domain\Customers\AttributeName\SystemCustomerAttributeNames.cs" />
     <Compile Include="Domain\Customers\CustomerRole.cs" />
     <Compile Include="Domain\Customers\Enum\AuthenticationType.cs" />
+    <Compile Include="Domain\Customers\Service\CustomerLoginResults.cs" />
     <Compile Include="Domain\Customers\Setting\CustomerSettings.cs" />
     <Compile Include="Configuration\IAttributeNames.cs" />
     <Compile Include="Domain\Localization\Language.cs" />
