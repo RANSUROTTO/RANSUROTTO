@@ -13,6 +13,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
     [HttpsRequirement(SslRequirement.NoMatter)]
     public abstract class BasePublicController : BaseController
     {
+
         protected virtual ActionResult InvokeHttp404()
         {
             IController errorController = EngineContext.Current.Resolve<CommonController>();
@@ -25,5 +26,6 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
             return new EmptyResult();
         }
+
     }
 }
