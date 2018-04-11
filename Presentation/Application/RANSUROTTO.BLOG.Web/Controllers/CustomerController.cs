@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using RANSUROTTO.BLOG.Framework.Security;
+using RANSUROTTO.BLOG.Web.Models.Customer;
 
 namespace RANSUROTTO.BLOG.Web.Controllers
 {
@@ -7,9 +9,21 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
         #region Login / Logout
 
+        [HttpsRequirement(SslRequirement.Yes)]
         public virtual ActionResult Login()
         {
-            return View();
+            var model = new LoginModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult Login(LoginModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(model);
         }
 
         public virtual ActionResult Logout()
