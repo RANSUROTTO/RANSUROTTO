@@ -35,6 +35,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Seo.Setting
         public string DefaultMetaDescription { get; set; }
 
         /// <summary>
+        /// 获取或设置自定义标签节点
+        /// </summary>
+        public string CustomHeadTags { get; set; }
+
+        /// <summary>
         /// 获取或设置是否启用JS文件绑捆和压缩
         /// </summary>
         public bool EnableJsBundling { get; set; }
