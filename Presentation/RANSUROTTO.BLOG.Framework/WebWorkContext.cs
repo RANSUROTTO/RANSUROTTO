@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Core.Fakes;
+using RANSUROTTO.BLOG.Framework.Localization;
 using RANSUROTTO.BLOG.Service.Authentication;
 using RANSUROTTO.BLOG.Service.Common;
 using RANSUROTTO.BLOG.Service.Customers;
@@ -58,6 +61,10 @@ namespace RANSUROTTO.BLOG.Framework
 
         #region Properties
 
+
+        /// <summary>
+        /// 获取或设置当前工作区语言
+        /// </summary>
         public Language WorkingLanguage
         {
             get
@@ -66,12 +73,63 @@ namespace RANSUROTTO.BLOG.Framework
                     return _cachedLanguage;
 
                 Language detectedLanguage = null;
+                if (_localizationSettings.SeoFriendlyUrlsForLanguagesEnabled)
+                {
+                    //从URL中获取语言
+                    detectedLanguage = GetLanguageFromUrl();
+                }
 
-                return detectedLanguage;
+                if (detectedLanguage == null && _localizationSettings.AutomaticallyDetectLanguage)
+                {
+                    if (!this.CurrentCustomer.GetAttribute<bool>(
+                        SystemCustomerAttributeNames.LanguageAutomaticallyDetected, _genericAttributeService))
+                    {
+                        //从浏览器设置中获取语言
+                        detectedLanguage = GetLanguageFromBrowserSettings();
+                        if (detectedLanguage != null)
+                        {
+                            _genericAttributeService.SaveAttribute(this.CurrentCustomer,
+                                SystemCustomerAttributeNames.LanguageAutomaticallyDetected,
+                                true);
+                        }
+                    }
+                }
+                if (detectedLanguage != null)
+                {
+                    //当语言被检测到,则更新用户使用的语言
+                    if (this.CurrentCustomer.GetAttribute<int>(SystemCustomerAttributeNames.LanguageId,
+                            _genericAttributeService) != detectedLanguage.Id)
+                    {
+                        _genericAttributeService.SaveAttribute(this.CurrentCustomer,
+                            SystemCustomerAttributeNames.LanguageId,
+                            detectedLanguage.Id);
+                    }
+                }
+
+                var allLanguages = _languageService.GetAllLanguages();
+                //获取当前用户使用的语言
+                var languageId = this.CurrentCustomer.GetAttribute<int>(SystemCustomerAttributeNames.LanguageId, _genericAttributeService);
+                var language = allLanguages.FirstOrDefault(x => x.Id == languageId);
+
+                if (language == null)
+                {
+                    //如果没有找到合适的语言支持,则使用默认语言
+                    language = allLanguages.FirstOrDefault();
+                }
+
+                //缓存
+                _cachedLanguage = language;
+                return _cachedLanguage;
             }
             set
             {
+                var languageId = value != null ? value.Id : 0;
+                _genericAttributeService.SaveAttribute(this.CurrentCustomer,
+                    SystemCustomerAttributeNames.LanguageId,
+                    languageId);
 
+                //重置缓存
+                _cachedLanguage = null;
             }
         }
 
@@ -149,6 +207,52 @@ namespace RANSUROTTO.BLOG.Framework
                 _httpContext.Response.Cookies.Remove(CustomerCookieName);
                 _httpContext.Response.Cookies.Add(cookie);
             }
+        }
+
+        protected virtual Language GetLanguageFromUrl()
+        {
+            if (_httpContext?.Request == null)
+                return null;
+
+            string virtualPath = _httpContext.Request.AppRelativeCurrentExecutionFilePath;
+            string applicationPath = _httpContext.Request.ApplicationPath;
+            if (!virtualPath.IsLocalizedUrl(applicationPath, false))
+                return null;
+
+            var seoCode = virtualPath.GetLanguageSeoCodeFromUrl(applicationPath, false);
+            if (String.IsNullOrEmpty(seoCode))
+                return null;
+
+            var language = _languageService
+                .GetAllLanguages()
+                .FirstOrDefault(l => seoCode.Equals(l.UniqueSeoCode, StringComparison.InvariantCultureIgnoreCase));
+
+            if (language != null && language.Published)
+            {
+                return language;
+            }
+
+            return null;
+        }
+
+        protected virtual Language GetLanguageFromBrowserSettings()
+        {
+            if (_httpContext?.Request?.UserLanguages == null)
+                return null;
+
+            var userLanguage = _httpContext.Request.UserLanguages.FirstOrDefault();
+            if (string.IsNullOrEmpty(userLanguage))
+                return null;
+
+            var language = _languageService
+                .GetAllLanguages()
+                .FirstOrDefault(l => userLanguage.StartsWith(l.LanguageCulture, StringComparison.InvariantCultureIgnoreCase));
+            if (language != null && language.Published)
+            {
+                return language;
+            }
+
+            return null;
         }
 
         #endregion
