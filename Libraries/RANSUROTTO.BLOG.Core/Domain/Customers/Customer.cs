@@ -35,6 +35,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         public string SystemName { get; set; }
 
         /// <summary>
+        /// 获取或设置标识该用户是否为系统账户
+        /// </summary>
+        public bool IsSystemAccount { get; set; }
+
+        /// <summary>
         /// 获取或设置该用户已连续尝试登陆失败次数 (密码错误)
         /// </summary>
         public int FailedLoginAttempts { get; set; }

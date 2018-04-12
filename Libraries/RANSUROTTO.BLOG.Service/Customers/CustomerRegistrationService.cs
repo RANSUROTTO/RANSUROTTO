@@ -68,6 +68,9 @@ namespace RANSUROTTO.BLOG.Service.Customers
             if (!customer.Active)
                 return CustomerLoginResults.NotActive;
 
+            if (!customer.IsRegistered())
+                return CustomerLoginResults.NotRegistered;
+
             if (customer.CannotLoginUntilDateUtc.HasValue && customer.CannotLoginUntilDateUtc.Value > DateTime.UtcNow)
                 return CustomerLoginResults.LockedOut;
 

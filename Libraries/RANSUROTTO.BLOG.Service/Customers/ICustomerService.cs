@@ -76,6 +76,12 @@ namespace RANSUROTTO.BLOG.Service.Customers
         void InsertCustomer(Customer customer);
 
         /// <summary>
+        /// 添加游客用户
+        /// </summary>
+        /// <returns>用户</returns>
+        Customer InsertGuestCustomer();
+
+        /// <summary>
         /// 更新用户
         /// </summary>
         /// <param name="customer">用户</param>
@@ -85,7 +91,12 @@ namespace RANSUROTTO.BLOG.Service.Customers
 
         #region Customer roles
 
-
+        /// <summary>
+        /// 通过系统名称获取用户权限角色
+        /// </summary>
+        /// <param name="systemName">角色系统名称</param>
+        /// <returns>用户权限角色</returns>
+        CustomerRole GetCustomerRoleBySystemName(string systemName);
 
         #endregion
 

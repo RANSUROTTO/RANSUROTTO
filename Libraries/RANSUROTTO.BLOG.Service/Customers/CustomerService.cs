@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Caching;
+using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
 using RANSUROTTO.BLOG.Service.Events;
 
@@ -13,11 +15,29 @@ namespace RANSUROTTO.BLOG.Service.Customers
     public class CustomerService : ICustomerService
     {
 
+        #region Constants
+
+        /// <summary>
+        /// 权限角色系统名称缓存键
+        /// </summary>
+        /// <remarks>
+        /// {0} : 系统名称
+        /// </remarks>
+        private const string CUSTOMERROLES_BY_SYSTEMNAME_KEY = "Ransurotto.customerrole.systemname-{0}";
+
+        /// <summary>
+        /// 清空缓存匹配键
+        /// </summary>
+        private const string CUSTOMERROLES_PATTERN_KEY = "Ransurotto.customerrole.";
+
+        #endregion
+
         #region Fields
 
         private readonly ICacheManager _cacheManager;
         private readonly CustomerSettings _customerSettings;
         private readonly IEventPublisher _eventPublisher;
+        private readonly IRepository<CustomerRole> _customerRoleRepository;
         private readonly IRepository<Customer> _customerRepository;
         private readonly IRepository<CustomerPassword> _customerPasswordRepository;
 
@@ -25,11 +45,12 @@ namespace RANSUROTTO.BLOG.Service.Customers
 
         #region Constructor
 
-        public CustomerService(ICacheManager cacheManager, CustomerSettings customerSettings, IEventPublisher eventPublisher, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository)
+        public CustomerService(ICacheManager cacheManager, CustomerSettings customerSettings, IEventPublisher eventPublisher, IRepository<CustomerRole> customerRoleRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository)
         {
             _cacheManager = cacheManager;
             _customerSettings = customerSettings;
             _eventPublisher = eventPublisher;
+            _customerRoleRepository = customerRoleRepository;
             _customerRepository = customerRepository;
             _customerPasswordRepository = customerPasswordRepository;
         }
@@ -180,6 +201,30 @@ namespace RANSUROTTO.BLOG.Service.Customers
         }
 
         /// <summary>
+        /// 添加游客用户
+        /// </summary>
+        /// <returns>用户</returns>
+        public virtual Customer InsertGuestCustomer()
+        {
+            var customer = new Customer
+            {
+                Guid = Guid.NewGuid(),
+                Active = true,
+                CreateDateUtc = DateTime.UtcNow,
+                LastActivityDateUtc = DateTime.UtcNow,
+            };
+
+            var guestRole = GetCustomerRoleBySystemName(SystemCustomerRoleNames.Guests);
+            if (guestRole == null)
+                throw new SiteException("'游客'角色无法加载");
+
+            customer.CustomerRoles.Add(guestRole);
+            _customerRepository.Insert(customer);
+
+            return customer;
+        }
+
+        /// <summary>
         /// 更新用户
         /// </summary>
         /// <param name="customer">用户</param>
@@ -212,6 +257,27 @@ namespace RANSUROTTO.BLOG.Service.Customers
 
             //发布删除通知
             _eventPublisher.EntityDeleted(customer);
+        }
+
+        #endregion
+
+        #region Customer roles
+
+        public CustomerRole GetCustomerRoleBySystemName(string systemName)
+        {
+            if (string.IsNullOrWhiteSpace(systemName))
+                return null;
+
+            string key = string.Format(CUSTOMERROLES_BY_SYSTEMNAME_KEY, systemName);
+            return _cacheManager.Get(key, () =>
+            {
+                var query = from cr in _customerRoleRepository.Table
+                            orderby cr.Id
+                            where cr.SystemName == systemName
+                            select cr;
+                var customerRole = query.FirstOrDefault();
+                return customerRole;
+            });
         }
 
         #endregion

@@ -167,6 +167,7 @@ namespace RANSUROTTO.BLOG.Framework
                     customer = _authenticationService.GetAuthenticatedCustomer();
                 }
 
+                //获取游客身份用户
                 if (customer == null || !customer.Active)
                 {
                     var customerCookie = GetCustomerCookie();
@@ -175,13 +176,17 @@ namespace RANSUROTTO.BLOG.Framework
                         if (Guid.TryParse(customerCookie.Value, out var customerGuid))
                         {
                             var customerByCookie = _customerService.GetCustomerByGuid(customerGuid);
-                            if (customerByCookie != null)
+                            if (customerByCookie != null && !customerByCookie.IsRegistered())
                                 SetCustomerCookie(customerByCookie.Guid);
                         }
                     }
                 }
 
-                //TODO 游客验证与加入游客
+                //生成游客身份角色
+                if (customer == null || !customer.Active)
+                {
+                    customer = _customerService.InsertGuestCustomer();
+                }
 
                 if (customer != null && customer.Active)
                 {
