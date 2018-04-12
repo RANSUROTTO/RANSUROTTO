@@ -9,7 +9,7 @@ namespace RANSUROTTO.BLOG.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", area = "Admin", id = "" },
+                new { controller = "Home", action = "Index", area = "Admin", id = UrlParameter.Optional },
                 new[] { "RANSUROTTO.BLOG.Admin.Controllers" }
                 );
         }
