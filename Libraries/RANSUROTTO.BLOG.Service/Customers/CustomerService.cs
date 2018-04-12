@@ -13,11 +13,17 @@ namespace RANSUROTTO.BLOG.Service.Customers
     public class CustomerService : ICustomerService
     {
 
+        #region Fields
+
         private readonly ICacheManager _cacheManager;
         private readonly CustomerSettings _customerSettings;
         private readonly IEventPublisher _eventPublisher;
         private readonly IRepository<Customer> _customerRepository;
         private readonly IRepository<CustomerPassword> _customerPasswordRepository;
+
+        #endregion
+
+        #region Constructor
 
         public CustomerService(ICacheManager cacheManager, CustomerSettings customerSettings, IEventPublisher eventPublisher, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository)
         {
@@ -27,6 +33,8 @@ namespace RANSUROTTO.BLOG.Service.Customers
             _customerRepository = customerRepository;
             _customerPasswordRepository = customerPasswordRepository;
         }
+
+        #endregion
 
         #region Customer
 
@@ -67,6 +75,24 @@ namespace RANSUROTTO.BLOG.Service.Customers
                     sortedCustomers.Add(customer);
             }
             return sortedCustomers;
+        }
+
+        /// <summary>
+        /// 通过系统名称获取用户
+        /// </summary>
+        /// <param name="systemName">用户系统名称</param>
+        /// <returns>用户</returns>
+        public virtual Customer GetCustomerBySystemName(string systemName)
+        {
+            if (string.IsNullOrWhiteSpace(systemName))
+                return null;
+
+            var query = from c in _customerRepository.Table
+                        orderby c.Id
+                        where c.SystemName == systemName
+                        select c;
+            var customer = query.FirstOrDefault();
+            return customer;
         }
 
         /// <summary>

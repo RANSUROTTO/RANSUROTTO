@@ -23,7 +23,7 @@ namespace RANSUROTTO.BLOG.Framework.Security
         public virtual void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext == null)
-                throw new ArgumentNullException("filterContext");
+                throw new ArgumentNullException(nameof(filterContext));
 
             if (_ignore)
                 return;
