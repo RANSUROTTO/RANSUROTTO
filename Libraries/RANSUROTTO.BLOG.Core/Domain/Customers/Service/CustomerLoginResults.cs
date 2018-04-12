@@ -27,9 +27,14 @@
         NotActive = 4,
 
         /// <summary>
+        /// 没有注册
+        /// </summary>
+        NotRegistered = 5,
+
+        /// <summary>
         /// 被锁定
         /// </summary>
-        LockedOut = 5
+        LockedOut = 6
 
     }
 }

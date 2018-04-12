@@ -18,7 +18,7 @@ namespace RANSUROTTO.BLOG.Framework.Controllers
             if (!DataSettingsHelper.DatabaseIsInstalled())
                 return;
 
-            if (filterContext?.HttpContext == null)
+            if (filterContext?.HttpContext?.Request == null)
                 return;
 
             //过滤掉子请求

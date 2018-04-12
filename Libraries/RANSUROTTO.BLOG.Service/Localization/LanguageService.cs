@@ -21,7 +21,7 @@ namespace RANSUROTTO.BLOG.Service.Localization
         /// <remarks>
         /// {0} : 语言ID
         /// </remarks>
-        private const string LANGUAGES_BY_ID_KEY = "Nop.language.id-{0}";
+        private const string LANGUAGES_BY_ID_KEY = "Ransurotto.language.id-{0}";
 
         /// <summary>
         /// 语言列表缓存
@@ -29,12 +29,12 @@ namespace RANSUROTTO.BLOG.Service.Localization
         /// <remarks>
         /// {0} : 指示是否显示隐藏的缓存
         /// </remarks>
-        private const string LANGUAGES_ALL_KEY = "Nop.language.all-{0}";
+        private const string LANGUAGES_ALL_KEY = "Ransurotto.language.all-{0}";
 
         /// <summary>
         /// 清除缓存的键匹配模式
         /// </summary>
-        private const string LANGUAGES_PATTERN_KEY = "Nop.language.";
+        private const string LANGUAGES_PATTERN_KEY = "Ransurotto.language.";
 
         #endregion
 

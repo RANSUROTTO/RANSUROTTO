@@ -15,7 +15,7 @@ namespace RANSUROTTO.BLOG.Framework.Security
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (filterContext?.HttpContext == null)
+            if (filterContext?.HttpContext?.Request == null)
                 return;
 
             if (filterContext.IsChildAction)
