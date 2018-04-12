@@ -11,6 +11,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common.Setting
         public bool DisplayEuCookieLawWarning { get; set; }
 
         /// <summary>
+        /// 获取或设置Javascript被禁用时是否显示警告
+        /// </summary>
+        public bool DisplayJavaScriptDisabledWarning { get; set; }
+
+        /// <summary>
         /// 获取或设置默认主题
         /// </summary>
         public string DefaultTheme { get; set; }

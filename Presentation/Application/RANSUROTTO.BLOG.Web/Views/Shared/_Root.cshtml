@@ -2,7 +2,8 @@
     Layout = "~/Views/Shared/_Root.Head.cshtml";
 }
 
-@*@Html.Partial("_Notifications")*@
+@Html.Partial("_Notifications")
 @Html.Action("JavaScriptDisabledWarning", "Common")
 @Html.Partial("OldInternetExplorerWarning")
 
+@Html.Action("AdminHeaderLinks", "Common")

@@ -133,6 +133,8 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstallController.cs" />
+    <Compile Include="Factories\CommonModelFactory.cs" />
+    <Compile Include="Factories\ICommonModelFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,6 +142,8 @@
     <Compile Include="Infrastructure\Installation\IInstallationLocalizationService.cs" />
     <Compile Include="Infrastructure\Installation\InstallationLanguage.cs" />
     <Compile Include="Infrastructure\Installation\InstallationLocalizationService.cs" />
+    <Compile Include="Models\Common\AdminHeaderLinksModel.cs" />
+    <Compile Include="Models\Common\FaviconModel.cs" />
     <Compile Include="Models\Customer\LoginModel.cs" />
     <Compile Include="Models\Install\InstallModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +159,11 @@
     <Content Include="Views\Shared\_Root.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Shared\OldInternetExplorerWarning.cshtml" />
+    <Content Include="Views\Common\Favicon.cshtml" />
+    <Content Include="Views\Common\JavaScriptDisabledWarning.cshtml" />
+    <Content Include="Views\Common\AdminHeaderLinks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,10 +172,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Factories\" />
     <Folder Include="Validators\Customer\" />
     <Folder Include="Views\BasePublic\" />
-    <Folder Include="Views\Common\" />
     <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
