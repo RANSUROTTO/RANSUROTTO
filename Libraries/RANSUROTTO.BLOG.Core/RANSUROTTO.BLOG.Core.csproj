@@ -127,6 +127,7 @@
     <Compile Include="Domain\Customers\Service\CustomerLoginResults.cs" />
     <Compile Include="Domain\Customers\Service\Event.cs" />
     <Compile Include="Domain\Customers\Service\SystemCustomerNames.cs" />
+    <Compile Include="Domain\Customers\Service\SystemCustomerRoleNames.cs" />
     <Compile Include="Domain\Customers\Setting\CustomerSettings.cs" />
     <Compile Include="Configuration\IAttributeNames.cs" />
     <Compile Include="Domain\Localization\Language.cs" />

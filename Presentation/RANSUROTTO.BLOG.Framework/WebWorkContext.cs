@@ -61,7 +61,6 @@ namespace RANSUROTTO.BLOG.Framework
 
         #region Properties
 
-
         /// <summary>
         /// 获取或设置当前工作区语言
         /// </summary>
@@ -82,7 +81,8 @@ namespace RANSUROTTO.BLOG.Framework
                 if (detectedLanguage == null && _localizationSettings.AutomaticallyDetectLanguage)
                 {
                     if (!this.CurrentCustomer.GetAttribute<bool>(
-                        SystemCustomerAttributeNames.LanguageAutomaticallyDetected, _genericAttributeService))
+                        SystemCustomerAttributeNames.LanguageAutomaticallyDetected,
+                        _genericAttributeService))
                     {
                         //从浏览器设置中获取语言
                         detectedLanguage = GetLanguageFromBrowserSettings();
@@ -161,10 +161,27 @@ namespace RANSUROTTO.BLOG.Framework
                     }
                 }
 
+                //注册用户
                 if (customer == null || !customer.Active)
                 {
                     customer = _authenticationService.GetAuthenticatedCustomer();
                 }
+
+                if (customer == null || !customer.Active)
+                {
+                    var customerCookie = GetCustomerCookie();
+                    if (!string.IsNullOrEmpty(customerCookie?.Value))
+                    {
+                        if (Guid.TryParse(customerCookie.Value, out var customerGuid))
+                        {
+                            var customerByCookie = _customerService.GetCustomerByGuid(customerGuid);
+                            if (customerByCookie != null)
+                                SetCustomerCookie(customerByCookie.Guid);
+                        }
+                    }
+                }
+
+                //TODO 游客验证与加入游客
 
                 if (customer != null && customer.Active)
                 {
@@ -187,6 +204,14 @@ namespace RANSUROTTO.BLOG.Framework
 
         #region Utilities
 
+        protected virtual HttpCookie GetCustomerCookie()
+        {
+            if (_httpContext?.Request == null)
+                return null;
+
+            return _httpContext.Request.Cookies[CustomerCookieName];
+        }
+
         protected virtual void SetCustomerCookie(Guid customerGuid)
         {
             if (_httpContext?.Response != null)
@@ -200,7 +225,7 @@ namespace RANSUROTTO.BLOG.Framework
                 }
                 else
                 {
-                    int cookieExpires = 24 * 30;
+                    int cookieExpires = 24 * 365;
                     cookie.Expires = DateTime.Now.AddHours(cookieExpires);
                 }
 
