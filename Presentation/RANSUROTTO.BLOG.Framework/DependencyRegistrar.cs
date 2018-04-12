@@ -25,10 +25,12 @@ using RANSUROTTO.BLOG.Framework.UI;
 using RANSUROTTO.BLOG.Service.Authentication;
 using RANSUROTTO.BLOG.Service.Common;
 using RANSUROTTO.BLOG.Service.Configuration;
+using RANSUROTTO.BLOG.Service.Customers;
 using RANSUROTTO.BLOG.Service.Events;
 using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Service.Infrastructure;
 using RANSUROTTO.BLOG.Service.Installation;
+using RANSUROTTO.BLOG.Service.Localization;
 using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Service.Security;
 using RANSUROTTO.BLOG.Service.Tasks;
@@ -132,6 +134,17 @@ namespace RANSUROTTO.BLOG.Framework
 
             //Services
 
+            builder.RegisterType<LocalizationService>().As<ILocalizationService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
+            //TODO ILocalizedEntityService
+            builder.RegisterType<LanguageService>().As<ILanguageService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<CustomerRegistrationService>().As<ICustomerRegistrationService>().InstancePerLifetimeScope();
+            builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
+
             builder.RegisterType<GenericAttributeService>().As<IGenericAttributeService>().InstancePerLifetimeScope();
 
             builder.RegisterType<PageHeadBuilder>().As<IPageHeadBuilder>().InstancePerLifetimeScope();
@@ -141,6 +154,10 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
             builder.RegisterType<Logger>().As<ILogger>().InstancePerLifetimeScope();
+
+            builder.RegisterType<CustomerActivityService>().As<ICustomerActivityService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
 
             //Install services
             bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
