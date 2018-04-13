@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Data;
@@ -195,7 +193,7 @@ namespace RANSUROTTO.BLOG.Service.Security
                     }
 
                     InsertPermissionRecord(permission1);
-
+                    permission1.SaveLocalizedPermissionName(_localizationService, _languageService);
                 }
             }
         }
@@ -206,7 +204,16 @@ namespace RANSUROTTO.BLOG.Service.Security
         /// <param name="permissionProvider">权限提供商</param>
         public virtual void UninstallPermissions(IPermissionProvider permissionProvider)
         {
-            throw new NotImplementedException();
+            var permissions = permissionProvider.GetPermissions();
+            foreach (var permission in permissions)
+            {
+                var permission1 = GetPermissionRecordBySystemName(permission.SystemName);
+                if (permission1 != null)
+                {
+                    DeletePermissionRecord(permission1);
+                    permission1.DeleteLocalizedPermissionName(_localizationService, _languageService);
+                }
+            }
         }
 
         /// <summary>
@@ -216,7 +223,7 @@ namespace RANSUROTTO.BLOG.Service.Security
         /// <returns>结果</returns>
         public virtual bool Authorize(PermissionRecord permission)
         {
-            throw new NotImplementedException();
+            return Authorize(permission, _workContext.CurrentCustomer);
         }
 
         /// <summary>
@@ -227,7 +234,13 @@ namespace RANSUROTTO.BLOG.Service.Security
         /// <returns>结果</returns>
         public virtual bool Authorize(PermissionRecord permission, Customer customer)
         {
-            throw new NotImplementedException();
+            if (permission == null)
+                return false;
+
+            if (customer == null)
+                return false;
+
+            return Authorize(permission.SystemName, customer);
         }
 
         /// <summary>
@@ -237,7 +250,7 @@ namespace RANSUROTTO.BLOG.Service.Security
         /// <returns>结果</returns>
         public virtual bool Authorize(string permissionRecordSystemName)
         {
-            throw new NotImplementedException();
+            return Authorize(permissionRecordSystemName, _workContext.CurrentCustomer);
         }
 
         /// <summary>
@@ -248,7 +261,41 @@ namespace RANSUROTTO.BLOG.Service.Security
         /// <returns>结果</returns>
         public virtual bool Authorize(string permissionRecordSystemName, Customer customer)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(permissionRecordSystemName))
+                return false;
+
+            var customerRoles = customer.CustomerRoles.Where(cr => cr.Active);
+            foreach (var role in customerRoles)
+                if (Authorize(permissionRecordSystemName, role))
+                    return true;
+
+            return false;
+        }
+
+        #endregion
+
+        #region Utilities
+
+        /// <summary>
+        /// 验证权限
+        /// </summary>
+        /// <param name="permissionRecordSystemName">权限项系统名称</param>
+        /// <param name="customerRole">权限角色</param>
+        /// <returns>结果</returns>
+        protected virtual bool Authorize(string permissionRecordSystemName, CustomerRole customerRole)
+        {
+            if (string.IsNullOrEmpty(permissionRecordSystemName))
+                return false;
+
+            string key = string.Format(PERMISSIONS_ALLOWED_KEY, customerRole.Id, permissionRecordSystemName);
+            return _cacheManager.Get(key, () =>
+            {
+                foreach (var permission1 in customerRole.PermissionRecords)
+                    if (permission1.SystemName.Equals(permissionRecordSystemName, StringComparison.InvariantCultureIgnoreCase))
+                        return true;
+
+                return false;
+            });
         }
 
         #endregion
