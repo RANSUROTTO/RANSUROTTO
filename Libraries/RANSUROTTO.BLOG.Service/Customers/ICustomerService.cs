@@ -92,11 +92,43 @@ namespace RANSUROTTO.BLOG.Service.Customers
         #region Customer roles
 
         /// <summary>
+        /// 通过标识符获取权限角色
+        /// </summary>
+        /// <param name="customerRoleId">权限角色标识符</param>
+        /// <returns>权限角色</returns>
+        CustomerRole GetCustomerRoleById(long customerRoleId);
+
+        /// <summary>
         /// 通过系统名称获取用户权限角色
         /// </summary>
         /// <param name="systemName">角色系统名称</param>
         /// <returns>用户权限角色</returns>
         CustomerRole GetCustomerRoleBySystemName(string systemName);
+
+        /// <summary>
+        /// 获取所有权限角色
+        /// </summary>
+        /// <param name="showHidden">是否显示已隐藏的权限角色</param>
+        /// <returns>权限角色</returns>
+        IList<CustomerRole> GetAllCustomerRoles(bool showHidden = false);
+
+        /// <summary>
+        /// 添加权限角色
+        /// </summary>
+        /// <param name="customerRole">权限角色</param>
+        void InsertCustomerRole(CustomerRole customerRole);
+
+        /// <summary>
+        /// 更新权限角色
+        /// </summary>
+        /// <param name="customerRole">权限角色</param>
+        void UpdateCustomerRole(CustomerRole customerRole);
+
+        /// <summary>
+        /// 删除权限角色
+        /// </summary>
+        /// <param name="customerRole">权限角色</param>
+        void DeleteCustomerRole(CustomerRole customerRole);
 
         #endregion
 
