@@ -9,9 +9,17 @@ namespace RANSUROTTO.BLOG.Service.Security
     public interface IPermissionProvider
     {
 
+        /// <summary>
+        /// 获取权限项列表
+        /// </summary>
+        /// <returns>权限项列表</returns>
         IEnumerable<PermissionRecord> GetPermissions();
 
-
+        /// <summary>
+        /// 获取默认权限角色列表
+        /// </summary>
+        /// <returns>权限角色列表</returns>
+        IEnumerable<DefaultPermissionRecord> GetDefaultPermissions();
 
     }
 }

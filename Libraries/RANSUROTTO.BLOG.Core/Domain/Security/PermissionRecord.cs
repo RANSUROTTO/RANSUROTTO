@@ -6,7 +6,7 @@ using RANSUROTTO.BLOG.Core.Domain.Customers;
 namespace RANSUROTTO.BLOG.Core.Domain.Security
 {
     /// <summary>
-    /// 权限记录
+    /// 权限项
     /// </summary>
     public class PermissionRecord : BaseEntity
     {
