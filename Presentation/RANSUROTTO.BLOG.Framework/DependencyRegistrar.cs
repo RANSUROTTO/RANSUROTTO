@@ -159,6 +159,10 @@ namespace RANSUROTTO.BLOG.Framework
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
 
+            builder.RegisterType<PermissionService>().As<IPermissionService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
+
             //Install services
             bool databaseInstalled = DataSettingsHelper.DatabaseIsInstalled();
             if (!databaseInstalled)

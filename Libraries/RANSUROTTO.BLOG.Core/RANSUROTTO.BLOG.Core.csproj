@@ -124,6 +124,8 @@
     <Compile Include="Domain\Customers\AttributeName\SystemCustomerAttributeNames.cs" />
     <Compile Include="Domain\Customers\CustomerRole.cs" />
     <Compile Include="Domain\Customers\Enum\AuthenticationType.cs" />
+    <Compile Include="Domain\Customers\Service\ChangePasswordRequest.cs" />
+    <Compile Include="Domain\Customers\Service\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Service\CustomerLoginResults.cs" />
     <Compile Include="Domain\Customers\Service\Event.cs" />
     <Compile Include="Domain\Customers\Service\SystemCustomerNames.cs" />

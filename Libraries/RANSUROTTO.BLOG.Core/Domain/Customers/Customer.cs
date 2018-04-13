@@ -69,6 +69,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         /// </summary>
         public DateTime? LastLoginDateUtc { get; set; }
 
+        /// <summary>
+        /// 获取或设置管理员对该用户的注释信息
+        /// </summary>
+        public string AdminComment { get; set; }
+
         #region Navigation Properties
 
         /// <summary>

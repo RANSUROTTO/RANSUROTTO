@@ -18,6 +18,14 @@ namespace RANSUROTTO.BLOG.Service.Customers
         #region Constants
 
         /// <summary>
+        /// 所有权限角色缓存键
+        /// </summary>
+        /// <remarks>
+        /// {0} : 显示已隐藏的权限角色
+        /// </remarks>
+        private const string CUSTOMERROLES_ALL_KEY = "Nop.customerrole.all-{0}";
+
+        /// <summary>
         /// 权限角色系统名称缓存键
         /// </summary>
         /// <remarks>
@@ -56,6 +64,8 @@ namespace RANSUROTTO.BLOG.Service.Customers
         }
 
         #endregion
+
+        #region Methods
 
         #region Customer
 
@@ -263,6 +273,11 @@ namespace RANSUROTTO.BLOG.Service.Customers
 
         #region Customer roles
 
+        /// <summary>
+        /// 通过系统名称获取用户权限角色
+        /// </summary>
+        /// <param name="systemName">角色系统名称</param>
+        /// <returns>用户权限角色</returns>
         public CustomerRole GetCustomerRoleBySystemName(string systemName)
         {
             if (string.IsNullOrWhiteSpace(systemName))
@@ -278,6 +293,89 @@ namespace RANSUROTTO.BLOG.Service.Customers
                 var customerRole = query.FirstOrDefault();
                 return customerRole;
             });
+        }
+
+        /// <summary>
+        /// 通过标识符获取权限角色
+        /// </summary>
+        /// <param name="customerRoleId">权限角色标识符</param>
+        /// <returns>权限角色</returns>
+        public CustomerRole GetCustomerRoleById(long customerRoleId)
+        {
+            if (customerRoleId == 0)
+                return null;
+
+            return _customerRoleRepository.GetById(customerRoleId);
+        }
+
+        /// <summary>
+        /// 获取所有权限角色
+        /// </summary>
+        /// <param name="showHidden">是否显示已隐藏的权限角色</param>
+        /// <returns>权限角色</returns>
+        public IList<CustomerRole> GetAllCustomerRoles(bool showHidden = false)
+        {
+            string key = string.Format(CUSTOMERROLES_ALL_KEY, showHidden);
+            return _cacheManager.Get(key, () =>
+            {
+                var query = from cr in _customerRoleRepository.Table
+                            orderby cr.Name
+                            where showHidden || cr.Active
+                            select cr;
+                var customerRoles = query.ToList();
+                return customerRoles;
+            });
+        }
+
+        /// <summary>
+        /// 添加权限角色
+        /// </summary>
+        /// <param name="customerRole">权限角色</param>
+        public void InsertCustomerRole(CustomerRole customerRole)
+        {
+            if (customerRole == null)
+                throw new ArgumentNullException(nameof(customerRole));
+
+            _customerRoleRepository.Insert(customerRole);
+
+            _cacheManager.RemoveByPattern(CUSTOMERROLES_PATTERN_KEY);
+
+            _eventPublisher.EntityInserted(customerRole);
+        }
+
+        /// <summary>
+        /// 更新权限角色
+        /// </summary>
+        /// <param name="customerRole">权限角色</param>
+        public void UpdateCustomerRole(CustomerRole customerRole)
+        {
+            if (customerRole == null)
+                throw new ArgumentNullException(nameof(customerRole));
+
+            _customerRoleRepository.Update(customerRole);
+
+            _cacheManager.RemoveByPattern(CUSTOMERROLES_PATTERN_KEY);
+
+            _eventPublisher.EntityUpdated(customerRole);
+        }
+
+        /// <summary>
+        /// 删除权限角色
+        /// </summary>
+        /// <param name="customerRole">权限角色</param>
+        public void DeleteCustomerRole(CustomerRole customerRole)
+        {
+            if (customerRole == null)
+                throw new ArgumentNullException(nameof(customerRole));
+
+            if (customerRole.IsSystemRole)
+                throw new SiteException("无法删除系统角色。");
+
+            _customerRoleRepository.Delete(customerRole);
+
+            _cacheManager.RemoveByPattern(CUSTOMERROLES_PATTERN_KEY);
+
+            _eventPublisher.EntityDeleted(customerRole);
         }
 
         #endregion
@@ -348,6 +446,8 @@ namespace RANSUROTTO.BLOG.Service.Customers
             //发布更新通知
             _eventPublisher.EntityUpdated(customerPassword);
         }
+
+        #endregion
 
         #endregion
 

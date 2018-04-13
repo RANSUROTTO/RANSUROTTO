@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RANSUROTTO.BLOG.Core.Domain.Customers;
+﻿using RANSUROTTO.BLOG.Core.Domain.Customers;
 
 namespace RANSUROTTO.BLOG.Data.Mapping.Customers
 {
@@ -16,6 +11,9 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Customers
             this.Property(u => u.Email).HasMaxLength(1000);
             this.Property(u => u.SystemName).HasMaxLength(400);
 
+            this.HasMany(c => c.CustomerRoles)
+                .WithMany()
+                .Map(m => m.ToTable("Customer_CustomerRole_Mapping"));
 
         }
     }

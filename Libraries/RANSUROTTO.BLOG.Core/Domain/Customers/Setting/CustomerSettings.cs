@@ -26,6 +26,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
         /// </summary>
         public int FailedPasswordLockoutMinutes { get; set; }
 
+        /// <summary>
+        /// 获取或设置标识修改密码时不应与前一个密码相同；如果允许客户可以同时使用相同的密码，则为0。
+        /// </summary>
+        public int UnduplicatedPasswordsNumber { get; set; }
+
     }
 
 }

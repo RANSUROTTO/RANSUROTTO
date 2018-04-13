@@ -13,5 +13,12 @@ namespace RANSUROTTO.BLOG.Service.Customers
         /// <returns>验证结果</returns>
         CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password);
 
+        /// <summary>
+        /// 更改密码
+        /// </summary>
+        /// <param name="request">请求模型</param>
+        /// <returns>结果</returns>
+        ChangePasswordResult ChangePassword(ChangePasswordRequest request);
+
     }
 }

@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blog;
 using RANSUROTTO.BLOG.Core.Domain.Common;
 using RANSUROTTO.BLOG.Core.Domain.Configuration;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
+using RANSUROTTO.BLOG.Core.Domain.Security;
 using RANSUROTTO.BLOG.Core.Domain.Tasks;
+using RANSUROTTO.BLOG.Core.Infrastructure;
+using RANSUROTTO.BLOG.Service.Customers;
 
 namespace RANSUROTTO.BLOG.Service.Installation
 {
@@ -28,12 +34,14 @@ namespace RANSUROTTO.BLOG.Service.Installation
         private readonly IRepository<Customer> _customerRepository;
         private readonly IRepository<CustomerPassword> _customerPasswordRepository;
         private readonly IRepository<ScheduleTask> _scheduleTaskRepository;
+        private readonly IRepository<CustomerRole> _customerRoleRepository;
+        private readonly IRepository<PermissionRecord> _permissionRecordRepository;
 
         #endregion
 
         #region Constructor
 
-        public CodeFirstInstallationService(IRepository<Category> categoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<BlogComment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository)
+        public CodeFirstInstallationService(IRepository<Category> categoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<BlogComment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository, IRepository<CustomerRole> customerRoleRepository, IRepository<PermissionRecord> permissionRecordRepository)
         {
             _categoryRepository = categoryRepository;
             _blogPostRepository = blogPostRepository;
@@ -48,6 +56,8 @@ namespace RANSUROTTO.BLOG.Service.Installation
             _customerRepository = customerRepository;
             _customerPasswordRepository = customerPasswordRepository;
             _scheduleTaskRepository = scheduleTaskRepository;
+            _customerRoleRepository = customerRoleRepository;
+            _permissionRecordRepository = permissionRecordRepository;
         }
 
         #endregion
@@ -111,6 +121,79 @@ namespace RANSUROTTO.BLOG.Service.Installation
 
         protected virtual void InstallCustomersAndUsers(string defaultUserEmail, string defaultUserPassword)
         {
+            var crAdministrators = new CustomerRole
+            {
+                Name = "Administrators",
+                Active = true,
+                IsSystemRole = true,
+                SystemName = SystemCustomerRoleNames.Administrators,
+            };
+            var crRegistered = new CustomerRole
+            {
+                Name = "Registered",
+                Active = true,
+                IsSystemRole = true,
+                SystemName = SystemCustomerRoleNames.Registered,
+            };
+            var crGuests = new CustomerRole
+            {
+                Name = "Guests",
+                Active = true,
+                IsSystemRole = true,
+                SystemName = SystemCustomerRoleNames.Guests,
+            };
+            var customerRoles = new List<CustomerRole>
+            {
+                crAdministrators,
+                crRegistered,
+                crGuests
+            };
+            _customerRoleRepository.Insert(customerRoles);
+
+            var adminUser = new Customer
+            {
+                Email = defaultUserEmail,
+                Username = defaultUserEmail,
+                Active = true,
+                LastActivityDateUtc = DateTime.UtcNow
+            };
+
+            adminUser.CustomerRoles.Add(crRegistered);
+            adminUser.CustomerRoles.Add(crAdministrators);
+
+            _customerRepository.Insert(adminUser);
+
+            var customerRegistrationService = EngineContext.Current.Resolve<ICustomerRegistrationService>();
+            customerRegistrationService.ChangePassword(new ChangePasswordRequest(defaultUserEmail, false,
+                PasswordFormat.Hashed, defaultUserPassword));
+
+            //搜索引擎（内置）用户
+            var searchEngineUser = new Customer
+            {
+                Username = "search Engine User",
+                Email = "builtin@search_engine_record.com",
+                Guid = Guid.NewGuid(),
+                AdminComment = "内置用户,用于处理搜索引擎的请求.",
+                Active = true,
+                IsSystemAccount = true,
+                SystemName = SystemCustomerNames.SearchEngine,
+                LastActivityDateUtc = DateTime.UtcNow
+            };
+            searchEngineUser.CustomerRoles.Add(crGuests);
+            _customerRepository.Insert(searchEngineUser);
+
+            var backgroundTaskUser = new Customer
+            {
+                Username = "background Task User",
+                Email = "builtin@background-task-record.com",
+                AdminComment = "内置用户,用于处理后台任务.",
+                Active = true,
+                IsSystemAccount = true,
+                SystemName = SystemCustomerNames.BackgroundTask,
+                LastActivityDateUtc = DateTime.UtcNow
+            };
+            backgroundTaskUser.CustomerRoles.Add(crGuests);
+            _customerRepository.Insert(backgroundTaskUser);
 
         }
 

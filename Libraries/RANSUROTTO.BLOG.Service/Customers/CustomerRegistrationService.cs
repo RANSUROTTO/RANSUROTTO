@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
@@ -96,6 +97,87 @@ namespace RANSUROTTO.BLOG.Service.Customers
             _customerService.UpdateCustomer(customer);
 
             return CustomerLoginResults.Successful;
+        }
+
+        /// <summary>
+        /// 更改密码
+        /// </summary>
+        /// <param name="request">请求模型</param>
+        /// <returns>结果</returns>
+        public ChangePasswordResult ChangePassword(ChangePasswordRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var result = new ChangePasswordResult();
+            if (String.IsNullOrWhiteSpace(request.Email))
+            {
+                result.AddError(_localizationService.GetResource("Account.ChangePassword.Errors.EmailIsNotProvided"));
+                return result;
+            }
+            if (String.IsNullOrWhiteSpace(request.NewPassword))
+            {
+                result.AddError(_localizationService.GetResource("Account.ChangePassword.Errors.PasswordIsNotProvided"));
+                return result;
+            }
+
+            var customer = _customerService.GetCustomerByEmail(request.Email);
+            if (customer == null)
+            {
+                result.AddError(_localizationService.GetResource("Account.ChangePassword.Errors.EmailNotFound"));
+                return result;
+            }
+
+            if (request.ValidateRequest)
+            {
+                //验证输入的旧密码与保存的旧密码是否匹配
+                if (!PasswordsMatch(_customerService.GetCurrentPassword(customer.Id), request.OldPassword))
+                {
+                    result.AddError(_localizationService.GetResource("Account.ChangePassword.Errors.OldPasswordDoesntMatch"));
+                    return result;
+                }
+            }
+
+            //检查重复密码
+            if (_customerSettings.UnduplicatedPasswordsNumber > 0)
+            {
+                //获取以前的一些密码
+                var previousPasswords = _customerService.GetCustomerPasswords(customer.Id, passwordsToReturn: _customerSettings.UnduplicatedPasswordsNumber);
+
+                var newPasswordMatchesWithPrevious = previousPasswords.Any(password => PasswordsMatch(password, request.NewPassword));
+                if (newPasswordMatchesWithPrevious)
+                {
+                    result.AddError(_localizationService.GetResource("Account.ChangePassword.Errors.PasswordMatchesWithPrevious"));
+                    return result;
+                }
+            }
+
+            var customerPassword = new CustomerPassword
+            {
+                Customer = customer,
+                PasswordFormat = request.NewPasswordFormat
+            };
+            switch (request.NewPasswordFormat)
+            {
+                case PasswordFormat.Clear:
+                    customerPassword.Password = request.NewPassword;
+                    break;
+                case PasswordFormat.Encrypted:
+                    customerPassword.Password = _encryptionService.EncryptText(request.NewPassword);
+                    break;
+                case PasswordFormat.Hashed:
+                    {
+                        var saltKey = _encryptionService.CreateSaltKey(5);
+                        customerPassword.PasswordSalt = saltKey;
+                        customerPassword.Password = _encryptionService.CreatePasswordHash(request.NewPassword, saltKey, _customerSettings.HashedPasswordFormat);
+                    }
+                    break;
+            }
+            _customerService.InsertCustomerPassword(customerPassword);
+
+            _eventPublisher.Publish(new CustomerPasswordChangedEvent(customerPassword));
+
+            return result;
         }
 
         #endregion
