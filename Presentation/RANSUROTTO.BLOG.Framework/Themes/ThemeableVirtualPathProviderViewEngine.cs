@@ -137,13 +137,13 @@ namespace RANSUROTTO.BLOG.Framework.Themes
 
             string areaName = GetAreaName(controllerContext.RouteData);
 
-            //little hack to get nop's admin area to be in /Application/RANSUROTTO.BLOG.Admin/ instead of Web/Application/RANSUROTTO.BLOG.Admin/ or Areas/Admin/
+            //little hack to get nop's admin area to be in /Administrator/ instead of Web/Administrator/ or Areas/Admin/
             if (!string.IsNullOrEmpty(areaName) && areaName.Equals("admin", StringComparison.InvariantCultureIgnoreCase))
             {
                 var newLocations = areaLocations.ToList();
                 //TODO 配置你的关联WEB项目位置
-                newLocations.Insert(0, "~/Application/RANSUROTTO.BLOG.Admin/Views/{1}/{0}.cshtml");
-                newLocations.Insert(0, "~/Application/RANSUROTTO.BLOG.Admin/Views/Shared/{0}.cshtml");
+                newLocations.Insert(0, "~/Administration/Views/{1}/{0}.cshtml");
+                newLocations.Insert(0, "~/Administration/Views/Shared/{0}.cshtml");
                 areaLocations = newLocations.ToArray();
             }
 

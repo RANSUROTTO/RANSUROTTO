@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blog;
+using RANSUROTTO.BLOG.Core.Domain.Blog.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Common;
+using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Configuration;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
+using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
+using RANSUROTTO.BLOG.Core.Domain.Logging.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Security;
+using RANSUROTTO.BLOG.Core.Domain.Security.Setting;
+using RANSUROTTO.BLOG.Core.Domain.Seo.Enum;
+using RANSUROTTO.BLOG.Core.Domain.Seo.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Tasks;
+using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
+using RANSUROTTO.BLOG.Service.Configuration;
 using RANSUROTTO.BLOG.Service.Customers;
+using RANSUROTTO.BLOG.Service.Helpers.Setting;
 
 namespace RANSUROTTO.BLOG.Service.Installation
 {
@@ -153,7 +165,7 @@ namespace RANSUROTTO.BLOG.Service.Installation
             var adminUser = new Customer
             {
                 Email = defaultUserEmail,
-                Username = defaultUserEmail,
+                Username = "Administrator",
                 Active = true,
                 LastActivityDateUtc = DateTime.UtcNow
             };
@@ -199,12 +211,102 @@ namespace RANSUROTTO.BLOG.Service.Installation
 
         protected virtual void InstallSettings(bool installSampleData)
         {
+            var settingService = EngineContext.Current.Resolve<ISettingService>();
+            settingService.SaveSetting(new CommonSettings
+            {
+                DisplayEuCookieLawWarning = true,
+                DisplayJavaScriptDisabledWarning = true,
+                DefaultTheme = null,
+                Log404Errors = false,
+                RenderXuaCompatible = true,
+                XuaCompatibleValue = "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />"
+            });
+
+            settingService.SaveSetting(new SeoSettings
+            {
+                PageTitleSeparator = ". ",
+                PageTitleSeoAdjustment = PageTitleSeoAdjustment.PagenameAfterBlogname,
+                DefaultTitle = "Your Blog",
+                DefaultMetaKeywords = "",
+                DefaultMetaDescription = "",
+                CustomHeadTags = "",
+                EnableJsBundling = false,
+                EnableCssBundling = false,
+                WwwRequirement = WwwRequirement.NoMatter
+            });
+
+            settingService.SaveSetting(new AdminAreaSettings
+            {
+                DefaultGridPageSize = 15,
+                PopupGridPageSize = 10,
+                GridPageSizes = "10, 15, 20, 50, 100",
+                UseIsoDateTimeConverterInJson = true
+            });
+
+            settingService.SaveSetting(new LocalizationSettings
+            {
+                DefaultAdminLanguageId = _languageRepository.Table.Single(l => l.Name == "English").Id,
+                UseImagesForLanguageSelection = false,
+                SeoFriendlyUrlsForLanguagesEnabled = false,
+                AutomaticallyDetectLanguage = false,
+                LoadAllLocaleRecordsOnStartup = true,
+                LoadAllLocalizedPropertiesOnStartup = true,
+                LoadAllUrlRecordsOnStartup = false,
+                IgnoreRtlPropertyForAdminArea = false
+            });
+
+            settingService.SaveSetting(new SecuritySettings
+            {
+                SslEnabled = false,
+                ForceSslForAllPages = false,
+                EncryptionKey = CommonHelper.GenerateRandomDigitCode(16),
+                AdminAreaAllowedIpAddresses = new List<string>(),
+                EnableXsrfProtectionForAdminArea = true,
+                EnableXsrfProtectionForPublicArea = true
+            });
+
+            settingService.SaveSetting(new CustomerSettings
+            {
+                CurrentAuthenticationType = AuthenticationType.UsernameOrEmail,
+                HashedPasswordFormat = "SHA1",
+                FailedPasswordAllowedAttempts = 5,
+                FailedPasswordLockoutMinutes = 10,
+                UnduplicatedPasswordsNumber = 0
+            });
+
+            settingService.SaveSetting(new DateTimeSettings
+            {
+                DefaultStoreTimeZoneId = "",
+                AllowCustomersToSetTimeZone = false
+            });
+
+            settingService.SaveSetting(new BlogSettings
+            {
+                AllowNotRegisteredUserToLeaveComments = false,
+                MaxNumberOfTags = 15,
+                BlogCommentsMustBeApproved = false
+            });
+
+            settingService.SaveSetting(new LogSettings
+            {
+                IgnoreSoftDelete = false,
+                IgnoreLogWordlist = new List<string>()
+            });
 
         }
 
         protected virtual void InstallActivityLogTypes()
         {
-
+            var activityLogTypes = new List<ActivityLogType>
+            {
+                new ActivityLogType
+                {
+                    SystemKeyword = "AddNewCategory",
+                    Enabled = true,
+                    Name = "Add a new category"
+                }
+            };
+            _activityLogTypeRepository.Insert(activityLogTypes);
         }
 
         protected virtual void InstallScheduleTasks()

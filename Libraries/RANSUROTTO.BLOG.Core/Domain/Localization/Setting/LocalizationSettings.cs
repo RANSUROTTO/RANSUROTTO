@@ -44,5 +44,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization.Setting
         /// </summary>
         public bool IgnoreRtlPropertyForAdminArea { get; set; }
 
+        /// <summary>
+        /// 标识是否使用图像进行语言选择
+        /// </summary>
+        public bool UseImagesForLanguageSelection { get; set; }
+
     }
 }
