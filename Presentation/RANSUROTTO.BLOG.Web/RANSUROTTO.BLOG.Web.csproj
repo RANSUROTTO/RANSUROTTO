@@ -123,6 +123,8 @@
     <Content Include="Content\install\images\logo.png" />
     <Content Include="Content\install\style.css" />
     <Content Include="Content\install\style.rtl.css" />
+    <Content Include="errorpage.html" />
+    <Content Include="filenotfound.html" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
