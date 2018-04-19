@@ -1336,6 +1336,9 @@
     <Content Include="Views\Shared\Menu.cshtml" />
     <Content Include="Views\Shared\Notifications.cshtml" />
     <Content Include="Views\Log\List.cshtml" />
+    <Content Include="Views\Shared\_GridPagerMessages.cshtml" />
+    <Content Include="Views\Shared\Confirm.cshtml" />
+    <Content Include="Views\Shared\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

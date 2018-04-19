@@ -227,7 +227,32 @@ namespace RANSUROTTO.BLOG.Framework.Extensions
 
         #region Common extensions
 
+        public static MvcHtmlString RequiredHint(this HtmlHelper helper, string additionalText = null)
+        {
+            // 创建 TagBuilder 对象
+            var builder = new TagBuilder("span");
+            builder.AddCssClass("required");
+            var innerText = "*";
 
+            //附加文本
+            if (!string.IsNullOrEmpty(additionalText))
+                innerText += " " + additionalText;
+            builder.SetInnerText(innerText);
+
+            //渲染标签
+            return MvcHtmlString.Create(builder.ToString());
+        }
+
+        public static string FieldNameFor<T, TResult>(this HtmlHelper<T> html, Expression<Func<T, TResult>> expression)
+        {
+            return html.ViewData.TemplateInfo.GetFullHtmlFieldName(ExpressionHelper.GetExpressionText(expression));
+        }
+
+        public static string FieldIdFor<T, TResult>(this HtmlHelper<T> html, Expression<Func<T, TResult>> expression)
+        {
+            var id = html.ViewData.TemplateInfo.GetFullHtmlFieldId(ExpressionHelper.GetExpressionText(expression));
+            return id.Replace('[', '_').Replace(']', '_');
+        }
 
         #endregion
 
