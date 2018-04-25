@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Web.Routing;
 using System.Xml;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Service.Security;
 
 namespace RANSUROTTO.BLOG.Framework.Menu
 {
@@ -94,7 +96,7 @@ namespace RANSUROTTO.BLOG.Framework.Menu
             siteMapNode.IconClass = GetStringValueFromAttribute(xmlNode, "IconClass");
 
             //permission name
-            /*var permissionNames = GetStringValueFromAttribute(xmlNode, "PermissionNames");
+            var permissionNames = GetStringValueFromAttribute(xmlNode, "PermissionNames");
             if (!string.IsNullOrEmpty(permissionNames))
             {
                 var permissionService = EngineContext.Current.Resolve<IPermissionService>();
@@ -104,7 +106,7 @@ namespace RANSUROTTO.BLOG.Framework.Menu
             else
             {
                 siteMapNode.Visible = true;
-            }*/
+            }
 
             // Open URL in new tab
             var openUrlInNewTabValue = GetStringValueFromAttribute(xmlNode, "OpenUrlInNewTab");
