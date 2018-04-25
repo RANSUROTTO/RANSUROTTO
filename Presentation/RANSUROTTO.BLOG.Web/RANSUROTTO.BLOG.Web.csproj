@@ -188,6 +188,7 @@
     <Content Include="Views\Common\AdminHeaderLinks.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Customer\Login.cshtml" />
+    <Content Include="Themes\DefaultClean\theme.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -196,6 +197,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Themes\DefaultClean\Content\" />
+    <Folder Include="Themes\DefaultClean\Views\Shared\" />
     <Folder Include="Validators\Customer\" />
     <Folder Include="Views\BasePublic\" />
   </ItemGroup>
