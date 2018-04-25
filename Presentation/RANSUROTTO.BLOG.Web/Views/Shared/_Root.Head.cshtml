@@ -1,4 +1,4 @@
-@using RANSUROTTO.BLOG.Core.Domain.Common.Setting
+﻿@using RANSUROTTO.BLOG.Core.Domain.Common.Setting
 @using RANSUROTTO.BLOG.Core.Domain.Seo.Setting
 @using RANSUROTTO.BLOG.Core.Infrastructure
 @using RANSUROTTO.BLOG.Framework.UI
@@ -7,7 +7,7 @@
     var commonSettings = EngineContext.Current.Resolve<CommonSettings>();
     if (commonSettings.RenderXuaCompatible)
     {
-        Html.AppendHeadCustomParts(string.Format("<meta http-equiv=\"X-UA-Compatible\" content=\"{0}\"/>", commonSettings.XuaCompatibleValue));
+        Html.AppendHeadCustomParts(string.Format("<meta http-equiv=\"X-UA-Compatible\" content=\"{0}\" />", commonSettings.XuaCompatibleValue));
     }
 
     var seoSettings = EngineContext.Current.Resolve<SeoSettings>();
@@ -17,19 +17,16 @@
     }
 
     Html.AddPageCssClassParts("no-js");
-    Html.AddHeadCustomParts("<meta name=\"renderer\" content=\"IE=edge,chrome=1\">");
     //防狼术
     Html.AddHeadCustomParts("<meta http-equiv=\"Cache-Control\" content=\"no-siteapp\" />");
     //Add to homescreen for Chrome on Android
-    Html.AddHeadCustomParts("<meta name=\"mobile-web-app-capable\" content=\"yes\">");
+    Html.AddHeadCustomParts("<meta name=\"mobile-web-app-capable\" content=\"yes\" />");
     //Add to homescreen for Safari on iOS
-    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">");
-    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\">");
+    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />");
+    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />");
     Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-title\" content=\"blog\" />");
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    Html.AddHeadCustomParts("<meta name=\"msapplication-TileColor\" content=\"#0e90d2\">");
-
-
+    //Tile icon for Win8 (144x144 + tile color)
+    Html.AddHeadCustomParts("<meta name=\"msapplication-TileColor\" content=\"#0e90d2\" />");
 
 }
 
@@ -51,9 +48,11 @@
     @*Favicon - favicon.ico文件上传到根目录*@
     @Html.Action("Favicon", "Common")
     <!--Powered by ransurotto - http://www.ransurotto.com-->
+
 </head>
-<body>
+<body>x
     @RenderBody()
+
     <!-- Footer Css Files -->
     @Html.CssFiles(this.Url, ResourceLocation.Footer)
     <!-- Footer Scripts -->

@@ -219,7 +219,7 @@ namespace RANSUROTTO.BLOG.Service.Installation
                 DefaultTheme = null,
                 Log404Errors = false,
                 RenderXuaCompatible = true,
-                XuaCompatibleValue = "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />"
+                XuaCompatibleValue = "IE=edge,chrome=1"
             });
 
             settingService.SaveSetting(new SeoSettings
