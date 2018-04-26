@@ -50,7 +50,7 @@ namespace RANSUROTTO.BLOG.Framework.Mvc
 
         public virtual Guid Guid { get; set; }
 
-        public virtual DateTime CreatedOnUtc { get; set; }
+        public virtual DateTime CreatedOn { get; set; }
 
         public virtual DateTime TimeStamp { get; set; }
 

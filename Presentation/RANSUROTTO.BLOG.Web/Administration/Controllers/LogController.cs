@@ -81,7 +81,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                     CustomerEmail = x.Customer != null ? x.Customer.Email : null,
                     PageUrl = x.PageUrl,
                     ReferrerUrl = x.ReferrerUrl,
-                    CreateDateUtc = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc)
+                    CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc)
                 }),
                 Total = logItems.TotalCount
             };
@@ -109,7 +109,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 CustomerEmail = log.Customer != null ? log.Customer.Email : null,
                 PageUrl = log.PageUrl,
                 ReferrerUrl = log.ReferrerUrl,
-                CreateDateUtc = _dateTimeHelper.ConvertToUserTime(log.CreatedOnUtc, DateTimeKind.Utc)
+                CreatedOn = _dateTimeHelper.ConvertToUserTime(log.CreatedOnUtc, DateTimeKind.Utc)
             };
 
             return View(model);
