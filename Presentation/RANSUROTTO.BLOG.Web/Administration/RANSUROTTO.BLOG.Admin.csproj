@@ -1196,6 +1196,7 @@
     <Compile Include="Controllers\BaseAdminController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -1207,6 +1208,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Mapper\AdminMapperConfiguration.cs" />
+    <Compile Include="Models\Common\LanguageSelectorModel.cs" />
+    <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Logging\LogListModel.cs" />
     <Compile Include="Models\Logging\LogModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1340,6 +1343,7 @@
     <Content Include="Views\Shared\Confirm.cshtml" />
     <Content Include="Views\Shared\Delete.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Common\LanguageSelector.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1356,10 +1360,8 @@
     <Folder Include="Content\tinymce\plugins\jbimages\js\" />
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
     <Folder Include="Models\Blog\" />
-    <Folder Include="Models\Common\" />
     <Folder Include="Models\Configuration\" />
     <Folder Include="Models\Customers\" />
-    <Folder Include="Models\Localization\" />
     <Folder Include="Models\Security\" />
     <Folder Include="Models\Tasks\" />
     <Folder Include="Views\ActivityLog\" />

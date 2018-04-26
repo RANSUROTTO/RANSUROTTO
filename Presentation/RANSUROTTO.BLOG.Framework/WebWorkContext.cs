@@ -177,7 +177,7 @@ namespace RANSUROTTO.BLOG.Framework
                         {
                             var customerByCookie = _customerService.GetCustomerByGuid(customerGuid);
                             if (customerByCookie != null && !customerByCookie.IsRegistered())
-                                SetCustomerCookie(customerByCookie.Guid);
+                                customer = customerByCookie;
                         }
                     }
                 }

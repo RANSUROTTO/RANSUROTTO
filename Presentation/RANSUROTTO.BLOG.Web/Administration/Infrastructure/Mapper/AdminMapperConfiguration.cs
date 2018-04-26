@@ -1,5 +1,7 @@
 ﻿using System;
 using AutoMapper;
+using RANSUROTTO.BLOG.Admin.Models.Localization;
+using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Infrastructure.Mapper;
 
 namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
@@ -10,6 +12,15 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
         {
             Action<IMapperConfigurationExpression> action = cfg =>
             {
+
+                #region Localization
+
+                cfg.CreateMap<Language, LanguageModel>()
+                    .ForMember(model => model.CustomProperties, entity => entity.Ignore());
+                cfg.CreateMap<LanguageModel, Language>()
+                    .ForMember(entity => entity.LocaleStringResources, model => model.Ignore());
+
+                #endregion
 
 
 

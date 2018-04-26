@@ -1,0 +1,26 @@
+﻿@using RANSUROTTO.BLOG.Core.Helper
+@using RANSUROTTO.BLOG.Core.Infrastructure
+@model  LanguageSelectorModel
+
+@{
+    Layout = null;
+}
+
+@if (Model.AvailableLanguages.Count > 1)
+{
+    <div style="padding: 7px 12px 0 12px;">
+        @{
+            var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+
+            var languageSelectItems = Model.AvailableLanguages.Select(language => new SelectListItem
+            {
+                Text = language.Name,
+                Value = webHelper.ModifyQueryString(Url.Action("SetLanguage", "Common", new { langid = language.Id, Area = "Admin" }), "returnUrl=" + HttpUtility.UrlEncode(HttpContext.Current.Request.RawUrl), null),
+                Selected = language.Id == Model.CurrentLanguage.Id
+            });
+
+            @Html.CustomDropDownList("customerLanguage", languageSelectItems, new { onchange = "setLocation(this.value);" });
+
+        }
+    </div>
+}

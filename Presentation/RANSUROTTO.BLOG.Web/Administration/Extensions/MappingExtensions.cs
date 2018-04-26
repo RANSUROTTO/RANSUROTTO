@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using RANSUROTTO.BLOG.Admin.Models.Localization;
+using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Infrastructure.Mapper;
 
 namespace RANSUROTTO.BLOG.Admin.Extensions
@@ -17,6 +15,25 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
         {
             return AutoMapperConfiguration.Mapper.Map(source, destination);
         }
+
+        #region Localization
+
+        public static LanguageModel ToModel(this Language entity)
+        {
+            return entity.MapTo<Language, LanguageModel>();
+        }
+
+        public static Language ToEntity(this LanguageModel model)
+        {
+            return model.MapTo<LanguageModel, Language>();
+        }
+
+        public static Language ToEntity(this LanguageModel model, Language destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
 
     }
 }

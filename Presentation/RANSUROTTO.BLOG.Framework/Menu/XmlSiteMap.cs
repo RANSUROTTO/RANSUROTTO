@@ -70,10 +70,10 @@ namespace RANSUROTTO.BLOG.Framework.Menu
         private static void PopulateNode(SiteMapNode siteMapNode, XmlNode xmlNode)
         {
             //system name
-            siteMapNode.SystemName = GetStringValueFromAttribute(xmlNode, "SystemName");
+            siteMapNode.SystemName = GetStringValueFromAttribute(xmlNode, "systemName");
 
             //title
-            var nopResource = GetStringValueFromAttribute(xmlNode, "nopResource");
+            var nopResource = GetStringValueFromAttribute(xmlNode, "resource");
             var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
             siteMapNode.Title = localizationService.GetResource(nopResource);
 

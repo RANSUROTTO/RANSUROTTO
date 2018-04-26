@@ -5,7 +5,7 @@
 @{
     //load sitemap
     var siteMap = new RANSUROTTO.BLOG.Framework.Menu.XmlSiteMap();
-    siteMap.LoadFrom("~/Application/RANSUROTTO.BLOG.Admin/sitemap.config");
+    siteMap.LoadFrom("~/Administration/sitemap.config");
 
     var supportRtl = EngineContext.Current.Resolve<IWorkContext>().WorkingLanguage.Rtl &&
                      !EngineContext.Current.Resolve<LocalizationSettings>().IgnoreRtlPropertyForAdminArea;
