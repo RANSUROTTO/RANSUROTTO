@@ -1344,6 +1344,7 @@
     <Content Include="Views\Shared\Delete.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Common\LanguageSelector.cshtml" />
+    <Content Include="Views\Log\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
