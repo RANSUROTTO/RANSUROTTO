@@ -93,10 +93,10 @@ namespace RANSUROTTO.BLOG.Framework.Menu
             }
 
             //image URL
-            siteMapNode.IconClass = GetStringValueFromAttribute(xmlNode, "IconClass");
+            siteMapNode.IconClass = GetStringValueFromAttribute(xmlNode, "iconClass");
 
             //permission name
-            var permissionNames = GetStringValueFromAttribute(xmlNode, "PermissionNames");
+            var permissionNames = GetStringValueFromAttribute(xmlNode, "permissionNames");
             if (!string.IsNullOrEmpty(permissionNames))
             {
                 var permissionService = EngineContext.Current.Resolve<IPermissionService>();
@@ -109,7 +109,7 @@ namespace RANSUROTTO.BLOG.Framework.Menu
             }
 
             // Open URL in new tab
-            var openUrlInNewTabValue = GetStringValueFromAttribute(xmlNode, "OpenUrlInNewTab");
+            var openUrlInNewTabValue = GetStringValueFromAttribute(xmlNode, "openUrlInNewTab");
             bool booleanResult;
             if (!string.IsNullOrWhiteSpace(openUrlInNewTabValue) && bool.TryParse(openUrlInNewTabValue, out booleanResult))
             {

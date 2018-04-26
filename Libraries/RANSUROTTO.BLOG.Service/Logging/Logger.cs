@@ -97,9 +97,9 @@ namespace RANSUROTTO.BLOG.Service.Logging
         {
             var query = _logRepository.Table;
             if (fromUtc.HasValue)
-                query = query.Where(l => fromUtc.Value <= l.CreateDateUtc);
+                query = query.Where(l => fromUtc.Value <= l.CreatedOnUtc);
             if (toUtc.HasValue)
-                query = query.Where(l => toUtc.Value >= l.CreateDateUtc);
+                query = query.Where(l => toUtc.Value >= l.CreatedOnUtc);
             if (logLevel.HasValue)
             {
                 var logLevelId = (int)logLevel.Value;
@@ -108,7 +108,7 @@ namespace RANSUROTTO.BLOG.Service.Logging
             if (!string.IsNullOrEmpty(message))
                 query = query.Where(l => l.ShortMessage.Contains(message) || l.FullMessage.Contains(message));
 
-            query = query.OrderByDescending(l => l.CreateDateUtc);
+            query = query.OrderByDescending(l => l.CreatedOnUtc);
 
             var log = new PagedList<Log>(query, pageIndex, pageSize);
             return log;

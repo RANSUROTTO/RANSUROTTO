@@ -29,7 +29,7 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// <summary>
         /// 获取或设置实体创建时的UTC时间
         /// </summary>
-        public virtual DateTime CreateDateUtc { get; set; }
+        public virtual DateTime CreatedOnUtc { get; set; }
 
         /// <summary>
         /// 获取或设置实体并发标识

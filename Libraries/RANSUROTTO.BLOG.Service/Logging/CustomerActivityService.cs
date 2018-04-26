@@ -164,7 +164,7 @@ namespace RANSUROTTO.BLOG.Service.Logging
             activity.ActivityLogTypeId = activityType.Id;
             activity.Customer = customer;
             activity.Comment = comment;
-            activity.CreateDateUtc = DateTime.UtcNow;
+            activity.CreatedOnUtc = DateTime.UtcNow;
             activity.IpAddress = _webHelper.GetCurrentIpAddress();
 
             _activityLogRepository.Insert(activity);
@@ -212,15 +212,15 @@ namespace RANSUROTTO.BLOG.Service.Logging
             if (!String.IsNullOrEmpty(ipAddress))
                 query = query.Where(al => al.IpAddress.Contains(ipAddress));
             if (createdOnFrom.HasValue)
-                query = query.Where(al => createdOnFrom.Value <= al.CreateDateUtc);
+                query = query.Where(al => createdOnFrom.Value <= al.CreatedOnUtc);
             if (createdOnTo.HasValue)
-                query = query.Where(al => createdOnTo.Value >= al.CreateDateUtc);
+                query = query.Where(al => createdOnTo.Value >= al.CreatedOnUtc);
             if (activityLogTypeId > 0)
                 query = query.Where(al => activityLogTypeId == al.ActivityLogTypeId);
             if (customerId.HasValue)
                 query = query.Where(al => customerId.Value == al.CustomerId);
 
-            query = query.OrderByDescending(al => al.CreateDateUtc);
+            query = query.OrderByDescending(al => al.CreatedOnUtc);
 
             var activityLog = new PagedList<ActivityLog>(query, pageIndex, pageSize);
             return activityLog;

@@ -248,7 +248,7 @@ namespace RANSUROTTO.BLOG.Service.Installation
                 DefaultAdminLanguageId = _languageRepository.Table.Single(l => l.Name == "English").Id,
                 UseImagesForLanguageSelection = false,
                 SeoFriendlyUrlsForLanguagesEnabled = false,
-                AutomaticallyDetectLanguage = false,
+                AutomaticallyDetectLanguage = true,
                 LoadAllLocaleRecordsOnStartup = true,
                 LoadAllLocalizedPropertiesOnStartup = true,
                 LoadAllUrlRecordsOnStartup = false,

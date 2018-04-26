@@ -92,7 +92,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                entity.CreateDateUtc = DateTime.UtcNow;
+                entity.CreatedOnUtc = DateTime.UtcNow;
                 if (entity.Guid == Guid.Empty)
                     entity.Guid = Guid.NewGuid();
 
@@ -114,7 +114,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
 
                 foreach (var entity in entities)
                 {
-                    entity.CreateDateUtc = DateTime.UtcNow;
+                    entity.CreatedOnUtc = DateTime.UtcNow;
                     if (entity.Guid == Guid.Empty)
                         entity.Guid = Guid.NewGuid();
 
@@ -136,7 +136,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                entity.CreateDateUtc = DateTime.UtcNow;
+                entity.CreatedOnUtc = DateTime.UtcNow;
                 if (entity.Guid == Guid.Empty)
                     entity.Guid = Guid.NewGuid();
 
@@ -158,7 +158,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
 
                 foreach (var entity in entities)
                 {
-                    entity.CreateDateUtc = DateTime.UtcNow;
+                    entity.CreatedOnUtc = DateTime.UtcNow;
                     if (entity.Guid == Guid.Empty)
                         entity.Guid = Guid.NewGuid();
 

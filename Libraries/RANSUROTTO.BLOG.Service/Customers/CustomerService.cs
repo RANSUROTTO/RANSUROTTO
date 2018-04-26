@@ -220,7 +220,7 @@ namespace RANSUROTTO.BLOG.Service.Customers
             {
                 Guid = Guid.NewGuid(),
                 Active = true,
-                CreateDateUtc = DateTime.UtcNow,
+                CreatedOnUtc = DateTime.UtcNow,
                 LastActivityDateUtc = DateTime.UtcNow,
             };
 
@@ -399,7 +399,7 @@ namespace RANSUROTTO.BLOG.Service.Customers
             if (passwordFormat.HasValue)
                 query = query.Where(password => password.PasswordFormatId == (int)passwordFormat.Value);
             if (passwordsToReturn.HasValue)
-                query = query.OrderByDescending(password => password.CreateDateUtc).Take(passwordsToReturn.Value);
+                query = query.OrderByDescending(password => password.CreatedOnUtc).Take(passwordsToReturn.Value);
 
             return query.ToList();
         }
