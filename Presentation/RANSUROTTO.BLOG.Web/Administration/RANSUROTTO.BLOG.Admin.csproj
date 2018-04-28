@@ -1209,6 +1209,8 @@
     </Compile>
     <Compile Include="Infrastructure\Mapper\AdminMapperConfiguration.cs" />
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
+    <Compile Include="Models\Common\Maintenance.cs" />
+    <Compile Include="Models\Common\SystemInfoModel.cs" />
     <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Logging\LogListModel.cs" />
     <Compile Include="Models\Logging\LogModel.cs" />
@@ -1345,6 +1347,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Common\LanguageSelector.cshtml" />
     <Content Include="Views\Log\View.cshtml" />
+    <Content Include="Views\Common\SystemInfo.cshtml" />
+    <Content Include="Views\Common\Warnings.cshtml" />
+    <Content Include="Views\Common\Maintenance.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
