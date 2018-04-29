@@ -10,6 +10,7 @@ using RANSUROTTO.BLOG.Admin.Models.Common;
 using RANSUROTTO.BLOG.Core;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Helper;
+using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Service.Localization;
 
@@ -150,6 +151,12 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 EndDate = DateTime.Now.AddDays(-182)
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult BackupFiles(DataSourceRequest command)
+        {
+            return null;
         }
 
         #region Utilities
