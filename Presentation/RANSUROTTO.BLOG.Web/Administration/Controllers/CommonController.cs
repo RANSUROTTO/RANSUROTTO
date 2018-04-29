@@ -139,13 +139,13 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Maintenance()
         {
-            var model = new Maintenance();
-            model.DeleteGuests = new Maintenance.DeleteGuestsModel
+            var model = new MaintenanceModel();
+            model.DeleteGuests = new MaintenanceModel.DeleteGuestsModel
             {
                 OnlyWithoutAction = true,
                 EndDate = DateTime.Now.AddDays(-1)
             };
-            model.DeleteExportedFiles = new Maintenance.DeleteExportedFilesModel
+            model.DeleteExportedFiles = new MaintenanceModel.DeleteExportedFilesModel
             {
                 EndDate = DateTime.Now.AddDays(-182)
             };

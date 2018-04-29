@@ -5,9 +5,9 @@ using RANSUROTTO.BLOG.Framework.Mvc;
 
 namespace RANSUROTTO.BLOG.Admin.Models.Common
 {
-    public class Maintenance : BaseModel
+    public class MaintenanceModel : BaseModel
     {
-        public Maintenance()
+        public MaintenanceModel()
         {
             DeleteGuests = new DeleteGuestsModel();
             DeleteExportedFiles = new DeleteExportedFilesModel();

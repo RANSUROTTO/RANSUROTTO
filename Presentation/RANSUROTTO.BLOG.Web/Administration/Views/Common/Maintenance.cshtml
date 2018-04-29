@@ -1,1 +1,71 @@
-﻿
+﻿@model MaintenanceModel
+
+@{
+    //页面标题
+    ViewBag.Title = T("Admin.System.Maintenance").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("Maintenance");
+}
+
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        @T("Admin.System.Maintenance")
+    </h1>
+    <div class="pull-right">
+        &nbsp;
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content">
+        <div class="form-horizontal">
+            <div class="panel-group">
+                <!-- form -->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel panel-default" style="min-height: 230px;">
+                                    <div class="panel-heading">
+                                        @T("Admin.System.Maintenance.DeleteGuests")
+                                    </div>
+                                    <div class="panel-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="panel panel-default" style="min-height: 230px;">
+                                    <div class="panel-heading">
+                                        @T("Admin.System.Maintenance.DeleteExprotedFiles")
+                                    </div>
+                                    <div class="panel-body">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- table -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @T("Admin.System.Maintenance.BackupDatabase.DatabaseBackups")
+                    </div>
+                    <div class="panel-body">
+                        <div id="backup-list"></div>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="submit" id="backup-database" name="backup-database" class="btn btn-primary">
+                            @T("Admin.System.Maintenance.BackupDatabase.BackupNow")
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+}
