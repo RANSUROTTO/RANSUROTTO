@@ -107,6 +107,7 @@
     <Compile Include="Extensions\SelectListExtensions.cs" />
     <Compile Include="Kendoui\DataSourceRequest.cs" />
     <Compile Include="Kendoui\DataSourceResult.cs" />
+    <Compile Include="Kendoui\ModelStateExtensions.cs" />
     <Compile Include="Localization\LanguageSeoCodeAttribute.cs" />
     <Compile Include="Localization\LocalizedRoute.cs" />
     <Compile Include="Localization\LocalizedRouteExtensions.cs" />
