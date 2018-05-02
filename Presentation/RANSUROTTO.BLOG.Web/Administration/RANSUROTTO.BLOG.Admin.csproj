@@ -1375,6 +1375,7 @@
     <Folder Include="Content\tinymce\plugins\jbimages\img\" />
     <Folder Include="Content\tinymce\plugins\jbimages\js\" />
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
+    <Folder Include="db_backups\" />
     <Folder Include="Models\Blog\" />
     <Folder Include="Models\Configuration\" />
     <Folder Include="Models\Customers\" />
