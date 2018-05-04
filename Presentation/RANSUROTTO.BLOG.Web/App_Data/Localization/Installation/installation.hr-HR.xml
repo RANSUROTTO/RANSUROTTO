@@ -1,143 +1,143 @@
-﻿<Language Name="简体中文" IsDefault="false" IsRightToLeft="false">
+﻿<Language Name="Hrvatski" IsDefault="false" IsRightToLeft="false">
   <LocaleResource Name="AdminEmail">
-    <Value>管理员邮箱</Value>
+    <Value>Email administratora</Value>
   </LocaleResource>
   <LocaleResource Name="AdminEmailRequired">
-    <Value>请输入管理员邮箱</Value>
+    <Value>Unesi email administratora</Value>
   </LocaleResource>
   <LocaleResource Name="AdminPassword">
-    <Value>管理员密码</Value>
+    <Value>Lozinka administratora</Value>
   </LocaleResource>
   <LocaleResource Name="AdminPasswordRequired">
-    <Value>请输入管理员密码</Value>
+    <Value>Unesi lozinku administratora</Value>
   </LocaleResource>
   <LocaleResource Name="ConfigureDirectoryPermissions">
-    <Value>账户 '{0}' 没有修改文件夹'{1}'的权限. 请配置.</Value>
+    <Value>Račun '{0}' nema ovlasti za vršenje promjena nad datotekom '{1}'. Molimo konfigurirajte ove ovlasti.</Value>
   </LocaleResource>
   <LocaleResource Name="ConfigureFilePermissions">
-    <Value>账户'{0}' 没有修改文件'{1}'的权限. 请配置.</Value>
+    <Value>Račun '{0}' nema ovlasti za vršenje promjena nad fajlom '{1}'. Molimo konfigurirajte ove ovlasti.</Value>
   </LocaleResource>
   <LocaleResource Name="ConfirmPassword">
-    <Value>确认密码</Value>
+    <Value>Potvrdite lozinku</Value>
   </LocaleResource>
   <LocaleResource Name="ConfirmPasswordRequired">
-    <Value>请输入确认密码</Value>
+    <Value>Unesite potvrdu lozinke</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionString">
-    <Value>连接字符串</Value>
+    <Value>String za povezivanje</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionStringRequired">
-    <Value>连接字符串是必填的</Value>
+    <Value>SQL string za povezivanje je obavezan</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionStringValues">
-    <Value>请输入连接字符串</Value>
+    <Value>Unesi SQL vrijednosti za povezivanje</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionStringWrongFormat">
-    <Value>连接字符串的格式错误</Value>
+    <Value>Pogrešan format SQL stringa za povezivanje</Value>
   </LocaleResource>
   <LocaleResource Name="CreateDatabaseIfDoesNotExist">
-    <Value>如果不存在，创建数据库</Value>
+    <Value>Kreiraj bazu podataka ako ona već ne postoji</Value>
   </LocaleResource>
   <LocaleResource Name="CreateSampleData">
-    <Value>导入测试数据</Value>
+    <Value>Kreiraj primjere podataka</Value>
   </LocaleResource>
   <LocaleResource Name="CustomCollation">
-    <Value>指定自定义的Sql Server排序规则</Value>
+    <Value>Navedite SQL Server collation</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseCreationError">
-    <Value>创建数据库: {0}的时候发生错误</Value>
+    <Value>Pojavila se greška prilikom kreiranja baze podataka: {0}</Value>
   </LocaleResource>
   <LocaleResource Name="Database">
-    <Value>数据库</Value>
+    <Value>Baza podataka</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseInformation">
-    <Value>数据库信心</Value>
+    <Value>Informacije o bazi podataka</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseName">
-    <Value>数据库名称</Value>
+    <Value>Naziv baze podataka</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseNameRequired">
-    <Value>请输入数据库名称</Value>
+    <Value>Naziv baze podataka je obavezan</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseNotExists">
-    <Value>数据库不存在，或者没有连接它的权限</Value>
+    <Value>Baza podataka ne postoji ili vi nemate ovlasti da se s njom povežete</Value>
   </LocaleResource>
   <LocaleResource Name="DataProviderRequired">
-    <Value>选择数据提供程序</Value>
+    <Value>Odaberite davatelja podataka</Value>
   </LocaleResource>
   <LocaleResource Name="Documentation1">
-    <Value>如果需要了解如何使用nopCommerce, 请访问</Value>
+    <Value>Ako su vam potrebne informacije o tome kako se koristi nopCommerce, posjetite</Value>
   </LocaleResource>
   <LocaleResource Name="Documentation2">
-    <Value>nopCommerce.com上的文档部分</Value>
+    <Value>odjeljak dokumentacije na nopCommerce.com</Value>
   </LocaleResource>
   <LocaleResource Name="Example">
-    <Value>例子</Value>
+    <Value>Primjer</Value>
   </LocaleResource>
   <LocaleResource Name="Install">
-    <Value>安装</Value>
+    <Value>Instalacija</Value>
   </LocaleResource>
   <LocaleResource Name="Installing">
-    <Value>正在安装nopCommerce...</Value>
+    <Value>Instaliram nopCommerce...</Value>
   </LocaleResource>
   <LocaleResource Name="PasswordsDoNotMatch">
-    <Value>密码不匹配</Value>
+    <Value>Lozinke se ne podudaraju</Value>
   </LocaleResource>
   <LocaleResource Name="RawConnectionString">
-    <Value>输入原始连接字符串(高级)</Value>
+    <Value>Unesite sirovi string za povezivanje (napredno)</Value>
   </LocaleResource>
   <LocaleResource Name="Recommended">
-    <Value>[推荐]</Value>
+    <Value>[Preporuka]</Value>
   </LocaleResource>
   <LocaleResource Name="RestartInstallation">
-    <Value>重启安装</Value>
+    <Value>Ponovo pokreni instalaciju</Value>
   </LocaleResource>
   <LocaleResource Name="RestartInstallationTooltip">
-    <Value>点击以重新启动安装过程(清除所有缓存值)</Value>
+    <Value>Klikni za ponovo pokretanje procesa instalacije (očisti sve vrijednosti u međuspremniku)</Value>
   </LocaleResource>
   <LocaleResource Name="SetupFailed">
-    <Value>安装失败: {0}</Value>
+    <Value>Setup nije uspio: {0}</Value>
   </LocaleResource>
   <LocaleResource Name="SqlAuthentication">
-    <Value>使用SQL Server 账户</Value>
+    <Value>Koristi SQL Server račun</Value>
   </LocaleResource>
   <LocaleResource Name="SqlCompact">
-    <Value>使用内置的数据存储(SQL Server Compact)</Value>
+    <Value>Koristi internu pohranu podataka (SQL Server Compact)</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerName">
-    <Value>SQL Server 实例名</Value>
+    <Value>Naziv SQL Servera</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerNameRequired">
-    <Value>请输入SQL Server 实例名</Value>
+    <Value>Naziv SQL Servera je obavezan</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerPassword">
-    <Value>SQL Server密码</Value>
+    <Value>SQL lozinka</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerPasswordRequired">
-    <Value>请输入SQL Server密码 </Value>
+    <Value>SQL lozinka je obavezna</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerUsername">
-    <Value>SQL Server用户名</Value>
+    <Value>SQL korisničko ime</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerUsernameRequired">
-    <Value>请输入SQL Server用户名</Value>
+    <Value>SQL korisničko ime je obavezno</Value>
   </LocaleResource>
   <LocaleResource Name="SqlStandard">
-    <Value>使用SQL Server(或SQL Express)数据库</Value>
+    <Value>Koristi SQL Server (ili SQL Express) bazu podataka</Value>
   </LocaleResource>
   <LocaleResource Name="StoreInformation">
-    <Value>商店信息</Value>
+    <Value>Informacije o prodavnici</Value>
   </LocaleResource>
   <LocaleResource Name="Title">
-    <Value>nopCommerce 安装</Value>
+    <Value>nopCommerce instalacija</Value>
   </LocaleResource>
   <LocaleResource Name="Tooltip1">
-    <Value>nopCommerce是最优秀的Asp.net 在线电子商务解决方案。这个向导将引导你完成配置过程。</Value>
+    <Value>nopCommerce je vodeće ASP.NET e-commerce rješenje za online prodavnice. Ovaj čarobnjak će vas voditi kroz proces konfiguracije nopCommerca</Value>
   </LocaleResource>
   <LocaleResource Name="Tooltip2">
-    <Value>完成这个向导，你必须知道如何连接数据库("即连接字符串").如有必要，请联系你的服务提供商。如果在本机或服务器上安装，你可能还需要一些管理员的信息 .</Value>
+    <Value>Za kompletiranje ovog čarobnjaka, morate znati neke informacije o vašoj bazi podataka ("string za povezivanje"). Molimo da kontaktirate vašeg ISP-a ako je to potrebno. Ako instalaciju vršite na lokalnoj mašini ili lokalnom serveru informacije možete tražiti od vašeg sistemskog administratora.</Value>
   </LocaleResource>
   <LocaleResource Name="WindowsAuthentication">
-    <Value>使用集成windows身份认证</Value>
+    <Value>Koristi internu Windows autentifikaciju</Value>
   </LocaleResource>
 </Language>

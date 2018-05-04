@@ -3,11 +3,11 @@
 @using RANSUROTTO.BLOG.Framework.Extensions
 @using RANSUROTTO.BLOG.Web.Infrastructure.Installation
 @model RANSUROTTO.BLOG.Web.Models.Install.InstallModel
-
 @{
     Layout = null;
-    //安装页面多语言服务
-    //语言资源存储在 \App_Data\Localization\Installation 文件夹内
+    //localization service for installation service
+    //we do not use standard nopCommerce localization because database is not installed yet
+    //locale resources for installation process are stored into \App_Data\Localization\Installation directory
     var ils = EngineContext.Current.Resolve<IInstallationLocalizationService>();
 }
 <!DOCTYPE html>
@@ -53,7 +53,9 @@
             <div class="content">
                 @Html.ValidationSummary(false)
 
-                <p>@ils.GetResource("Tooltip")</p>
+                @*<p>@ILS.GetResource("Tooltip1")</p>*@
+                <p>@ils.GetResource("Tooltip2")</p>
+                <p>@ils.GetResource("Documentation1") <a href="#" target="_blank">@ils.GetResource("Documentation2")</a>.</p>
 
                 <script type="text/javascript">
                     function showThrobber(message) {
@@ -82,19 +84,53 @@
                     });
 
                     $(document).ready(function () {
-                        $('input:radio[name=MySqlConnectionInfo]').click(toggleSqlConnectionInfo);
+                        $('input:radio[name=DataProvider]').click(toggleProvider);
+                        $('input:radio[name=SqlConnectionInfo]').click(toggleSqlConnectionInfo);
+                        $('input:radio[name=SqlAuthenticationType]').click(toggleSqlAuthenticationType);
+                        $("input:checkbox[name=UseCustomCollation]").click(toggleCollation);
 
+                        toggleProvider();
                         toggleSqlConnectionInfo();
+                        toggleSqlAuthenticationType();
+                        toggleCollation();
                     });
 
+
+                    function toggleProvider() {
+                        var selectedProvider = $("input[name=DataProvider]:checked").attr('id');
+                        if (selectedProvider == 'provider_sqlce') {
+                            $('#sqlConnectionInfo').hide();
+                        } else if (selectedProvider == 'provider_sqlserver') {
+                            $('#sqlConnectionInfo').show();
+                        }
+                    }
+
                     function toggleSqlConnectionInfo() {
-                        var selectedProvider = $("input[name=MySqlConnectionInfo]:checked").attr('id');
+                        var selectedProvider = $("input[name=SqlConnectionInfo]:checked").attr('id');
                         if (selectedProvider == 'sqlconnectioninfo_values') {
                             $('#sqlDatabaseInfo').show();
                             $('#sqlDatabaseConnectionString').hide();
                         } else if (selectedProvider == 'sqlconnectioninfo_raw') {
                             $('#sqlDatabaseInfo').hide();
                             $('#sqlDatabaseConnectionString').show();
+                        }
+                    }
+
+                    function toggleSqlAuthenticationType() {
+                        var selectedProvider = $("input[name=SqlAuthenticationType]:checked").attr('id');
+                        if (selectedProvider == 'sqlauthenticationtype_sql') {
+                            $('#pnlSqlServerCredentials').show();
+                        } else if (selectedProvider == 'sqlauthenticationtype_windows') {
+                            $('#pnlSqlServerCredentials').hide();
+                        }
+                    }
+
+
+                    function toggleCollation() {
+                        if ($('#UseCustomCollation').is(':checked')) {
+                            $('#Collation').show();
+                        } else {
+                            $('#Collation').hide();
                         }
                     }
 
@@ -172,9 +208,18 @@
                                     </label>
                                 </div>
                                 <div class="col-xs-7">
+                                    @if (!Model.DisableSqlCompact)
+                                    {
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButton("DataProvider", "sqlce", (Model.DataProvider == "sqlce"), new { id = "provider_sqlce" })
+                                                @ils.GetResource("SqlCompact")
+                                            </label>
+                                        </div>
+                                    }
                                     <div class="radio">
                                         <label>
-                                            @Html.RadioButton("DataProvider", "mysql", (Model.DataProvider == "mysql"), new { id = "provider_mysql" })
+                                            @Html.RadioButton("DataProvider", "sqlserver", (Model.DataProvider == "sqlserver"), new { id = "provider_sqlserver" })
                                             @ils.GetResource("SqlStandard") <strong>@ils.GetResource("Recommended")</strong>
                                         </label>
                                     </div>
@@ -187,7 +232,7 @@
                                     <div class="col-xs-7 col-xs-offset-4">
                                         <div class="checkbox">
                                             <label>
-                                                @Html.CheckBoxFor(x => x.MySqlServerCreateDatabase)
+                                                @Html.CheckBoxFor(x => x.SqlServerCreateDatabase)
                                                 @ils.GetResource("CreateDatabaseIfDoesNotExist")
                                             </label>
                                         </div>
@@ -202,13 +247,13 @@
                                     <div class="col-xs-7">
                                         <div class="radio">
                                             <label>
-                                                @Html.RadioButton("MySqlConnectionInfo", "sqlconnectioninfo_values", (Model.MySqlConnectionInfo == "sqlconnectioninfo_values"), new { id = "sqlconnectioninfo_values" })
+                                                @Html.RadioButton("SqlConnectionInfo", "sqlconnectioninfo_values", (Model.SqlConnectionInfo == "sqlconnectioninfo_values"), new { id = "sqlconnectioninfo_values" })
                                                 @ils.GetResource("ConnectionStringValues")
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                @Html.RadioButton("MySqlConnectionInfo", "sqlconnectioninfo_raw", (Model.MySqlConnectionInfo == "sqlconnectioninfo_raw"), new { id = "sqlconnectioninfo_raw" })
+                                                @Html.RadioButton("SqlConnectionInfo", "sqlconnectioninfo_raw", (Model.SqlConnectionInfo == "sqlconnectioninfo_raw"), new { id = "sqlconnectioninfo_raw" })
                                                 @ils.GetResource("RawConnectionString")
                                             </label>
                                         </div>
@@ -219,11 +264,11 @@
                                         <div class="form-group">
                                             <div class="col-xs-4">
                                                 <label class="control-label">
-                                                    @ils.GetResource("MySqlServerName")
+                                                    @ils.GetResource("SqlServerName")
                                                 </label>
                                             </div>
                                             <div class="col-xs-7">
-                                                @Html.TextBoxFor(x => x.MySqlServerName, new { @class = "form-control" })
+                                                @Html.TextBoxFor(x => x.SqlServerName, new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -233,21 +278,27 @@
                                                 </label>
                                             </div>
                                             <div class="col-xs-7">
-                                                @Html.TextBoxFor(x => x.MySqlDatabaseName, new { @class = "form-control" })
+                                                @Html.TextBoxFor(x => x.SqlDatabaseName, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-4">
                                             <label class="control-label">
-                                                @ils.GetResource("MySqlServerName")
+                                                @ils.GetResource("SqlServerName")
                                             </label>
                                         </div>
                                         <div class="col-xs-7">
                                             <div class="radio">
                                                 <label>
-                                                    @Html.RadioButton("MySqlAuthenticationType", "sqlauthentication", (Model.MySqlAuthenticationType == "sqlauthentication"), new { id = "sqlauthenticationtype_sql" })
-                                                    @ils.GetResource("MySqlAuthentication")
+                                                    @Html.RadioButton("SqlAuthenticationType", "sqlauthentication", (Model.SqlAuthenticationType == "sqlauthentication"), new { id = "sqlauthenticationtype_sql" })
+                                                    @ils.GetResource("SqlAuthentication")
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    @Html.RadioButton("SqlAuthenticationType", "windowsauthentication", (Model.SqlAuthenticationType == "windowsauthentication"), new { id = "sqlauthenticationtype_windows" })
+                                                    @ils.GetResource("WindowsAuthentication")
                                                 </label>
                                             </div>
                                         </div>
@@ -256,21 +307,21 @@
                                         <div class="form-group">
                                             <div class="col-xs-4">
                                                 <label class="control-label">
-                                                    @ils.GetResource("MySqlServerUsername")
+                                                    @ils.GetResource("SqlServerUsername")
                                                 </label>
                                             </div>
                                             <div class="col-xs-7">
-                                                @Html.TextBoxFor(x => x.MySqlServerUsername, new { @class = "form-control" })
+                                                @Html.TextBoxFor(x => x.SqlServerUsername, new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-xs-4">
                                                 <label class="control-label">
-                                                    @ils.GetResource("MySqlServerPassword")
+                                                    @ils.GetResource("SqlServerPassword")
                                                 </label>
                                             </div>
                                             <div class="col-xs-7">
-                                                @Html.PasswordFor(x => x.MySqlServerPassword, new { @class = "form-control" })
+                                                @Html.PasswordFor(x => x.SqlServerPassword, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
@@ -285,11 +336,22 @@
                                         @Html.TextBoxFor(x => x.DatabaseConnectionString, new { @class = "form-control" })
                                         <span class="hint">
                                             @ils.GetResource("Example"):<br />
-                                            Server=myServerAddress;Port=3306;Database=myDataBase;Uid=myUsername;
-                                            Pwd=myPassword;
+                                            Data Source=sqlServerName;Initial Catalog=dbName;Persist Security Info=True;User
+                                            ID=userName;Password=password
                                             <br />
                                             Find more info <a href="http://www.connectionstrings.com/" target="_blank">here</a>
                                         </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="sqlConnectionInfo">
+                                    <div class="col-xs-7 col-xs-offset-4">
+                                        <div class="checkbox">
+                                            <label>
+                                                @Html.CheckBoxFor(x => x.UseCustomCollation)
+                                                @ils.GetResource("CustomCollation")
+                                            </label>
+                                            @Html.TextBoxFor(x => x.Collation, new { @class = "form-control margin-t-10" })
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -326,8 +388,3 @@
     </div>
 </body>
 </html>
-
-
-
-
-

@@ -1,143 +1,143 @@
-﻿<Language Name="简体中文" IsDefault="false" IsRightToLeft="false">
+<Language Name="Portugês (Brasil)" IsDefault="false" IsRightToLeft="false">
   <LocaleResource Name="AdminEmail">
-    <Value>管理员邮箱</Value>
+    <Value>Email do Administrador</Value>
   </LocaleResource>
   <LocaleResource Name="AdminEmailRequired">
-    <Value>请输入管理员邮箱</Value>
+    <Value>Entre com o email do Administrador</Value>
   </LocaleResource>
   <LocaleResource Name="AdminPassword">
-    <Value>管理员密码</Value>
+    <Value>Senha do Administrador</Value>
   </LocaleResource>
   <LocaleResource Name="AdminPasswordRequired">
-    <Value>请输入管理员密码</Value>
+    <Value>Entre com a senha do Administrador</Value>
   </LocaleResource>
   <LocaleResource Name="ConfigureDirectoryPermissions">
-    <Value>账户 '{0}' 没有修改文件夹'{1}'的权限. 请配置.</Value>
+    <Value>A conta '{0}' não tem permissões de escrita na pasta '{1}'. Por favor configure essas permissões.</Value>
   </LocaleResource>
   <LocaleResource Name="ConfigureFilePermissions">
-    <Value>账户'{0}' 没有修改文件'{1}'的权限. 请配置.</Value>
+    <Value>A conta '{0}' não tem permissão de escrita no arquivo '{1}'. Por favor configure essas permissões.</Value>
   </LocaleResource>
   <LocaleResource Name="ConfirmPassword">
-    <Value>确认密码</Value>
+    <Value>Confirme a senha</Value>
   </LocaleResource>
   <LocaleResource Name="ConfirmPasswordRequired">
-    <Value>请输入确认密码</Value>
+    <Value>Entre com a confirmação da senha</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionString">
-    <Value>连接字符串</Value>
+    <Value>String de conexão</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionStringRequired">
-    <Value>连接字符串是必填的</Value>
+    <Value>Entre com a string de conexão</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionStringValues">
-    <Value>请输入连接字符串</Value>
+    <Value>Entre com os valores de conexão do SQL</Value>
   </LocaleResource>
   <LocaleResource Name="ConnectionStringWrongFormat">
-    <Value>连接字符串的格式错误</Value>
+    <Value>Formato incorreto para a String de conexão</Value>
   </LocaleResource>
   <LocaleResource Name="CreateDatabaseIfDoesNotExist">
-    <Value>如果不存在，创建数据库</Value>
+    <Value>Criar banco de dados se não existir</Value>
   </LocaleResource>
   <LocaleResource Name="CreateSampleData">
-    <Value>导入测试数据</Value>
+    <Value>Criar dados de exemplo</Value>
   </LocaleResource>
   <LocaleResource Name="CustomCollation">
-    <Value>指定自定义的Sql Server排序规则</Value>
+    <Value>Especifique o agrupamento do SQL</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseCreationError">
-    <Value>创建数据库: {0}的时候发生错误</Value>
+    <Value>Ocorreu um erro ao criar o banco: {0}</Value>
   </LocaleResource>
   <LocaleResource Name="Database">
-    <Value>数据库</Value>
+    <Value>Banco de dados</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseInformation">
-    <Value>数据库信心</Value>
+    <Value>Informações do banco de dados</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseName">
-    <Value>数据库名称</Value>
+    <Value>Nome do banco de dados</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseNameRequired">
-    <Value>请输入数据库名称</Value>
+    <Value>Entre com o nome do banco de dados</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseNotExists">
-    <Value>数据库不存在，或者没有连接它的权限</Value>
+    <Value>Banco de dados não existe ou você não tem permissão para conexão</Value>
   </LocaleResource>
   <LocaleResource Name="DataProviderRequired">
-    <Value>选择数据提供程序</Value>
+    <Value>Escolha seu provedor</Value>
   </LocaleResource>
   <LocaleResource Name="Documentation1">
-    <Value>如果需要了解如何使用nopCommerce, 请访问</Value>
+    <Value>Se você precisa de informações em como usar o nopCommerce, visite</Value>
   </LocaleResource>
   <LocaleResource Name="Documentation2">
-    <Value>nopCommerce.com上的文档部分</Value>
+    <Value>a sessão de documentação em nopCommerce.com</Value>
   </LocaleResource>
   <LocaleResource Name="Example">
-    <Value>例子</Value>
+    <Value>Exemplo</Value>
   </LocaleResource>
   <LocaleResource Name="Install">
-    <Value>安装</Value>
+    <Value>Instalar</Value>
   </LocaleResource>
   <LocaleResource Name="Installing">
-    <Value>正在安装nopCommerce...</Value>
+    <Value>Instalando nopCommerce...</Value>
   </LocaleResource>
   <LocaleResource Name="PasswordsDoNotMatch">
-    <Value>密码不匹配</Value>
+    <Value>As senhas não são iguais</Value>
   </LocaleResource>
   <LocaleResource Name="RawConnectionString">
-    <Value>输入原始连接字符串(高级)</Value>
+    <Value>Entre com a string de conexão (avançado)</Value>
   </LocaleResource>
   <LocaleResource Name="Recommended">
-    <Value>[推荐]</Value>
+    <Value>[Recomendado]</Value>
   </LocaleResource>
   <LocaleResource Name="RestartInstallation">
-    <Value>重启安装</Value>
+    <Value>Reiniciar a instalação</Value>
   </LocaleResource>
   <LocaleResource Name="RestartInstallationTooltip">
-    <Value>点击以重新启动安装过程(清除所有缓存值)</Value>
+    <Value>Clique para reiniciar o processo de instalação (limpar todos os valores)</Value>
   </LocaleResource>
   <LocaleResource Name="SetupFailed">
-    <Value>安装失败: {0}</Value>
+    <Value>Falha na configuração: {0}</Value>
   </LocaleResource>
   <LocaleResource Name="SqlAuthentication">
-    <Value>使用SQL Server 账户</Value>
+    <Value>Usar conta do servidor SQL</Value>
   </LocaleResource>
   <LocaleResource Name="SqlCompact">
-    <Value>使用内置的数据存储(SQL Server Compact)</Value>
+    <Value>Usar banco embutido (SQL Server Compact)</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerName">
-    <Value>SQL Server 实例名</Value>
+    <Value>Nome do servidor SQL</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerNameRequired">
-    <Value>请输入SQL Server 实例名</Value>
+    <Value>Entre com o nome do servidor SQL</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerPassword">
-    <Value>SQL Server密码</Value>
+    <Value>Senha SQL</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerPasswordRequired">
-    <Value>请输入SQL Server密码 </Value>
+    <Value>Entre com a senha SQL</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerUsername">
-    <Value>SQL Server用户名</Value>
+    <Value>Usuário SQL</Value>
   </LocaleResource>
   <LocaleResource Name="SqlServerUsernameRequired">
-    <Value>请输入SQL Server用户名</Value>
+    <Value>Entre com o usuário SQL</Value>
   </LocaleResource>
   <LocaleResource Name="SqlStandard">
-    <Value>使用SQL Server(或SQL Express)数据库</Value>
+    <Value>Use um banco de dados de servidor SQL (ou SQL Express)</Value>
   </LocaleResource>
   <LocaleResource Name="StoreInformation">
-    <Value>商店信息</Value>
+    <Value>Guardar informação</Value>
   </LocaleResource>
   <LocaleResource Name="Title">
-    <Value>nopCommerce 安装</Value>
+    <Value>Instação nopCommerce</Value>
   </LocaleResource>
   <LocaleResource Name="Tooltip1">
-    <Value>nopCommerce是最优秀的Asp.net 在线电子商务解决方案。这个向导将引导你完成配置过程。</Value>
+    <Value>nopCommerce é a solução ASP.NET online líder em lojas de e-commerce. Este passo a passo irá guiar você no processo de configuração do nopCommerce</Value>
   </LocaleResource>
   <LocaleResource Name="Tooltip2">
-    <Value>完成这个向导，你必须知道如何连接数据库("即连接字符串").如有必要，请联系你的服务提供商。如果在本机或服务器上安装，你可能还需要一些管理员的信息 .</Value>
+    <Value>Para completar o passo a passo você precisa saber algumas informações sobre seu servidor de banco de dados ("string de conexão"). Por favor entre em contato com seu provedor de hospedagem se necessário. Se você está instalando em um computador local ou servidor talvez seja necessário informações do seu Administrador de Sistemas.</Value>
   </LocaleResource>
   <LocaleResource Name="WindowsAuthentication">
-    <Value>使用集成windows身份认证</Value>
+    <Value>Usar autenticação integrada com o Winwdows</Value>
   </LocaleResource>
 </Language>
