@@ -34,7 +34,7 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// <summary>
         /// 获取或设置实体并发标识
         /// </summary>
-        public virtual DateTime TimeStamp { get; set; }
+        public virtual byte[] TimeStamp { get; set; }
 
         /// <summary>
         /// 获取或设置实体是否已被软删除

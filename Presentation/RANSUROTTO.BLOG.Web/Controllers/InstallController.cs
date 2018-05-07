@@ -1,19 +1,18 @@
 ﻿using System;
+using System.Web.Mvc;
+using System.Threading;
 using System.Data.SqlClient;
 using System.Security.Principal;
-using System.Threading;
-using System.Web.Mvc;
-using MySql.Data.MySqlClient;
-using RANSUROTTO.BLOG.Core.Caching;
-using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Helper;
-using RANSUROTTO.BLOG.Core.Infrastructure;
+using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Data.Provider;
+using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Framework.Security;
+using RANSUROTTO.BLOG.Web.Models.Install;
+using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Service.Installation;
 using RANSUROTTO.BLOG.Web.Infrastructure.Installation;
-using RANSUROTTO.BLOG.Web.Models.Install;
 
 namespace RANSUROTTO.BLOG.Web.Controllers
 {
@@ -24,6 +23,18 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
         private readonly WebConfig _config;
         private readonly IInstallationLocalizationService _locService;
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// 指示是否开启MARS(多个活动结果集)
+        /// </summary>
+        protected virtual bool UseMars
+        {
+            get { return false; }
+        }
 
         #endregion
 
@@ -50,10 +61,16 @@ namespace RANSUROTTO.BLOG.Web.Controllers
             var model = new InstallModel
             {
                 AdminEmail = "admin@ransurotto.com",
-                DataProvider = "mysql",
-                MySqlAuthenticationType = "sqlauthentication",
-                MySqlConnectionInfo = "sqlconnectioninfo_values",
+                InstallSampleData = false,
+                DatabaseConnectionString = "",
+                DataProvider = "sqlserver",
+                //fast installation service does not support SQL compact
                 DisableSampleDataOption = _config.DisableSampleDataDuringInstallation,
+                SqlAuthenticationType = "sqlauthentication",
+                SqlConnectionInfo = "sqlconnectioninfo_values",
+                SqlServerCreateDatabase = false,
+                UseCustomCollation = false,
+                Collation = "SQL_Latin1_General_CP1_CI_AS"
             };
 
             foreach (var lang in _locService.GetAvailableLanguages())
@@ -93,18 +110,17 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
             model.DisableSampleDataOption = _config.DisableSampleDataDuringInstallation;
 
-            //MySQL
-            if (model.DataProvider.Equals("mysql", StringComparison.InvariantCultureIgnoreCase))
+            //SQL Server
+            if (model.DataProvider.Equals("sqlserver", StringComparison.InvariantCultureIgnoreCase))
             {
-                if (model.MySqlConnectionInfo.Equals("sqlconnectioninfo_raw",
-                    StringComparison.InvariantCultureIgnoreCase))
+                if (model.SqlConnectionInfo.Equals("sqlconnectioninfo_raw", StringComparison.InvariantCultureIgnoreCase))
                 {
                     if (string.IsNullOrEmpty(model.DatabaseConnectionString))
                         ModelState.AddModelError("", _locService.GetResource("ConnectionStringRequired"));
 
                     try
                     {
-                        new MySqlConnectionStringBuilder(model.DatabaseConnectionString);
+                        new SqlConnectionStringBuilder(model.DatabaseConnectionString);
                     }
                     catch
                     {
@@ -113,24 +129,19 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(model.MySqlServerName))
-                        ModelState.AddModelError("", _locService.GetResource("MySqlServerNameRequired"));
-                    if (string.IsNullOrEmpty(model.MySqlDatabaseName))
+                    if (string.IsNullOrEmpty(model.SqlServerName))
+                        ModelState.AddModelError("", _locService.GetResource("SqlServerNameRequired"));
+                    if (string.IsNullOrEmpty(model.SqlDatabaseName))
                         ModelState.AddModelError("", _locService.GetResource("DatabaseNameRequired"));
 
-                    if (model.MySqlAuthenticationType.Equals("sqlauthentication",
-                        StringComparison.InvariantCultureIgnoreCase))
+                    if (model.SqlAuthenticationType.Equals("sqlauthentication", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        if (string.IsNullOrEmpty(model.MySqlServerUsername))
-                            ModelState.AddModelError("", _locService.GetResource("MySqlServerUsernameRequired"));
-                        if (string.IsNullOrEmpty(model.MySqlServerPassword))
-                            ModelState.AddModelError("", _locService.GetResource("MySqlServerPasswordRequired"));
+                        if (string.IsNullOrEmpty(model.SqlServerUsername))
+                            ModelState.AddModelError("", _locService.GetResource("SqlServerUsernameRequired"));
+                        if (string.IsNullOrEmpty(model.SqlServerPassword))
+                            ModelState.AddModelError("", _locService.GetResource("SqlServerPasswordRequired"));
                     }
                 }
-            }
-            else
-            {
-                ModelState.AddModelError("", _locService.GetResource("NotSupportDataProvider"));
             }
 
             //验证是否有特定文件夹与文件操作权限
@@ -151,34 +162,54 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                 try
                 {
                     string connectionString;
-                    //MySQL
-                    if (model.MySqlConnectionInfo.Equals("sqlconnectioninfo_raw",
-                        StringComparison.InvariantCultureIgnoreCase))
+                    if (model.DataProvider.Equals("sqlserver", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var sqlCsb = new MySqlConnectionStringBuilder(model.DatabaseConnectionString);
-                        connectionString = sqlCsb.ToString();
-                    }
-                    else
-                    {
-                        connectionString = CreateMySqlConnectionString(model.MySqlServerName,
-                            model.MySqlDatabaseName, model.MySqlServerUsername, model.MySqlServerPassword);
-                    }
-
-                    if (model.MySqlServerCreateDatabase)
-                    {
-                        if (!MySqlServerDatabaseExists(connectionString))
+                        //SQL Server
+                        if (model.SqlConnectionInfo.Equals("sqlconnectioninfo_raw", StringComparison.InvariantCultureIgnoreCase))
                         {
-                            //创建数据库
-                            var errorCreatingDatabase = CreateMySqlDatabase(connectionString);
-                            if (!string.IsNullOrEmpty(errorCreatingDatabase))
-                                throw new Exception(errorCreatingDatabase);
+                            var sqlCsb = new SqlConnectionStringBuilder(model.DatabaseConnectionString);
+                            if (this.UseMars)
+                            {
+                                sqlCsb.MultipleActiveResultSets = true;
+                            }
+                            connectionString = sqlCsb.ToString();
+                        }
+                        else
+                        {
+                            connectionString = CreateConnectionString(model.SqlAuthenticationType == "windowsauthentication",
+                                model.SqlServerName, model.SqlDatabaseName,
+                                model.SqlServerUsername, model.SqlServerPassword);
+                        }
+
+                        if (model.SqlServerCreateDatabase)
+                        {
+                            if (!SqlServerDatabaseExists(connectionString))
+                            {
+                                //create database
+                                var collation = model.UseCustomCollation ? model.Collation : "";
+                                var errorCreatingDatabase = CreateDatabase(connectionString, collation);
+                                if (!String.IsNullOrEmpty(errorCreatingDatabase))
+                                    throw new Exception(errorCreatingDatabase);
+                            }
+                        }
+                        else
+                        {
+                            if (!SqlServerDatabaseExists(connectionString))
+                                throw new Exception(_locService.GetResource("DatabaseNotExists"));
                         }
                     }
                     else
                     {
-                        //检查到数据库不存在(未勾选不存在则创建选项)
-                        if (!MySqlServerDatabaseExists(connectionString))
-                            throw new Exception(_locService.GetResource("DatabaseNotExists"));
+                        //SQL CE
+                        string databaseFileName = "Ransurotto.Db.sdf";
+                        string databasePath = @"|DataDirectory|\" + databaseFileName;
+                        connectionString = "Data Source=" + databasePath + ";Persist Security Info=False";
+
+                        string databaseFullPath = CommonHelper.MapPath("~/App_Data/") + databaseFileName;
+                        if (System.IO.File.Exists(databaseFullPath))
+                        {
+                            System.IO.File.Delete(databaseFullPath);
+                        }
                     }
 
                     //保存数据库连接设定
@@ -235,7 +266,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
             if (DataSettingsHelper.DatabaseIsInstalled())
                 return RedirectToRoute("HomePage");
 
-            //Update current language
+            //更新当前语言
             _locService.SaveCurrentLanguage(language);
 
             return RedirectToAction("Index");
@@ -258,8 +289,9 @@ namespace RANSUROTTO.BLOG.Web.Controllers
         #region Utilities
 
         /// <summary>
-        /// 创建数据库连接字符串
+        /// 创建SQL Server数据库连接字符串
         /// </summary>
+        /// <param name="trustedConnection">使用可信连接</param>
         /// <param name="serverName">数据库服务实例名</param>
         /// <param name="databaseName">数据库名称</param>
         /// <param name="userName">连接用户名</param>
@@ -267,40 +299,42 @@ namespace RANSUROTTO.BLOG.Web.Controllers
         /// <param name="timeout">超时时间</param>
         /// <returns>结果</returns>
         [NonAction]
-        protected virtual string CreateMySqlConnectionString(
+        protected virtual string CreateConnectionString(bool trustedConnection,
             string serverName, string databaseName,
-            string userName, string password, uint timeout = 0)
+            string userName, string password, int timeout = 0)
         {
-            var builder = new MySqlConnectionStringBuilder();
-
-            builder.IntegratedSecurity = false;
-            //builder.Port = 3306;
-            builder.Server = serverName;
-            builder.Database = databaseName;
-            builder.UserID = userName;
-            builder.Password = password;
-
+            var builder = new SqlConnectionStringBuilder();
+            builder.IntegratedSecurity = trustedConnection;
+            builder.DataSource = serverName;
+            builder.InitialCatalog = databaseName;
+            if (!trustedConnection)
+            {
+                builder.UserID = userName;
+                builder.Password = password;
+            }
             builder.PersistSecurityInfo = false;
-
+            if (this.UseMars)
+            {
+                builder.MultipleActiveResultSets = true;
+            }
             if (timeout > 0)
             {
-                builder.ConnectionTimeout = timeout;
+                builder.ConnectTimeout = timeout;
             }
-
             return builder.ConnectionString;
         }
 
         /// <summary>
-        /// 检查MySQL数据库是否存在
+        /// 检查SQL Server数据库是否存在
         /// </summary>
         /// <param name="connectionString">数据库连接字符串</param>
         /// <returns>结果</returns>
         [NonAction]
-        public virtual bool MySqlServerDatabaseExists(string connectionString)
+        public virtual bool SqlServerDatabaseExists(string connectionString)
         {
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                using (var conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                 }
@@ -313,29 +347,33 @@ namespace RANSUROTTO.BLOG.Web.Controllers
         }
 
         /// <summary>
-        /// 创建MySQL数据库
+        /// 创建SQL Server数据库
         /// </summary>
-        /// <param name="connectionString">MySQL连接字符串</param>
-        /// <param name="triesToConnect"></param>
+        /// <param name="connectionString">SQL Server连接字符串</param>
+        /// <param name="collation">SQL Server排序规则</param>
+        /// <param name="triesToConnect">
+        /// 尝试连接至数据库的次数
+        /// 如果超过次数无法正常连接,则返回错误
+        /// 输入0跳过验证
+        /// </param>
         /// <returns></returns>
         [NonAction]
-        public virtual string CreateMySqlDatabase(string connectionString, int triesToConnect = 10)
+        public virtual string CreateDatabase(string connectionString, string collation, int triesToConnect = 10)
         {
             try
             {
-                //解析数据库名称
-                var builder = new MySqlConnectionStringBuilder(connectionString);
-                var databaseName = builder.Database;
-                //对MySQL数据库系统表'mysql'进行操作
-                builder.Database = "mysql";
+                var builder = new SqlConnectionStringBuilder(connectionString);
+                var databaseName = builder.InitialCatalog;
+                //对SQL Server数据库系统表'master'进行操作
+                builder.InitialCatalog = "master";
                 var masterCatalogConnectionString = builder.ToString();
-
-                string query = $"CREATE DATABASE `{databaseName}`";
-
-                using (var conn = new MySqlConnection(masterCatalogConnectionString))
+                string query = string.Format("CREATE DATABASE [{0}]", databaseName);
+                if (!String.IsNullOrWhiteSpace(collation))
+                    query = string.Format("{0} COLLATE {1}", query, collation);
+                using (var conn = new SqlConnection(masterCatalogConnectionString))
                 {
                     conn.Open();
-                    using (var command = new MySqlCommand(query, conn))
+                    using (var command = new SqlCommand(query, conn))
                     {
                         command.ExecuteNonQuery();
                     }
@@ -349,7 +387,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                         if (i == triesToConnect)
                             throw new Exception("无法连接到新数据库,请重试或手动检查。");
 
-                        if (!this.MySqlServerDatabaseExists(connectionString))
+                        if (!this.SqlServerDatabaseExists(connectionString))
                             Thread.Sleep(1000);
                         else
                             break;
