@@ -11,7 +11,7 @@ namespace RANSUROTTO.BLOG.Data.Context
     /// 实体上下文实例
     /// </summary>
     /*在单元测试使用Sqlce下需要注释这行信息*/
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    /*[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]*/
     public class EntityContext : DbObjectContext
     {
 
