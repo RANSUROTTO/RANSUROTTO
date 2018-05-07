@@ -2,6 +2,8 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using RANSUROTTO.BLOG.Core.Data;
@@ -47,26 +49,69 @@ namespace RANSUROTTO.BLOG.Service.Common
                 throw new IOException("备份文件夹不存在");
             }
 
-            return Directory.GetFiles(path, "*.sql").Select(fullPath => new FileInfo(fullPath))
+            return Directory.GetFiles(path, "*.bak").Select(fullPath => new FileInfo(fullPath))
                 .OrderByDescending(p => p.CreationTime).ToList();
         }
 
+        /// <summary>
+        /// 为当前数据库创建备份
+        /// </summary>
         public virtual void BackupDatabase()
         {
             CheckBackupSupported();
 
-            //TODO 这里应该考虑各种数据库拥有不同的备份形式。目前此处实现为MYSQL数据库备份功能
-            var fileName = string.Format("{0}database_{1:yyyy-MM-dd-HH-mm-ss}_{2}.sql",
+            //TODO 这里应该考虑各种数据库拥有不同的备份形式。目前此处实现为 SQL Server 数据库备份功能
+            var fileName = string.Format(
+                "{0}database_{1:yyyy-MM-dd-HH-mm-ss}_{2}.bak",
                 GetBackupDirectoryPath(), DateTime.Now, CommonHelper.GenerateRandomDigitCode(10));
 
-            var commandText = string.Format("");
+            var commandText = string.Format(
+                "BACKUP DATABASE [{0}] TO DISK = '{1}' WITH FORMAT",
+                _dbContext.DbName(), fileName);
 
             _dbContext.ExecuteSqlCommand(commandText, true);
         }
 
+        /// <summary>
+        /// 从备份恢复数据库
+        /// </summary>
+        /// <param name="backupFileName">备份文件名</param>
         public virtual void RestoreDatabase(string backupFileName)
         {
-            throw new NotImplementedException();
+            CheckBackupSupported();
+            var settings = new DataSettingsManager();
+            var conn = new SqlConnectionStringBuilder(settings.LoadSettings().DataConnectionString)
+            {
+                InitialCatalog = "master"
+            };
+
+            //TODO 这里应该考虑各种数据库拥有不同的恢复备份形式。目前此处实现为 SQL Server 数据库恢复备份功能
+            using (var sqlConnectiononn = new SqlConnection(conn.ToString()))
+            {
+                var commandText = string.Format(
+                    "DECLARE @ErrorMessage NVARCHAR(4000)\n" +
+                    "ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE\n" +
+                    "BEGIN TRY\n" +
+                    "RESTORE DATABASE [{0}] FROM DISK = '{1}' WITH REPLACE\n" +
+                    "END TRY\n" +
+                    "BEGIN CATCH\n" +
+                    "SET @ErrorMessage = ERROR_MESSAGE()\n" +
+                    "END CATCH\n" +
+                    "ALTER DATABASE [{0}] SET MULTI_USER WITH ROLLBACK IMMEDIATE\n" +
+                    "IF (@ErrorMessage is not NULL)\n" +
+                    "BEGIN\n" +
+                    "RAISERROR (@ErrorMessage, 16, 1)\n" +
+                    "END",
+                    _dbContext.DbName(),
+                    backupFileName);
+
+                DbCommand dbCommand = new SqlCommand(commandText, sqlConnectiononn);
+                if (sqlConnectiononn.State != ConnectionState.Open)
+                    sqlConnectiononn.Open();
+                dbCommand.ExecuteNonQuery();
+            }
+            //清空连接池
+            SqlConnection.ClearAllPools();
         }
 
         /// <summary>

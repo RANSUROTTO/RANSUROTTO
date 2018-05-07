@@ -10,29 +10,46 @@ using RANSUROTTO.BLOG.Admin.Models.Common;
 using RANSUROTTO.BLOG.Core;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Helper;
+using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Kendoui;
+using RANSUROTTO.BLOG.Service.Common;
 using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Service.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
     public class CommonController : BaseAdminController
     {
 
-        private readonly HttpContextBase _httpContext;
-        private readonly ILanguageService _languageService;
-        private readonly IWorkContext _workContext;
-        private readonly IDateTimeHelper _dateTimeHelper;
-        private readonly IWebHelper _webHelper;
+        #region Fields
 
-        public CommonController(HttpContextBase httpContext, ILanguageService languageService, IWorkContext workContext, IDateTimeHelper dateTimeHelper, IWebHelper webHelper)
+        private readonly IDateTimeHelper _dateTimeHelper;
+        private readonly HttpContextBase _httpContext;
+        private readonly IWorkContext _workContext;
+        private readonly IWebHelper _webHelper;
+        private readonly ILocalizationService _localizationService;
+        private readonly ILanguageService _languageService;
+        private readonly IMaintenanceService _maintenanceService;
+
+        #endregion
+
+        #region Constructor
+
+        public CommonController(IDateTimeHelper dateTimeHelper, HttpContextBase httpContext, IWorkContext workContext, IWebHelper webHelper, ILocalizationService localizationService, ILanguageService languageService, IMaintenanceService maintenanceService)
         {
-            _httpContext = httpContext;
-            _languageService = languageService;
-            _workContext = workContext;
             _dateTimeHelper = dateTimeHelper;
+            _httpContext = httpContext;
+            _workContext = workContext;
             _webHelper = webHelper;
+            _localizationService = localizationService;
+            _languageService = languageService;
+            _maintenanceService = maintenanceService;
         }
+
+        #endregion
+
+        #region Methods
 
         public virtual ActionResult SystemInfo()
         {
@@ -153,11 +170,92 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost, ActionName("Maintenance")]
+        [FormValueRequired("delete-guests")]
+        public virtual ActionResult MaintenanceDeleteGuests(MaintenanceModel model)
+        {
+            DateTime? startDateValue = (model.DeleteGuests.StartDate == null) ? null
+                : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.DeleteGuests.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
+
+            DateTime? endDateValue = (model.DeleteGuests.EndDate == null) ? null
+                : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.DeleteGuests.EndDate.Value, _dateTimeHelper.CurrentTimeZone).AddDays(1);
+
+            //model.DeleteGuests.NumberOfDeletedCustomers = _customerService.DeleteGuestCustomers(startDateValue, endDateValue, model.DeleteGuests.OnlyWithoutShoppingCart);
+
+            return View(model);
+        }
+
         [HttpPost]
         public virtual ActionResult BackupFiles(DataSourceRequest command)
         {
-            return null;
+            var backupFiles = _maintenanceService.GetAllBackupFiles().ToList();
+
+            var gridModel = new DataSourceResult
+            {
+                Data = backupFiles.Select(p => new
+                {
+                    p.Name,
+                    Length = string.Format("{0:F2} Mb", p.Length / 1024f / 1024f),
+                    Link = _webHelper.GetLocation(false) + "Administration/db_backups/" + p.Name
+                }),
+                Total = backupFiles.Count
+            };
+            return Json(gridModel);
         }
+
+        [HttpPost, ActionName("Maintenance")]
+        [FormValueRequired("backup-database")]
+        public virtual ActionResult BackupDatabase(MaintenanceModel model)
+        {
+            try
+            {
+                _maintenanceService.BackupDatabase();
+                this.SuccessNotification(_localizationService.GetResource("Admin.System.Maintenance.BackupDatabase.BackupCreated"));
+            }
+            catch (Exception exc)
+            {
+                ErrorNotification(exc);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Maintenance")]
+        [FormValueRequired("backupFileName", "action")]
+        public virtual ActionResult BackupAction(MaintenanceModel model)
+        {
+            var action = this.Request.Form["action"];
+
+            var fileName = this.Request.Form["backupFileName"];
+            var backupPath = _maintenanceService.GetBackupPath(fileName);
+
+            try
+            {
+                switch (action)
+                {
+                    case "delete-backup":
+                        {
+                            System.IO.File.Delete(backupPath);
+                            this.SuccessNotification(string.Format(_localizationService.GetResource("Admin.System.Maintenance.BackupDatabase.BackupDeleted"), fileName));
+                        }
+                        break;
+                    case "restore-backup":
+                        {
+                            _maintenanceService.RestoreDatabase(backupPath);
+                            this.SuccessNotification(_localizationService.GetResource("Admin.System.Maintenance.BackupDatabase.DatabaseRestored"));
+                        }
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                ErrorNotification(exc);
+            }
+
+            return View(model);
+        }
+
+        #endregion
 
         #region Utilities
 
