@@ -71,7 +71,7 @@
     <Compile Include="Context\EntityContext.cs" />
     <Compile Include="Context\IDbContext.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Initializers\MySQL_CreateTablesIfNotExist.cs" />
+    <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
     <Compile Include="Mapping\Blog\BlogCommentMap.cs" />
     <Compile Include="Mapping\Blog\BlogPostMap.cs" />
     <Compile Include="Mapping\Blog\CategoryMap.cs" />

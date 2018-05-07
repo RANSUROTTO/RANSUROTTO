@@ -45,7 +45,7 @@
     <Value>指定自定义的Sql Server排序规则</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseCreationError">
-    <Value>创建数据库: {0}的时候发生错误</Value>
+    <Value>创建数据库发生错误: {0}</Value>
   </LocaleResource>
   <LocaleResource Name="Database">
     <Value>数据库</Value>

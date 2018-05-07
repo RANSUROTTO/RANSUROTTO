@@ -8,7 +8,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace RANSUROTTO.BLOG.Data.Initializers
 {
-    public class MySQL_CreateTablesIfNotExist<TContext> : IDatabaseInitializer<TContext> where TContext : DbContext
+    public class CreateTablesIfNotExist<TContext> : IDatabaseInitializer<TContext> where TContext : DbContext
     {
 
         private readonly string[] _tablesToValidate;
@@ -19,7 +19,7 @@ namespace RANSUROTTO.BLOG.Data.Initializers
         /// </summary>
         /// <param name="tablesToValidate">标识需要验证现有表表名列表</param>
         /// <param name="customCommands">自定义需要执行SQL脚本文件路径列表</param>
-        public MySQL_CreateTablesIfNotExist(string[] tablesToValidate, string[] customCommands)
+        public CreateTablesIfNotExist(string[] tablesToValidate, string[] customCommands)
         {
             this._tablesToValidate = tablesToValidate;
             this._customCommands = customCommands;
@@ -35,17 +35,15 @@ namespace RANSUROTTO.BLOG.Data.Initializers
             if (dbExists)
             {
                 bool createTables;
-                var dataBaseName = new MySqlConnectionStringBuilder(context.Database.Connection.ConnectionString).Database;
-
                 if (_tablesToValidate != null && _tablesToValidate.Length > 0)
                 {
-                    var existingTableNames = new List<string>(context.Database.SqlQuery<string>($"SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA=\"{dataBaseName}\""));
+                    var existingTableNames = new List<string>(context.Database.SqlQuery<string>("SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_type = 'BASE TABLE'"));
                     createTables = !existingTableNames.Intersect(_tablesToValidate, StringComparer.InvariantCultureIgnoreCase).Any();
                 }
                 else
                 {
                     int numberOfTables = 0;
-                    foreach (var t1 in context.Database.SqlQuery<int>($"SELECT COUNT(1) FROM information_schema.TABLES WHERE TABLE_SCHEMA=\"{dataBaseName}\""))
+                    foreach (var t1 in context.Database.SqlQuery<int>("SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE table_type = 'BASE TABLE' "))
                         numberOfTables = t1;
 
                     createTables = numberOfTables == 0;

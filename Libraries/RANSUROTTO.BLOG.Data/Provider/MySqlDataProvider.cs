@@ -54,14 +54,7 @@ namespace RANSUROTTO.BLOG.Data.Provider
         /// </summary>
         public virtual void SetDatabaseInitializer()
         {
-            var tablesToValidate = new string[] { };
 
-            var customCommands = new List<string>();
-            customCommands.Add(ParseCommands(CommonHelper.MapPath("~/App_Data/Install/SqlServer.Indexes.sql"), false));
-            customCommands.Add(ParseCommands(CommonHelper.MapPath("~/App_Data/Install/SqlServer.StoredProcedures.sql"), false));
-
-            var initializer = new MySQL_CreateTablesIfNotExist<EntityContext>(tablesToValidate, customCommands.ToArray());
-            Database.SetInitializer(initializer);
         }
 
         /// <summary>
@@ -69,8 +62,7 @@ namespace RANSUROTTO.BLOG.Data.Provider
         /// </summary>
         public virtual void InitDatabase()
         {
-            InitConnectionFactory();
-            SetDatabaseInitializer();
+
         }
 
         public virtual DbParameter GetParameter()
@@ -81,36 +73,6 @@ namespace RANSUROTTO.BLOG.Data.Provider
         public virtual int SupportedLengthOfBinaryHash()
         {
             return 0;
-        }
-
-        #endregion
-
-        #region Utilities
-
-        /// <summary>
-        /// 将指定SQL脚本文件转换为SQL脚本字符串对象
-        /// </summary>
-        /// <param name="filePath">SQL脚本文件路径</param>
-        /// <param name="throwExceptionIfNonExists">文件未找到时是否抛出异常</param>
-        /// <returns></returns>
-        protected virtual string ParseCommands(string filePath, bool throwExceptionIfNonExists)
-        {
-            if (!File.Exists(filePath))
-            {
-                if (throwExceptionIfNonExists)
-                    throw new ArgumentException($"指定的文件不存在 - {filePath}");
-
-                return string.Empty;
-            }
-
-            string command;
-
-            using (var stream = File.OpenRead(filePath))
-            using (var reader = new StreamReader(stream))
-            {
-                command = reader.ReadToEnd();
-            }
-            return command;
         }
 
         #endregion
