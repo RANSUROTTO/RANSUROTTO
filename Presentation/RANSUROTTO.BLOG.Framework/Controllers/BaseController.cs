@@ -4,9 +4,9 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Framework.UI;
-using RANSUROTTO.BLOG.Service.Logging;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Core.Infrastructure;
+using RANSUROTTO.BLOG.Services.Logging;
 
 namespace RANSUROTTO.BLOG.Framework.Controllers
 {

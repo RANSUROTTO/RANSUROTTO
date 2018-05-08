@@ -5,8 +5,8 @@ using System.Web.Routing;
 using System.Xml;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Service.Localization;
-using RANSUROTTO.BLOG.Service.Security;
+using RANSUROTTO.BLOG.Services.Localization;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Framework.Menu
 {

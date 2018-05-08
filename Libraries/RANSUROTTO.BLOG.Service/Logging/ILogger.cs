@@ -5,7 +5,7 @@ using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
 using RANSUROTTO.BLOG.Core.Domain.Logging.Enum;
 
-namespace RANSUROTTO.BLOG.Service.Logging
+namespace RANSUROTTO.BLOG.Services.Logging
 {
 
     /// <summary>

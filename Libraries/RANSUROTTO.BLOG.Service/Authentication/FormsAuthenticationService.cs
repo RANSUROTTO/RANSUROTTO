@@ -3,9 +3,9 @@ using System.Web;
 using System.Web.Security;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
-using RANSUROTTO.BLOG.Service.Customers;
+using RANSUROTTO.BLOG.Services.Customers;
 
-namespace RANSUROTTO.BLOG.Service.Authentication
+namespace RANSUROTTO.BLOG.Services.Authentication
 {
     public class FormsAuthenticationService : IAuthenticationService
     {

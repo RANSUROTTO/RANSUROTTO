@@ -1,4 +1,4 @@
-﻿namespace RANSUROTTO.BLOG.Service.Helpers
+﻿namespace RANSUROTTO.BLOG.Services.Helpers
 {
     /// <summary>
     /// 用户代理帮助类接口

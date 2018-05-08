@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using RANSUROTTO.BLOG.Admin.Models.Tasks;
 using RANSUROTTO.BLOG.Framework.Validators;
-using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Admin.Validators.Tasks
 {

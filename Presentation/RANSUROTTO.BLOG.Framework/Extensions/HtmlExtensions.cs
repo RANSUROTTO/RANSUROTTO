@@ -9,7 +9,7 @@ using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Framework.Localization;
 using RANSUROTTO.BLOG.Framework.Mvc;
-using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Framework.Extensions
 {

@@ -1,4 +1,4 @@
-﻿namespace RANSUROTTO.BLOG.Service.Tasks
+﻿namespace RANSUROTTO.BLOG.Services.Tasks
 {
 
     /// <summary>

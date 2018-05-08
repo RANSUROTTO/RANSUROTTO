@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace RANSUROTTO.BLOG.Service.Common
+namespace RANSUROTTO.BLOG.Services.Common
 {
     /// <summary>
     /// 备份服务业务接口

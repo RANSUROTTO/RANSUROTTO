@@ -1,7 +1,7 @@
 ﻿using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Events;
 
-namespace RANSUROTTO.BLOG.Service.Events
+namespace RANSUROTTO.BLOG.Services.Events
 {
     public static class EventExtensions
     {

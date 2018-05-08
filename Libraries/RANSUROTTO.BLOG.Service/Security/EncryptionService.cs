@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Security.Cryptography;
+using System.Text;
 using RANSUROTTO.BLOG.Core.Domain.Security.Setting;
 
-namespace RANSUROTTO.BLOG.Service.Security
+namespace RANSUROTTO.BLOG.Services.Security
 {
     public class EncryptionService : IEncryptionService
     {

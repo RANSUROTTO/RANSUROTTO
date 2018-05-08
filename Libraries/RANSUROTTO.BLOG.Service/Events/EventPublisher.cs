@@ -2,9 +2,9 @@
 using System.Linq;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Core.Plugins;
-using RANSUROTTO.BLOG.Service.Logging;
+using RANSUROTTO.BLOG.Services.Logging;
 
-namespace RANSUROTTO.BLOG.Service.Events
+namespace RANSUROTTO.BLOG.Services.Events
 {
     public class EventPublisher : IEventPublisher
     {

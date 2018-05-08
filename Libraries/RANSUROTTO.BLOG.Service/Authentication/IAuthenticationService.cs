@@ -1,6 +1,6 @@
 ﻿using RANSUROTTO.BLOG.Core.Domain.Customers;
 
-namespace RANSUROTTO.BLOG.Service.Authentication
+namespace RANSUROTTO.BLOG.Services.Authentication
 {
 
     /// <summary>

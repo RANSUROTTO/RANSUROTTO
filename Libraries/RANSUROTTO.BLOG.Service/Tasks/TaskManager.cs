@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 
-namespace RANSUROTTO.BLOG.Service.Tasks
+namespace RANSUROTTO.BLOG.Services.Tasks
 {
     public class TaskManager
     {

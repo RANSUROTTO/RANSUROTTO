@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using RANSUROTTO.BLOG.Core.Context;
-using RANSUROTTO.BLOG.Service.Common;
+using RANSUROTTO.BLOG.Services.Common;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {

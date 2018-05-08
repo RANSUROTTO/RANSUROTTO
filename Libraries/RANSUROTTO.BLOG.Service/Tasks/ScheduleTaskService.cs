@@ -4,7 +4,7 @@ using System.Linq;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Tasks;
 
-namespace RANSUROTTO.BLOG.Service.Tasks
+namespace RANSUROTTO.BLOG.Services.Tasks
 {
     public class ScheduleTaskService : IScheduleTaskService
     {

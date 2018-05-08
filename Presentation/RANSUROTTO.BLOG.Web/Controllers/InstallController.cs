@@ -11,7 +11,7 @@ using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Framework.Security;
 using RANSUROTTO.BLOG.Web.Models.Install;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Service.Installation;
+using RANSUROTTO.BLOG.Services.Installation;
 using RANSUROTTO.BLOG.Web.Infrastructure.Installation;
 
 namespace RANSUROTTO.BLOG.Web.Controllers

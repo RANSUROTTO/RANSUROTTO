@@ -1,6 +1,6 @@
 ﻿using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 
-namespace RANSUROTTO.BLOG.Service.Customers
+namespace RANSUROTTO.BLOG.Services.Customers
 {
     public interface ICustomerRegistrationService
     {

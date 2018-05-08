@@ -245,9 +245,9 @@
       <Project>{358042cd-0244-467f-8635-61078ee6a1f1}</Project>
       <Name>RANSUROTTO.BLOG.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\RANSUROTTO.BLOG.Service\RANSUROTTO.BLOG.Service.csproj">
+    <ProjectReference Include="..\..\Libraries\RANSUROTTO.BLOG.Service\RANSUROTTO.BLOG.Services.csproj">
       <Project>{579cb98f-e361-48e3-bbf5-9aa5d74a1fe1}</Project>
-      <Name>RANSUROTTO.BLOG.Service</Name>
+      <Name>RANSUROTTO.BLOG.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\RANSUROTTO.BLOG.Framework\RANSUROTTO.BLOG.Framework.csproj">
       <Project>{8c72beb7-97f8-4c6d-a744-cf98445d29f1}</Project>

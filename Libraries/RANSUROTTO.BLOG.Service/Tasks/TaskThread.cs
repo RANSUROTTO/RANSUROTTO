@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Threading;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
 
-namespace RANSUROTTO.BLOG.Service.Tasks
+namespace RANSUROTTO.BLOG.Services.Tasks
 {
     public class TaskThread : IDisposable
     {

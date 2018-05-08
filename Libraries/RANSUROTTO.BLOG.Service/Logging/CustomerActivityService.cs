@@ -11,7 +11,7 @@ using RANSUROTTO.BLOG.Core.Domain.Logging.Setting;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Data.Context;
 
-namespace RANSUROTTO.BLOG.Service.Logging
+namespace RANSUROTTO.BLOG.Services.Logging
 {
     public class CustomerActivityService : ICustomerActivityService
     {

@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using RANSUROTTO.BLOG.Core.Extensions;
 
-namespace RANSUROTTO.BLOG.Service.Helpers
+namespace RANSUROTTO.BLOG.Services.Helpers
 {
     public class BrowscapXmlHelper
     {

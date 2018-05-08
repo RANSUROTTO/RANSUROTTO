@@ -6,7 +6,7 @@ using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Framework.Localization
 {

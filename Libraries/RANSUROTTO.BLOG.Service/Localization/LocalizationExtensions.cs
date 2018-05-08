@@ -4,7 +4,7 @@ using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Security;
 using RANSUROTTO.BLOG.Core.Helper;
 
-namespace RANSUROTTO.BLOG.Service.Localization
+namespace RANSUROTTO.BLOG.Services.Localization
 {
     public static class LocalizationExtensions
     {

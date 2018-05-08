@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using RANSUROTTO.BLOG.Core.Configuration;
 
-namespace RANSUROTTO.BLOG.Service.Configuration
+namespace RANSUROTTO.BLOG.Services.Configuration
 {
     public static class SettingExtensions
     {

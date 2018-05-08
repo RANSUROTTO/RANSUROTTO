@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Framework.Extensions
 {

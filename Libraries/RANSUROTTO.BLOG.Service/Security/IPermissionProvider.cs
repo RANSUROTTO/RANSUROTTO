@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Domain.Security;
 
-namespace RANSUROTTO.BLOG.Service.Security
+namespace RANSUROTTO.BLOG.Services.Security
 {
     /// <summary>
     /// 权限提供商

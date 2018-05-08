@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Service.Customers;
+using RANSUROTTO.BLOG.Services.Customers;
 
 namespace RANSUROTTO.BLOG.Framework.Controllers
 {

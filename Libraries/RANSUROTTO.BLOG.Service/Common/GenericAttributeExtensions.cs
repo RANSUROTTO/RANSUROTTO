@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Data;
 
-namespace RANSUROTTO.BLOG.Service.Common
+namespace RANSUROTTO.BLOG.Services.Common
 {
     public static class GenericAttributeExtensions
     {

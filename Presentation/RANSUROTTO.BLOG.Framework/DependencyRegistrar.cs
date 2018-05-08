@@ -22,18 +22,19 @@ using RANSUROTTO.BLOG.Data.Repository;
 using RANSUROTTO.BLOG.Framework.Mvc.Routes;
 using RANSUROTTO.BLOG.Framework.Themes;
 using RANSUROTTO.BLOG.Framework.UI;
-using RANSUROTTO.BLOG.Service.Authentication;
-using RANSUROTTO.BLOG.Service.Common;
-using RANSUROTTO.BLOG.Service.Configuration;
-using RANSUROTTO.BLOG.Service.Customers;
-using RANSUROTTO.BLOG.Service.Events;
 using RANSUROTTO.BLOG.Service.Helpers;
-using RANSUROTTO.BLOG.Service.Infrastructure;
-using RANSUROTTO.BLOG.Service.Installation;
-using RANSUROTTO.BLOG.Service.Localization;
-using RANSUROTTO.BLOG.Service.Logging;
-using RANSUROTTO.BLOG.Service.Security;
-using RANSUROTTO.BLOG.Service.Tasks;
+using RANSUROTTO.BLOG.Services.Authentication;
+using RANSUROTTO.BLOG.Services.Common;
+using RANSUROTTO.BLOG.Services.Configuration;
+using RANSUROTTO.BLOG.Services.Customers;
+using RANSUROTTO.BLOG.Services.Events;
+using RANSUROTTO.BLOG.Services.Helpers;
+using RANSUROTTO.BLOG.Services.Infrastructure;
+using RANSUROTTO.BLOG.Services.Installation;
+using RANSUROTTO.BLOG.Services.Localization;
+using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
+using RANSUROTTO.BLOG.Services.Tasks;
 
 namespace RANSUROTTO.BLOG.Framework
 {
@@ -146,6 +147,7 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
 
             builder.RegisterType<GenericAttributeService>().As<IGenericAttributeService>().InstancePerLifetimeScope();
+            builder.RegisterType<MaintenanceService>().As<IMaintenanceService>().InstancePerLifetimeScope();
 
             builder.RegisterType<PageHeadBuilder>().As<IPageHeadBuilder>().InstancePerLifetimeScope();
             builder.RegisterType<DateTimeHelper>().As<IDateTimeHelper>().InstancePerLifetimeScope();

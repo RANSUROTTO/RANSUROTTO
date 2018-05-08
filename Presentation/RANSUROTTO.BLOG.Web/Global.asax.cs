@@ -13,8 +13,8 @@ using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Framework.Mvc.Routes;
 using RANSUROTTO.BLOG.Framework.Themes;
 using RANSUROTTO.BLOG.Framework.Validators;
-using RANSUROTTO.BLOG.Service.Logging;
-using RANSUROTTO.BLOG.Service.Tasks;
+using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Tasks;
 
 namespace RANSUROTTO.BLOG.Web
 {

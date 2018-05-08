@@ -2,8 +2,10 @@
 using AutoMapper;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
+using RANSUROTTO.BLOG.Admin.Models.Messages;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
+using RANSUROTTO.BLOG.Core.Domain.Messages;
 using RANSUROTTO.BLOG.Core.Infrastructure.Mapper;
 
 namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
@@ -18,17 +20,32 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 #region Localization
 
                 cfg.CreateMap<Language, LanguageModel>()
-                    .ForMember(model => model.CustomProperties, entity => entity.Ignore());
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
                 cfg.CreateMap<LanguageModel, Language>()
-                    .ForMember(entity => entity.LocaleStringResources, model => model.Ignore());
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
+                    .ForMember(dest => dest.LocaleStringResources, mo => mo.Ignore());
 
                 #endregion
 
                 #region Logging
 
                 cfg.CreateMap<Log, LogModel>()
-                    .ForMember(model => model.CustomProperties, entity => entity.Ignore());
-                cfg.CreateMap<LogModel, Log>();
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<LogModel, Log>()
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
+
+                #endregion
+
+                #region Messages
+
+                cfg.CreateMap<EmailAccount, EmailAccountModel>()
+                    .ForMember(dest => dest.Password, mo => mo.Ignore())
+                    .ForMember(dest => dest.IsDefaultEmailAccount, mo => mo.Ignore())
+                    .ForMember(dest => dest.SendTestEmailTo, mo => mo.Ignore())
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<EmailAccountModel, EmailAccount>()
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
+                    .ForMember(dest => dest.Password, mo => mo.Ignore());
 
                 #endregion
 

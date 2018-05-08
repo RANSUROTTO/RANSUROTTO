@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Data;
@@ -8,9 +8,9 @@ using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
-using RANSUROTTO.BLOG.Service.Events;
+using RANSUROTTO.BLOG.Services.Events;
 
-namespace RANSUROTTO.BLOG.Service.Customers
+namespace RANSUROTTO.BLOG.Services.Customers
 {
     public class CustomerService : ICustomerService
     {

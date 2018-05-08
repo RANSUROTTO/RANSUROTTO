@@ -9,9 +9,9 @@ using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Configuration;
 using RANSUROTTO.BLOG.Core.Helper;
-using RANSUROTTO.BLOG.Service.Events;
+using RANSUROTTO.BLOG.Services.Events;
 
-namespace RANSUROTTO.BLOG.Service.Configuration
+namespace RANSUROTTO.BLOG.Services.Configuration
 {
     public class SettingService : ISettingService
     {

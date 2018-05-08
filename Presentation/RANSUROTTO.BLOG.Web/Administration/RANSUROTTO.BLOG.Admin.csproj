@@ -1211,6 +1211,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EmailAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -1228,8 +1229,10 @@
     <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Logging\LogListModel.cs" />
     <Compile Include="Models\Logging\LogModel.cs" />
+    <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Tasks\ScheduleTaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Messages\EmailAccountValidator.cs" />
     <Compile Include="Validators\Tasks\ScheduleTaskValidator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1367,6 +1370,10 @@
     <Content Include="Views\Common\Warnings.cshtml" />
     <Content Include="Views\Common\Maintenance.cshtml" />
     <Content Include="Views\ScheduleTask\List.cshtml" />
+    <Content Include="Views\EmailAccount\List.cshtml" />
+    <Content Include="Views\EmailAccount\Create.cshtml" />
+    <Content Include="Views\EmailAccount\Edit.cshtml" />
+    <Content Include="Views\EmailAccount\_CreateOrUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1400,9 +1407,9 @@
       <Project>{C8433697-18E2-41D5-A890-4FC735486229}</Project>
       <Name>RANSUROTTO.BLOG.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Libraries\RANSUROTTO.BLOG.Service\RANSUROTTO.BLOG.Service.csproj">
+    <ProjectReference Include="..\..\..\Libraries\RANSUROTTO.BLOG.Service\RANSUROTTO.BLOG.Services.csproj">
       <Project>{579CB98F-E361-48E3-BBF5-9AA5D74A1FE1}</Project>
-      <Name>RANSUROTTO.BLOG.Service</Name>
+      <Name>RANSUROTTO.BLOG.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\RANSUROTTO.BLOG.Framework\RANSUROTTO.BLOG.Framework.csproj">
       <Project>{8C72BEB7-97F8-4C6D-A744-CF98445D29F1}</Project>

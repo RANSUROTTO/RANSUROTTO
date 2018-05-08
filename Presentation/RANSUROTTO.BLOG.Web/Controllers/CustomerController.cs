@@ -7,11 +7,11 @@ using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
 using RANSUROTTO.BLOG.Framework.Security;
-using RANSUROTTO.BLOG.Service.Authentication;
-using RANSUROTTO.BLOG.Service.Customers;
-using RANSUROTTO.BLOG.Service.Events;
-using RANSUROTTO.BLOG.Service.Localization;
-using RANSUROTTO.BLOG.Service.Logging;
+using RANSUROTTO.BLOG.Services.Authentication;
+using RANSUROTTO.BLOG.Services.Customers;
+using RANSUROTTO.BLOG.Services.Events;
+using RANSUROTTO.BLOG.Services.Localization;
+using RANSUROTTO.BLOG.Services.Logging;
 using RANSUROTTO.BLOG.Web.Models.Customer;
 
 namespace RANSUROTTO.BLOG.Web.Controllers

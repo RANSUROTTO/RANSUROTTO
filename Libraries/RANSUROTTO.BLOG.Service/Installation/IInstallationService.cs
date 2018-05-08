@@ -1,4 +1,4 @@
-﻿namespace RANSUROTTO.BLOG.Service.Installation
+﻿namespace RANSUROTTO.BLOG.Services.Installation
 {
     /// <summary>
     /// 安装服务业务层接口

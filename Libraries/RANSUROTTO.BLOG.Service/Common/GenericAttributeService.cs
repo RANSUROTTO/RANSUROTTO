@@ -6,9 +6,9 @@ using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Common;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Data;
-using RANSUROTTO.BLOG.Service.Events;
+using RANSUROTTO.BLOG.Services.Events;
 
-namespace RANSUROTTO.BLOG.Service.Common
+namespace RANSUROTTO.BLOG.Services.Common
 {
     public class GenericAttributeService : IGenericAttributeService
     {

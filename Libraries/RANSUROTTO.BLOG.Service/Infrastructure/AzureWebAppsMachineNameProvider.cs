@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace RANSUROTTO.BLOG.Service.Infrastructure
+namespace RANSUROTTO.BLOG.Services.Infrastructure
 {
     /// <summary>
     /// Auzre Web应用程序机器名称提供程序

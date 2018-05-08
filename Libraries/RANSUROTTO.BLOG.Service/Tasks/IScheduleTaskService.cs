@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Domain.Tasks;
 
-namespace RANSUROTTO.BLOG.Service.Tasks
+namespace RANSUROTTO.BLOG.Services.Tasks
 {
 
     /// <summary>

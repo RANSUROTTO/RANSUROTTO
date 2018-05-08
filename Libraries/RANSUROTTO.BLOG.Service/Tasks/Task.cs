@@ -4,10 +4,10 @@ using RANSUROTTO.BLOG.Core.Caching.RedisCaching;
 using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Core.Domain.Tasks;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Service.Infrastructure;
-using RANSUROTTO.BLOG.Service.Logging;
+using RANSUROTTO.BLOG.Services.Infrastructure;
+using RANSUROTTO.BLOG.Services.Logging;
 
-namespace RANSUROTTO.BLOG.Service.Tasks
+namespace RANSUROTTO.BLOG.Services.Tasks
 {
     public partial class Task
     {

@@ -11,10 +11,10 @@ using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Data.Context;
-using RANSUROTTO.BLOG.Service.Events;
-using RANSUROTTO.BLOG.Service.Logging;
+using RANSUROTTO.BLOG.Services.Events;
+using RANSUROTTO.BLOG.Services.Logging;
 
-namespace RANSUROTTO.BLOG.Service.Localization
+namespace RANSUROTTO.BLOG.Services.Localization
 {
     public class LocalizationService : ILocalizationService
     {

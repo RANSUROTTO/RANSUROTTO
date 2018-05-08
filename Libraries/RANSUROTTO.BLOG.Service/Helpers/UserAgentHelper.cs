@@ -6,7 +6,7 @@ using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 
-namespace RANSUROTTO.BLOG.Service.Helpers
+namespace RANSUROTTO.BLOG.Services.Helpers
 {
     public class UserAgentHelper : IUserAgentHelper
     {

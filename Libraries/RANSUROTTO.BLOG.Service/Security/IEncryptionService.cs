@@ -1,4 +1,4 @@
-namespace RANSUROTTO.BLOG.Service.Security
+namespace RANSUROTTO.BLOG.Services.Security
 {
 
     public interface IEncryptionService

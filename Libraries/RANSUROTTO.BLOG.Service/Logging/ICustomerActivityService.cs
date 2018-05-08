@@ -4,7 +4,7 @@ using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
 
-namespace RANSUROTTO.BLOG.Service.Logging
+namespace RANSUROTTO.BLOG.Services.Logging
 {
 
     /// <summary>

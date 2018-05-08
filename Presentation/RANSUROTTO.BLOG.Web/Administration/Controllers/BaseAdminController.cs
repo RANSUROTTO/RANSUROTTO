@@ -7,7 +7,7 @@ using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Framework.Security;
-using RANSUROTTO.BLOG.Service.Localization;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {

@@ -1,4 +1,4 @@
-﻿namespace RANSUROTTO.BLOG.Service.Events
+﻿namespace RANSUROTTO.BLOG.Services.Events
 {
     /// <summary>
     /// 事件发布接口

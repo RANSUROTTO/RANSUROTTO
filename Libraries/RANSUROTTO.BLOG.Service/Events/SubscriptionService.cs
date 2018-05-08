@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 
-namespace RANSUROTTO.BLOG.Service.Events
+namespace RANSUROTTO.BLOG.Services.Events
 {
     /// <summary>
     /// 事件订阅业务

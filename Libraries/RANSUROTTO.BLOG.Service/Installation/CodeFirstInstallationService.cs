@@ -22,11 +22,11 @@ using RANSUROTTO.BLOG.Core.Domain.Seo.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Tasks;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Core.Infrastructure;
-using RANSUROTTO.BLOG.Service.Configuration;
-using RANSUROTTO.BLOG.Service.Customers;
-using RANSUROTTO.BLOG.Service.Helpers.Setting;
+using RANSUROTTO.BLOG.Services.Configuration;
+using RANSUROTTO.BLOG.Services.Customers;
+using RANSUROTTO.BLOG.Services.Helpers.Setting;
 
-namespace RANSUROTTO.BLOG.Service.Installation
+namespace RANSUROTTO.BLOG.Services.Installation
 {
     public class CodeFirstInstallationService : IInstallationService
     {

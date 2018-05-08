@@ -2,7 +2,7 @@
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Security;
 
-namespace RANSUROTTO.BLOG.Service.Security
+namespace RANSUROTTO.BLOG.Services.Security
 {
     public class StandardPermissionProvider : IPermissionProvider
     {

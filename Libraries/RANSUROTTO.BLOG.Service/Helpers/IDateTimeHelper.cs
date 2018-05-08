@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 
-namespace RANSUROTTO.BLOG.Service.Helpers
+namespace RANSUROTTO.BLOG.Services.Helpers
 {
     /// <summary>
     /// 日期时间帮助类

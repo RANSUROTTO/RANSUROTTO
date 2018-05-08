@@ -4,9 +4,10 @@ using System.Diagnostics;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName;
-using RANSUROTTO.BLOG.Service.Common;
-using RANSUROTTO.BLOG.Service.Configuration;
-using RANSUROTTO.BLOG.Service.Helpers.Setting;
+using RANSUROTTO.BLOG.Services.Common;
+using RANSUROTTO.BLOG.Services.Configuration;
+using RANSUROTTO.BLOG.Services.Helpers;
+using RANSUROTTO.BLOG.Services.Helpers.Setting;
 
 namespace RANSUROTTO.BLOG.Service.Helpers
 {

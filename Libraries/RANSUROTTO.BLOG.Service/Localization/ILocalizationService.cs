@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 
-namespace RANSUROTTO.BLOG.Service.Localization
+namespace RANSUROTTO.BLOG.Services.Localization
 {
 
     /// <summary>

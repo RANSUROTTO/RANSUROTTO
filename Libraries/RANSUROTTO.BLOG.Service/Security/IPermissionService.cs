@@ -2,7 +2,7 @@
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Security;
 
-namespace RANSUROTTO.BLOG.Service.Security
+namespace RANSUROTTO.BLOG.Services.Security
 {
     /// <summary>
     /// 权限业务层接口

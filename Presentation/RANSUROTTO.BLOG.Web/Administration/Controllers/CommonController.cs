@@ -12,10 +12,10 @@ using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Kendoui;
-using RANSUROTTO.BLOG.Service.Common;
 using RANSUROTTO.BLOG.Service.Helpers;
-using RANSUROTTO.BLOG.Service.Localization;
-using RANSUROTTO.BLOG.Service.Security;
+using RANSUROTTO.BLOG.Services.Common;
+using RANSUROTTO.BLOG.Services.Helpers;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {

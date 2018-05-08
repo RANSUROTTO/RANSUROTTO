@@ -1,4 +1,4 @@
-﻿namespace RANSUROTTO.BLOG.Service.Infrastructure
+﻿namespace RANSUROTTO.BLOG.Services.Infrastructure
 {
 
     /// <summary>

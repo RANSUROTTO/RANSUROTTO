@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using RANSUROTTO.BLOG.Core.Configuration;
 using RANSUROTTO.BLOG.Core.Domain.Configuration;
 
-namespace RANSUROTTO.BLOG.Service.Configuration
+namespace RANSUROTTO.BLOG.Services.Configuration
 {
 
     /// <summary>

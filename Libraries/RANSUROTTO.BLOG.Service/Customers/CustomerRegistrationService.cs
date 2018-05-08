@@ -5,11 +5,11 @@ using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
-using RANSUROTTO.BLOG.Service.Events;
-using RANSUROTTO.BLOG.Service.Localization;
-using RANSUROTTO.BLOG.Service.Security;
+using RANSUROTTO.BLOG.Services.Events;
+using RANSUROTTO.BLOG.Services.Localization;
+using RANSUROTTO.BLOG.Services.Security;
 
-namespace RANSUROTTO.BLOG.Service.Customers
+namespace RANSUROTTO.BLOG.Services.Customers
 {
     public class CustomerRegistrationService : ICustomerRegistrationService
     {

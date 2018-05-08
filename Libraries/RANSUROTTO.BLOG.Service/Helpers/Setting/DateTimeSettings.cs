@@ -1,6 +1,6 @@
 ﻿using RANSUROTTO.BLOG.Core.Configuration;
 
-namespace RANSUROTTO.BLOG.Service.Helpers.Setting
+namespace RANSUROTTO.BLOG.Services.Helpers.Setting
 {
     public class DateTimeSettings : ISettings
     {

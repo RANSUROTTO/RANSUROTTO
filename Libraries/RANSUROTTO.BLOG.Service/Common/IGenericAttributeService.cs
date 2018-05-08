@@ -2,7 +2,7 @@
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Common;
 
-namespace RANSUROTTO.BLOG.Service.Common
+namespace RANSUROTTO.BLOG.Services.Common
 {
     /// <summary>
     /// 通用属性业务层接口

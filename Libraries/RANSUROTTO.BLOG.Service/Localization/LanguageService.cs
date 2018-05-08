@@ -5,10 +5,10 @@ using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
-using RANSUROTTO.BLOG.Service.Configuration;
-using RANSUROTTO.BLOG.Service.Events;
+using RANSUROTTO.BLOG.Services.Configuration;
+using RANSUROTTO.BLOG.Services.Events;
 
-namespace RANSUROTTO.BLOG.Service.Localization
+namespace RANSUROTTO.BLOG.Services.Localization
 {
     public class LanguageService : ILanguageService
     {

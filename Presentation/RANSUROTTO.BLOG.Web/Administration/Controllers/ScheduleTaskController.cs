@@ -6,9 +6,10 @@ using RANSUROTTO.BLOG.Core.Domain.Tasks;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Service.Helpers;
-using RANSUROTTO.BLOG.Service.Localization;
-using RANSUROTTO.BLOG.Service.Logging;
-using RANSUROTTO.BLOG.Service.Tasks;
+using RANSUROTTO.BLOG.Services.Helpers;
+using RANSUROTTO.BLOG.Services.Localization;
+using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Tasks;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {

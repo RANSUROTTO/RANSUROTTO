@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 
-namespace RANSUROTTO.BLOG.Service.Customers
+namespace RANSUROTTO.BLOG.Services.Customers
 {
 
     /// <summary>
