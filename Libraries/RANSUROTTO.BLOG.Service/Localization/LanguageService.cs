@@ -136,7 +136,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         public virtual void DeleteLanguage(Language language)
         {
             if (language == null)
-                throw new ArgumentNullException("language");
+                throw new ArgumentNullException(nameof(language));
 
             //如果语言被删除，需要更新默认管理员区域语言Id
             if (_localizationSettings.DefaultAdminLanguageId == language.Id)

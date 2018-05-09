@@ -1227,11 +1227,15 @@
     <Compile Include="Models\Common\MaintenanceModel.cs" />
     <Compile Include="Models\Common\SystemInfoModel.cs" />
     <Compile Include="Models\Localization\LanguageModel.cs" />
+    <Compile Include="Models\Localization\LanguageResourceModel.cs" />
+    <Compile Include="Models\Localization\LanguageResourcesListModel.cs" />
     <Compile Include="Models\Logging\LogListModel.cs" />
     <Compile Include="Models\Logging\LogModel.cs" />
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Tasks\ScheduleTaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Localization\LanguageResourceValidator.cs" />
+    <Compile Include="Validators\Localization\LanguageValidator.cs" />
     <Compile Include="Validators\Messages\EmailAccountValidator.cs" />
     <Compile Include="Validators\Tasks\ScheduleTaskValidator.cs" />
   </ItemGroup>
