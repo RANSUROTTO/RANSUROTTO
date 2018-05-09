@@ -20,7 +20,8 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 #region Localization
 
                 cfg.CreateMap<Language, LanguageModel>()
-                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore())
+                    .ForMember(dest => dest.Search, mo => mo.Ignore());
                 cfg.CreateMap<LanguageModel, Language>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
                     .ForMember(dest => dest.LocaleStringResources, mo => mo.Ignore());

@@ -5,6 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
+using System.Web.WebPages;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Framework.Localization;
@@ -83,6 +84,93 @@ namespace RANSUROTTO.BLOG.Framework.Extensions
             window.AppendLine("</script>");
 
             return MvcHtmlString.Create(window.ToString());
+        }
+
+        public static MvcHtmlString RenderBootstrapTabHeader(this HtmlHelper helper, string currentTabName,
+            LocalizedString title, bool isDefaultTab = false, string tabNameToSelect = "", string customCssClass = "")
+        {
+            if (helper == null)
+                throw new ArgumentNullException(nameof(helper));
+
+            if (string.IsNullOrEmpty(tabNameToSelect))
+                tabNameToSelect = helper.GetSelectedTabName();
+
+            if (string.IsNullOrEmpty(tabNameToSelect) && isDefaultTab)
+                tabNameToSelect = currentTabName;
+
+            var a = new TagBuilder("a")
+            {
+                Attributes =
+                {
+                    new KeyValuePair<string, string>("data-tab-name", currentTabName),
+                    new KeyValuePair<string, string>("href", string.Format("#{0}", currentTabName)),
+                    new KeyValuePair<string, string>("data-toggle", "tab"),
+                },
+                InnerHtml = title.Text
+            };
+            var liClassValue = "";
+            if (tabNameToSelect == currentTabName)
+            {
+                liClassValue = "active";
+            }
+            if (!String.IsNullOrEmpty(customCssClass))
+            {
+                if (!String.IsNullOrEmpty(liClassValue))
+                    liClassValue += " ";
+                liClassValue += customCssClass;
+            }
+
+            var li = new TagBuilder("li")
+            {
+                Attributes =
+                {
+                    new KeyValuePair<string, string>("class", liClassValue),
+                },
+                InnerHtml = a.ToString(TagRenderMode.Normal)
+            };
+
+            return MvcHtmlString.Create(li.ToString(TagRenderMode.Normal));
+        }
+
+        public static MvcHtmlString RenderBootstrapTabContent(this HtmlHelper helper, string currentTabName,
+            HelperResult content, bool isDefaultTab = false, string tabNameToSelect = "")
+        {
+            if (helper == null)
+                throw new ArgumentNullException(nameof(helper));
+
+            if (string.IsNullOrEmpty(tabNameToSelect))
+                tabNameToSelect = helper.GetSelectedTabName();
+
+            if (string.IsNullOrEmpty(tabNameToSelect) && isDefaultTab)
+                tabNameToSelect = currentTabName;
+
+            var tag = new TagBuilder("div")
+            {
+                InnerHtml = content.ToHtmlString(),
+                Attributes =
+                {
+                    new KeyValuePair<string, string>("class", string.Format("tab-pane{0}", tabNameToSelect == currentTabName ? " active" : "")),
+                    new KeyValuePair<string, string>("id", string.Format("{0}", currentTabName))
+                }
+            };
+
+            return MvcHtmlString.Create(tag.ToString(TagRenderMode.Normal));
+        }
+
+        public static string GetSelectedTabName(this HtmlHelper helper)
+        {
+            //keep this method synchornized with
+            //"SaveSelectedTab" method of \Administration\Controllers\BaseAdminController.cs
+            var tabName = string.Empty;
+            const string dataKey = "ransurotto.selected-tab-name";
+
+            if (helper.ViewData.ContainsKey(dataKey))
+                tabName = helper.ViewData[dataKey].ToString();
+
+            if (helper.ViewContext.Controller.TempData.ContainsKey(dataKey))
+                tabName = helper.ViewContext.Controller.TempData[dataKey].ToString();
+
+            return tabName;
         }
 
         #region Form fields
@@ -168,6 +256,26 @@ namespace RANSUROTTO.BLOG.Framework.Extensions
                     helper.DropDownList(name, itemList, attrs));
             else
                 result.Append(helper.DropDownList(name, itemList, attrs));
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
+        public static MvcHtmlString CustomDropDownListFor<TModel, TValue>(this HtmlHelper<TModel> helper,
+            Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> itemList,
+            object htmlAttributes = null, bool renderFormControlClass = true, bool required = false)
+        {
+            var result = new StringBuilder();
+
+            var attrs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            if (renderFormControlClass)
+                attrs = AddFormControlClassToHtmlAttributes(attrs);
+
+            if (required)
+                result.AppendFormat(
+                    "<div class=\"input-group input-group-required\">{0}<div class=\"input-group-btn\"><span class=\"required\">*</span></div></div>",
+                    helper.DropDownListFor(expression, itemList, attrs));
+            else
+                result.Append(helper.DropDownListFor(expression, itemList, attrs));
 
             return MvcHtmlString.Create(result.ToString());
         }

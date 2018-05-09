@@ -29,6 +29,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         public string UniqueSeoCode { get; set; }
 
         /// <summary>
+        /// 获取或设置国旗图片文件名
+        /// </summary>
+        public string FlagImageFileName { get; set; }
+
+        /// <summary>
         /// 获取或设置显示顺序
         /// </summary>
         public int DisplayOrder { get; set; }

@@ -31,6 +31,12 @@ namespace RANSUROTTO.BLOG.Admin.Models.Localization
         public int DisplayOrder { get; set; }
 
         /// <summary>
+        /// 获取或设置国旗图片文件名
+        /// </summary>
+        [ResourceDisplayName("Admin.Configuration.Languages.Fields.FlagImageFileName")]
+        public string FlagImageFileName { get; set; }
+
+        /// <summary>
         /// 获取或设置该语言是否支持“从右到左”显示方式
         /// </summary>
         [ResourceDisplayName("Admin.Configuration.Language.Fields.Rtl")]
@@ -42,5 +48,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Localization
         [ResourceDisplayName("Admin.Configuration.Language.Fields.Published")]
         public bool Published { get; set; }
 
+        // search
+        public LanguageResourcesListModel Search { get; set; }
     }
 }

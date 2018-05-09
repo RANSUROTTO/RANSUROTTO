@@ -1378,6 +1378,10 @@
     <Content Include="Views\EmailAccount\Create.cshtml" />
     <Content Include="Views\EmailAccount\Edit.cshtml" />
     <Content Include="Views\EmailAccount\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\Language\List.cshtml" />
+    <Content Include="Views\Language\Create.cshtml" />
+    <Content Include="Views\Language\Edit.cshtml" />
+    <Content Include="Views\Language\_CreateOrUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1402,7 +1406,6 @@
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Category\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Language\" />
     <Folder Include="Views\Preferences\" />
     <Folder Include="Views\Security\" />
   </ItemGroup>

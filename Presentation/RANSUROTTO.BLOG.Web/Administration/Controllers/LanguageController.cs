@@ -13,6 +13,7 @@ using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
+using RANSUROTTO.BLOG.Core.Helper;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -163,6 +164,23 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             SuccessNotification(_localizationService.GetResource("Admin.Configuration.Languages.Deleted"));
 
             return RedirectToAction("List");
+        }
+
+        [HttpPost]
+        public virtual JsonResult GetAvailableFlagFileNames()
+        {
+            var flagNames = Directory
+                .EnumerateFiles(CommonHelper.MapPath("~/Content/Images/flags/"), "*.png", SearchOption.TopDirectoryOnly)
+                .Select(Path.GetFileName)
+                .ToList();
+
+            var availableFlagFileNames = flagNames.Select(flagName => new SelectListItem
+            {
+                Text = flagName,
+                Value = flagName
+            }).ToList();
+
+            return Json(availableFlagFileNames);
         }
 
         #endregion
