@@ -4,7 +4,7 @@ namespace RANSUROTTO.BLOG.Core.Data
 {
 
     /// <summary>
-    /// 数据提供者接口
+    /// 数据提供商接口
     /// </summary>
     public interface IDataProvider
     {
@@ -44,7 +44,6 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// 支持的哈希散列数据最大长度
         /// 不支持则返回0
         /// </summary>
-        /// <returns></returns>
         int SupportedLengthOfBinaryHash();
 
     }

@@ -6,7 +6,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
-using System.Transactions;
 using EntityFramework.Extensions;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Data.Context;
@@ -39,10 +38,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
 
         public virtual IQueryable<T> Table
         {
-            get
-            {
-                return Entities.Where(p => !p.IsDeleted);
-            }
+            get { return Entities; }
         }
 
         public IQueryable<T> TableNoTracking
@@ -70,19 +66,9 @@ namespace RANSUROTTO.BLOG.Data.Repository
             return Entities.Find(id);
         }
 
-        public virtual T GetSingle(Expression<Func<T, bool>> where)
-        {
-            return Entities.FirstOrDefault(where);
-        }
-
         public virtual Task<T> GetByIdAsync(params object[] id)
         {
             return Task.Run(() => Entities.Find(id));
-        }
-
-        public Task<T> GetSingleAsync(Expression<Func<T, bool>> @where)
-        {
-            return Task.Run(() => GetSingle(@where));
         }
 
         public virtual void Insert(T entity)
@@ -284,10 +270,10 @@ namespace RANSUROTTO.BLOG.Data.Repository
             try
             {
                 if (entity == null)
-                    throw new ArgumentNullException("entity");
+                    throw new ArgumentNullException(nameof(entity));
 
-                entity.IsDeleted = true;
-                this.Update(entity);
+                this.Entities.Remove(entity);
+                this._context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -300,12 +286,11 @@ namespace RANSUROTTO.BLOG.Data.Repository
             try
             {
                 if (entities == null)
-                    throw new ArgumentNullException("entities");
+                    throw new ArgumentNullException(nameof(entities));
 
                 foreach (var entity in entities)
-                    entity.IsDeleted = true;
-
-                this.Update(entities);
+                    this.Entities.Remove(entity);
+                this._context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -320,7 +305,7 @@ namespace RANSUROTTO.BLOG.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                entity.IsDeleted = true;
+                this.Entities.Remove(entity);
                 await this.UpdateAsync(entity);
             }
             catch (DbEntityValidationException dbEx)
@@ -334,60 +319,16 @@ namespace RANSUROTTO.BLOG.Data.Repository
             try
             {
                 if (entities == null)
-                    throw new ArgumentNullException("entities");
+                    throw new ArgumentNullException(nameof(entities));
 
                 foreach (var entity in entities)
-                    entity.IsDeleted = true;
+                    this.Entities.Remove(entity);
 
                 await this.UpdateAsync(entities);
             }
             catch (DbEntityValidationException dbEx)
             {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
-            }
-        }
-
-        public virtual void ExecuteDbTran(Action execute)
-        {
-            using (var tran = ((DbContext)_context).Database.BeginTransaction())
-            {
-                try
-                {
-                    execute.Invoke();
-                    ((DbContext)_context).SaveChanges();
-                    tran.Commit();
-                }
-                catch (DbEntityValidationException dbEx)
-                {
-                    tran.Rollback();
-                    throw new Exception(GetFullErrorText(dbEx), dbEx);
-                }
-                catch (Exception e)
-                {
-                    tran.Rollback();
-                    throw new Exception(e.Message);
-                }
-            }
-        }
-
-        public virtual void ExecuteRequiredTran(Action execute)
-        {
-            using (TransactionScope tran = new TransactionScope(TransactionScopeOption.Required))
-            {
-                try
-                {
-                    execute();
-                    ((DbContext)_context).SaveChanges();
-                    tran.Complete();
-                }
-                catch (DbEntityValidationException dbEx)
-                {
-                    throw new Exception(GetFullErrorText(dbEx), dbEx);
-                }
-                catch (Exception e)
-                {
-                    throw new Exception(e.Message);
-                }
             }
         }
 

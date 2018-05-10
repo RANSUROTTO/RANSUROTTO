@@ -21,12 +21,12 @@ namespace RANSUROTTO.BLOG.Core.Data
         #region Properties
 
         /// <summary>
-        /// 数据源提供商  ../mysql,sqlserver,oracle,sqllite
+        /// 数据源提供商  ../sqlserver,pgsql,mysql,oracle,sqlite,sqlce
         /// </summary>
         public string DataProvider { get; set; }
 
         /// <summary>
-        /// 数据库连接字符串
+        /// 数据源连接字符串
         /// </summary>
         public string DataConnectionString { get; set; }
 

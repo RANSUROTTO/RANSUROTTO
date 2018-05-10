@@ -25,6 +25,9 @@ namespace RANSUROTTO.BLOG.Core.Configuration
             Config.MultipleInstancesEnabled = GetBool(webFarmsNode, "MultipleInstancesEnabled");
             Config.RunOnAzureWebApps = GetBool(webFarmsNode, "RunOnAzureWebApps");
 
+            var clearPluginShadowDirectoryOnStartupNode = section.SelectSingleNode("ClearPluginShadowDirectoryOnStartup");
+            Config.ClearPluginShadowDirectoryOnStartup = GetBool(clearPluginShadowDirectoryOnStartupNode, "Enable");
+
             var userAgentStringsNode = section.SelectSingleNode("UserAgentStrings");
             Config.UserAgentStringsPath = GetString(userAgentStringsNode, "databasePath");
             Config.CrawlerOnlyUserAgentStringsPath = GetString(userAgentStringsNode, "crawlersOnlyDatabasePath");
@@ -73,7 +76,7 @@ namespace RANSUROTTO.BLOG.Core.Configuration
         public string UserAgentStringsPath { get; private set; }
 
         /// <summary>
-        /// 使用仅搜寻器用户代理字符串的数据库路径
+        /// 使用仅搜寻器用户代理字符串的数据文件路径
         /// </summary>
         public string CrawlerOnlyUserAgentStringsPath { get; private set; }
 

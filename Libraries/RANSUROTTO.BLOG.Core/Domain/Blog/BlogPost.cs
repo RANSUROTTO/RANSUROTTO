@@ -6,7 +6,9 @@ using RANSUROTTO.BLOG.Core.Domain.Localization;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blog
 {
-
+    /// <summary>
+    /// ╡╘©мндуб
+    /// </summary>
     public class BlogPost : BaseEntity
     {
 

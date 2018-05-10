@@ -3,7 +3,7 @@
 namespace RANSUROTTO.BLOG.Core.Domain.Blog
 {
     /// <summary>
-    /// 类目
+    /// 博客类目
     /// </summary>
     public class Category : BaseEntity
     {
@@ -14,14 +14,9 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         public string Name { get; set; }
 
         /// <summary>
-        /// 获取或设置可视状态
+        /// 获取或设置发布状态
         /// </summary>
-        public bool Visible { get; set; }
-
-        /// <summary>
-        /// 获取或设置图标 font-awesome
-        /// </summary>
-        public string Icon { get; set; }
+        public bool Publisher { get; set; }
 
         /// <summary>
         /// 获取或设置顺序

@@ -2,7 +2,9 @@ using RANSUROTTO.BLOG.Core.Data;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Configuration
 {
-
+    /// <summary>
+    /// …Ë∂®œÓ
+    /// </summary>
     public class Setting : BaseEntity
     {
 
@@ -25,5 +27,4 @@ namespace RANSUROTTO.BLOG.Core.Domain.Configuration
         public string Value { get; set; }
 
     }
-
 }

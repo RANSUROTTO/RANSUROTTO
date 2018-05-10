@@ -1,7 +1,7 @@
 ﻿namespace RANSUROTTO.BLOG.Core.Domain.Customers.Service
 {
     /// <summary>
-    /// 系统用户角色名称
+    /// 系统内置用户角色名称
     /// </summary>
     public static partial class SystemCustomerRoleNames
     {

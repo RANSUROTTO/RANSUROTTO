@@ -22,13 +22,6 @@ namespace RANSUROTTO.BLOG.Core.Data
         T GetById(params object[] id);
 
         /// <summary>
-        /// 根据条件获取第一个对象
-        /// </summary>
-        /// <param name="where">检索条件</param>
-        /// <returns>实体</returns>
-        T GetSingle(Expression<Func<T, bool>> where);
-
-        /// <summary>
         /// 插入实体
         /// </summary>
         /// <param name="entity">实体</param>
@@ -79,18 +72,6 @@ namespace RANSUROTTO.BLOG.Core.Data
         void Delete(IEnumerable<T> entities);
 
         /// <summary>
-        /// 执行事务操作
-        /// </summary>
-        /// <param name="execute">任务</param>
-        void ExecuteDbTran(Action execute);
-
-        /// <summary>
-        /// 执行分布式事务操作
-        /// </summary>
-        /// <param name="execute">任务</param>
-        void ExecuteRequiredTran(Action execute);
-
-        /// <summary>
         /// 获取实体数据集
         /// </summary>
         IQueryable<T> Table { get; }
@@ -116,13 +97,6 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// <param name="id">标识符</param>
         /// <returns>实体</returns>
         Task<T> GetByIdAsync(params object[] id);
-
-        /// <summary>
-        /// 根据条件异步获取第一个实体对象
-        /// </summary>
-        /// <param name="where">检索条件</param>
-        /// <returns>实体</returns>
-        Task<T> GetSingleAsync(Expression<Func<T, bool>> where);
 
         /// <summary>
         /// 异步插入实体

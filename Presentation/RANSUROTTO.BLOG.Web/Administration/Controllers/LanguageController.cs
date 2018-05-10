@@ -96,7 +96,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
-        public virtual ActionResult Edit(int id)
+        public virtual ActionResult Edit(long id)
         {
             var language = _languageService.GetLanguageById(id);
             if (language == null)

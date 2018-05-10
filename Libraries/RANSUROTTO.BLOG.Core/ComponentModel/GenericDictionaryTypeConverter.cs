@@ -7,6 +7,9 @@ using System.Text;
 
 namespace RANSUROTTO.BLOG.Core.ComponentModel
 {
+    /// <summary>
+    /// 泛型字典类型转换器
+    /// </summary>
     public class GenericDictionaryTypeConverter<TK, TV> : TypeConverter
     {
 
@@ -48,7 +51,7 @@ namespace RANSUROTTO.BLOG.Core.ComponentModel
         /// <summary>
         /// 将给定对象转换为转换器的类型
         /// 目前实现的例子:
-        /// string:"1,2;3,4" => dictionary:{{1,2},{3,4}}
+        /// string:"1,2;3,4" => dictionary:[{1,2},{3,4}]
         /// </summary>
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -85,7 +88,7 @@ namespace RANSUROTTO.BLOG.Core.ComponentModel
         /// <summary>
         /// 将给定对象转换为转换器的类型
         /// 目前实现的例子:
-        /// dictionary:{{1,2},{3,4}} => string:"1,2;3,4" 
+        /// dictionary:[{1,2},{3,4}] => string:"1,2;3,4" 
         /// </summary>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {

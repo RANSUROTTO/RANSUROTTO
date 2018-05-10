@@ -27,9 +27,5 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common.Setting
         /// </summary>
         public bool UseIsoDateTimeConverterInJson { get; set; }
 
-
-
-
-
     }
 }

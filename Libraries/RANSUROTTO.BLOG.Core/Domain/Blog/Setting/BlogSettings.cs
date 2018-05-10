@@ -10,7 +10,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog.Setting
     {
 
         /// <summary>
-        /// 获取或设置是否允许未注册用户(游客)进行评论
+        /// 获取或设置是否允许未游客进行评论
         /// </summary>
         public bool AllowNotRegisteredUserToLeaveComments { get; set; }
 

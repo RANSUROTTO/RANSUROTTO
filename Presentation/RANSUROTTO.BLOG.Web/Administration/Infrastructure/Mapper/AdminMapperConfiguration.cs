@@ -20,6 +20,7 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 #region Localization
 
                 cfg.CreateMap<Language, LanguageModel>()
+                    .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore())
                     .ForMember(dest => dest.Search, mo => mo.Ignore());
                 cfg.CreateMap<LanguageModel, Language>()
@@ -31,6 +32,7 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 #region Logging
 
                 cfg.CreateMap<Log, LogModel>()
+                    .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
                 cfg.CreateMap<LogModel, Log>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
@@ -40,6 +42,7 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 #region Messages
 
                 cfg.CreateMap<EmailAccount, EmailAccountModel>()
+                    .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.Password, mo => mo.Ignore())
                     .ForMember(dest => dest.IsDefaultEmailAccount, mo => mo.Ignore())
                     .ForMember(dest => dest.SendTestEmailTo, mo => mo.Ignore())
@@ -47,6 +50,16 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 cfg.CreateMap<EmailAccountModel, EmailAccount>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
                     .ForMember(dest => dest.Password, mo => mo.Ignore());
+
+                #endregion
+
+                #region Customers
+
+                cfg.CreateMap<EmailAccount, EmailAccountModel>()
+                    .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<EmailAccountModel, EmailAccount>()
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
 
                 #endregion
 

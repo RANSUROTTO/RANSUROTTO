@@ -23,7 +23,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <remarks>
         /// {0} : 显示已隐藏的权限角色
         /// </remarks>
-        private const string CUSTOMERROLES_ALL_KEY = "Nop.customerrole.all-{0}";
+        private const string CUSTOMERROLES_ALL_KEY = "Ransurotto.customerrole.all-{0}";
 
         /// <summary>
         /// 权限角色系统名称缓存键
@@ -106,6 +106,14 @@ namespace RANSUROTTO.BLOG.Services.Customers
                     sortedCustomers.Add(customer);
             }
             return sortedCustomers;
+        }
+
+        public IPagedList<Customer> GetAllCustomers(DateTime? createdFromUtc = null, DateTime? createdToUtc = null, long affiliateId = 0,
+            int[] customerRoleIds = null, string email = null, string username = null, string name = null, int dayOfBirth = 0,
+            int monthOfBirth = 0, string company = null, string phone = null, string zipPostalCode = null,
+            string ipAddress = null, int pageIndex = 0, int pageSize = Int32.MaxValue)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

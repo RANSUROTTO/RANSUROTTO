@@ -52,9 +52,7 @@ namespace RANSUROTTO.BLOG.Framework.Mvc
 
         public virtual DateTime CreatedOn { get; set; }
 
-        public virtual DateTime TimeStamp { get; set; }
-
-        public virtual bool IsDeleted { get; set; }
+        public virtual byte[] TimeStamp { get; set; }
 
     }
 

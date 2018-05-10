@@ -3,13 +3,13 @@
 namespace RANSUROTTO.BLOG.Core.Domain.Common
 {
     /// <summary>
-    /// 通用属性
+    /// 通用自定义实体属性
     /// </summary>
     public class GenericAttribute : BaseEntity
     {
 
         /// <summary>
-        /// 获取或设置实体标识符
+        /// 获取或设置所属实体的标识符
         /// </summary>
         public long EntityId { get; set; }
 

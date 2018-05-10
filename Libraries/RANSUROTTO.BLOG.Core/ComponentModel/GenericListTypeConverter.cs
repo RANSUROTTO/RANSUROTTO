@@ -10,7 +10,6 @@ namespace RANSUROTTO.BLOG.Core.ComponentModel
     /// <summary>
     /// 泛型集合类型转换器
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class GenericListTypeConverter<T> : TypeConverter
     {
 

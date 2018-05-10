@@ -120,7 +120,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         public virtual void UpdateLanguage(Language language)
         {
             if (language == null)
-                throw new ArgumentNullException("language");
+                throw new ArgumentNullException(nameof(language));
 
             _languageRepository.Update(language);
 

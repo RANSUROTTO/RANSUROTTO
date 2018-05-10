@@ -5,7 +5,7 @@ namespace RANSUROTTO.BLOG.Core.Common
 {
 
     /// <summary>
-    /// 表示在应用程序执行期间发生的异常
+    /// 表示在应用程序执行期间发生的自定义异常
     /// </summary>
     public class SiteException : Exception
     {

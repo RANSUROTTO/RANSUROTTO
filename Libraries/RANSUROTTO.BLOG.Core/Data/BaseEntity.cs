@@ -36,11 +36,6 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// </summary>
         public virtual byte[] TimeStamp { get; set; }
 
-        /// <summary>
-        /// 获取或设置实体是否已被软删除
-        /// </summary>
-        public virtual bool IsDeleted { get; set; }
-
         #endregion
 
         #region Methods

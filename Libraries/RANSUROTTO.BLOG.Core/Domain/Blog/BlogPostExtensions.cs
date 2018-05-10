@@ -15,7 +15,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         public static string[] ParseTags(this BlogPost blogPost)
         {
             if (blogPost == null)
-                throw new ArgumentNullException("blogPost");
+                throw new ArgumentNullException(nameof(blogPost));
 
             var parsedTags = new List<string>();
             if (!string.IsNullOrEmpty(blogPost.Tag))

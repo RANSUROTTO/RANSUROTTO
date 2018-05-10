@@ -33,6 +33,7 @@ using RANSUROTTO.BLOG.Services.Infrastructure;
 using RANSUROTTO.BLOG.Services.Installation;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Messages;
 using RANSUROTTO.BLOG.Services.Security;
 using RANSUROTTO.BLOG.Services.Tasks;
 
@@ -156,6 +157,9 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
             builder.RegisterType<Logger>().As<ILogger>().InstancePerLifetimeScope();
+
+            builder.RegisterType<EmailAccountService>().As<IEmailAccountService>().InstancePerLifetimeScope();
+            builder.RegisterType<EmailSender>().As<IEmailSender>().InstancePerLifetimeScope();
 
             builder.RegisterType<CustomerActivityService>().As<ICustomerActivityService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))

@@ -2,7 +2,6 @@ using RANSUROTTO.BLOG.Core.Data;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blog
 {
-
     /// <summary>
     /// ²©¿ÍÆÀÂÛ
     /// </summary>
@@ -44,5 +43,4 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         #endregion
 
     }
-
 }

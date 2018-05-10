@@ -4,6 +4,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
 {
     public class SystemCustomerAttributeNames : IAttributeNames
     {
+
         /// <summary>
         /// 语言标识符
         /// </summary>

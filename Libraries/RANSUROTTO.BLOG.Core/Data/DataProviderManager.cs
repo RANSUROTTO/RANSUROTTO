@@ -12,7 +12,8 @@ namespace RANSUROTTO.BLOG.Core.Data
         protected DataProviderManager(DataSettings settings)
         {
             if (settings == null)
-                throw new ArgumentNullException("settings");
+                throw new ArgumentNullException(nameof(settings));
+
             this.Settings = settings;
         }
 
@@ -22,9 +23,9 @@ namespace RANSUROTTO.BLOG.Core.Data
         protected DataSettings Settings { get; set; }
 
         /// <summary>
-        /// 加载数据源提供者
+        /// 加载数据源供应商
         /// </summary>
-        /// <returns>数据源提供者</returns>
+        /// <returns>数据源供应商</returns>
         public abstract IDataProvider LoadDataProvider();
 
     }

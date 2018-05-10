@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
 
@@ -81,7 +80,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         /// </summary>
         public virtual ICollection<CustomerRole> CustomerRoles
         {
-            get { return _customerRoles?.Where(p => !p.IsDeleted).ToList() ?? (_customerRoles = new List<CustomerRole>()); }
+            get { return _customerRoles ?? new List<CustomerRole>(); }
             protected set { _customerRoles = value; }
         }
 

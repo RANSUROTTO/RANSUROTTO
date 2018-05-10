@@ -19,7 +19,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Logging
         public string Name { get; set; }
 
         /// <summary>
-        /// 获取或设置该类型是否启用记录
+        /// 获取或设置该类型是否已启用
         /// </summary>
         public bool Enabled { get; set; }
 

@@ -18,12 +18,12 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// <summary>
         /// 键/值 字符串分隔符
         /// </summary>
-        protected const char separator = ':';
+        protected const char Separator = ':';
 
         /// <summary>
         /// 数据源设置 信息存储文件
         /// </summary>
-        protected const string filename = "db.config";
+        protected const string Filename = "db.config";
 
         #endregion
 
@@ -131,7 +131,7 @@ namespace RANSUROTTO.BLOG.Core.Data
         public virtual DataSettings LoadSettings(string filePath = null)
         {
             if (string.IsNullOrEmpty(filePath))
-                filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), filename);
+                filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), Filename);
 
             if (File.Exists(filePath))
             {
@@ -150,12 +150,12 @@ namespace RANSUROTTO.BLOG.Core.Data
         public virtual void SaveSettings(DataSettings settings, string filePath = null)
         {
             if (settings == null)
-                throw new ArgumentNullException("settings");
+                throw new ArgumentNullException(nameof(settings));
 
             if (string.IsNullOrEmpty(filePath))
-                filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), filename);
+                filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), Filename);
 
-            //not exists,create
+            //如果不存在则创建
             if (!File.Exists(filePath))
             {
                 using (File.Create(filePath))
@@ -164,7 +164,6 @@ namespace RANSUROTTO.BLOG.Core.Data
                 }
             }
 
-            //write
             File.WriteAllText(filePath, this.ComposeSettings(settings));
         }
 

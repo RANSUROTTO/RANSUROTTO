@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using RANSUROTTO.BLOG.Core.Data;
+﻿using RANSUROTTO.BLOG.Core.Data;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 
@@ -36,7 +35,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Security
         {
             get
             {
-                return _customerRoles?.Where(p => !p.IsDeleted).ToList() ?? (_customerRoles = new List<CustomerRole>());
+                return _customerRoles ?? new List<CustomerRole>();
             }
             protected set { _customerRoles = value; }
         }

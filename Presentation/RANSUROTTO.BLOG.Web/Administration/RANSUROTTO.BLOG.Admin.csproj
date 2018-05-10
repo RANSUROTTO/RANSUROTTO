@@ -1226,6 +1226,8 @@
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
     <Compile Include="Models\Common\MaintenanceModel.cs" />
     <Compile Include="Models\Common\SystemInfoModel.cs" />
+    <Compile Include="Models\Customers\CustomerListModel.cs" />
+    <Compile Include="Models\Customers\CustomerModel.cs" />
     <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Localization\LanguageResourceModel.cs" />
     <Compile Include="Models\Localization\LanguageResourcesListModel.cs" />
@@ -1382,6 +1384,7 @@
     <Content Include="Views\Language\Create.cshtml" />
     <Content Include="Views\Language\Edit.cshtml" />
     <Content Include="Views\Language\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiSelect.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1399,7 +1402,6 @@
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
     <Folder Include="Models\Blog\" />
     <Folder Include="Models\Configuration\" />
-    <Folder Include="Models\Customers\" />
     <Folder Include="Models\Security\" />
     <Folder Include="Views\ActivityLog\" />
     <Folder Include="Views\BaseAdmin\" />

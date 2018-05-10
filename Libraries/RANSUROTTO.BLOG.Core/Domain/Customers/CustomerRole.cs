@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Security;
 
@@ -39,7 +38,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         /// </summary>
         public virtual ICollection<PermissionRecord> PermissionRecords
         {
-            get { return _permissionRecords?.Where(p => !p.IsDeleted).ToList() ?? (_permissionRecords = new List<PermissionRecord>()); }
+            get { return _permissionRecords ?? new List<PermissionRecord>(); }
             protected set { _permissionRecords = value; }
         }
 

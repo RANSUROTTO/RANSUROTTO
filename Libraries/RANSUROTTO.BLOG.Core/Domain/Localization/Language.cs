@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using RANSUROTTO.BLOG.Core.Data;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Localization
@@ -57,7 +56,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         {
             get
             {
-                return _localeStringResources?.Where(p => !p.IsDeleted).ToList() ?? (_localeStringResources = new List<LocaleStringResource>());
+                return _localeStringResources ?? new List<LocaleStringResource>();
             }
             set
             {

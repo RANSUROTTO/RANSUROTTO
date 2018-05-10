@@ -17,7 +17,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Logging
         public long CustomerId { get; set; }
 
         /// <summary>
-        /// 获取或设置注释
+        /// 获取或设置注释信息
         /// </summary>
         public string Comment { get; set; }
 
