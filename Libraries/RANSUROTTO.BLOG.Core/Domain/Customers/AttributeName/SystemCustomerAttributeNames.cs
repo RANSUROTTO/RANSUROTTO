@@ -6,6 +6,18 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
     {
 
         /// <summary>
+        /// 姓名/昵称
+        /// </summary>
+        public static string Name => "Name";
+        /// <summary>
+        /// 公司
+        /// </summary>
+        public static string Company => "Company";
+        /// <summary>
+        /// 手机号
+        /// </summary>
+        public static string Phone => "Phone";
+        /// <summary>
         /// 语言标识符
         /// </summary>
         public static string LanguageId => "LanguageId";

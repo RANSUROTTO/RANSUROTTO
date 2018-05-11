@@ -73,6 +73,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         /// </summary>
         public string AdminComment { get; set; }
 
+        /// <summary>
+        /// 获取或设置该用户是否被删除
+        /// </summary>
+        public bool Deleted { get; set; }
+
         #region Navigation Properties
 
         /// <summary>

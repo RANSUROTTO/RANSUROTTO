@@ -4,10 +4,13 @@ using System.Linq;
 using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Data;
+using RANSUROTTO.BLOG.Core.Domain.Common;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
+using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Services.Events;
 
 namespace RANSUROTTO.BLOG.Services.Customers
@@ -48,12 +51,13 @@ namespace RANSUROTTO.BLOG.Services.Customers
         private readonly IRepository<CustomerRole> _customerRoleRepository;
         private readonly IRepository<Customer> _customerRepository;
         private readonly IRepository<CustomerPassword> _customerPasswordRepository;
+        private readonly IRepository<GenericAttribute> _gaRepository;
 
         #endregion
 
         #region Constructor
 
-        public CustomerService(ICacheManager cacheManager, CustomerSettings customerSettings, IEventPublisher eventPublisher, IRepository<CustomerRole> customerRoleRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository)
+        public CustomerService(ICacheManager cacheManager, CustomerSettings customerSettings, IEventPublisher eventPublisher, IRepository<CustomerRole> customerRoleRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<GenericAttribute> gaRepository)
         {
             _cacheManager = cacheManager;
             _customerSettings = customerSettings;
@@ -61,6 +65,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
             _customerRoleRepository = customerRoleRepository;
             _customerRepository = customerRepository;
             _customerPasswordRepository = customerPasswordRepository;
+            _gaRepository = gaRepository;
         }
 
         #endregion
@@ -108,12 +113,57 @@ namespace RANSUROTTO.BLOG.Services.Customers
             return sortedCustomers;
         }
 
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="createdFromUtc">该UTC时间后创建的用户;Null为不限制</param>
+        /// <param name="createdToUtc">该UTC时间前创建的用户;Null为不限制</param>
+        /// <param name="affiliateId"></param>
+        /// <param name="customerRoleIds">匹配客户角色标识符;Null为不限制</param>
+        /// <param name="email">电子邮箱</param>
+        /// <param name="username">用户名</param>
+        /// <param name="name">姓名</param>
+        /// <param name="dayOfBirth">出生日;0为不限制</param>
+        /// <param name="monthOfBirth">出生月;0为不限制</param>
+        /// <param name="company">公司</param>
+        /// <param name="phone">手机号</param>
+        /// <param name="zipPostalCode">邮政编码</param>
+        /// <param name="ipAddress">IP地址</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">页大小</param>
+        /// <returns>用户列表</returns>
         public IPagedList<Customer> GetAllCustomers(DateTime? createdFromUtc = null, DateTime? createdToUtc = null, long affiliateId = 0,
-            int[] customerRoleIds = null, string email = null, string username = null, string name = null, int dayOfBirth = 0,
+            long[] customerRoleIds = null, string email = null, string username = null, string name = null, int dayOfBirth = 0,
             int monthOfBirth = 0, string company = null, string phone = null, string zipPostalCode = null,
             string ipAddress = null, int pageIndex = 0, int pageSize = Int32.MaxValue)
         {
-            throw new NotImplementedException();
+            var query = _customerRepository.Table;
+            query = query.Where(c => !c.Deleted);
+            if (createdFromUtc.HasValue)
+                query = query.Where(c => createdFromUtc.Value <= c.CreatedOnUtc);
+            if (createdToUtc.HasValue)
+                query = query.Where(c => createdToUtc.Value >= c.CreatedOnUtc);
+            if (customerRoleIds != null && customerRoleIds.Length > 0)
+                query = query.Where(c => c.CustomerRoles.Select(cr => cr.Id).Intersect(customerRoleIds).Any());
+            if (!string.IsNullOrWhiteSpace(email))
+                query = query.Where(c => c.Email.Contains(email));
+            if (!string.IsNullOrWhiteSpace(username))
+                query = query.Where(c => c.Username.Contains(username));
+            if (!string.IsNullOrEmpty(name))
+                query = query
+                    .Join(_gaRepository.Table, x => x.Id, x => x.EntityId, (x, y) => new { Customer = x, Attribute = y })
+                    .Where(z => z.Attribute.KeyGroup == "Customer" &&
+                        z.Attribute.Key == SystemCustomerAttributeNames.Name &&
+                        z.Attribute.Value.Contains(name))
+                    .Select(p => p.Customer);
+
+            if (!string.IsNullOrWhiteSpace(ipAddress) && CommonHelper.IsValidIpAddress(ipAddress))
+                query = query.Where(w => w.LastIpAddress == ipAddress);
+
+            query = query.OrderByDescending(c => c.CreatedOnUtc);
+
+            var customers = new PagedList<Customer>(query, pageIndex, pageSize);
+            return customers;
         }
 
         /// <summary>

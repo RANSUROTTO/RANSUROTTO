@@ -49,7 +49,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="pageSize">页大小</param>
         /// <returns>用户列表</returns>
         IPagedList<Customer> GetAllCustomers(DateTime? createdFromUtc = null,
-            DateTime? createdToUtc = null, long affiliateId = 0, int[] customerRoleIds = null,
+            DateTime? createdToUtc = null, long affiliateId = 0, long[] customerRoleIds = null,
             string email = null, string username = null, string name = null,
             int dayOfBirth = 0, int monthOfBirth = 0, string company = null,
             string phone = null, string zipPostalCode = null,
