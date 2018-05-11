@@ -14,6 +14,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
         /// </summary>
         public static string Company => "Company";
         /// <summary>
+        /// 邮政编码
+        /// </summary>
+        public static string ZipPostalCode => "ZipPostalCode";
+        /// <summary>
         /// 手机号
         /// </summary>
         public static string Phone => "Phone";
