@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Core.Common;
@@ -147,13 +148,67 @@ namespace RANSUROTTO.BLOG.Services.Customers
                 query = query.Where(c => c.Email.Contains(email));
             if (!string.IsNullOrWhiteSpace(username))
                 query = query.Where(c => c.Username.Contains(username));
+            /*search by DateOfBirth*/
+            if (dayOfBirth > 0 && monthOfBirth > 0)
+            {
+                string dateOfBirthStr = monthOfBirth.ToString("00", CultureInfo.InvariantCulture) + "-" + dayOfBirth.ToString("00", CultureInfo.InvariantCulture);
+                query = query
+                    .Join(_gaRepository.Table, x => x.Id, y => y.EntityId, (x, y) => new { Customer = x, Attribute = y })
+                    .Where((z => z.Attribute.KeyGroup == "Customer" &&
+                                 z.Attribute.Key == SystemCustomerAttributeNames.DateOfBirth &&
+                                 z.Attribute.Value.Substring(5, 5) == dateOfBirthStr))
+                    .Select(z => z.Customer);
+            }
+            else if (dayOfBirth > 0)
+            {
+                string dateOfBirthStr = dayOfBirth.ToString("00", CultureInfo.InvariantCulture);
+                query = query
+                    .Join(_gaRepository.Table, x => x.Id, y => y.EntityId, (x, y) => new { Customer = x, Attribute = y })
+                    .Where((z => z.Attribute.KeyGroup == "Customer" &&
+                                 z.Attribute.Key == SystemCustomerAttributeNames.DateOfBirth &&
+                                 z.Attribute.Value.Substring(8, 2) == dateOfBirthStr))
+                    .Select(z => z.Customer);
+            }
+            else if (monthOfBirth > 0)
+            {
+                string dateOfBirthStr = "-" + monthOfBirth.ToString("00", CultureInfo.InvariantCulture) + "-";
+                query = query
+                    .Join(_gaRepository.Table, x => x.Id, y => y.EntityId, (x, y) => new { Customer = x, Attribute = y })
+                    .Where((z => z.Attribute.KeyGroup == "Customer" &&
+                                 z.Attribute.Key == SystemCustomerAttributeNames.DateOfBirth &&
+                                 z.Attribute.Value.Contains(dateOfBirthStr)))
+                    .Select(z => z.Customer);
+            }
+            /*search by name*/
             if (!string.IsNullOrEmpty(name))
+            {
                 query = query
                     .Join(_gaRepository.Table, x => x.Id, x => x.EntityId, (x, y) => new { Customer = x, Attribute = y })
                     .Where(z => z.Attribute.KeyGroup == "Customer" &&
-                        z.Attribute.Key == SystemCustomerAttributeNames.Name &&
-                        z.Attribute.Value.Contains(name))
+                                z.Attribute.Key == SystemCustomerAttributeNames.Name &&
+                                z.Attribute.Value.Contains(name))
                     .Select(p => p.Customer);
+            }
+            /*search by phone*/
+            if (!string.IsNullOrWhiteSpace(phone))
+            {
+                query = query
+                    .Join(_gaRepository.Table, x => x.Id, y => y.EntityId, (x, y) => new { Customer = x, Attribute = y })
+                    .Where((z => z.Attribute.KeyGroup == "Customer" &&
+                                 z.Attribute.Key == SystemCustomerAttributeNames.Phone &&
+                                 z.Attribute.Value.Contains(phone)))
+                    .Select(z => z.Customer);
+            }
+            /*search by zipPostalCode*/
+            if (!string.IsNullOrWhiteSpace(zipPostalCode))
+            {
+                query = query
+                    .Join(_gaRepository.Table, x => x.Id, y => y.EntityId, (x, y) => new { Customer = x, Attribute = y })
+                    .Where((z => z.Attribute.KeyGroup == "Customer" &&
+                                 z.Attribute.Key == SystemCustomerAttributeNames.ZipPostalCode &&
+                                 z.Attribute.Value.Contains(zipPostalCode)))
+                    .Select(z => z.Customer);
+            }
 
             if (!string.IsNullOrWhiteSpace(ipAddress) && CommonHelper.IsValidIpAddress(ipAddress))
                 query = query.Where(w => w.LastIpAddress == ipAddress);

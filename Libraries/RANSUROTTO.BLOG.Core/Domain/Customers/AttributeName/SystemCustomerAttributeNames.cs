@@ -14,6 +14,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
         /// </summary>
         public static string Gender => "Gender";
         /// <summary>
+        /// 出生日期/生日
+        /// </summary>
+        public static string DateOfBirth => "DateOfBirth";
+        /// <summary>
         /// 公司
         /// </summary>
         public static string Company => "Company";
