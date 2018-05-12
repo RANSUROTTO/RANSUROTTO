@@ -123,6 +123,7 @@
     <Compile Include="Mvc\BaseMetadataProvider.cs" />
     <Compile Include="Mvc\BaseModel.cs" />
     <Compile Include="Mvc\BaseModelBinder.cs" />
+    <Compile Include="Mvc\CommaSeparatedModelBinder.cs" />
     <Compile Include="Mvc\ConverterJsonResult.cs" />
     <Compile Include="Mvc\DeleteConfirmationModel.cs" />
     <Compile Include="Mvc\IModelAttribute.cs" />

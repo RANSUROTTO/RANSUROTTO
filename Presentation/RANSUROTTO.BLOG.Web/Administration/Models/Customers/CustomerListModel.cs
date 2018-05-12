@@ -22,12 +22,9 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [AllowHtml]
         public string SearchUsername { get; set; }
 
-        [ResourceDisplayName("Admin.Customers.Customers.List.SearchFirstName")]
+        [ResourceDisplayName("Admin.Customers.Customers.List.SearchName")]
         [AllowHtml]
-        public string SearchFirstName { get; set; }
-        [ResourceDisplayName("Admin.Customers.Customers.List.SearchLastName")]
-        [AllowHtml]
-        public string SearchLastName { get; set; }
+        public string SearchName { get; set; }
 
         [ResourceDisplayName("Admin.Customers.Customers.List.SearchDateOfBirth")]
         [AllowHtml]
@@ -46,11 +43,6 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [AllowHtml]
         public string SearchPhone { get; set; }
         public bool PhoneEnabled { get; set; }
-
-        [ResourceDisplayName("Admin.Customers.Customers.List.SearchZipCode")]
-        [AllowHtml]
-        public string SearchZipPostalCode { get; set; }
-        public bool ZipPostalCodeEnabled { get; set; }
 
         [ResourceDisplayName("Admin.Customers.Customers.List.SearchIpAddress")]
         public string SearchIpAddress { get; set; }

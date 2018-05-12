@@ -34,7 +34,6 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="createdFromUtc">该UTC时间后创建的用户;Null为不限制</param>
         /// <param name="createdToUtc">该UTC时间前创建的用户;Null为不限制</param>
-        /// <param name="affiliateId"></param>
         /// <param name="customerRoleIds">匹配客户角色标识符;Null为不限制</param>
         /// <param name="email">电子邮箱</param>
         /// <param name="username">用户名</param>
@@ -43,17 +42,16 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="monthOfBirth">出生月;0为不限制</param>
         /// <param name="company">公司</param>
         /// <param name="phone">手机号</param>
-        /// <param name="zipPostalCode">邮政编码</param>
         /// <param name="ipAddress">IP地址</param>
         /// <param name="pageIndex">页码</param>
         /// <param name="pageSize">页大小</param>
         /// <returns>用户列表</returns>
         IPagedList<Customer> GetAllCustomers(DateTime? createdFromUtc = null,
-            DateTime? createdToUtc = null, long affiliateId = 0, long[] customerRoleIds = null,
+            DateTime? createdToUtc = null, long[] customerRoleIds = null,
             string email = null, string username = null, string name = null,
             int dayOfBirth = 0, int monthOfBirth = 0, string company = null,
-            string phone = null, string zipPostalCode = null,
-            string ipAddress = null, int pageIndex = 0, int pageSize = int.MaxValue);
+            string phone = null,  string ipAddress = null,
+            int pageIndex = 0, int pageSize = int.MaxValue);
 
         /// <summary>
         /// 通过系统名称获取用户

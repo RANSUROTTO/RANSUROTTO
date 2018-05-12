@@ -1385,6 +1385,7 @@
     <Content Include="Views\Language\Edit.cshtml" />
     <Content Include="Views\Language\_CreateOrUpdate.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MultiSelect.cshtml" />
+    <Content Include="Views\Customer\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1407,7 +1408,6 @@
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Category\" />
-    <Folder Include="Views\Customer\" />
     <Folder Include="Views\Preferences\" />
     <Folder Include="Views\Security\" />
   </ItemGroup>

@@ -289,7 +289,6 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
             settingService.SaveSetting(new LogSettings
             {
-                IgnoreSoftDelete = false,
                 IgnoreLogWordlist = new List<string>()
             });
 

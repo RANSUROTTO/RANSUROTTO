@@ -46,17 +46,8 @@ namespace RANSUROTTO.BLOG.Services.Logging
         {
             if (log == null)
                 throw new ArgumentNullException(nameof(log));
-
-            if (_logSettings.IgnoreSoftDelete)
-            {
-                //此处关系到系统存储与性能,将直接进行硬删除
-                //日志删除不为修改基类BaseEntity.IsDelete字段,直接从数据库中删除该数据
-                _dbContext.Set<Log>().Remove(log);
-            }
-            else
-            {
+            
                 _logRepository.Delete(log);
-            }
         }
 
         /// <summary>

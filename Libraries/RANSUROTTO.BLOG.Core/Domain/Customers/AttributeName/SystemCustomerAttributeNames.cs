@@ -10,6 +10,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
         /// </summary>
         public static string Name => "Name";
         /// <summary>
+        /// 性别
+        /// </summary>
+        public static string Gender => "Gender";
+        /// <summary>
         /// 公司
         /// </summary>
         public static string Company => "Company";
@@ -28,7 +32,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
         /// <summary>
         /// 自动检测语言
         /// </summary>
-        public static string LanguageAutomaticallyDetected { get { return "LanguageAutomaticallyDetected"; } }
-
+        public static string LanguageAutomaticallyDetected => "LanguageAutomaticallyDetected";
+        /// <summary>
+        /// 最后访问的页面
+        /// </summary>
+        public static string LastVisitedPage => "LastVisitedPage";
     }
 }

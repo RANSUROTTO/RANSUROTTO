@@ -31,6 +31,21 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
         /// </summary>
         public int UnduplicatedPasswordsNumber { get; set; }
 
+        /// <summary>
+        /// 获取或设置用户"生日"属性开启状态
+        /// </summary>
+        public bool DateOfBirthEnabled { get; set; }
+
+        /// <summary>
+        /// 获取或设置用户"公司"属性开启状态
+        /// </summary>
+        public bool CompanyEnabled { get; set; }
+
+        /// <summary>
+        /// 获取或设置用户"手机号"属性开启状态
+        /// </summary>
+        public bool PhoneEnabled { get; set; }
+        
     }
 
 }
