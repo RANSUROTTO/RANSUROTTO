@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
+using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Services.Events;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Security;
@@ -47,7 +49,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="usernameOrEmail">用户名/Email</param>
         /// <param name="password">登录密码</param>
         /// <returns>验证结果</returns>
-        public CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password)
+        public virtual CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password)
         {
             Customer customer = null;
             switch (_customerSettings.CurrentAuthenticationType)
@@ -66,7 +68,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
             if (customer == null)
                 return CustomerLoginResults.CustomerNotExist;
 
-            if (!customer.Active)
+            if (!customer.Active || customer.Deleted)
                 return CustomerLoginResults.NotActive;
 
             if (!customer.IsRegistered())
@@ -104,7 +106,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="request">请求模型</param>
         /// <returns>结果</returns>
-        public ChangePasswordResult ChangePassword(ChangePasswordRequest request)
+        public virtual ChangePasswordResult ChangePassword(ChangePasswordRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -180,6 +182,68 @@ namespace RANSUROTTO.BLOG.Services.Customers
             return result;
         }
 
+        /// <summary>
+        /// 设置新用户名
+        /// </summary>
+        /// <param name="customer">用户</param>
+        /// <param name="newUsername">新用户名</param>
+        public virtual void SetUsername(Customer customer, string newUsername)
+        {
+            if (customer == null)
+                throw new ArgumentNullException(nameof(customer));
+
+            newUsername = newUsername.Trim();
+
+            if (newUsername.Length > 100)
+                throw new SiteException(_localizationService.GetResource("Account.EmailUsernameErrors.UsernameTooLong"));
+
+            var user2 = _customerService.GetCustomerByUsername(newUsername);
+            if (user2 != null && customer.Id != user2.Id)
+                throw new SiteException(_localizationService.GetResource("Account.EmailUsernameErrors.UsernameAlreadyExists"));
+
+            customer.Username = newUsername;
+            _customerService.UpdateCustomer(customer);
+        }
+
+        /// <summary>
+        /// 设置新电子邮箱
+        /// </summary>
+        /// <param name="customer">用户</param>
+        /// <param name="newEmail">新电子邮箱</param>
+        /// <param name="requireValidation">需要发送邮件进行验证</param>
+        public virtual void SetEmail(Customer customer, string newEmail, bool requireValidation)
+        {
+            if (customer == null)
+                throw new ArgumentNullException(nameof(customer));
+
+            if (newEmail == null)
+                throw new SiteException("Email cannot be null");
+
+            newEmail = newEmail.Trim();
+            string oldEmail = customer.Email;
+
+            if (!CommonHelper.IsValidEmail(newEmail))
+                throw new SiteException(_localizationService.GetResource("Account.EmailUsernameErrors.NewEmailIsNotValid"));
+
+            if (newEmail.Length > 100)
+                throw new SiteException(_localizationService.GetResource("Account.EmailUsernameErrors.EmailTooLong"));
+
+            var customer2 = _customerService.GetCustomerByEmail(newEmail);
+            if (customer2 != null && customer.Id != customer2.Id)
+                throw new SiteException(_localizationService.GetResource("Account.EmailUsernameErrors.EmailAlreadyExists"));
+
+            if (requireValidation)
+            {
+                //发送Email进行验证
+            }
+            else
+            {
+                customer.Email = newEmail;
+                _customerService.UpdateCustomer(customer);
+            }
+
+        }
+
         #endregion
 
         #region Utilities
@@ -190,7 +254,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="customerPassword">保存的用户密码</param>
         /// <param name="enteredPassword">输入的用户密码</param>
         /// <returns>结果</returns>
-        protected bool PasswordsMatch(CustomerPassword customerPassword, string enteredPassword)
+        protected virtual bool PasswordsMatch(CustomerPassword customerPassword, string enteredPassword)
         {
             if (customerPassword == null || string.IsNullOrEmpty(enteredPassword))
                 return false;

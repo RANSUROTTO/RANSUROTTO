@@ -154,7 +154,7 @@ namespace RANSUROTTO.BLOG.Framework
 
                 //检查请求是否由搜索引擎进行
                 //这种情况下返回搜索引擎系统名的内置账户
-                if (customer == null || !customer.Active)
+                if (customer == null || !customer.Active || customer.Deleted)
                 {
                     if (_userAgentHelper.IsSearchEngine())
                     {
@@ -163,13 +163,13 @@ namespace RANSUROTTO.BLOG.Framework
                 }
 
                 //注册用户
-                if (customer == null || !customer.Active)
+                if (customer == null || !customer.Active || customer.Deleted)
                 {
                     customer = _authenticationService.GetAuthenticatedCustomer();
                 }
 
                 //获取游客身份用户
-                if (customer == null || !customer.Active)
+                if (customer == null || !customer.Active || customer.Deleted)
                 {
                     var customerCookie = GetCustomerCookie();
                     if (!string.IsNullOrEmpty(customerCookie?.Value))
@@ -184,12 +184,12 @@ namespace RANSUROTTO.BLOG.Framework
                 }
 
                 //生成游客身份角色
-                if (customer == null || !customer.Active)
+                if (customer == null || !customer.Active || customer.Deleted)
                 {
                     customer = _customerService.InsertGuestCustomer();
                 }
 
-                if (customer != null && customer.Active)
+                if (customer != null && customer.Active && !customer.Deleted)
                 {
                     SetCustomerCookie(customer.Guid);
                     _cachedCustomer = customer;

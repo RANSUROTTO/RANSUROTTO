@@ -87,7 +87,7 @@ namespace RANSUROTTO.BLOG.Services.Authentication
 
             var formsIdentity = (FormsIdentity)_httpContext.User.Identity;
             var customer = GetAuthenticatedCustomerFromTicket(formsIdentity.Ticket);
-            if (customer != null && customer.Active)
+            if (customer != null && !customer.Deleted && customer.Active)
                 _cachedCustomer = customer;
 
             return _cachedCustomer;

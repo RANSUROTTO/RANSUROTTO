@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using RANSUROTTO.BLOG.Framework.Localization;
+using System.Collections.Generic;
 using RANSUROTTO.BLOG.Framework.Mvc;
+using System.ComponentModel.DataAnnotations;
+using FluentValidation.Attributes;
+using RANSUROTTO.BLOG.Framework.Localization;
 
 namespace RANSUROTTO.BLOG.Admin.Models.Customers
 {
+    [Validator(typeof(CustomerValidator))]
     public class CustomerModel : BaseEntityModel
     {
 
@@ -44,11 +46,6 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [AllowHtml]
         public string Company { get; set; }
 
-        public bool ZipPostalCodeEnabled { get; set; }
-        [ResourceDisplayName("Admin.Customers.Customers.Fields.ZipPostalCode")]
-        [AllowHtml]
-        public string ZipPostalCode { get; set; }
-
         public bool PhoneEnabled { get; set; }
         [ResourceDisplayName("Admin.Customers.Customers.Fields.Phone")]
         [AllowHtml]
@@ -61,6 +58,8 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [ResourceDisplayName("Admin.Customers.Customers.Fields.TimeZoneId")]
         [AllowHtml]
         public string TimeZoneId { get; set; }
+        public bool AllowCustomersToSetTimeZone { get; set; }
+        public IList<SelectListItem> AvailableTimeZones { get; set; }
 
         [ResourceDisplayName("Admin.Customers.Customers.Fields.LastActivityDate")]
         public DateTime LastActivityDate { get; set; }
@@ -74,8 +73,8 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [ResourceDisplayName("Admin.Customers.Customers.Fields.CustomerRoles")]
         public string CustomerRoleNames { get; set; }
         public List<SelectListItem> AvailableCustomerRoles { get; set; }
-        [ResourceDisplayName("Admin.Customers.Customers.Fields.CustomerRoles")]
         [UIHint("MultiSelect")]
+        [ResourceDisplayName("Admin.Customers.Customers.Fields.CustomerRoles")]
         public IList<long> SelectedCustomerRoleIds { get; set; }
 
     }

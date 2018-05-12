@@ -199,16 +199,6 @@ namespace RANSUROTTO.BLOG.Services.Customers
                                  z.Attribute.Value.Contains(phone)))
                     .Select(z => z.Customer);
             }
-            /*search by zipPostalCode*/
-            if (!string.IsNullOrWhiteSpace(zipPostalCode))
-            {
-                query = query
-                    .Join(_gaRepository.Table, x => x.Id, y => y.EntityId, (x, y) => new { Customer = x, Attribute = y })
-                    .Where((z => z.Attribute.KeyGroup == "Customer" &&
-                                 z.Attribute.Key == SystemCustomerAttributeNames.ZipPostalCode &&
-                                 z.Attribute.Value.Contains(zipPostalCode)))
-                    .Select(z => z.Customer);
-            }
 
             if (!string.IsNullOrWhiteSpace(ipAddress) && CommonHelper.IsValidIpAddress(ipAddress))
                 query = query.Where(w => w.LastIpAddress == ipAddress);

@@ -1,4 +1,5 @@
-﻿using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
+﻿using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 
 namespace RANSUROTTO.BLOG.Services.Customers
 {
@@ -19,6 +20,21 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="request">请求模型</param>
         /// <returns>结果</returns>
         ChangePasswordResult ChangePassword(ChangePasswordRequest request);
+
+        /// <summary>
+        /// 设置新用户名
+        /// </summary>
+        /// <param name="customer">用户</param>
+        /// <param name="newUsername">新用户名</param>
+        void SetUsername(Customer customer, string newUsername);
+
+        /// <summary>
+        /// 设置新电子邮箱
+        /// </summary>
+        /// <param name="customer">用户</param>
+        /// <param name="newEmail">新电子邮箱</param>
+        /// <param name="requireValidation">需要发送邮件进行验证</param>
+        void SetEmail(Customer customer, string newEmail, bool requireValidation);
 
     }
 }

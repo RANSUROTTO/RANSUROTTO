@@ -12,6 +12,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
         public AuthenticationType CurrentAuthenticationType { get; set; }
 
         /// <summary>
+        /// 获取或设置默认密码处理格式
+        /// </summary>
+        public PasswordFormat DefaultPasswordFormat { get; set; }
+
+        /// <summary>
         /// 获取或设置用户密码使用哈希加密时使用的哈希算法名
         /// </summary>
         public string HashedPasswordFormat { get; set; }
@@ -40,12 +45,24 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
         /// 获取或设置用户"公司"属性开启状态
         /// </summary>
         public bool CompanyEnabled { get; set; }
+        /// <summary>
+        /// 获取或设置用户"公司"属性是否为必填项
+        /// </summary>
+        public bool CompanyRequired { get; set; }
 
         /// <summary>
         /// 获取或设置用户"手机号"属性开启状态
         /// </summary>
         public bool PhoneEnabled { get; set; }
-        
-    }
+        /// <summary>
+        /// 获取或设置用户"手机号"属性是否为必填项
+        /// </summary>
+        public bool PhoneRequired { get; set; }
 
+        /// <summary>
+        /// 获取或设置用户"性别"属性开启状态
+        /// </summary>
+        public bool GenderEnabled { get; set; }
+
+    }
 }

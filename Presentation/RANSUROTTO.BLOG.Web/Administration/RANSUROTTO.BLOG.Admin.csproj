@@ -1236,6 +1236,7 @@
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Tasks\ScheduleTaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Customers\CustomerValidator.cs" />
     <Compile Include="Validators\Localization\LanguageResourceValidator.cs" />
     <Compile Include="Validators\Localization\LanguageValidator.cs" />
     <Compile Include="Validators\Messages\EmailAccountValidator.cs" />
