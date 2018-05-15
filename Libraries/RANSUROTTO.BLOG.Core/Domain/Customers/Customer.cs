@@ -85,7 +85,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         /// </summary>
         public virtual ICollection<CustomerRole> CustomerRoles
         {
-            get { return _customerRoles ?? new List<CustomerRole>(); }
+            get { return _customerRoles ?? (_customerRoles = new List<CustomerRole>()); }
             protected set { _customerRoles = value; }
         }
 

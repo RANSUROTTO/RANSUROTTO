@@ -7,8 +7,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Customers
         public CustomerPasswordMap()
         {
             this.ToTable("CustomerPassword");
-
-
+            
             this.HasRequired(password => password.Customer)
                 .WithMany()
                 .HasForeignKey(password => password.CustomerId);

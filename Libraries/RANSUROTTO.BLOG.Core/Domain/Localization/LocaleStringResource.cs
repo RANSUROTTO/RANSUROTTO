@@ -26,7 +26,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         /// <summary>
         /// 获取或设置对应语言
         /// </summary>
-        public Language Language { get; set; }
+        public virtual Language Language { get; set; }
 
         #endregion
 

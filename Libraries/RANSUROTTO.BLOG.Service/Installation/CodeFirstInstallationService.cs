@@ -95,7 +95,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 Name = "English",
                 LanguageCulture = "en-US",
                 UniqueSeoCode = "en",
-                //FlagImageFileName = "us.png",
+                FlagImageFileName = "us.png",
                 Published = true,
                 DisplayOrder = 3
             };
@@ -106,7 +106,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 Name = "日本語",
                 LanguageCulture = "ja",
                 UniqueSeoCode = "ja",
-                //FlagImageFileName = "ja.png",
+                FlagImageFileName = "ja.png",
                 Published = true,
                 DisplayOrder = 2
             };
@@ -117,8 +117,8 @@ namespace RANSUROTTO.BLOG.Services.Installation
             {
                 Name = "中文简体",
                 LanguageCulture = "zh-CN",
-                UniqueSeoCode = "zh",
-                //FlagImageFileName = "cn.png",
+                UniqueSeoCode = "cn",
+                FlagImageFileName = "cn.png",
                 Published = true,
                 DisplayOrder = 1
             };
@@ -194,6 +194,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
             searchEngineUser.CustomerRoles.Add(crGuests);
             _customerRepository.Insert(searchEngineUser);
 
+            //后台任务（内置）用户
             var backgroundTaskUser = new Customer
             {
                 Username = "background Task User",
@@ -271,7 +272,12 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 HashedPasswordFormat = "SHA1",
                 FailedPasswordAllowedAttempts = 5,
                 FailedPasswordLockoutMinutes = 10,
-                UnduplicatedPasswordsNumber = 0
+                UnduplicatedPasswordsNumber = 0,
+                DefaultPasswordFormat = PasswordFormat.Hashed,
+                CompanyEnabled = true,
+                DateOfBirthEnabled = true,
+                GenderEnabled = true,
+                PhoneEnabled = true
             });
 
             settingService.SaveSetting(new DateTimeSettings

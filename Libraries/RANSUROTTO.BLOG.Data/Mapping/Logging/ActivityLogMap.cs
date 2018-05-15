@@ -7,6 +7,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Logging
         public ActivityLogMap()
         {
             this.ToTable("ActivityLog");
+
             this.Property(p => p.Comment).IsRequired();
             this.Property(p => p.IpAddress).HasMaxLength(200);
 

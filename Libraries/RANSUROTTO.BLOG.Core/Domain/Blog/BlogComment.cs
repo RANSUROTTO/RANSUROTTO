@@ -1,4 +1,5 @@
 using RANSUROTTO.BLOG.Core.Data;
+using RANSUROTTO.BLOG.Core.Domain.Customers;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blog
 {
@@ -33,7 +34,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         /// <summary>
         /// 获取或设置用户
         /// </summary>
-        public virtual Customers.Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
 
         /// <summary>
         /// 获取或设置博文

@@ -112,12 +112,12 @@ namespace RANSUROTTO.BLOG.Services.Customers
                 throw new ArgumentNullException(nameof(request));
 
             var result = new ChangePasswordResult();
-            if (String.IsNullOrWhiteSpace(request.Email))
+            if (string.IsNullOrWhiteSpace(request.Email))
             {
                 result.AddError(_localizationService.GetResource("Account.ChangePassword.Errors.EmailIsNotProvided"));
                 return result;
             }
-            if (String.IsNullOrWhiteSpace(request.NewPassword))
+            if (string.IsNullOrWhiteSpace(request.NewPassword))
             {
                 result.AddError(_localizationService.GetResource("Account.ChangePassword.Errors.PasswordIsNotProvided"));
                 return result;

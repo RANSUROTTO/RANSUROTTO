@@ -7,8 +7,9 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Blog
         public BlogCommentMap()
         {
             this.ToTable("BlogComment");
+
             this.HasRequired(p => p.BlogPost)
-                .WithMany()
+                .WithMany(p => p.BlogComments)
                 .HasForeignKey(p => p.BlogPostId);
             this.HasOptional(p => p.Customer)
                 .WithMany()

@@ -23,6 +23,11 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Blog
             this.HasRequired(p => p.Language)
                 .WithMany()
                 .HasForeignKey(p => p.LanguageId);
+            this.HasMany(p => p.BlogComments)
+                .WithRequired(p => p.BlogPost)
+                .HasForeignKey(p => p.BlogPostId);
+
+            this.Ignore(p => p.Format);
         }
     }
 

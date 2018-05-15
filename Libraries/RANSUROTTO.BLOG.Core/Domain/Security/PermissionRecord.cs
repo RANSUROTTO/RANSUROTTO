@@ -35,7 +35,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Security
         {
             get
             {
-                return _customerRoles ?? new List<CustomerRole>();
+                return _customerRoles ?? (_customerRoles = new List<CustomerRole>());
             }
             protected set { _customerRoles = value; }
         }

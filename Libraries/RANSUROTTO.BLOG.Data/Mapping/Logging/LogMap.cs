@@ -8,6 +8,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Logging
         public LogMap()
         {
             this.ToTable("Log");
+
             this.Property(l => l.ShortMessage).IsRequired();
             this.Property(l => l.IpAddress).HasMaxLength(200);
 

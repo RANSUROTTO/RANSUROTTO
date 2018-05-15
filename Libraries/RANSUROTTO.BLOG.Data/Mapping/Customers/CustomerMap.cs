@@ -7,6 +7,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Customers
         public CustomerMap()
         {
             this.ToTable("Customer");
+
             this.Property(u => u.Username).HasMaxLength(1000);
             this.Property(u => u.Email).HasMaxLength(1000);
             this.Property(u => u.SystemName).HasMaxLength(400);

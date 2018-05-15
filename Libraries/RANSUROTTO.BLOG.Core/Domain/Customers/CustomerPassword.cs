@@ -44,7 +44,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers
         /// <summary>
         /// 获取或设置用户
         /// </summary>
-        public virtual Customers.Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
 
         #endregion
 

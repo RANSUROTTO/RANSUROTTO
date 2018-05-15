@@ -1387,6 +1387,8 @@
     <Content Include="Views\Language\_CreateOrUpdate.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MultiSelect.cshtml" />
     <Content Include="Views\Customer\List.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

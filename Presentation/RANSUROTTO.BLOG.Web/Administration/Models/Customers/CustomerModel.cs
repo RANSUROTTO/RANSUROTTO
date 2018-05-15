@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using System.ComponentModel.DataAnnotations;
 using FluentValidation.Attributes;
+using RANSUROTTO.BLOG.Admin.Validators.Customers;
 using RANSUROTTO.BLOG.Framework.Localization;
 
 namespace RANSUROTTO.BLOG.Admin.Models.Customers

@@ -321,10 +321,43 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
                     foreach (var customerRole in allCustomerRoles)
                     {
-                        
+                        if (customerRole.SystemName == SystemCustomerRoleNames.Administrators &&
+                            !_workContext.CurrentCustomer.IsAdmin())
+                            continue;
+
+                        if (model.SelectedCustomerRoleIds.Contains(customerRole.Id))
+                        {
+                            //没有该角色身份时则添加
+                            if (customer.CustomerRoles.Count(cr => cr.Id == customerRole.Id) == 0)
+                                customer.CustomerRoles.Add(customerRole);
+                        }
+                        else
+                        {
+                            //确保当删除管理员角色身份时存在第二个管理员角色对象
+                            if (customerRole.SystemName == SystemCustomerRoleNames.Administrators
+                                && !SecondAdminAccountExists(customer))
+                            {
+                                ErrorNotification(_localizationService.GetResource("Admin.Customers.Customers.AdminAccountShouldExists.DeleteRole"));
+                                continue;
+                            }
+
+                            //如果存在该角色身份时则清除
+                            if (customer.CustomerRoles.Count(cr => cr.Id == customerRole.Id) > 0)
+                                customer.CustomerRoles.Remove(customerRole);
+                        }
                     }
+                    _customerService.UpdateCustomer(customer);
 
+                    _customerActivityService.InsertActivity("EditCustomer", _localizationService.GetResource("ActivityLog.EditCustomer"), customer.Id);
 
+                    SuccessNotification(_localizationService.GetResource("Admin.Customers.Customers.Updated"));
+
+                    if (continueEditing)
+                    {
+                        SaveSelectedTabName();
+                        return RedirectToAction("Edit", new { id = customer.Id });
+                    }
+                    return RedirectToAction("List");
                 }
                 catch (Exception exc)
                 {
@@ -336,6 +369,38 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost, ActionName("Edit")]
+        [FormValueRequired("changepassword")]
+        public virtual ActionResult ChangePassword(CustomerModel model)
+        {
+            var customer = _customerService.GetCustomerById(model.Id);
+            if (customer == null)
+                return RedirectToAction("List");
+
+            //确保仅有管理员角色身份用户才可以修改其它管理员角色的密码
+            if (customer.IsAdmin() && !_workContext.CurrentCustomer.IsAdmin())
+            {
+                ErrorNotification(_localizationService.GetResource("Admin.Customers.Customers.OnlyAdminCanChangePassword"));
+                return RedirectToAction("Edit", new { id = customer.Id });
+            }
+
+            if (ModelState.IsValid)
+            {
+                var changePassRequest = new ChangePasswordRequest(customer.Email, false,
+                    _customerSettings.DefaultPasswordFormat, model.Password);
+
+                var changePassResult = _customerRegistrationService.ChangePassword(changePassRequest);
+
+                if (changePassResult.Success)
+                    SuccessNotification(_localizationService.GetResource("Admin.Customers.Customers.PasswordChanged"));
+                else
+                    foreach (var error in changePassResult.Errors)
+                        ErrorNotification(error);
+            }
+
+            return RedirectToAction("Edit", new { id = customer.Id });
+        }
+
         [HttpPost]
         public virtual ActionResult Delete(long id)
         {
@@ -345,12 +410,31 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
             try
             {
-                return null;
+                //阻止最后一个管理员角色用户被删除
+                if (customer.IsAdmin() && !SecondAdminAccountExists(customer))
+                {
+                    ErrorNotification(_localizationService.GetResource("Admin.Customers.Customers.AdminAccountShouldExists.DeleteAdministrator"));
+                    return RedirectToAction("Edit", new { id = customer.Id });
+                }
+
+                //确保管理员角色用户才允许删除管理员角色用户
+                if (customer.IsAdmin() && !_workContext.CurrentCustomer.IsAdmin())
+                {
+                    ErrorNotification(_localizationService.GetResource("Admin.Customers.Customers.OnlyAdminCanDeleteAdmin"));
+                    return RedirectToAction("Edit", new { id = customer.Id });
+                }
+
+                _customerService.DeleteCustomer(customer);
+
+                _customerActivityService.InsertActivity("DeleteCustomer", _localizationService.GetResource("ActivityLog.DeleteCustomer"), customer.Id);
+
+                SuccessNotification(_localizationService.GetResource("Admin.Customers.Customers.Deleted"));
+                return RedirectToAction("List");
             }
             catch (Exception ex)
             {
                 ErrorNotification(ex.Message);
-                return RedirectToAction("Edit", new { Id = customer.Id });
+                return RedirectToAction("Edit", new { id = customer.Id });
             }
         }
 

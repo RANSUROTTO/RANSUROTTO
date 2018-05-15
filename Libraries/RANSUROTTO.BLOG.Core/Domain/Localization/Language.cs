@@ -56,7 +56,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         {
             get
             {
-                return _localeStringResources ?? new List<LocaleStringResource>();
+                return _localeStringResources ?? (_localeStringResources = new List<LocaleStringResource>());
             }
             set
             {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blog.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
@@ -11,6 +12,8 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
     /// </summary>
     public class BlogPost : BaseEntity
     {
+
+        private ICollection<BlogComment> _blogComments;
 
         /// <summary>
         /// 获取或设置对应语言ID
@@ -74,6 +77,9 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
 
         #region Navigation Properties
 
+        /// <summary>
+        /// 获取或设置博文格式
+        /// </summary>
         public BlogPostFormat Format
         {
             get
@@ -83,11 +89,29 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
             set { this.FormatId = (int)value; }
         }
 
+        /// <summary>
+        /// 获取或设置博文语言
+        /// </summary>
         public virtual Language Language { get; set; }
 
+        /// <summary>
+        /// 获取或设置博文作者
+        /// </summary>
         public virtual Customer Author { get; set; }
 
+        /// <summary>
+        /// 获取或设置博文类目
+        /// </summary>
         public virtual Category Category { get; set; }
+
+        /// <summary>
+        /// 获取或设置博文内评论列表
+        /// </summary>
+        public virtual ICollection<BlogComment> BlogComments
+        {
+            get { return _blogComments ?? (_blogComments = new List<BlogComment>()); }
+            set { _blogComments = value; }
+        }
 
         #endregion
 
