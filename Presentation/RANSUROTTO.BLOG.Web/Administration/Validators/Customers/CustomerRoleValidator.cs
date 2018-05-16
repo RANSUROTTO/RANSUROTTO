@@ -11,6 +11,8 @@ namespace RANSUROTTO.BLOG.Admin.Validators.Customers
         {
             RuleFor(x => x.Name).NotEmpty()
                 .WithMessage(localizationService.GetResource("Admin.Customers.CustomerRoles.Fields.Name.Required"));
+            RuleFor(x => x.SystemName).NotEmpty()
+                .WithMessage(localizationService.GetResource("Admin.Customers.CustomerRoles.Fields.SystemName.Required"));
         }
     }
 }

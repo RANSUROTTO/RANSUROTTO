@@ -1,5 +1,7 @@
-﻿using RANSUROTTO.BLOG.Admin.Models.Localization;
+﻿using RANSUROTTO.BLOG.Admin.Models.Customers;
+using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Messages;
+using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Messages;
 using RANSUROTTO.BLOG.Core.Infrastructure.Mapper;
@@ -50,6 +52,25 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
         }
 
         public static EmailAccount ToEntity(this EmailAccountModel model, EmailAccount destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
+        #region Customer role
+
+        public static CustomerRoleModel ToModel(this CustomerRole entity)
+        {
+            return entity.MapTo<CustomerRole, CustomerRoleModel>();
+        }
+
+        public static CustomerRole ToEntity(this CustomerRoleModel model)
+        {
+            return model.MapTo<CustomerRoleModel, CustomerRole>();
+        }
+
+        public static CustomerRole ToEntity(this CustomerRoleModel model, CustomerRole destination)
         {
             return model.MapTo(destination);
         }

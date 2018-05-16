@@ -1,10 +1,12 @@
 ﻿using System.Web.Mvc;
+using FluentValidation.Attributes;
+using RANSUROTTO.BLOG.Admin.Validators.Customers;
 using RANSUROTTO.BLOG.Framework.Localization;
 using RANSUROTTO.BLOG.Framework.Mvc;
 
 namespace RANSUROTTO.BLOG.Admin.Models.Customers
 {
-
+    [Validator(typeof(CustomerRoleValidator))]
     public class CustomerRoleModel : BaseEntityModel
     {
 

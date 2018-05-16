@@ -1,0 +1,52 @@
+﻿@model CustomerRoleModel
+
+@Html.ValidationSummary(true)
+@Html.HiddenFor(model => model.Id)
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Name)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomEditorFor(model => model.Name, required: true)
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.SystemName)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomEditorFor(model => model.SystemName)
+                            @Html.ValidationMessageFor(model => model.SystemName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Active)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomEditorFor(model => model.Active)
+                            @Html.ValidationMessageFor(model => model.Active)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.IsSystemRole)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomDisplay(Model.IsSystemRole.ToString())
+                            @Html.HiddenFor(model => model.IsSystemRole)
+                            @Html.ValidationMessageFor(model => model.IsSystemRole)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
