@@ -173,7 +173,7 @@
       <Project>{358042CD-0244-467F-8635-61078EE6A1F1}</Project>
       <Name>RANSUROTTO.BLOG.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\RANSUROTTO.BLOG.Service\RANSUROTTO.BLOG.Services.csproj">
+    <ProjectReference Include="..\..\Libraries\RANSUROTTO.BLOG.Services\RANSUROTTO.BLOG.Services.csproj">
       <Project>{579CB98F-E361-48E3-BBF5-9AA5D74A1FE1}</Project>
       <Name>RANSUROTTO.BLOG.Services</Name>
     </ProjectReference>

@@ -440,6 +440,34 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #endregion
 
+        #region  Activity log
+
+        [HttpPost]
+        public virtual ActionResult ListActivityLog(DataSourceRequest command, long customerId)
+        {
+            var activityLog = _customerActivityService.GetAllActivities(null, null, customerId, 0, command.Page - 1, command.PageSize);
+            var gridModel = new DataSourceResult
+            {
+                Data = activityLog.Select(x =>
+                {
+                    var m = new CustomerModel.ActivityLogModel
+                    {
+                        Id = x.Id,
+                        ActivityLogTypeName = x.ActivityLogType.Name,
+                        Comment = x.Comment,
+                        CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc),
+                        IpAddress = x.IpAddress
+                    };
+                    return m;
+                }),
+                Total = activityLog.TotalCount
+            };
+
+            return Json(gridModel);
+        }
+
+        #endregion
+
         #region Utilities
 
         [NonAction]

@@ -60,10 +60,26 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="permissionRecord">权限项</param>
         /// <param name="localizationService">区域化服务实例</param>
+        /// <param name="workContext">工作区上下文</param>
+        /// <returns></returns>
+        public static string GetLocalizedPermissionName(this PermissionRecord permissionRecord,
+            ILocalizationService localizationService, IWorkContext workContext)
+        {
+            if (workContext == null)
+                throw new ArgumentNullException("workContext");
+
+            return GetLocalizedPermissionName(permissionRecord, localizationService, workContext.WorkingLanguage.Id);
+        }
+
+        /// <summary>
+        /// 获取权限项显示名称区域化资源
+        /// </summary>
+        /// <param name="permissionRecord">权限项</param>
+        /// <param name="localizationService">区域化服务实例</param>
         /// <param name="languageId">语言标识符</param>
         /// <returns>权限项区域化显示名称</returns>
         public static string GetLocalizedPermissionName(this PermissionRecord permissionRecord,
-            ILocalizationService localizationService, int languageId)
+            ILocalizationService localizationService, long languageId)
         {
             if (permissionRecord == null)
                 throw new ArgumentNullException(nameof(permissionRecord));

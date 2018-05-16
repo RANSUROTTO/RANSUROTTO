@@ -9,7 +9,6 @@ using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Core.Fakes;
 using RANSUROTTO.BLOG.Framework.Localization;
-using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Services.Authentication;
 using RANSUROTTO.BLOG.Services.Common;
 using RANSUROTTO.BLOG.Services.Customers;

@@ -15,6 +15,7 @@ using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
 using RANSUROTTO.BLOG.Core.Domain.Logging.Setting;
+using RANSUROTTO.BLOG.Core.Domain.Messages;
 using RANSUROTTO.BLOG.Core.Domain.Security;
 using RANSUROTTO.BLOG.Core.Domain.Security.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Seo.Enum;
@@ -48,12 +49,13 @@ namespace RANSUROTTO.BLOG.Services.Installation
         private readonly IRepository<ScheduleTask> _scheduleTaskRepository;
         private readonly IRepository<CustomerRole> _customerRoleRepository;
         private readonly IRepository<PermissionRecord> _permissionRecordRepository;
+        private readonly IRepository<EmailAccount> _emailAccountRepository;
 
         #endregion
 
         #region Constructor
 
-        public CodeFirstInstallationService(IRepository<Category> categoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<BlogComment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository, IRepository<CustomerRole> customerRoleRepository, IRepository<PermissionRecord> permissionRecordRepository)
+        public CodeFirstInstallationService(IRepository<Category> categoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<BlogComment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository, IRepository<CustomerRole> customerRoleRepository, IRepository<PermissionRecord> permissionRecordRepository, IRepository<EmailAccount> emailAccountRepository)
         {
             _categoryRepository = categoryRepository;
             _blogPostRepository = blogPostRepository;
@@ -70,18 +72,22 @@ namespace RANSUROTTO.BLOG.Services.Installation
             _scheduleTaskRepository = scheduleTaskRepository;
             _customerRoleRepository = customerRoleRepository;
             _permissionRecordRepository = permissionRecordRepository;
+            _emailAccountRepository = emailAccountRepository;
         }
 
         #endregion
 
         #region Methods
 
-        public void InstallData(string defaultUserEmail, string defaultUserPassword, bool installSampleData = true)
+        public virtual void InstallData(string defaultUserEmail, string defaultUserPassword, bool installSampleData = true)
         {
             InstallLanguages();
             InstallCustomersAndUsers(defaultUserEmail, defaultUserPassword);
+            InstallEmailAccounts();
             InstallSettings(installSampleData);
             InstallLocaleResources();
+            InstallActivityLogTypes();
+            InstallScheduleTasks();
         }
 
         #endregion
@@ -314,9 +320,55 @@ namespace RANSUROTTO.BLOG.Services.Installation
             _activityLogTypeRepository.Insert(activityLogTypes);
         }
 
+        protected virtual void InstallEmailAccounts()
+        {
+            var emailAccounts = new List<EmailAccount>
+            {
+                new EmailAccount
+                {
+                    Email = "test@mail.com",
+                    DisplayName = "Blog name",
+                    Host = "smtp.mail.com",
+                    Port = 25,
+                    Username = "123",
+                    Password = "123",
+                    EnableSsl = false,
+                    UseDefaultCredentials = false
+                },
+            };
+            _emailAccountRepository.Insert(emailAccounts);
+        }
+
         protected virtual void InstallScheduleTasks()
         {
-
+            var tasks = new List<ScheduleTask>
+            {
+                new ScheduleTask
+                {
+                    Name = "Clear Cache",
+                    Seconds = 600,
+                    Type = "RANSUROTTO.BLOG.Services.Caching.ClearCacheTask, RANSUROTTO.BLOG.Services",
+                    Enabled = false,
+                    StopOnError = false,
+                },
+                new ScheduleTask
+                {
+                    Name = "Delete guests",
+                    Seconds = 600,
+                    Type = "RANSUROTTO.BLOG.Services.Customers.DeleteGuestsTask, RANSUROTTO.BLOG.Services",
+                    Enabled = false,
+                    StopOnError = false,
+                },
+                new ScheduleTask
+                {
+                    Name = "Clear log",
+                    Seconds = 3600,
+                    Type = "RANSUROTTO.BLOG.Services.Logging.ClearLogTask, RANSUROTTO.BLOG.Services",
+                    Enabled = false,
+                    StopOnError = false,
+                },
+            };
+            _scheduleTaskRepository.Insert(tasks);
         }
 
         #endregion

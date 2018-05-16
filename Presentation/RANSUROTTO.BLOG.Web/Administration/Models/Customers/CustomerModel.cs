@@ -78,5 +78,16 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [ResourceDisplayName("Admin.Customers.Customers.Fields.CustomerRoles")]
         public IList<long> SelectedCustomerRoleIds { get; set; }
 
+
+        public partial class ActivityLogModel : BaseEntityModel
+        {
+            [ResourceDisplayName("Admin.Customers.Customers.ActivityLog.ActivityLogType")]
+            public string ActivityLogTypeName { get; set; }
+            [ResourceDisplayName("Admin.Customers.Customers.ActivityLog.Comment")]
+            public string Comment { get; set; }
+            [ResourceDisplayName("Admin.Customers.Customers.ActivityLog.IpAddress")]
+            public string IpAddress { get; set; }
+        }
+
     }
 }

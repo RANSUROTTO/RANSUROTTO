@@ -1,0 +1,349 @@
+﻿@using RANSUROTTO.BLOG.Core.Domain.Common.Setting
+@using RANSUROTTO.BLOG.Core.Infrastructure
+@using RANSUROTTO.BLOG.Framework.Events
+@using RANSUROTTO.BLOG.Services.Events
+@model CustomerModel
+
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+<script>
+    $(document).ready(function () {
+        bindBootstrapTabSelectEvent('customer-edit');
+    });
+</script>
+
+<div class="content">
+    <div class="form-horizontal">
+        <div id="customer-edit" class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                @Html.RenderBootstrapTabHeader("tab-info", @T("Admin.Customers.Customers.Info"), true)
+                @if (Model.Id > 0)
+                {
+                    @Html.RenderBootstrapTabHeader("tab-activitylog", @T("Admin.Customers.Customers.ActivityLog"))
+                }
+            </ul>
+            <div class="tab-content">
+                @Html.RenderBootstrapTabContent("tab-info", @TabInfo(), true)
+                @if (Model.Id > 0)
+                {
+                    @Html.RenderBootstrapTabContent("tab-activitylog", @TabActivityLog())
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    //custom tabs
+    var eventMessage = new AdminTabStripCreated(this.Html, "customer-edit");
+    EngineContext.Current.Resolve<IEventPublisher>().Publish(eventMessage);
+    foreach (var eventBlock in eventMessage.BlocksToRender)
+    {
+        @eventBlock
+    }
+}
+
+@*save selected tab name*@
+<input type="hidden" id="selected-tab-name" name="selected-tab-name" value="@(Html.GetSelectedTabName())">
+
+@helper TabInfo()
+    {
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Username)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomEditorFor(model => model.Username)
+                            @Html.ValidationMessageFor(model => model.Username)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Email)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomEditorFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Password)
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-group">
+                                @Html.CustomEditorFor(model => model.Password)
+                                <div class="input-group-btn">
+                                    @if (Model.Id > 0)
+                                    {
+                                        <button type="submit" name="changepassword" class="btn btn-info">
+                                            @T("Admin.Customers.Customers.Fields.Password.Change")
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.SelectedCustomerRoleIds)
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-group input-group-required">
+                                @Html.EditorFor(model => model.SelectedCustomerRoleIds, new { SelectList = Model.AvailableCustomerRoles })
+                                <div class="input-group-btn">
+                                    @Html.RequiredHint()
+                                </div>
+                            </div>
+                            <script>
+                                $(document).ready(function() {
+                                    var customerRolesIdsInput = $('#@Html.FieldIdFor(model => model.SelectedCustomerRoleIds)').data("kendoMultiSelect");
+                                    customerRolesIdsInput.setOptions({
+                                        customerRolesIdsInput: false
+                                    });
+
+                                    @if (Model.AvailableCustomerRoles.Count == 0)
+                                    {
+                                        <text>
+                                            customerRolesIdsInput.setOptions({
+                                                enable: false,
+                                                placeholder: '@T("Admin.Customers.Customers.Fields.CustomerRoles.NoRoles")'
+                                            });
+                                            customerRolesIdsInput._placeholder();
+                                            customerRolesIdsInput._enable();
+                                        </text>
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    @if (Model.GenderEnabled)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Gender)
+                            </div>
+                            <div class="col-md-9">
+                                <div class="raw">
+                                    <div class="col-md-1">
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButton("Gender", "M", (Model.Gender == "M"), new { id = "Gender_Male" })
+                                                @T("Admin.Customers.Customers.Fields.Gender.Male")
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButton("Gender", "F", (Model.Gender == "F"), new { id = "Gender_Female" })
+                                                @T("Admin.Customers.Customers.Fields.Gender.Female")
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Name)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomEditorFor(model => model.Name)
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                    </div>
+                    @if (Model.DateOfBirthEnabled)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.DateOfBirth)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.DateOfBirth)
+                                @Html.ValidationMessageFor(model => model.DateOfBirth)
+                            </div>
+                        </div>
+                    }
+                    @if (Model.CompanyEnabled)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Company)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.Company)
+                                @Html.ValidationMessageFor(model => model.Company)
+                            </div>
+                        </div>
+                    }
+                    @if (Model.PhoneEnabled)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Phone)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.Phone)
+                                @Html.ValidationMessageFor(model => model.Phone)
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.AdminComment)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomTextAreaFor(model => model.AdminComment)
+                            @Html.ValidationMessageFor(model => model.AdminComment)
+                        </div>
+                    </div>
+                    @if (Model.AllowCustomersToSetTimeZone)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.TimeZoneId)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDropDownList("TimeZoneId", Model.AvailableTimeZones)
+                                @Html.ValidationMessageFor(model => model.TimeZoneId)
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Active)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomEditorFor(model => model.Active)
+                            @Html.ValidationMessageFor(model => model.Active)
+                        </div>
+                    </div>
+                    @if (Model.Id > 0)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LastIpAddress)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.LastIpAddress)
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Id > 0)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CreatedOn)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.CreatedOn)
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Id > 0)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LastActivityDate)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.LastActivityDate)
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Id > 0 && !string.IsNullOrEmpty(Model.LastVisitedPage))
+                    {
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LastVisitedPage)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.LastVisitedPage)
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+}
+
+@helper TabActivityLog()
+    {
+        var defaultGridPageSize = EngineContext.Current.Resolve<AdminAreaSettings>().DefaultGridPageSize;
+        var gridPageSizes = EngineContext.Current.Resolve<AdminAreaSettings>().GridPageSizes;
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="activitylog-grid"></div>
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#activitylog-grid").kendoGrid({
+                            dataSource: {
+                                type: "json",
+                                transport: {
+                                    read: {
+                                        url: "@Html.Raw(Url.Action("ListActivityLog", "Customer", new { customerId = Model.Id }))",
+                                        type: "POST",
+                                        dataType: "json",
+                                        data: addAntiForgeryToken
+                                    }
+                                },
+                                schema: {
+                                    data: "Data",
+                                    total: "Total",
+                                    errors: "Errors"
+                                },
+                                error: function(e) {
+                                    display_kendoui_grid_error(e);
+                                    // Cancel the changes
+                                    this.cancelChanges();
+                                },
+                                pageSize: @(defaultGridPageSize),
+                                serverPaging: true,
+                                serverFiltering: true,
+                                serverSorting: true
+                                },
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: [@(gridPageSizes)],
+                                    @Html.Partial("_GridPagerMessages")
+                                },
+                                editable: {
+                                    confirmation: "@T("Admin.Common.DeleteConfirmation")",
+                                    mode: "inline"
+                                },
+                                scrollable: false,
+                                columns: [{
+                                    field: "ActivityLogTypeName",
+                                    title: "@T("Admin.Customers.Customers.ActivityLog.ActivityLogType")",
+                                    width: 300,
+                                }, {
+                                    field: "IpAddress",
+                                    title: "@T("Admin.Customers.Customers.ActivityLog.IpAddress")",
+                                    width: 100
+                                }, {
+                                    field: "Comment",
+                                    title: "@T("Admin.Customers.Customers.ActivityLog.Comment")"
+                                }, {
+                                    field: "CreatedOn",
+                                    title: "@T("Admin.Customers.Customers.ActivityLog.CreatedOn")",
+                                    width: 200,
+                                    type: "date",
+                                    format: "{0:G}"
+                                }]
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+}
