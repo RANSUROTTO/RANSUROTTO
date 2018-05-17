@@ -1233,6 +1233,7 @@
     <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Localization\LanguageResourceModel.cs" />
     <Compile Include="Models\Localization\LanguageResourcesListModel.cs" />
+    <Compile Include="Models\Logging\ActivityLogTypeModel.cs" />
     <Compile Include="Models\Logging\LogListModel.cs" />
     <Compile Include="Models\Logging\LogModel.cs" />
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
@@ -1400,6 +1401,7 @@
     <Content Include="Views\CustomerRole\Create.cshtml" />
     <Content Include="Views\CustomerRole\Edit.cshtml" />
     <Content Include="Views\CustomerRole\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\ActivityLog\ListTypes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1417,7 +1419,6 @@
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
     <Folder Include="Models\Blog\" />
     <Folder Include="Models\Configuration\" />
-    <Folder Include="Views\ActivityLog\" />
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Category\" />
