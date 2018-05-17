@@ -31,33 +31,35 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         private readonly CustomerSettings _customerSettings;
         private readonly DateTimeSettings _dateTimeSettings;
-        private readonly IEventPublisher _eventPublisher;
         private readonly ICustomerService _customerService;
         private readonly ICustomerActivityService _customerActivityService;
+        private readonly ICustomerReportService _customerReportService;
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ICustomerRegistrationService _customerRegistrationService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ILocalizationService _localizationService;
         private readonly IWorkContext _workContext;
         private readonly ICacheManager _cacheManager;
+        private readonly IEventPublisher _eventPublisher;
 
         #endregion
 
         #region Constructor
 
-        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, IEventPublisher eventPublisher, ICustomerService customerService, ICustomerActivityService customerActivityService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager)
+        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, ICustomerService customerService, ICustomerActivityService customerActivityService, ICustomerReportService customerReportService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager, IEventPublisher eventPublisher)
         {
             _customerSettings = customerSettings;
             _dateTimeSettings = dateTimeSettings;
-            _eventPublisher = eventPublisher;
             _customerService = customerService;
             _customerActivityService = customerActivityService;
+            _customerReportService = customerReportService;
             _genericAttributeService = genericAttributeService;
             _customerRegistrationService = customerRegistrationService;
             _dateTimeHelper = dateTimeHelper;
             _localizationService = localizationService;
             _workContext = workContext;
             _cacheManager = cacheManager;
+            _eventPublisher = eventPublisher;
         }
 
         #endregion
@@ -440,7 +442,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #endregion
 
-        #region  Activity log
+        #region  Activity logs
 
         [HttpPost]
         public virtual ActionResult ListActivityLog(DataSourceRequest command, long customerId)
@@ -461,6 +463,34 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                     return m;
                 }),
                 Total = activityLog.TotalCount
+            };
+
+            return Json(gridModel);
+        }
+
+        #endregion
+
+        #region Reports
+
+        public virtual ActionResult Reports()
+        {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public virtual ActionResult ReportRegisteredCustomers()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public virtual ActionResult ReportRegisteredCustomersList(DataSourceRequest command)
+        {
+            var model = GetReportRegisteredCustomersModel();
+            var gridModel = new DataSourceResult
+            {
+                Data = model,
+                Total = model.Count
             };
 
             return Json(gridModel);
@@ -590,6 +620,35 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 });
 
             return customers.Any(c => c.Active && c.Id != customer.Id);
+        }
+
+        [NonAction]
+        protected virtual IList<RegisteredCustomerReportLineModel> GetReportRegisteredCustomersModel()
+        {
+            var report = new List<RegisteredCustomerReportLineModel>();
+            report.Add(new RegisteredCustomerReportLineModel
+            {
+                Period = _localizationService.GetResource("Admin.Customers.Reports.RegisteredCustomers.Fields.Period.7days"),
+                Customers = _customerReportService.GetRegisteredCustomersReport(7)
+            });
+
+            report.Add(new RegisteredCustomerReportLineModel
+            {
+                Period = _localizationService.GetResource("Admin.Customers.Reports.RegisteredCustomers.Fields.Period.14days"),
+                Customers = _customerReportService.GetRegisteredCustomersReport(14)
+            });
+            report.Add(new RegisteredCustomerReportLineModel
+            {
+                Period = _localizationService.GetResource("Admin.Customers.Reports.RegisteredCustomers.Fields.Period.month"),
+                Customers = _customerReportService.GetRegisteredCustomersReport(30)
+            });
+            report.Add(new RegisteredCustomerReportLineModel
+            {
+                Period = _localizationService.GetResource("Admin.Customers.Reports.RegisteredCustomers.Fields.Period.year"),
+                Customers = _customerReportService.GetRegisteredCustomersReport(365)
+            });
+
+            return report;
         }
 
         #endregion

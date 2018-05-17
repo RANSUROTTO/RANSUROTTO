@@ -79,7 +79,7 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
 
         #endregion
 
-        #region Activity log
+        #region Activity log type
 
         public static ActivityLogTypeModel ToModel(this ActivityLogType entity)
         {
@@ -92,6 +92,25 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
         }
 
         public static ActivityLogType ToEntity(this ActivityLogTypeModel model, ActivityLogType destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
+        #region Activity log
+
+        public static ActivityLogModel ToModel(this ActivityLog entity)
+        {
+            return entity.MapTo<ActivityLog, ActivityLogModel>();
+        }
+
+        public static ActivityLog ToEntity(this ActivityLogModel model)
+        {
+            return model.MapTo<ActivityLogModel, ActivityLog>();
+        }
+
+        public static ActivityLog ToEntity(this ActivityLogModel model, ActivityLog destination)
         {
             return model.MapTo(destination);
         }

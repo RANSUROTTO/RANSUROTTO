@@ -75,9 +75,19 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
 
                 #endregion
 
-                #region Avtivity types
+                #region Activity log types
 
                 cfg.CreateMap<ActivityLogType, ActivityLogTypeModel>()
+                    .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<ActivityLogTypeModel, ActivityLogType>()
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
+
+                #endregion
+
+                #region Activity logs
+
+                cfg.CreateMap<ActivityLog, ActivityLogModel>()
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
                 cfg.CreateMap<ActivityLogTypeModel, ActivityLogType>()

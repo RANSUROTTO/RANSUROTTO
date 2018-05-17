@@ -1216,6 +1216,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\OnlineCustomerController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\ScheduleTaskController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
@@ -1230,9 +1231,12 @@
     <Compile Include="Models\Customers\CustomerListModel.cs" />
     <Compile Include="Models\Customers\CustomerModel.cs" />
     <Compile Include="Models\Customers\CustomerRoleModel.cs" />
+    <Compile Include="Models\Customers\RegisteredCustomerReportLineModel.cs" />
     <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Localization\LanguageResourceModel.cs" />
     <Compile Include="Models\Localization\LanguageResourcesListModel.cs" />
+    <Compile Include="Models\Logging\ActivityLogListModel.cs" />
+    <Compile Include="Models\Logging\ActivityLogModel.cs" />
     <Compile Include="Models\Logging\ActivityLogTypeModel.cs" />
     <Compile Include="Models\Logging\LogListModel.cs" />
     <Compile Include="Models\Logging\LogModel.cs" />
@@ -1402,6 +1406,9 @@
     <Content Include="Views\CustomerRole\Edit.cshtml" />
     <Content Include="Views\CustomerRole\_CreateOrUpdate.cshtml" />
     <Content Include="Views\ActivityLog\ListTypes.cshtml" />
+    <Content Include="Views\ActivityLog\ListLogs.cshtml" />
+    <Content Include="Views\Customer\Reports.cshtml" />
+    <Content Include="Views\Customer\ReportRegisteredCustomers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1422,6 +1429,7 @@
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Category\" />
+    <Folder Include="Views\OnlineCustomer\" />
     <Folder Include="Views\Preferences\" />
   </ItemGroup>
   <ItemGroup>

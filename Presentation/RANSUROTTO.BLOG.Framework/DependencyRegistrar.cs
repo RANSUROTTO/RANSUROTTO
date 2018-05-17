@@ -139,13 +139,13 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<LocalizationService>().As<ILocalizationService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
-            //TODO ILocalizedEntityService
             builder.RegisterType<LanguageService>().As<ILanguageService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<CustomerRegistrationService>().As<ICustomerRegistrationService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
+            builder.RegisterType<CustomerRegistrationService>().As<ICustomerRegistrationService>().InstancePerLifetimeScope();
+            builder.RegisterType<CustomerReportService>().As<ICustomerReportService>().InstancePerLifetimeScope();
 
             builder.RegisterType<GenericAttributeService>().As<IGenericAttributeService>().InstancePerLifetimeScope();
             builder.RegisterType<MaintenanceService>().As<IMaintenanceService>().InstancePerLifetimeScope();
