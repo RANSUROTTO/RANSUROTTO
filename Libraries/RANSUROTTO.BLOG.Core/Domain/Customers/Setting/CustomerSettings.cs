@@ -32,9 +32,19 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
         public int FailedPasswordLockoutMinutes { get; set; }
 
         /// <summary>
-        /// 获取或设置标识修改密码时不应与前一个密码相同；如果允许客户可以同时使用相同的密码，则为0。
+        /// 获取或设置标识修改密码时不应与指定限制数前的密码相同；如果允许客户可以同时使用相同的密码，则为0。
         /// </summary>
         public int UnduplicatedPasswordsNumber { get; set; }
+
+        /// <summary>
+        /// 获取或设置"最近活跃用户"的最后活动时间的限制分钟数
+        /// </summary>
+        public int OnlineCustomerMinutes { get; set; }
+
+        /// <summary>
+        /// 获取或设置是否开启记录用户最后访问页面的标识
+        /// </summary>
+        public bool LastVisitedPage { get; set; }
 
         /// <summary>
         /// 获取或设置用户"生日"属性开启状态

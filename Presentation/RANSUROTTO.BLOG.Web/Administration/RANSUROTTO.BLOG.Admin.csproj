@@ -1231,6 +1231,7 @@
     <Compile Include="Models\Customers\CustomerListModel.cs" />
     <Compile Include="Models\Customers\CustomerModel.cs" />
     <Compile Include="Models\Customers\CustomerRoleModel.cs" />
+    <Compile Include="Models\Customers\OnlineCustomerModel.cs" />
     <Compile Include="Models\Customers\RegisteredCustomerReportLineModel.cs" />
     <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Localization\LanguageResourceModel.cs" />
@@ -1409,6 +1410,7 @@
     <Content Include="Views\ActivityLog\ListLogs.cshtml" />
     <Content Include="Views\Customer\Reports.cshtml" />
     <Content Include="Views\Customer\ReportRegisteredCustomers.cshtml" />
+    <Content Include="Views\OnlineCustomer\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1429,7 +1431,6 @@
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Category\" />
-    <Folder Include="Views\OnlineCustomer\" />
     <Folder Include="Views\Preferences\" />
   </ItemGroup>
   <ItemGroup>

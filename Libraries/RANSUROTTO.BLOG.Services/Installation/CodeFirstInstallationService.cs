@@ -280,6 +280,8 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 FailedPasswordLockoutMinutes = 10,
                 UnduplicatedPasswordsNumber = 0,
                 DefaultPasswordFormat = PasswordFormat.Hashed,
+                OnlineCustomerMinutes = 60 * 24 * 7,
+                LastVisitedPage = true,
                 CompanyEnabled = true,
                 DateOfBirthEnabled = true,
                 GenderEnabled = true,

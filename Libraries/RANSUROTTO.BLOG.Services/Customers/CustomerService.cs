@@ -210,6 +210,28 @@ namespace RANSUROTTO.BLOG.Services.Customers
         }
 
         /// <summary>
+        /// 获取最后天数前活跃用户列表
+        /// </summary>
+        /// <param name="lastActivityFromUtc">用户最后活动日期（从）</param>
+        /// <param name="customerRoleIds">通过用户角色标识符列表来匹配过滤;传递Null为不限制</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">页大小</param>
+        /// <returns>用户列表</returns>
+        public IPagedList<Customer> GetOnlineCustomers(DateTime lastActivityFromUtc, long[] customerRoleIds, int pageIndex = 0,
+            int pageSize = Int32.MaxValue)
+        {
+            var query = _customerRepository.Table;
+            query = query.Where(c => lastActivityFromUtc <= c.LastActivityDateUtc);
+            query = query.Where(c => !c.Deleted);
+            if (customerRoleIds != null && customerRoleIds.Length > 0)
+                query = query.Where(c => c.CustomerRoles.Select(cr => cr.Id).Intersect(customerRoleIds).Any());
+
+            query = query.OrderByDescending(c => c.LastActivityDateUtc);
+            var customers = new PagedList<Customer>(query, pageIndex, pageSize);
+            return customers;
+        }
+
+        /// <summary>
         /// 通过系统名称获取用户
         /// </summary>
         /// <param name="systemName">用户系统名称</param>

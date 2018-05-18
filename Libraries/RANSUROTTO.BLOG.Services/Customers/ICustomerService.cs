@@ -50,8 +50,19 @@ namespace RANSUROTTO.BLOG.Services.Customers
             DateTime? createdToUtc = null, long[] customerRoleIds = null,
             string email = null, string username = null, string name = null,
             int dayOfBirth = 0, int monthOfBirth = 0, string company = null,
-            string phone = null,  string ipAddress = null,
+            string phone = null, string ipAddress = null,
             int pageIndex = 0, int pageSize = int.MaxValue);
+
+        /// <summary>
+        /// 获取最后天数前活跃用户列表
+        /// </summary>
+        /// <param name="lastActivityFromUtc">用户最后活动日期（从）</param>
+        /// <param name="customerRoleIds">通过用户角色标识符列表来匹配过滤;传递Null为不限制</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">页大小</param>
+        /// <returns>用户列表</returns>
+        IPagedList<Customer> GetOnlineCustomers(DateTime lastActivityFromUtc,
+            long[] customerRoleIds, int pageIndex = 0, int pageSize = int.MaxValue);
 
         /// <summary>
         /// 通过系统名称获取用户
