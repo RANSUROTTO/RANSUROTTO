@@ -1,17 +1,47 @@
-﻿
+﻿@model CustomerModel
+
 @{
-    Layout = null;
+    //页面标题
+    ViewBag.Title = T("Admin.Customers.Customers").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("Customers list");
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    <div> 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.Customers.Customers.EditCustomerDetails") - @Model.Name
+            <small><i class="fa fa-arrow-circle-left"></i>@Html.ActionLink(T("Admin.Customers.Customers.BackToList").Text, "List")</small>
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+            <button type="submit" name="save-continue" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.SaveContinue")
+            </button>
+            <button type="button" class="btn bg-green" data-toggle="modal" data-target="#sendemail-window">
+                <i class="fa fa-at"></i>
+                @T("Admin.Customers.Customers.SendEmail")
+            </button>
+            <button type="button" class="btn bg-green" data-toggle="modal" data-target="#sendprivatemessage-window">
+                <i class="fa fa-envelope-o"></i>
+                @T("Admin.Customers.Customers.SendPM")
+            </button>
+            <span id="customer-delete" class="btn bg-red">
+                <i class="fa fa-trash-o"></i>
+                @T("Admin.Common.Delete")
+            </span>
+        </div>
     </div>
-</body>
-</html>
+    @Html.Partial("_CreateOrUpdate", Model)
+}
+@Html.DeleteConfirmation("customer-delete")
+
+@* Send email form *@
+
+@* Send PM form*@
