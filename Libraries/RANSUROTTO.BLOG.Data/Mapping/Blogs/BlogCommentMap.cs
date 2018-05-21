@@ -1,6 +1,6 @@
-﻿using RANSUROTTO.BLOG.Core.Domain.Blog;
+﻿using RANSUROTTO.BLOG.Core.Domain.Blogs;
 
-namespace RANSUROTTO.BLOG.Data.Mapping.Blog
+namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
 {
     public class BlogCommentMap : CustomEntityTypeConfiguration<BlogComment>
     {

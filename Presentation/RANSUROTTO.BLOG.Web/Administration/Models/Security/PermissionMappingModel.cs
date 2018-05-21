@@ -9,6 +9,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Security
         public PermissionMappingModel()
         {
             AvailablePermissions = new List<PermissionRecordModel>();
+            AvailableCustomerRoles = new List<CustomerRoleModel>();
         }
 
         public IList<PermissionRecordModel> AvailablePermissions { get; set; }

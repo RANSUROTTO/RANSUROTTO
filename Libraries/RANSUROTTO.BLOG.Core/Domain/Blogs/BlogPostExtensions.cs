@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace RANSUROTTO.BLOG.Core.Domain.Blog
+namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 {
 
     public static class BlogPostExtensions

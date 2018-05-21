@@ -1,6 +1,6 @@
-using RANSUROTTO.BLOG.Core.Domain.Blog;
+using RANSUROTTO.BLOG.Core.Domain.Blogs;
 
-namespace RANSUROTTO.BLOG.Data.Mapping.Blog
+namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
 {
 
     public class BlogPostMap : CustomEntityTypeConfiguration<BlogPost>
@@ -14,9 +14,9 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Blog
             this.Property(p => p.Body).IsRequired();
             this.Property(p => p.BodyOverview).HasMaxLength(2000);
 
-            this.HasRequired(p => p.Category)
+            this.HasRequired(p => p.BlogCategory)
                 .WithMany()
-                .HasForeignKey(p => p.CategoryId);
+                .HasForeignKey(p => p.BlogCategoryId);
             this.HasRequired(p => p.Author)
                 .WithMany()
                 .HasForeignKey(p => p.AuthorId);

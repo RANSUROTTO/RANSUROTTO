@@ -18,7 +18,14 @@ namespace RANSUROTTO.BLOG.Services.Configuration
 
         #region Constants
 
+        /// <summary>
+        /// 所有设定缓存
+        /// </summary>
         private const string SETTINGS_ALL_KEY = "Ransurotto.setting.all";
+
+        /// <summary>
+        /// 清除缓存的键匹配模式
+        /// </summary>
         private const string SETTINGS_PATTERN_KEY = "Ransurotto.setting.";
 
         #endregion

@@ -6,6 +6,16 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common.Setting
     {
 
         /// <summary>
+        /// 获取或设置是否启用存储过程（如果可以使用的话，应使用）
+        /// </summary>
+        public bool UseStoredProceduresIfSupported { get; set; }
+
+        /// <summary>
+        /// 获取或设置是否使用存储过程来获取类目（这比LINQ要快）
+        /// </summary>
+        public bool UseStoredProcedureForLoadingCategories { get; set; }
+
+        /// <summary>
         /// 获取或设置是否显示有关新的欧盟Cookie法(Cookie隐私保护)的警告
         /// </summary>
         public bool DisplayEuCookieLawWarning { get; set; }

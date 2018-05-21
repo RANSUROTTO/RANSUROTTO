@@ -1,4 +1,4 @@
-﻿namespace RANSUROTTO.BLOG.Core.Domain.Blog.Enum
+﻿namespace RANSUROTTO.BLOG.Core.Domain.Blogs.Enum
 {
     /// <summary>
     /// 文本编辑器

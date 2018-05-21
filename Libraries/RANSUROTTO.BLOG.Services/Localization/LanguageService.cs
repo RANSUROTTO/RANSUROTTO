@@ -16,7 +16,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         #region Constants
 
         /// <summary>
-        /// 语言键-缓存
+        /// 语言缓存
         /// </summary>
         /// <remarks>
         /// {0} : 语言ID

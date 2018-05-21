@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
-using RANSUROTTO.BLOG.Core.Domain.Blog.Enum;
+using RANSUROTTO.BLOG.Core.Domain.Blogs.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 
-namespace RANSUROTTO.BLOG.Core.Domain.Blog
+namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 {
     /// <summary>
     /// 博客文章
@@ -23,7 +23,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         /// <summary>
         /// 获取或设置所在类目ID
         /// </summary>
-        public long CategoryId { get; set; }
+        public long BlogCategoryId { get; set; }
 
         /// <summary>
         /// 获取或设置作者ID
@@ -102,7 +102,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blog
         /// <summary>
         /// 获取或设置博文类目
         /// </summary>
-        public virtual Category Category { get; set; }
+        public virtual BlogCategory BlogCategory { get; set; }
 
         /// <summary>
         /// 获取或设置博文内评论列表

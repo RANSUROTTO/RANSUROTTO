@@ -9,7 +9,6 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [ResourceDisplayName("Admin.Customers.Reports.RegisteredCustomers.Fields.Period")]
         public string Period { get; set; }
 
-
         [ResourceDisplayName("Admin.Customers.Reports.RegisteredCustomers.Fields.Customers")]
         public int Customers { get; set; }
 

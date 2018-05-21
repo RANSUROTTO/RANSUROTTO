@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using RANSUROTTO.BLOG.Core.Data;
-using RANSUROTTO.BLOG.Core.Domain.Blog;
-using RANSUROTTO.BLOG.Core.Domain.Blog.Setting;
+using RANSUROTTO.BLOG.Core.Domain.Blogs;
+using RANSUROTTO.BLOG.Core.Domain.Blogs.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Common;
 using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Configuration;
@@ -34,7 +34,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
         #region Fields
 
-        private readonly IRepository<Category> _categoryRepository;
+        private readonly IRepository<BlogCategory> _blogCategoryRepository;
         private readonly IRepository<BlogPost> _blogPostRepository;
         private readonly IRepository<BlogComment> _blogCommentRepository;
         private readonly IRepository<GenericAttribute> _genericAttributeRepository;
@@ -55,9 +55,9 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
         #region Constructor
 
-        public CodeFirstInstallationService(IRepository<Category> categoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<BlogComment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository, IRepository<CustomerRole> customerRoleRepository, IRepository<PermissionRecord> permissionRecordRepository, IRepository<EmailAccount> emailAccountRepository)
+        public CodeFirstInstallationService(IRepository<BlogCategory> blogCategoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<BlogComment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository, IRepository<CustomerRole> customerRoleRepository, IRepository<PermissionRecord> permissionRecordRepository, IRepository<EmailAccount> emailAccountRepository)
         {
-            _categoryRepository = categoryRepository;
+            _blogCategoryRepository = blogCategoryRepository;
             _blogPostRepository = blogPostRepository;
             _blogCommentRepository = blogCommentRepository;
             _genericAttributeRepository = genericAttributeRepository;
