@@ -1,14 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Services.Catalog
 {
     public static class CategoryExtensions
     {
+
+        /// <summary>
+        /// 获取类目面包屑格式化后的字符串
+        /// </summary>
+        /// <param name="category">类目</param>
+        /// <param name="categoryService">类目业务实例</param>
+        /// <param name="separator">分隔符</param>
+        /// <param name="languageId">语言标识符</param>
+        /// <returns>格式化后的字符串</returns>
+        public static string GetFormattedBreadCrumb(this BlogCategory category,
+            ICategoryService categoryService,
+            string separator = ">>", int languageId = 0)
+        {
+            string result = string.Empty;
+
+            var breadcrumb = GetCategoryBreadCrumb(category, categoryService, true);
+            for (int i = 0; i <= breadcrumb.Count - 1; i++)
+            {
+                var categoryName = breadcrumb[i].GetLocalized(x => x.Name, languageId);
+                result = String.IsNullOrEmpty(result)
+                    ? categoryName
+                    : string.Format("{0} {1} {2}", result, separator, categoryName);
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// 获取以树的方式排序类目
@@ -41,7 +66,101 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             return result;
         }
 
+        /// <summary>
+        /// 获取面包屑格式化类目
+        /// </summary>
+        /// <param name="category">类目</param>
+        /// <param name="allCategories">需被格式化操作的类目列表</param>
+        /// <param name="separator">分隔符</param>
+        /// <param name="languageId">语言标识符</param>
+        /// <returns>格式化后的类目列表</returns>
+        public static string GetFormattedBreadCrumb(this BlogCategory category,
+            IList<BlogCategory> allCategories,
+            string separator = ">>", int languageId = 0)
+        {
+            string result = string.Empty;
 
+            var breadcrumb = GetCategoryBreadCrumb(category, allCategories, true);
+            for (int i = 0; i <= breadcrumb.Count - 1; i++)
+            {
+                var categoryName = breadcrumb[i].GetLocalized(x => x.Name, languageId);
+                result = string.IsNullOrEmpty(result)
+                    ? categoryName
+                    : string.Format("{0} {1} {2}", result, separator, categoryName);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 获取面包屑格式化类目
+        /// </summary>
+        /// <param name="category">类目</param>
+        /// <param name="categoryService">类目业务实例</param>
+        /// <param name="showHidden">指示是否显示隐藏项</param>
+        /// <returns>格式化后的类目列表</returns>
+        public static IList<BlogCategory> GetCategoryBreadCrumb(this BlogCategory category,
+            ICategoryService categoryService,
+            bool showHidden = false)
+        {
+            if (category == null)
+                throw new ArgumentNullException(nameof(category));
+
+            var result = new List<BlogCategory>();
+
+            //用于防止循环引用
+            var alreadyProcessedCategoryIds = new List<long>();
+
+            while (category != null && //不为null
+                   !category.Deleted && //不为已被删除
+                   (showHidden || category.Published) && //已发布
+                   !alreadyProcessedCategoryIds.Contains(category.Id)) //防止循环引用
+            {
+                result.Add(category);
+
+                alreadyProcessedCategoryIds.Add(category.Id);
+
+                category = categoryService.GetBlogCategoryById(category.ParentCategoryId);
+            }
+            result.Reverse();
+            return result;
+        }
+
+        /// <summary>
+        /// 获取面包屑格式化类目
+        /// </summary>
+        /// <param name="category">类目</param>
+        /// <param name="allCategories">需被格式化操作的类目列表</param>
+        /// <param name="showHidden">指示是否显示隐藏项</param>
+        /// <returns>格式化后的类目列表</returns>
+        public static IList<BlogCategory> GetCategoryBreadCrumb(this BlogCategory category,
+            IList<BlogCategory> allCategories,
+            bool showHidden = false)
+        {
+            if (category == null)
+                throw new ArgumentNullException(nameof(category));
+
+            var result = new List<BlogCategory>();
+
+            //用于防止循环引用
+            var alreadyProcessedCategoryIds = new List<long>();
+
+            while (category != null && //不为null
+                   !category.Deleted && //不为已被删除
+                   (showHidden || category.Published) && //已发布
+                   !alreadyProcessedCategoryIds.Contains(category.Id)) //防止循环引用
+            {
+                result.Add(category);
+
+                alreadyProcessedCategoryIds.Add(category.Id);
+
+                category = (from c in allCategories
+                            where c.Id == category.ParentCategoryId
+                            select c).FirstOrDefault();
+            }
+            result.Reverse();
+            return result;
+        }
 
     }
 }

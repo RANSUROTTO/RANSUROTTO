@@ -50,14 +50,14 @@ namespace RANSUROTTO.BLOG.Services.Logging
         /// </summary>
         /// <param name="logId">日志标识符</param>
         /// <returns>日志</returns>
-        Log GetLogById(long logId);
+        Log GetLogById(int logId);
 
         /// <summary>
         /// 通过标识符列表获取日志列表
         /// </summary>
         /// <param name="logIds">日志标识符列表</param>
         /// <returns>日志列表</returns>
-        IList<Log> GetLogByIds(long[] logIds);
+        IList<Log> GetLogByIds(int[] logIds);
 
         /// <summary>
         /// 插入一条日志

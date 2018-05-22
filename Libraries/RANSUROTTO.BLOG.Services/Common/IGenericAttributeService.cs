@@ -15,7 +15,7 @@ namespace RANSUROTTO.BLOG.Services.Common
         /// </summary>
         /// <param name="attributeId">通用属性标识符</param>
         /// <returns>通用属性</returns>
-        GenericAttribute GetAttributeById(long attributeId);
+        GenericAttribute GetAttributeById(int attributeId);
 
         /// <summary>
         /// 通过实体标识符和键分组获取通用属性集合
@@ -23,7 +23,7 @@ namespace RANSUROTTO.BLOG.Services.Common
         /// <param name="entityId">实体标识符</param>
         /// <param name="keyGroup">键分组</param>
         /// <returns>通用属性列表</returns>
-        IList<GenericAttribute> GetAttributesForEntity(long entityId, string keyGroup);
+        IList<GenericAttribute> GetAttributesForEntity(int entityId, string keyGroup);
 
         /// <summary>
         /// 添加通用属性

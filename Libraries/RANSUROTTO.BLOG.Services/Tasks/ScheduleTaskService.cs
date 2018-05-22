@@ -26,7 +26,7 @@ namespace RANSUROTTO.BLOG.Services.Tasks
 
         #region Methods
 
-        public ScheduleTask GetTaskById(long taskId)
+        public ScheduleTask GetTaskById(int taskId)
         {
             if (taskId == 0)
                 return null;

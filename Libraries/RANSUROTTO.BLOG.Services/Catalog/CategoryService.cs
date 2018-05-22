@@ -59,12 +59,15 @@ namespace RANSUROTTO.BLOG.Services.Catalog
 
         #region Constructor
 
-        public CategoryService(IRepository<BlogCategory> blogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager)
+        public CategoryService(IRepository<BlogCategory> blogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings, CatalogSettings catalogSettings)
         {
             _blogCategoryRepository = blogCategoryRepository;
             _workContext = workContext;
             _eventPublisher = eventPublisher;
             _cacheManager = cacheManager;
+            _dataProvider = dataProvider;
+            _commonSettings = commonSettings;
+            _catalogSettings = catalogSettings;
         }
 
         #endregion
@@ -126,7 +129,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             });
         }
 
-        public BlogCategory GetBlogCategoryById(long blogCategoryId)
+        public BlogCategory GetBlogCategoryById(int blogCategoryId)
         {
             if (blogCategoryId == 0)
                 return null;

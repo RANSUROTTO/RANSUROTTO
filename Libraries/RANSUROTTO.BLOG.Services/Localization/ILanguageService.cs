@@ -22,7 +22,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="languageId">语言标识符</param>
         /// <returns>语言</returns>
-        Language GetLanguageById(long languageId);
+        Language GetLanguageById(int languageId);
 
         /// <summary>
         /// 添加语言

@@ -83,7 +83,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return Json(gridModel);
         }
 
-        public virtual ActionResult AcivityLogDelete(long id)
+        public virtual ActionResult AcivityLogDelete(int id)
         {
             var activityLog = _customerActivityService.GetActivityById(id);
             if (activityLog == null)

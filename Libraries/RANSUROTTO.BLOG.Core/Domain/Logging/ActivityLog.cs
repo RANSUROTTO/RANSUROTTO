@@ -9,12 +9,12 @@ namespace RANSUROTTO.BLOG.Core.Domain.Logging
         /// <summary>
         /// 获取或设置活动日志类型ID
         /// </summary>
-        public long ActivityLogTypeId { get; set; }
+        public int ActivityLogTypeId { get; set; }
 
         /// <summary>
         /// 获取或设置用户ID
         /// </summary>
-        public long CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
         /// <summary>
         /// 获取或设置注释信息

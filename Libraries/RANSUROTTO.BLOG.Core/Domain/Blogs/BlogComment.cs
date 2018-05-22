@@ -22,12 +22,12 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// <summary>
         /// 获取或设置用户ID
         /// </summary>
-        public long? CustomerId { get; set; }
+        public int? CustomerId { get; set; }
 
         /// <summary>
         /// 获取或设置文章ID
         /// </summary>
-        public long BlogPostId { get; set; }
+        public int BlogPostId { get; set; }
 
         #region Navigation Properties
 

@@ -15,7 +15,7 @@ namespace RANSUROTTO.BLOG.Services.Security
         /// </summary>
         /// <param name="permissionId">权限项标识符</param>
         /// <returns>权限项</returns>
-        PermissionRecord GetPermissionRecordById(long permissionId);
+        PermissionRecord GetPermissionRecordById(int permissionId);
 
         /// <summary>
         /// 通过系统名称获取权限项

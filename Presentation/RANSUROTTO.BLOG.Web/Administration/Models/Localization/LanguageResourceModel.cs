@@ -18,6 +18,6 @@ namespace RANSUROTTO.BLOG.Admin.Models.Localization
         [AllowHtml]
         public string Value { get; set; }
 
-        public long LanguageId { get; set; }
+        public int LanguageId { get; set; }
     }
 }

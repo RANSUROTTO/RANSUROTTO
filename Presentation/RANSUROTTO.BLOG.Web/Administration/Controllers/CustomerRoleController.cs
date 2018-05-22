@@ -86,7 +86,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
-        public virtual ActionResult Edit(long id)
+        public virtual ActionResult Edit(int id)
         {
             var customerRole = _customerService.GetCustomerRoleById(id);
             if (customerRole == null)
@@ -134,7 +134,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var customerRole = _customerService.GetCustomerRoleById(id);
             if (customerRole == null)

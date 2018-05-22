@@ -19,7 +19,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Localization
         /// <summary>
         /// 获取或设置对应语言ID
         /// </summary>
-        public long LanguageId { get; set; }
+        public int LanguageId { get; set; }
 
         #region Navigation Properties
 

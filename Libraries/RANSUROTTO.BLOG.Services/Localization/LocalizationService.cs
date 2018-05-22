@@ -97,7 +97,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="localeStringResourceId">区域语言字符串资源标识符</param>
         /// <returns>区域语言字符串资源</returns>
-        public virtual LocaleStringResource GetLocaleStringResourceById(long localeStringResourceId)
+        public virtual LocaleStringResource GetLocaleStringResourceById(int localeStringResourceId)
         {
             if (localeStringResourceId == 0)
                 return null;
@@ -125,7 +125,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// <param name="languageId">语言标识符</param>
         /// <param name="logIfNotFound">如果找不到区域语言字符串资源,指示是否要记录错误</param>
         /// <returns>区域语言字符串资源</returns>
-        public virtual LocaleStringResource GetLocaleStringResourceByName(string resourceName, long languageId,
+        public virtual LocaleStringResource GetLocaleStringResourceByName(string resourceName, int languageId,
             bool logIfNotFound = true)
         {
             var query = from lsr in _lsrRepository.Table
@@ -145,7 +145,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="languageId">语言标识符</param>
         /// <returns>区域语言字符串资源列表</returns>
-        public virtual IList<LocaleStringResource> GetAllResources(long languageId)
+        public virtual IList<LocaleStringResource> GetAllResources(int languageId)
         {
             var query = from l in _lsrRepository.Table
                         orderby l.ResourceName
@@ -196,7 +196,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="languageId">语言标识符</param>
         /// <returns>语言与区域语言字符串资源字典</returns>
-        public virtual Dictionary<string, KeyValuePair<long, string>> GetAllResourceValues(long languageId)
+        public virtual Dictionary<string, KeyValuePair<int, string>> GetAllResourceValues(int languageId)
         {
             string key = string.Format(LOCALSTRINGRESOURCES_ALL_KEY, languageId);
             return _cacheManager.Get(key, () =>
@@ -211,12 +211,12 @@ namespace RANSUROTTO.BLOG.Services.Localization
 
                 //格式: <name, <id, value>>
                 //<资源名称,<资源id,资源值>>
-                var dictionary = new Dictionary<string, KeyValuePair<long, string>>();
+                var dictionary = new Dictionary<string, KeyValuePair<int, string>>();
                 foreach (var locale in locales)
                 {
                     var resourceName = locale.ResourceName.ToLowerInvariant();
                     if (!dictionary.ContainsKey(resourceName))
-                        dictionary.Add(resourceName, new KeyValuePair<long, string>(locale.Id, locale.ResourceValue));
+                        dictionary.Add(resourceName, new KeyValuePair<int, string>(locale.Id, locale.ResourceValue));
                 }
                 return dictionary;
             });
@@ -244,7 +244,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// <param name="defaultValue">默认值</param>
         /// <param name="returnEmptyIfNotFound">指示未找到资源时是否返回空字符串,并将默认值设置为空字符串</param>
         /// <returns>区域语言字符串资源值</returns>
-        public virtual string GetResource(string resourceKey, long languageId,
+        public virtual string GetResource(string resourceKey, int languageId,
             bool logIfNotFound = true, string defaultValue = "", bool returnEmptyIfNotFound = false)
         {
             string result = string.Empty;

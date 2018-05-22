@@ -99,7 +99,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         [HttpPost]
         public virtual ActionResult CustomerList(DataSourceRequest command, CustomerListModel model,
-            [ModelBinder(typeof(CommaSeparatedModelBinder))] long[] searchCustomerRoleIds)
+            [ModelBinder(typeof(CommaSeparatedModelBinder))] int[] searchCustomerRoleIds)
         {
             var searchDayOfBirth = 0;
             int searchMonthOfBirth = 0;
@@ -245,7 +245,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
-        public virtual ActionResult Edit(long id)
+        public virtual ActionResult Edit(int id)
         {
             var customer = _customerService.GetCustomerById(id);
             if (customer == null || customer.Deleted)
@@ -404,7 +404,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var customer = _customerService.GetCustomerById(id);
             if (customer == null)
@@ -445,7 +445,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region  Activity logs
 
         [HttpPost]
-        public virtual ActionResult ListActivityLog(DataSourceRequest command, long customerId)
+        public virtual ActionResult ListActivityLog(DataSourceRequest command, int customerId)
         {
             var activityLog = _customerActivityService.GetAllActivities(null, null, customerId, 0, command.Page - 1, command.PageSize);
             var gridModel = new DataSourceResult

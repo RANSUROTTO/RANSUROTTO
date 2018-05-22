@@ -96,7 +96,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
-        public virtual ActionResult Edit(long id)
+        public virtual ActionResult Edit(int id)
         {
             var language = _languageService.GetLanguageById(id);
             if (language == null)
@@ -143,7 +143,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var language = _languageService.GetLanguageById(id);
             if (language == null)
@@ -189,7 +189,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         [HttpPost]
         [AdminAntiForgery(true)]
-        public virtual ActionResult Resources(long languageId, DataSourceRequest command,
+        public virtual ActionResult Resources(int languageId, DataSourceRequest command,
             LanguageResourcesListModel model)
         {
 
@@ -253,7 +253,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult ResourceAdd(long languageId, [Bind(Exclude = "Id")] LanguageResourceModel model)
+        public virtual ActionResult ResourceAdd(int languageId, [Bind(Exclude = "Id")] LanguageResourceModel model)
         {
             if (model.Name != null)
                 model.Name = model.Name.Trim();
@@ -282,7 +282,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult ResourceDelete(long id)
+        public virtual ActionResult ResourceDelete(int id)
         {
             var resource = _localizationService.GetLocaleStringResourceById(id);
             if (resource == null)
@@ -297,7 +297,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Export / Import
 
-        public virtual ActionResult ExportXml(long id)
+        public virtual ActionResult ExportXml(int id)
         {
             var language = _languageService.GetLanguageById(id);
             if (language == null)

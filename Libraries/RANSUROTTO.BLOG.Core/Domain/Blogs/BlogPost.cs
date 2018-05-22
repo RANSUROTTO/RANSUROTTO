@@ -18,17 +18,17 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// <summary>
         /// 获取或设置对应语言ID
         /// </summary>
-        public long LanguageId { get; set; }
+        public int LanguageId { get; set; }
 
         /// <summary>
         /// 获取或设置所在类目ID
         /// </summary>
-        public long BlogCategoryId { get; set; }
+        public int BlogCategoryId { get; set; }
 
         /// <summary>
         /// 获取或设置作者ID
         /// </summary>
-        public long AuthorId { get; set; }
+        public int AuthorId { get; set; }
 
         /// <summary>
         /// 获取或设置标题

@@ -64,7 +64,7 @@ namespace RANSUROTTO.BLOG.Services.Security
         /// </summary>
         /// <param name="permissionId">权限项标识符</param>
         /// <returns>权限项</returns>
-        public virtual PermissionRecord GetPermissionRecordById(long permissionId)
+        public virtual PermissionRecord GetPermissionRecordById(int permissionId)
         {
             if (permissionId == 0)
                 return null;

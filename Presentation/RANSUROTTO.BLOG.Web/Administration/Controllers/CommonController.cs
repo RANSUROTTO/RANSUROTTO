@@ -134,7 +134,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return PartialView(model);
         }
 
-        public virtual ActionResult SetLanguage(long langid, string returnUrl = "")
+        public virtual ActionResult SetLanguage(int langid, string returnUrl = "")
         {
             var language = _languageService.GetLanguageById(langid);
             if (language != null)

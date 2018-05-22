@@ -6,6 +6,8 @@ using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Framework.UI;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Core.Infrastructure;
+using RANSUROTTO.BLOG.Framework.Localization;
+using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
 
 namespace RANSUROTTO.BLOG.Framework.Controllers
@@ -175,6 +177,45 @@ namespace RANSUROTTO.BLOG.Framework.Controllers
         {
             var pageHeadBuilder = EngineContext.Current.Resolve<IPageHeadBuilder>();
             pageHeadBuilder.AddEditPageUrl(editPageUrl);
+        }
+
+        #endregion
+
+        #region Locale
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TLocalizedModelLocal"></typeparam>
+        /// <param name="languageService"></param>
+        /// <param name="locales"></param>
+        protected virtual void AddLocales<TLocalizedModelLocal>(ILanguageService languageService,
+            IList<TLocalizedModelLocal> locales) where TLocalizedModelLocal : ILocalizedModelLocal
+        {
+            AddLocales(languageService, locales, null);
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <typeparam name="TLocalizedModelLocal"></typeparam>
+        /// <param name="languageService"></param>
+        /// <param name="locales"></param>
+        /// <param name="configure"></param>
+        protected virtual void AddLocales<TLocalizedModelLocal>(ILanguageService languageService,
+            IList<TLocalizedModelLocal> locales, Action<TLocalizedModelLocal, int> configure)
+            where TLocalizedModelLocal : ILocalizedModelLocal
+        {
+            foreach (var language in languageService.GetAllLanguages(true))
+            {
+                var locale = Activator.CreateInstance<TLocalizedModelLocal>();
+                locale.LanguageId = language.Id;
+                if (configure != null)
+                {
+                    configure.Invoke(locale, locale.LanguageId);
+                }
+                locales.Add(locale);
+            }
         }
 
         #endregion

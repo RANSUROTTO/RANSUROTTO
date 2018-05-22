@@ -18,7 +18,7 @@ namespace RANSUROTTO.BLOG.Services.Configuration
         /// </summary>
         /// <param name="settingId">设定项标识符</param>
         /// <returns>设定项</returns>
-        Setting GetSettingById(long settingId);
+        Setting GetSettingById(int settingId);
 
         /// <summary>
         /// 删除设定项

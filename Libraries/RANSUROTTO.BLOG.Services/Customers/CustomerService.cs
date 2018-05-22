@@ -80,7 +80,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="customerId">用户标识符</param>
         /// <returns>用户</returns>
-        public virtual Customer GetCustomerById(long customerId)
+        public virtual Customer GetCustomerById(int customerId)
         {
             if (customerId == 0)
                 return null;
@@ -93,7 +93,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="customerIds">用户标识符列表</param>
         /// <returns>用户列表</returns>
-        public virtual IList<Customer> GetCustomersByIds(long[] customerIds)
+        public virtual IList<Customer> GetCustomersByIds(int[] customerIds)
         {
             if (customerIds == null || customerIds.Length == 0)
                 return new List<Customer>();
@@ -105,7 +105,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
 
             //按查询ID列表进行排序
             var sortedCustomers = new List<Customer>();
-            foreach (long id in customerIds)
+            foreach (int id in customerIds)
             {
                 var customer = customers.Find(x => x.Id == id);
                 if (customer != null)
@@ -132,7 +132,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="pageSize">页大小</param>
         /// <returns>用户列表</returns>
         public virtual IPagedList<Customer> GetAllCustomers(DateTime? createdFromUtc = null, DateTime? createdToUtc = null,
-            long[] customerRoleIds = null, string email = null, string username = null, string name = null,
+            int[] customerRoleIds = null, string email = null, string username = null, string name = null,
             int dayOfBirth = 0, int monthOfBirth = 0, string company = null, string phone = null,
              string ipAddress = null, int pageIndex = 0, int pageSize = Int32.MaxValue)
         {
@@ -217,7 +217,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="pageIndex">页码</param>
         /// <param name="pageSize">页大小</param>
         /// <returns>用户列表</returns>
-        public IPagedList<Customer> GetOnlineCustomers(DateTime lastActivityFromUtc, long[] customerRoleIds, int pageIndex = 0,
+        public IPagedList<Customer> GetOnlineCustomers(DateTime lastActivityFromUtc, int[] customerRoleIds, int pageIndex = 0,
             int pageSize = Int32.MaxValue)
         {
             var query = _customerRepository.Table;
@@ -423,7 +423,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="customerRoleId">权限角色标识符</param>
         /// <returns>权限角色</returns>
-        public CustomerRole GetCustomerRoleById(long customerRoleId)
+        public CustomerRole GetCustomerRoleById(int customerRoleId)
         {
             if (customerRoleId == 0)
                 return null;
@@ -512,7 +512,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="passwordFormat">密码格式化类型; null为不限制</param>
         /// <param name="passwordsToReturn">返回的记录数量; null为不限制</param>
         /// <returns>用户密码列表</returns>
-        public virtual IList<CustomerPassword> GetCustomerPasswords(long? customerId = null,
+        public virtual IList<CustomerPassword> GetCustomerPasswords(int? customerId = null,
             PasswordFormat? passwordFormat = null, int? passwordsToReturn = null)
         {
             var query = _customerPasswordRepository.Table;
@@ -532,7 +532,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="customerId">用户标识符</param>
         /// <returns>用户密码</returns>
-        public virtual CustomerPassword GetCurrentPassword(long customerId)
+        public virtual CustomerPassword GetCurrentPassword(int customerId)
         {
             if (customerId == 0)
                 return null;

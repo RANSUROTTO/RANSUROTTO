@@ -19,7 +19,7 @@ namespace RANSUROTTO.BLOG.Core.Data
         /// <summary>
         /// 获取或设置实体主键标识符
         /// </summary>
-        public virtual long Id { get; set; }
+        public virtual int Id { get; set; }
 
         /// <summary>
         /// 获取或设置实体全球唯一标识符

@@ -1,12 +1,13 @@
 ﻿using System;
 using RANSUROTTO.BLOG.Core.Data;
+using RANSUROTTO.BLOG.Core.Domain.Localization;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 {
     /// <summary>
     /// 博客类目
     /// </summary>
-    public class BlogCategory : BaseEntity
+    public class BlogCategory : BaseEntity, ILocalizedEntity
     {
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// <summary>
         /// 获取或设置最后修改时的UTC时间
         /// </summary>
-        public DateTime UpdateOnUtc { get; set; }
+        public DateTime UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// 获取或设置该类目是否已被删除
@@ -60,9 +61,14 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         public string MetaTitle { get; set; }
 
         /// <summary>
+        /// 获取或设置 SEO 友好名称
+        /// </summary>
+        public string SeName { get; set; }
+
+        /// <summary>
         /// 获取或设置父级类目标识符
         /// </summary>
-        public long ParentCategoryId { get; set; }
+        public int ParentCategoryId { get; set; }
 
     }
 }

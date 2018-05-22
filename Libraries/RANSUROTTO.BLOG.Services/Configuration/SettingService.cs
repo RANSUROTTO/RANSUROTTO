@@ -127,7 +127,7 @@ namespace RANSUROTTO.BLOG.Services.Configuration
         /// </summary>
         /// <param name="settingId">设定项标识符</param>
         /// <returns>设定项</returns>
-        public virtual Setting GetSettingById(long settingId)
+        public virtual Setting GetSettingById(int settingId)
         {
             if (settingId == 0)
                 return null;
@@ -452,7 +452,7 @@ namespace RANSUROTTO.BLOG.Services.Configuration
         [Serializable]
         public class SettingForCaching
         {
-            public long Id { get; set; }
+            public int Id { get; set; }
             public string Name { get; set; }
             public string Value { get; set; }
         }

@@ -1,7 +1,9 @@
-﻿using RANSUROTTO.BLOG.Admin.Models.Customers;
+﻿using RANSUROTTO.BLOG.Admin.Models.Blogs;
+using RANSUROTTO.BLOG.Admin.Models.Customers;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
 using RANSUROTTO.BLOG.Admin.Models.Messages;
+using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
@@ -111,6 +113,25 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
         }
 
         public static ActivityLog ToEntity(this ActivityLogModel model, ActivityLog destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
+        #region Blog categories
+
+        public static BlogCategoryModel ToModel(this BlogCategory entity)
+        {
+            return entity.MapTo<BlogCategory, BlogCategoryModel>();
+        }
+
+        public static BlogCategory ToEntity(this BlogCategoryModel model)
+        {
+            return model.MapTo<BlogCategoryModel, BlogCategory>();
+        }
+
+        public static BlogCategory ToEntity(this BlogCategoryModel model, BlogCategory destination)
         {
             return model.MapTo(destination);
         }

@@ -14,7 +14,7 @@ namespace RANSUROTTO.BLOG.Admin.Validators.Customers
     public class CustomerValidator : BaseValidator<CustomerModel>
     {
 
-        protected CustomerValidator(ILocalizationService localizationService,
+        public CustomerValidator(ILocalizationService localizationService,
             ICustomerService customerService,
             CustomerSettings customerSettings)
         {

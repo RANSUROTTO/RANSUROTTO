@@ -97,7 +97,7 @@ namespace RANSUROTTO.BLOG.Services.Messages
             _eventPublisher.EntityDeleted(emailAccount);
         }
 
-        public EmailAccount GetEmailAccountById(long emailAccountId)
+        public EmailAccount GetEmailAccountById(int emailAccountId)
         {
             if (emailAccountId == 0)
                 return null;

@@ -137,7 +137,7 @@ namespace RANSUROTTO.BLOG.Framework.Themes
 
             string areaName = GetAreaName(controllerContext.RouteData);
 
-            //little hack to get nop's admin area to be in /Administrator/ instead of Web/Administrator/ or Areas/Admin/
+            //little hack to get admin area to be in /Administrator/ instead of Web/Administrator/ or Areas/Admin/
             if (!string.IsNullOrEmpty(areaName) && areaName.Equals("admin", StringComparison.InvariantCultureIgnoreCase))
             {
                 var newLocations = areaLocations.ToList();

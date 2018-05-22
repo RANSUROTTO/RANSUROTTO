@@ -15,7 +15,7 @@ namespace RANSUROTTO.BLOG.Services.Tasks
         /// </summary>
         /// <param name="taskId">计划任务标识符</param>
         /// <returns>计划任务</returns>
-        ScheduleTask GetTaskById(long taskId);
+        ScheduleTask GetTaskById(int taskId);
 
         /// <summary>
         /// 通过类型获取计划任务

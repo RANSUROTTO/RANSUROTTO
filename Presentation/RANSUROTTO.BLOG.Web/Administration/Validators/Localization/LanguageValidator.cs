@@ -8,7 +8,7 @@ namespace RANSUROTTO.BLOG.Admin.Validators.Localization
 {
     public class LanguageValidator : BaseValidator<LanguageModel>
     {
-        protected LanguageValidator(ILocalizationService localizationService)
+        public LanguageValidator(ILocalizationService localizationService)
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage(localizationService.GetResource("Admin.Configuration.Languages.Fields.Name.Required"));
             RuleFor(x => x.LanguageCulture).Must(x =>

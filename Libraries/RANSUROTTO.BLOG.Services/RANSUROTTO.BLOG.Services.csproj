@@ -93,9 +93,11 @@
     <Compile Include="Installation\IInstallationService.cs" />
     <Compile Include="Localization\ILanguageService.cs" />
     <Compile Include="Localization\ILocalizationService.cs" />
+    <Compile Include="Localization\ILocalizedEntityService.cs" />
     <Compile Include="Localization\LanguageService.cs" />
     <Compile Include="Localization\LocalizationExtensions.cs" />
     <Compile Include="Localization\LocalizationService.cs" />
+    <Compile Include="Localization\LocalizedEntityService.cs" />
     <Compile Include="Logging\ClearLogTask.cs" />
     <Compile Include="Logging\CustomerActivityService.cs" />
     <Compile Include="Logging\ICustomerActivityService.cs" />

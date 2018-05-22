@@ -88,7 +88,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="languageId">语言标识符</param>
         /// <returns>语言</returns>
-        public virtual Language GetLanguageById(long languageId)
+        public virtual Language GetLanguageById(int languageId)
         {
             if (languageId == 0)
                 return null;

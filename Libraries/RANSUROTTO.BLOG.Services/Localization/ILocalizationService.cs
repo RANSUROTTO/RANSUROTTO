@@ -21,7 +21,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="localeStringResourceId">区域语言字符串资源标识符</param>
         /// <returns>区域语言字符串资源</returns>
-        LocaleStringResource GetLocaleStringResourceById(long localeStringResourceId);
+        LocaleStringResource GetLocaleStringResourceById(int localeStringResourceId);
 
         /// <summary>
         /// 通过资源名称与当前工作语言获取区域语言字符串资源
@@ -37,7 +37,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// <param name="languageId">语言标识符</param>
         /// <param name="logIfNotFound">如果找不到区域语言字符串资源,指示是否要记录错误</param>
         /// <returns>区域语言字符串资源</returns>
-        LocaleStringResource GetLocaleStringResourceByName(string resourceName, long languageId,
+        LocaleStringResource GetLocaleStringResourceByName(string resourceName, int languageId,
             bool logIfNotFound = true);
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="languageId">语言标识符</param>
         /// <returns>区域语言字符串资源列表</returns>
-        IList<LocaleStringResource> GetAllResources(long languageId);
+        IList<LocaleStringResource> GetAllResources(int languageId);
 
         /// <summary>
         /// 插入区域语言字符串资源
@@ -64,7 +64,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// </summary>
         /// <param name="languageId">语言标识符</param>
         /// <returns>语言与区域语言字符串资源字典</returns>
-        Dictionary<string, KeyValuePair<long, string>> GetAllResourceValues(long languageId);
+        Dictionary<string, KeyValuePair<int, string>> GetAllResourceValues(int languageId);
 
         /// <summary>
         /// 通过资源键值获取区域语言字符串资源值
@@ -82,7 +82,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         /// <param name="defaultValue">默认值</param>
         /// <param name="returnEmptyIfNotFound">指示未找到资源时是否返回空字符串,并将默认值设置为空字符串</param>
         /// <returns>区域语言字符串资源值</returns>
-        string GetResource(string resourceKey, long languageId,
+        string GetResource(string resourceKey, int languageId,
             bool logIfNotFound = true, string defaultValue = "", bool returnEmptyIfNotFound = false);
 
         /// <summary>

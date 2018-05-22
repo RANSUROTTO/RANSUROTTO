@@ -31,7 +31,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Logging
         /// <summary>
         /// 获取或设置用户ID
         /// </summary>
-        public long? CustomerId { get; set; }
+        public int? CustomerId { get; set; }
 
         /// <summary>
         /// 获取或设置请求Url

@@ -1,0 +1,152 @@
+﻿@using RANSUROTTO.BLOG.Core.Domain.Common.Setting
+@using RANSUROTTO.BLOG.Core.Infrastructure
+@model BlogCategoryListModel
+
+@{
+    var defaultGridPageSize = EngineContext.Current.Resolve<AdminAreaSettings>().DefaultGridPageSize;
+    var gridPageSizes = EngineContext.Current.Resolve<AdminAreaSettings>().GridPageSizes;
+
+    //页面标题
+    ViewBag.Title = T("Admin.ContentManagement.Blog.Categories").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("Blog categories");
+}
+
+@Html.AntiForgeryToken()
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        @T("Admin.ContentManagement.Blog.Categories.Manage")
+    </h1>
+    <div class="pull-right">
+        <a href="@Url.Action("Create")" class="btn bg-blue">
+            <i class="fa fa-plus-square"></i>
+            @T("Admin.Common.AddNew")
+        </a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="panel-group">
+            <div class="panel panel-default panel-search">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @Html.CustomLabelFor(model => model.SearchCategoryName)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.CustomEditorFor(model => model.SearchCategoryName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-8 col-md-offset-4">
+                                    <button type="button" id="search-categories" class="btn btn-primary btn-search"><i class="fa fa-search"></i>@T("Admin.Common.Search")</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="categories-grid"></div>
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#categories-grid").kendoGrid({
+                                dataSource: {
+                                    type: "json",
+                                    transport: {
+                                        read: {
+                                            url: "@Html.Raw(Url.Action("List", "BlogCategory"))",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data: additionalData
+                                        }
+                                    },
+                                    schema: {
+                                        data: "Data",
+                                        total: "Total",
+                                        errors: "Errors"
+                                    },
+                                    error: function(e) {
+                                        display_kendoui_grid_error(e);
+                                        this.cancelChanges();
+                                    },
+                                    pageSize: @(defaultGridPageSize),
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: true
+                                },
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: [@(gridPageSizes)],
+                                    @Html.Partial("_GridPagerMessages")
+                                },
+                                editable: {
+                                    confirmation: "@T("Admin.Common.DeleteConfirmation")",
+                                    mode: "inline"
+                                },
+                                scrollable: false,
+                                columns: [
+                                    {
+                                        field: "Breadcrumb",
+                                        title: "@T("Admin.ContentManagement.Blog.Categories.Fields.Name")"
+                                    }, {
+                                        field: "Published",
+                                        title: "@T("Admin.ContentManagement.Blog.Categories.Fields.Published")",
+                                        width: 100,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '# if(Published) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
+                                    },{
+                                        field: "DisplayOrder",
+                                        title: "@T("Admin.ContentManagement.Blog.Categories.Fields.DisplayOrder")",
+                                        width: 150
+                                    }, {
+                                        field: "Id",
+                                        title: "@T("Admin.Common.Edit")",
+                                        width: 100,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '<a class="btn btn-default" href="Edit/#=Id#"><i class="fa fa-pencil"></i>@T("Admin.Common.Edit")</a>'
+                                    }
+                                ]
+                            });
+                        });
+                    </script>
+
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            //search button
+                            $('#search-categories').click(function () {
+                                var grid = $('#categories-grid').data('kendoGrid');
+                                grid.dataSource.page(1);
+                                return false;
+                            });
+
+                            $("#@Html.FieldIdFor(model => model.SearchCategoryName)").keydown(function(event) {
+                                if (event.keyCode == 13) {
+                                    $("#search-categories").click();
+                                    return false;
+                                }
+                            });
+                        });
+
+                        function additionalData() {
+                            var data = {
+                                SearchCategoryName: $('#@Html.FieldIdFor(model => model.SearchCategoryName)').val()
+                            };
+                            addAntiForgeryToken(data);
+                            return data;
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

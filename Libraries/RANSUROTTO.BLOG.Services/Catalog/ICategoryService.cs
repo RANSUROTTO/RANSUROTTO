@@ -33,7 +33,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         /// </summary>
         /// <param name="blogCategoryId">博客类目标识符</param>
         /// <returns>博客类目</returns>
-        BlogCategory GetBlogCategoryById(long blogCategoryId);
+        BlogCategory GetBlogCategoryById(int blogCategoryId);
 
         /// <summary>
         /// 添加博客类目

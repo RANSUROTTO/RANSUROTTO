@@ -93,7 +93,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region View
 
-        public virtual ActionResult View(long id)
+        public virtual ActionResult View(int id)
         {
             var log = _logger.GetLogById(id);
             if (log == null)
@@ -121,7 +121,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Delete / Clear All
 
         [HttpPost]
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var log = _logger.GetLogById(id);
             if (log == null)
@@ -134,7 +134,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult DeleteSelected(ICollection<long> selectedIds)
+        public virtual ActionResult DeleteSelected(ICollection<int> selectedIds)
         {
             if (selectedIds != null)
             {

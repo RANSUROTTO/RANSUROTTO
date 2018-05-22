@@ -27,7 +27,7 @@ namespace RANSUROTTO.BLOG.Services.Common
         /// <summary>
         /// 通用属性缓存键清空匹配模式
         /// </summary>
-        private const string GENERICATTRIBUTE_PATTERN_KEY = "Nop.genericattribute.";
+        private const string GENERICATTRIBUTE_PATTERN_KEY = "Ransurotto.genericattribute.";
 
         #endregion
 
@@ -57,7 +57,7 @@ namespace RANSUROTTO.BLOG.Services.Common
         /// </summary>
         /// <param name="attributeId">通用属性标识符</param>
         /// <returns>通用属性</returns>
-        public virtual GenericAttribute GetAttributeById(long attributeId)
+        public virtual GenericAttribute GetAttributeById(int attributeId)
         {
             if (attributeId == 0)
                 return null;
@@ -71,7 +71,7 @@ namespace RANSUROTTO.BLOG.Services.Common
         /// <param name="entityId">实体标识符</param>
         /// <param name="keyGroup">键分组</param>
         /// <returns>通用属性列表</returns>
-        public virtual IList<GenericAttribute> GetAttributesForEntity(long entityId, string keyGroup)
+        public virtual IList<GenericAttribute> GetAttributesForEntity(int entityId, string keyGroup)
         {
             string key = string.Format(GENERICATTRIBUTE_KEY, entityId, keyGroup);
             return _cacheManager.Get(key, () =>

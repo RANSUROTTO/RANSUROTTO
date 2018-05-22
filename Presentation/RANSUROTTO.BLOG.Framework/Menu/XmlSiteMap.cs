@@ -73,9 +73,9 @@ namespace RANSUROTTO.BLOG.Framework.Menu
             siteMapNode.SystemName = GetStringValueFromAttribute(xmlNode, "systemName");
 
             //title
-            var nopResource = GetStringValueFromAttribute(xmlNode, "resource");
+            var resource = GetStringValueFromAttribute(xmlNode, "resource");
             var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
-            siteMapNode.Title = localizationService.GetResource(nopResource);
+            siteMapNode.Title = localizationService.GetResource(resource);
 
             //routes, url
             string controllerName = GetStringValueFromAttribute(xmlNode, "controller");

@@ -73,7 +73,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return Json(gridModel);
         }
 
-        public virtual ActionResult MarkAsDefaultEmail(long id)
+        public virtual ActionResult MarkAsDefaultEmail(int id)
         {
             var defaultEmailAccount = _emailAccountService.GetEmailAccountById(id);
             if (defaultEmailAccount != null)
@@ -109,7 +109,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
-        public virtual ActionResult Edit(long id)
+        public virtual ActionResult Edit(int id)
         {
             var emailAccount = _emailAccountService.GetEmailAccountById(id);
             if (emailAccount == null)
@@ -189,7 +189,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var emailAccount = _emailAccountService.GetEmailAccountById(id);
             if (emailAccount == null)

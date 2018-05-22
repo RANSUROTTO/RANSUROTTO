@@ -29,7 +29,7 @@ namespace RANSUROTTO.BLOG.Services.Messages
         /// </summary>
         /// <param name="emailAccountId">邮箱账户标识符</param>
         /// <returns>邮箱账户</returns>
-        EmailAccount GetEmailAccountById(long emailAccountId);
+        EmailAccount GetEmailAccountById(int emailAccountId);
 
         /// <summary>
         /// 获取所有邮箱账户

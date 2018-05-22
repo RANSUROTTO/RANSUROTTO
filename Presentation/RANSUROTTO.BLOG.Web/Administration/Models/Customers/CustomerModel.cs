@@ -76,7 +76,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         public List<SelectListItem> AvailableCustomerRoles { get; set; }
         [UIHint("MultiSelect")]
         [ResourceDisplayName("Admin.Customers.Customers.Fields.CustomerRoles")]
-        public IList<long> SelectedCustomerRoleIds { get; set; }
+        public IList<int> SelectedCustomerRoleIds { get; set; }
 
 
         public partial class ActivityLogModel : BaseEntityModel

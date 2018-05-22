@@ -20,14 +20,14 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="customerId">用户标识符</param>
         /// <returns>用户</returns>
-        Customer GetCustomerById(long customerId);
+        Customer GetCustomerById(int customerId);
 
         /// <summary>
         /// 通过标识符列表获取用户列表
         /// </summary>
         /// <param name="customerIds">用户标识符列表</param>
         /// <returns>用户列表</returns>
-        IList<Customer> GetCustomersByIds(long[] customerIds);
+        IList<Customer> GetCustomersByIds(int[] customerIds);
 
         /// <summary>
         /// 获取用户列表
@@ -47,7 +47,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="pageSize">页大小</param>
         /// <returns>用户列表</returns>
         IPagedList<Customer> GetAllCustomers(DateTime? createdFromUtc = null,
-            DateTime? createdToUtc = null, long[] customerRoleIds = null,
+            DateTime? createdToUtc = null, int[] customerRoleIds = null,
             string email = null, string username = null, string name = null,
             int dayOfBirth = 0, int monthOfBirth = 0, string company = null,
             string phone = null, string ipAddress = null,
@@ -62,7 +62,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="pageSize">页大小</param>
         /// <returns>用户列表</returns>
         IPagedList<Customer> GetOnlineCustomers(DateTime lastActivityFromUtc,
-            long[] customerRoleIds, int pageIndex = 0, int pageSize = int.MaxValue);
+            int[] customerRoleIds, int pageIndex = 0, int pageSize = int.MaxValue);
 
         /// <summary>
         /// 通过系统名称获取用户
@@ -132,7 +132,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="customerRoleId">权限角色标识符</param>
         /// <returns>权限角色</returns>
-        CustomerRole GetCustomerRoleById(long customerRoleId);
+        CustomerRole GetCustomerRoleById(int customerRoleId);
 
         /// <summary>
         /// 通过系统名称获取用户权限角色
@@ -177,7 +177,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// <param name="passwordFormat">密码格式化类型; null为不限制</param>
         /// <param name="passwordsToReturn">返回的记录数量; null为不限制</param>
         /// <returns>用户密码列表</returns>
-        IList<CustomerPassword> GetCustomerPasswords(long? customerId = null,
+        IList<CustomerPassword> GetCustomerPasswords(int? customerId = null,
             PasswordFormat? passwordFormat = null, int? passwordsToReturn = null);
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         /// </summary>
         /// <param name="customerId">用户标识符</param>
         /// <returns>用户密码</returns>
-        CustomerPassword GetCurrentPassword(long customerId);
+        CustomerPassword GetCurrentPassword(int customerId);
 
         /// <summary>
         /// 添加用户密码

@@ -1,9 +1,11 @@
 ﻿using System;
 using AutoMapper;
+using RANSUROTTO.BLOG.Admin.Models.Blogs;
 using RANSUROTTO.BLOG.Admin.Models.Customers;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
 using RANSUROTTO.BLOG.Admin.Models.Messages;
+using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
@@ -91,6 +93,16 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
                 cfg.CreateMap<ActivityLogTypeModel, ActivityLogType>()
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
+
+                #endregion
+
+                #region Blog categories
+
+                cfg.CreateMap<BlogCategory, BlogCategoryModel>()
+                    .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<BlogCategoryModel, BlogCategory>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
 
                 #endregion

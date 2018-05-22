@@ -11,7 +11,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common
         /// <summary>
         /// 获取或设置所属实体的标识符
         /// </summary>
-        public long EntityId { get; set; }
+        public int EntityId { get; set; }
 
         /// <summary>
         /// 获取或设置键分组

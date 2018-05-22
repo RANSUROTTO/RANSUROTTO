@@ -110,7 +110,7 @@ namespace RANSUROTTO.BLOG.Services.Logging
         /// </summary>
         /// <param name="logId">日志标识符</param>
         /// <returns>日志</returns>
-        public virtual Log GetLogById(long logId)
+        public virtual Log GetLogById(int logId)
         {
             if (logId == 0)
                 return null;
@@ -123,7 +123,7 @@ namespace RANSUROTTO.BLOG.Services.Logging
         /// </summary>
         /// <param name="logIds">日志标识符列表</param>
         /// <returns>日志列表</returns>
-        public virtual IList<Log> GetLogByIds(long[] logIds)
+        public virtual IList<Log> GetLogByIds(int[] logIds)
         {
             if (logIds == null || logIds.Length == 0)
                 return new List<Log>();
@@ -135,7 +135,7 @@ namespace RANSUROTTO.BLOG.Services.Logging
 
             //按查询标识符列表的顺序进行排序
             var sortedLogItems = new List<Log>();
-            foreach (long id in logIds)
+            foreach (int id in logIds)
             {
                 var log = logItems.Find(x => x.Id == id);
                 if (log != null)

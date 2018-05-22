@@ -23,7 +23,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Logging
         public DateTime? CreatedOnTo { get; set; }
 
         [ResourceDisplayName("Admin.Configuration.ActivityLog.ActivityLog.Fields.ActivityLogType")]
-        public long ActivityLogTypeId { get; set; }
+        public int ActivityLogTypeId { get; set; }
 
         [ResourceDisplayName("Admin.Customers.Customers.ActivityLog.IpAddress")]
         public string IpAddress { get; set; }

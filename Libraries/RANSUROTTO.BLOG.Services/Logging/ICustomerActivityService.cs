@@ -42,7 +42,7 @@ namespace RANSUROTTO.BLOG.Services.Logging
         /// </summary>
         /// <param name="activityLogTypeId">活动日志类型标识符</param>
         /// <returns>活动日志类型</returns>
-        ActivityLogType GetActivityTypeById(long activityLogTypeId);
+        ActivityLogType GetActivityTypeById(int activityLogTypeId);
 
         /// <summary>
         /// 添加活动日志
@@ -81,7 +81,7 @@ namespace RANSUROTTO.BLOG.Services.Logging
         /// <param name="ipAddress">IP地址; NULL为不限制</param>
         /// <returns>活动日志列表</returns>
         IPagedList<ActivityLog> GetAllActivities(DateTime? createdOnFrom = null,
-            DateTime? createdOnTo = null, long? customerId = null, long activityLogTypeId = 0,
+            DateTime? createdOnTo = null, int? customerId = null, int activityLogTypeId = 0,
             int pageIndex = 0, int pageSize = int.MaxValue, string ipAddress = null);
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace RANSUROTTO.BLOG.Services.Logging
         /// </summary>
         /// <param name="activityLogId">活动日志标识符</param>
         /// <returns>活动日志</returns>
-        ActivityLog GetActivityById(long activityLogId);
+        ActivityLog GetActivityById(int activityLogId);
 
         /// <summary>
         /// 清空活动日志

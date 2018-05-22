@@ -24,6 +24,7 @@ using RANSUROTTO.BLOG.Framework.Themes;
 using RANSUROTTO.BLOG.Framework.UI;
 using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Services.Authentication;
+using RANSUROTTO.BLOG.Services.Catalog;
 using RANSUROTTO.BLOG.Services.Common;
 using RANSUROTTO.BLOG.Services.Configuration;
 using RANSUROTTO.BLOG.Services.Customers;
@@ -135,14 +136,17 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterSource(new SettingsSource());
 
             //Services
-
             builder.RegisterType<LocalizationService>().As<ILocalizationService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
+            builder.RegisterType<LocalizedEntityService>().As<ILocalizedEntityService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
             builder.RegisterType<LanguageService>().As<ILanguageService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
 
+            builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerRegistrationService>().As<ICustomerRegistrationService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerReportService>().As<ICustomerReportService>().InstancePerLifetimeScope();
