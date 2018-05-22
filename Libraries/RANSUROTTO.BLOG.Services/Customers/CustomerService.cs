@@ -134,7 +134,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         public virtual IPagedList<Customer> GetAllCustomers(DateTime? createdFromUtc = null, DateTime? createdToUtc = null,
             int[] customerRoleIds = null, string email = null, string username = null, string name = null,
             int dayOfBirth = 0, int monthOfBirth = 0, string company = null, string phone = null,
-             string ipAddress = null, int pageIndex = 0, int pageSize = Int32.MaxValue)
+             string ipAddress = null, int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _customerRepository.Table;
             query = query.Where(c => !c.Deleted);
@@ -381,12 +381,14 @@ namespace RANSUROTTO.BLOG.Services.Customers
             if (customer == null)
                 throw new ArgumentNullException(nameof(customer));
 
-            if (!String.IsNullOrEmpty(customer.Email))
+            if (!string.IsNullOrEmpty(customer.Email))
                 customer.Email += "-DELETED";
-            if (!String.IsNullOrEmpty(customer.Username))
+            if (!string.IsNullOrEmpty(customer.Username))
                 customer.Username += "-DELETED";
 
-            _customerRepository.Delete(customer);
+            customer.Deleted = true;
+
+            _customerRepository.Update(customer);
 
             //发布删除通知
             _eventPublisher.EntityDeleted(customer);

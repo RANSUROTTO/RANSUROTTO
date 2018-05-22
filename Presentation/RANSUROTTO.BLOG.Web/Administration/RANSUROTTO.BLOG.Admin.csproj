@@ -1215,6 +1215,7 @@
     <Compile Include="Controllers\CustomerRoleController.cs" />
     <Compile Include="Controllers\EmailAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdeaController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\OnlineCustomerController.cs" />
@@ -1443,6 +1444,7 @@
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Category\" />
+    <Folder Include="Views\Idea\" />
     <Folder Include="Views\Preferences\" />
   </ItemGroup>
   <ItemGroup>

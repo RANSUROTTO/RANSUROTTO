@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
-using RANSUROTTO.BLOG.Core.Domain.Catalog.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
 using RANSUROTTO.BLOG.Services.Events;
 
@@ -53,13 +49,12 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         private readonly ICacheManager _cacheManager;
         private readonly IDataProvider _dataProvider;
         private readonly CommonSettings _commonSettings;
-        private readonly CatalogSettings _catalogSettings;
 
         #endregion
 
         #region Constructor
 
-        public CategoryService(IRepository<BlogCategory> blogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings, CatalogSettings catalogSettings)
+        public CategoryService(IRepository<BlogCategory> blogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings)
         {
             _blogCategoryRepository = blogCategoryRepository;
             _workContext = workContext;
@@ -67,7 +62,6 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             _cacheManager = cacheManager;
             _dataProvider = dataProvider;
             _commonSettings = commonSettings;
-            _catalogSettings = catalogSettings;
         }
 
         #endregion

@@ -91,6 +91,8 @@
     <Compile Include="Infrastructure\IMachineNameProvider.cs" />
     <Compile Include="Installation\CodeFirstInstallationService.cs" />
     <Compile Include="Installation\IInstallationService.cs" />
+    <Compile Include="Interesting\IdeaService.cs" />
+    <Compile Include="Interesting\IIdeaService.cs" />
     <Compile Include="Localization\ILanguageService.cs" />
     <Compile Include="Localization\ILocalizationService.cs" />
     <Compile Include="Localization\ILocalizedEntityService.cs" />
