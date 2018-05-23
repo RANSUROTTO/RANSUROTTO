@@ -75,6 +75,7 @@
     <Compile Include="Mapping\Blogs\BlogCommentMap.cs" />
     <Compile Include="Mapping\Blogs\BlogPostMap.cs" />
     <Compile Include="Mapping\Blogs\BlogCategoryMap.cs" />
+    <Compile Include="Mapping\Blogs\BlogPostTagMap.cs" />
     <Compile Include="Mapping\Common\GenericAttributeMap.cs" />
     <Compile Include="Mapping\Configuration\SettingMap.cs" />
     <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />

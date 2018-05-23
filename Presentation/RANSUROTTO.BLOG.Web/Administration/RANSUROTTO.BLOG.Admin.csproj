@@ -1231,6 +1231,7 @@
     <Compile Include="Infrastructure\Mapper\AdminMapperConfiguration.cs" />
     <Compile Include="Models\Blogs\BlogCategoryModel.cs" />
     <Compile Include="Models\Blogs\BlogCategoryListModel.cs" />
+    <Compile Include="Models\Blogs\BlogPostTagModel.cs" />
     <Compile Include="Models\Common\LanguageSelectorModel.cs" />
     <Compile Include="Models\Common\MaintenanceModel.cs" />
     <Compile Include="Models\Common\SystemInfoModel.cs" />
@@ -1239,6 +1240,8 @@
     <Compile Include="Models\Customers\CustomerRoleModel.cs" />
     <Compile Include="Models\Customers\OnlineCustomerModel.cs" />
     <Compile Include="Models\Customers\RegisteredCustomerReportLineModel.cs" />
+    <Compile Include="Models\Interesting\IdeaListModel.cs" />
+    <Compile Include="Models\Interesting\IdeaModel.cs" />
     <Compile Include="Models\Localization\LanguageModel.cs" />
     <Compile Include="Models\Localization\LanguageResourceModel.cs" />
     <Compile Include="Models\Localization\LanguageResourcesListModel.cs" />
@@ -1256,13 +1259,16 @@
     <Compile Include="Validators\Blogs\BlogCategoryValidator.cs" />
     <Compile Include="Validators\Customers\CustomerRoleValidator.cs" />
     <Compile Include="Validators\Customers\CustomerValidator.cs" />
+    <Compile Include="Validators\Interesting\IdeaValidator.cs" />
     <Compile Include="Validators\Localization\LanguageResourceValidator.cs" />
     <Compile Include="Validators\Localization\LanguageValidator.cs" />
     <Compile Include="Validators\Messages\EmailAccountValidator.cs" />
     <Compile Include="Validators\Tasks\ScheduleTaskValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.css.map" />
@@ -1424,6 +1430,8 @@
     <Content Include="Views\BlogCategory\Edit.cshtml" />
     <Content Include="Views\BlogCategory\_CreateOrUpdate.cshtml" />
     <Content Include="Views\Setting\Mode.cshtml" />
+    <Content Include="Views\Idea\List.cshtml" />
+    <Content Include="Views\Idea\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1444,7 +1452,6 @@
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\BlogPost\" />
     <Folder Include="Views\Category\" />
-    <Folder Include="Views\Idea\" />
     <Folder Include="Views\Preferences\" />
   </ItemGroup>
   <ItemGroup>

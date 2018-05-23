@@ -1,0 +1,88 @@
+﻿@model IdeaModel
+
+@{
+    //页面标题
+    ViewBag.Title = T("Admin.ContentManagement.Idea.View").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("Ideas");
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.ContentManagement.Idea.ViewIdea")
+            <small><i class="fa fa-arrow-circle-left"></i>@Html.ActionLink(T("Admin.ContentManagement.Idea.BackToList").Text, "List")</small>
+        </h1>
+        <div class="pull-right">
+            <span id="idea-delete" class="btn bg-red">
+                <i class="fa fa-trash-o"></i>
+                @T("Admin.Common.Delete")
+            </span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="form-horizontal">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    @Html.ValidationSummary(true)
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Body)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.Body)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Private)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.Private)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Deleted)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.Deleted)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CustomerId)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.ActionLink(Model.CustomerEmail, "Edit", "Customer", new { id = Model.CustomerId }, new { })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CreatedOn)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDisplayFor(model => model.CreatedOn)
+                            </div>
+                        </div>
+                        @if (Model.UpdatedOn.HasValue)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    @Html.CustomLabelFor(model => model.UpdatedOn)
+                                </div>
+                                <div class="col-md-9">
+                                    @Html.CustomDisplayFor(model => model.UpdatedOn)
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@Html.DeleteConfirmation("idea-delete")

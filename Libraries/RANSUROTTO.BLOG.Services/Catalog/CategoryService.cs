@@ -74,6 +74,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             if (_commonSettings.UseStoredProcedureForLoadingCategories &&
                 _commonSettings.UseStoredProceduresIfSupported && _dataProvider.StoredProceduredSupported)
             {
+                //TODO 没有实现存储过程
                 throw new NotImplementedException();
             }
             else

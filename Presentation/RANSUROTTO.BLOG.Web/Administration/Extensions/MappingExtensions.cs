@@ -1,10 +1,12 @@
 ﻿using RANSUROTTO.BLOG.Admin.Models.Blogs;
 using RANSUROTTO.BLOG.Admin.Models.Customers;
+using RANSUROTTO.BLOG.Admin.Models.Interesting;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
 using RANSUROTTO.BLOG.Admin.Models.Messages;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Interesting;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
 using RANSUROTTO.BLOG.Core.Domain.Messages;
@@ -132,6 +134,44 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
         }
 
         public static BlogCategory ToEntity(this BlogCategoryModel model, BlogCategory destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
+        #region Ideas
+
+        public static IdeaModel ToModel(this Idea entity)
+        {
+            return entity.MapTo<Idea, IdeaModel>();
+        }
+
+        public static Idea ToEntity(this IdeaModel model)
+        {
+            return model.MapTo<IdeaModel, Idea>();
+        }
+
+        public static Idea ToEntity(this IdeaModel model, Idea destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
+        #region Blog tags
+
+        public static BlogPostTagModel ToModel(this BlogPostTag entity)
+        {
+            return entity.MapTo<BlogPostTag, BlogPostTagModel>();
+        }
+
+        public static BlogPostTag ToEntity(this BlogPostTagModel model)
+        {
+            return model.MapTo<BlogPostTagModel, BlogPostTag>();
+        }
+
+        public static BlogPostTag ToEntity(this BlogPostTagModel model, BlogPostTag destination)
         {
             return model.MapTo(destination);
         }

@@ -85,10 +85,11 @@
                     </div>
                 </div>
                 <!-- Table panel -->
-                <div class="panel-body">
-                    <div id="log-grid"></div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="log-grid"></div>
 
-                    <script type="text/javascript">
+                        <script type="text/javascript">
                         $(document).ready(function () {
                             $("#log-grid").kendoGrid({
                                 dataSource: {
@@ -108,7 +109,6 @@
                                     },
                                     error: function(e) {
                                         display_kendoui_grid_error(e);
-                                        // Cancel the changes
                                         this.cancelChanges();
                                     },
                                     pageSize: @(defaultGridPageSize),
@@ -155,9 +155,9 @@
                                 ]
                             });
                         });
-                    </script>
+                        </script>
 
-                    <script type="text/javascript">
+                        <script type="text/javascript">
                         var selectedIds = [];
 
                         $(document).ready(function () {
@@ -224,8 +224,8 @@
                             $('#mastercheckbox').attr('checked', numChkBoxes == numChkBoxesChecked && numChkBoxes > 0);
                         }
 
-                    </script>
-
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>

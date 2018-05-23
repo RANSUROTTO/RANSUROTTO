@@ -14,18 +14,18 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
             this.Property(p => p.Body).IsRequired();
             this.Property(p => p.BodyOverview).HasMaxLength(2000);
 
-            this.HasRequired(p => p.BlogCategory)
-                .WithMany()
-                .HasForeignKey(p => p.BlogCategoryId);
             this.HasRequired(p => p.Author)
                 .WithMany()
                 .HasForeignKey(p => p.AuthorId);
-            this.HasRequired(p => p.Language)
-                .WithMany()
-                .HasForeignKey(p => p.LanguageId);
             this.HasMany(p => p.BlogComments)
                 .WithRequired(p => p.BlogPost)
                 .HasForeignKey(p => p.BlogPostId);
+            this.HasMany(p => p.BlogCategories)
+                .WithMany()
+                .Map(p => p.ToTable("BlogPost_BlogCategory_Mapping"));
+            this.HasMany(p => p.BlogPostTags)
+                .WithMany()
+                .Map(p => p.ToTable("BlogPost_BlogPostTag_Mapping"));
 
             this.Ignore(p => p.Format);
         }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blogs.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
-using RANSUROTTO.BLOG.Core.Domain.Localization;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 {
@@ -13,17 +12,9 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
     public class BlogPost : BaseEntity
     {
 
+        private ICollection<BlogPostTag> _blogPostTags;
         private ICollection<BlogComment> _blogComments;
-
-        /// <summary>
-        /// 获取或设置对应语言ID
-        /// </summary>
-        public int LanguageId { get; set; }
-
-        /// <summary>
-        /// 获取或设置所在类目ID
-        /// </summary>
-        public int BlogCategoryId { get; set; }
+        private ICollection<BlogCategory> _blogCategories;
 
         /// <summary>
         /// 获取或设置作者ID
@@ -44,12 +35,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// 获取或设置概述
         /// </summary>
         public string BodyOverview { get; set; }
-
-        /// <summary>
-        /// 获取或设置标签
-        /// </summary>
-        public string Tag { get; set; }
-
+        
         /// <summary>
         /// 获取或设置格式ID
         /// </summary>
@@ -63,17 +49,22 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// <summary>
         /// 获取或设置展示开始的UTC时间
         /// </summary>
-        public DateTime? StartDateUtc { get; set; }
+        public DateTime? AvailableStartDateUtc { get; set; }
 
         /// <summary>
         /// 获取或设置展示结束的UTC时间
         /// </summary>
-        public DateTime? EndDateUtc { get; set; }
+        public DateTime? AvailableEndDateUtc { get; set; }
 
         /// <summary>
         /// 获取或设置最后编辑结束的UTC时间
         /// </summary>
-        public DateTime LastEditorDateUtc { get; set; }
+        public DateTime UpdateOnUtc { get; set; }
+
+        /// <summary>
+        /// 获取或设置该文章是否已被主人删除
+        /// </summary>
+        public bool Deleted { get; set; }
 
         #region Navigation Properties
 
@@ -90,19 +81,27 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         }
 
         /// <summary>
-        /// 获取或设置博文语言
-        /// </summary>
-        public virtual Language Language { get; set; }
-
-        /// <summary>
         /// 获取或设置博文作者
         /// </summary>
         public virtual Customer Author { get; set; }
 
         /// <summary>
-        /// 获取或设置博文类目
+        /// 获取或设置对应的类目列表
         /// </summary>
-        public virtual BlogCategory BlogCategory { get; set; }
+        public virtual ICollection<BlogCategory> BlogCategories
+        {
+            get { return _blogCategories ?? (_blogCategories = new List<BlogCategory>()); }
+            set { _blogCategories = value; }
+        }
+
+        /// <summary>
+        /// 获取或设置关联标签列表
+        /// </summary>
+        public virtual ICollection<BlogPostTag> BlogPostTags
+        {
+            get { return _blogPostTags ?? (_blogPostTags = new List<BlogPostTag>()); }
+            set { _blogPostTags = value; }
+        }
 
         /// <summary>
         /// 获取或设置博文内评论列表

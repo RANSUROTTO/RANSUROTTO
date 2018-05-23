@@ -29,7 +29,7 @@ namespace RANSUROTTO.BLOG.Services.Interesting
 
         #region Methods
 
-        public IPagedList<Idea> GetAllIdeas(DateTime? createFromUtc = null, DateTime? createToUtc = null, int pageIndex = 0,
+        public virtual IPagedList<Idea> GetAllIdeas(DateTime? createFromUtc = null, DateTime? createToUtc = null, int pageIndex = 0,
             int pageSize = int.MaxValue)
         {
             var query = _ideaRepository.Table;
@@ -44,7 +44,7 @@ namespace RANSUROTTO.BLOG.Services.Interesting
             return ideas;
         }
 
-        public Idea GetIdeaById(int ideaId)
+        public virtual Idea GetIdeaById(int ideaId)
         {
             if (ideaId == 0)
                 return null;
@@ -52,7 +52,7 @@ namespace RANSUROTTO.BLOG.Services.Interesting
             return _ideaRepository.GetById(ideaId);
         }
 
-        public void InsertIdea(Idea idea)
+        public virtual void InsertIdea(Idea idea)
         {
             if (idea == null)
                 throw new ArgumentNullException(nameof(idea));
@@ -62,7 +62,7 @@ namespace RANSUROTTO.BLOG.Services.Interesting
             _eventPublisher.EntityInserted(idea);
         }
 
-        public void UpdateIdea(Idea idea)
+        public virtual void UpdateIdea(Idea idea)
         {
             if (idea == null)
                 throw new ArgumentNullException(nameof(idea));
@@ -72,7 +72,7 @@ namespace RANSUROTTO.BLOG.Services.Interesting
             _eventPublisher.EntityUpdated(idea);
         }
 
-        public void DeleteIdea(Idea idea)
+        public virtual void DeleteIdea(Idea idea)
         {
             if (idea == null)
                 throw new ArgumentNullException(nameof(idea));

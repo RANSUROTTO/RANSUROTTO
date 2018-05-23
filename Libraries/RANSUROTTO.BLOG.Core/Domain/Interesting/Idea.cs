@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Media;
@@ -19,7 +20,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Interesting
         public string Body { get; set; }
 
         /// <summary>
-        /// 获取或设置该想法是否已被删除
+        /// 获取或设置该想法是否已被主人删除
         /// </summary>
         public bool Deleted { get; set; }
 
@@ -27,6 +28,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Interesting
         /// 获取或设置保密设置(不公开/私密)
         /// </summary>
         public bool Private { get; set; }
+
+        /// <summary>
+        /// 获取或设置最后编辑日期
+        /// </summary>
+        public DateTime? UpdatedOnUtc { get; set; }
 
         public int CustomerId { get; set; }
 
