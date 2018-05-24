@@ -16,7 +16,7 @@ namespace RANSUROTTO.BLOG.Framework.Mvc
                 throw new ArgumentNullException(nameof(context));
 
             var response = context.HttpContext.Response;
-            response.ContentType = !String.IsNullOrEmpty(ContentType) ? ContentType : MimeTypes.ApplicationJson;
+            response.ContentType = !string.IsNullOrEmpty(ContentType) ? ContentType : MimeTypes.ApplicationJson;
             if (ContentEncoding != null)
                 response.ContentEncoding = ContentEncoding;
 

@@ -1,0 +1,131 @@
+﻿@using RANSUROTTO.BLOG.Core.Domain.Common.Setting
+@using RANSUROTTO.BLOG.Core.Infrastructure
+@{
+    var defaultGridPageSize = EngineContext.Current.Resolve<AdminAreaSettings>().DefaultGridPageSize;
+    var gridPageSizes = EngineContext.Current.Resolve<AdminAreaSettings>().GridPageSizes;
+
+    //页面标题
+    ViewBag.Title = T("Admin.ContentManagement.Blog.BlogPostTags").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("Blog post tags");
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "blogpost-tags-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.ContentManagement.Blog.BlogPostTags")
+        </h1>
+        <div class="pull-right">
+            &nbsp;
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="blogpost-tags-grid"></div>
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#blogpost-tags-grid").kendoGrid({
+                                dataSource: {
+                                    type: "json",
+                                    transport: {
+                                        read: {
+                                            url: "@Html.Raw(Url.Action("BlogPostTags", "Blog"))",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data: addAntiForgeryToken
+                                        },
+                                        destroy: {
+                                            url: "@Html.Raw(Url.Action("BlogPostTagDelete", "Blog"))",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data: addAntiForgeryToken
+                                        }
+                                    },
+                                    schema: {
+                                        data: "Data",
+                                        total: "Total",
+                                        errors: "Errors",
+                                        model: {
+                                            id: "Id",
+                                            fields: {
+                                                Name: { editable: true, type: "string" },
+                                                Value: { editable: true, type: "string" },
+                                                Id: { editable: false, type: "number" }
+                                            }
+                                        }
+                                    },
+                                    requestEnd: function (e) {
+                                        if (e.type == "create" || e.type == "update") {
+                                            this.read();
+                                        }
+                                    },
+                                    error: function(e) {
+                                        display_kendoui_grid_error(e);
+                                        this.cancelChanges();
+                                    },
+                                    pageSize: @(defaultGridPageSize),
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: true
+                                },
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: [@(gridPageSizes)],
+                                    @Html.Partial("_GridPagerMessages")
+                                },
+                                editable: {
+                                    confirmation: "@T("Admin.Common.DeleteConfirmation")",
+                                    mode: "inline"
+                                },
+                                scrollable: false,
+                                columns: [
+                                    {
+                                        field: "Name",
+                                        title: "@T("Admin.ContentManagement.Blog.BlogPostTags.Fields.Name")",
+                                        width: 300
+                                    },{
+                                        field: "BlogCount",
+                                        title: "@T("Admin.ContentManagement.Blog.BlogPostTags.Fields.BlogCount")",
+                                        width: 150
+                                    }, {
+                                        field: "Id",
+                                        title: "@T("Admin.Common.Edit")",
+                                        width: 150,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: "<button onclick=\"javascript:OpenWindow('@Url.Action("EditBlogPostTag","Blog")#=Id#?btnId=btnRefresh&formId=blogpost-tags-form', 800, 320, true); return false;\" class='btn btn-default'><i class=\"fa fa-pencil\"></i>@T("Admin.Common.Edit")</button>"
+                                    }, {
+                                        command: { name: "destroy", text: "@T("Admin.Common.Delete")" },
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        title: "@T("Admin.Common.Delete")",
+                                        width: 100
+                                    }
+                                ]
+                            });
+                        });
+                    </script>
+                    <input type="submit" id="btnRefresh" style="display: none" />
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#btnRefresh').click(function () {
+                                //刷新Grid
+                                var grid = $("#blogpost-tags-grid").data('kendoGrid');
+                                grid.dataSource.read();
+
+                                //阻止提交表单刷新页面
+                                return false;
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+}

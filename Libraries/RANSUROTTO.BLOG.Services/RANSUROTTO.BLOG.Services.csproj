@@ -55,7 +55,9 @@
     <Compile Include="Authentication\FormsAuthenticationService.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
     <Compile Include="Blogs\BlogService.cs" />
+    <Compile Include="Blogs\BlogPostTagService.cs" />
     <Compile Include="Blogs\IBlogService.cs" />
+    <Compile Include="Blogs\IBlogPostTagService.cs" />
     <Compile Include="Catalog\CategoryExtensions.cs" />
     <Compile Include="Catalog\CategoryService.cs" />
     <Compile Include="Catalog\ICategoryService.cs" />
