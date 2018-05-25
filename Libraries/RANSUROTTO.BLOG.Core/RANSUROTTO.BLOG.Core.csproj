@@ -151,7 +151,9 @@
     <Compile Include="Domain\Customers\Customer.cs" />
     <Compile Include="Domain\Customers\CustomerPassword.cs" />
     <Compile Include="Domain\Customers\Enum\PasswordFormat.cs" />
+    <Compile Include="Domain\Media\Enum\PictureType.cs" />
     <Compile Include="Domain\Media\Picture.cs" />
+    <Compile Include="Domain\Media\Setting\MediaSettings.cs" />
     <Compile Include="Domain\Messages\EmailAccount.cs" />
     <Compile Include="Domain\Messages\Setting\EmailAccountSettings.cs" />
     <Compile Include="Domain\Security\PermissionRecord.cs" />

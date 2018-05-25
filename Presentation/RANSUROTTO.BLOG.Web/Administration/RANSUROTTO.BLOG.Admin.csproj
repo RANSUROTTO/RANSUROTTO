@@ -1219,6 +1219,7 @@
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\OnlineCustomerController.cs" />
+    <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\ScheduleTaskController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
@@ -1455,6 +1456,7 @@
     <Folder Include="Models\Configuration\" />
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\Category\" />
+    <Folder Include="Views\Picture\" />
     <Folder Include="Views\Preferences\" />
   </ItemGroup>
   <ItemGroup>
