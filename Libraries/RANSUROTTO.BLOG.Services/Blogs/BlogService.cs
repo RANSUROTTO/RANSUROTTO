@@ -45,7 +45,7 @@ namespace RANSUROTTO.BLOG.Services.Blogs
 
         public virtual IPagedList<BlogPost> GetAllBlogPosts(int pageIndex = 0, int pageSize = Int32.MaxValue,
             IList<int> categoryIds = null, IList<int> customerIds = null, IList<int> tagIds = null,
-            string keywords = null, bool showHidden = false, BlogSortingEnum orderBy = BlogSortingEnum.Position)
+            string keywords = null, bool? overridePublished = true, BlogSortingEnum orderBy = BlogSortingEnum.Position)
         {
             //验证categoryIds和customerIds、tagIds
             if (categoryIds != null && categoryIds.Contains(0))
@@ -72,11 +72,21 @@ namespace RANSUROTTO.BLOG.Services.Blogs
 
                 var nowUtc = DateTime.UtcNow;
 
-                if (!showHidden)
+                if (overridePublished.HasValue)
                 {
-                    query = query.Where(p =>
-                        (!p.AvailableStartDateUtc.HasValue || p.AvailableStartDateUtc.Value < nowUtc) &&
-                        (!p.AvailableEndDateUtc.HasValue || p.AvailableEndDateUtc.Value > nowUtc));
+                    if (overridePublished.Value)
+                    {
+                        query = query.Where(p =>
+                            (!p.AvailableStartDateUtc.HasValue || p.AvailableStartDateUtc.Value < nowUtc) &&
+                            (!p.AvailableEndDateUtc.HasValue || p.AvailableEndDateUtc.Value > nowUtc));
+                    }
+                    else
+                    {
+                        query = query.Where(p =>
+                            (p.AvailableStartDateUtc.HasValue && p.AvailableStartDateUtc > nowUtc) ||
+                            (p.AvailableEndDateUtc.HasValue && p.AvailableEndDateUtc < nowUtc)
+                        );
+                    }
                 }
 
                 if (!string.IsNullOrWhiteSpace(keywords))

@@ -10,9 +10,25 @@ namespace RANSUROTTO.BLOG.Services.Blogs
 
         #region Blog posts
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="categoryIds"></param>
+        /// <param name="customerIds"></param>
+        /// <param name="tagIds"></param>
+        /// <param name="keywords"></param>
+        /// <param name="overridePublished">
+        /// null:全部
+        /// true:只查询已发布的
+        /// false:查询未发布或已结束发布的
+        /// </param>
+        /// <param name="orderBy"></param>
+        /// <returns></returns>
         IPagedList<BlogPost> GetAllBlogPosts(int pageIndex = 0, int pageSize = int.MaxValue,
             IList<int> categoryIds = null, IList<int> customerIds = null, IList<int> tagIds = null,
-            string keywords = null, bool showHidden = false, BlogSortingEnum orderBy = BlogSortingEnum.Position);
+            string keywords = null, bool? overridePublished = true, BlogSortingEnum orderBy = BlogSortingEnum.Position);
 
         BlogPost GetBlogPostById(int blogPostId);
 

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blogs.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Localization;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 {
     /// <summary>
     /// 博客文章
     /// </summary>
-    public class BlogPost : BaseEntity
+    public class BlogPost : BaseEntity, ILocalizedEntity
     {
 
         private ICollection<BlogPostTag> _blogPostTags;
@@ -35,7 +36,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// 获取或设置概述
         /// </summary>
         public string BodyOverview { get; set; }
-        
+
         /// <summary>
         /// 获取或设置格式ID
         /// </summary>

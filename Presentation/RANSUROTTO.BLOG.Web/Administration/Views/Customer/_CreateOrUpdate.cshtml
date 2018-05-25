@@ -20,6 +20,7 @@
                 @Html.RenderBootstrapTabHeader("tab-info", @T("Admin.Customers.Customers.Info"), true)
                 @if (Model.Id > 0)
                 {
+                    @Html.RenderBootstrapTabHeader("tab-blogpost", @T("Admin.Customers.Customers.BlogPost"))
                     @Html.RenderBootstrapTabHeader("tab-activitylog", @T("Admin.Customers.Customers.ActivityLog"))
                 }
             </ul>
@@ -27,6 +28,7 @@
                 @Html.RenderBootstrapTabContent("tab-info", @TabInfo(), true)
                 @if (Model.Id > 0)
                 {
+                    @Html.RenderBootstrapTabContent("tab-blogpost", @TabBlogPost())
                     @Html.RenderBootstrapTabContent("tab-activitylog", @TabActivityLog())
                 }
             </div>
@@ -287,30 +289,29 @@
                     <script>
                         $(document).ready(function() {
                             $("#activitylog-grid").kendoGrid({
-                            dataSource: {
-                                type: "json",
-                                transport: {
-                                    read: {
-                                        url: "@Html.Raw(Url.Action("ListActivityLog", "Customer", new { customerId = Model.Id }))",
-                                        type: "POST",
-                                        dataType: "json",
-                                        data: addAntiForgeryToken
-                                    }
-                                },
-                                schema: {
-                                    data: "Data",
-                                    total: "Total",
-                                    errors: "Errors"
-                                },
-                                error: function(e) {
-                                    display_kendoui_grid_error(e);
-                                    // Cancel the changes
-                                    this.cancelChanges();
-                                },
-                                pageSize: @(defaultGridPageSize),
-                                serverPaging: true,
-                                serverFiltering: true,
-                                serverSorting: true
+                                dataSource: {
+                                    type: "json",
+                                    transport: {
+                                        read: {
+                                            url: "@Html.Raw(Url.Action("ListActivityLog", "Customer", new { customerId = Model.Id }))",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data: addAntiForgeryToken
+                                        }
+                                    },
+                                    schema: {
+                                        data: "Data",
+                                        total: "Total",
+                                        errors: "Errors"
+                                    },
+                                    error: function(e) {
+                                        display_kendoui_grid_error(e);
+                                        this.cancelChanges();
+                                    },
+                                    pageSize: @(defaultGridPageSize),
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: true
                                 },
                                 pageable: {
                                     refresh: true,
@@ -340,6 +341,95 @@
                                     type: "date",
                                     format: "{0:G}"
                                 }]
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+}
+@helper TabBlogPost()
+    {
+        var defaultGridPageSize = EngineContext.Current.Resolve<AdminAreaSettings>().DefaultGridPageSize;
+        var gridPageSizes = EngineContext.Current.Resolve<AdminAreaSettings>().GridPageSizes;
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="blogpost-grid"></div>
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#blogpost-grid").kendoGrid({
+                                dataSource: {
+                                    type: "json",
+                                    transport: {
+                                        read: {
+                                            url: "@Html.Raw(Url.Action("ListBlogPost", "Customer", new { customerId = Model.Id }))",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data: addAntiForgeryToken
+                                        }
+                                    },
+                                    schema: {
+                                        data: "Data",
+                                        total: "Total",
+                                        errors: "Errors"
+                                    },
+                                    error: function(e) {
+                                        display_kendoui_grid_error(e);
+                                        this.cancelChanges();
+                                    },
+                                    pageSize: @(defaultGridPageSize),
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: true
+                                },
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: [@(gridPageSizes)],
+                                    @Html.Partial("_GridPagerMessages")
+                                },
+                                scrollable: false,
+                                columns: [{
+                                        field: "Title",
+                                        title: "@T("Admin.Customers.Customers.BlogPost.Title")",
+                                        width: 300
+                                    },{
+                                        field: "Published",
+                                        title: "@T("Admin.Customers.Customers.BlogPost.Published")",
+                                        width: 100,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '# if(Published) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
+                                    }, {
+                                        field: "CreatedOn",
+                                        title: "@T("Admin.Customers.Customers.BlogPost.CreatedOn")",
+                                        width: 200,
+                                        type: "date",
+                                        format: "{0:G}"
+                                    }, {
+                                        field: "CreatedOn",
+                                        title: "@T("Admin.Customers.Customers.BlogPost.UpdateOn")",
+                                        width: 200,
+                                        type: "date",
+                                        format: "{0:G}"
+                                    }, {
+                                        field: "Deleted",
+                                        title: "@T("Admin.Customers.Customers.BlogPost.Deleted")",
+                                        width: 100,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '# if(Published) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
+                                    }, {
+                                        field: "Id",
+                                        title: "@T("Admin.Common.View")",
+                                        width: 50,
+                                        headerAttributes: { style: "text-align:center" },
+                                        attributes: { style: "text-align:center" },
+                                        template: '<a class="btn btn-default" href="@Url.Action("Edit","Blog")/#=Id#"><i class="fa fa-eye"></i>@T("Admin.Common.View")</a>'
+                                    }
+                                ]
                             });
                         });
                     </script>

@@ -35,6 +35,16 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         private const string BLOGCATEGORIES_BY_PARENT_CATEGORY_ID_KEY = "Ransurotto.category.byparent-{0}-{1}-{2}";
 
         /// <summary>
+        /// 博客对应类目列表缓存
+        /// </summary>
+        /// <remarks>
+        /// {0} : 显示隐藏记录?
+        /// {1} : 博客文章标识符
+        /// {2} : 当前用户标识符
+        /// </remarks>
+        private const string PRODUCTCATEGORIES_ALLBYPRODUCTID_KEY = "Ransurotto.category.allbyblogpostid-{0}-{1}-{2}";
+
+        /// <summary>
         /// 清除博客类目缓存的键匹配模式
         /// </summary>
         private const string BLOGCATEGORIES_PATTERN_KEY = "Ransurotto.category.";
@@ -43,6 +53,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
 
         #region Fields
 
+        private readonly IRepository<BlogPost> _blogPostRepository;
         private readonly IRepository<BlogCategory> _blogCategoryRepository;
         private readonly IWorkContext _workContext;
         private readonly IEventPublisher _eventPublisher;
@@ -54,8 +65,9 @@ namespace RANSUROTTO.BLOG.Services.Catalog
 
         #region Constructor
 
-        public CategoryService(IRepository<BlogCategory> blogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings)
+        public CategoryService(IRepository<BlogPost> blogPostRepository, IRepository<BlogCategory> blogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings)
         {
+            _blogPostRepository = blogPostRepository;
             _blogCategoryRepository = blogCategoryRepository;
             _workContext = workContext;
             _eventPublisher = eventPublisher;
@@ -95,7 +107,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             }
         }
 
-        public IList<BlogCategory> GetAllBlogCategoriesByParentCategoryId(long parentBlogCategoryId, bool showHidden = false,
+        public IList<BlogCategory> GetAllBlogCategoriesByParentCategoryId(int parentBlogCategoryId, bool showHidden = false,
             bool includeAllLevels = false)
         {
             string key = string.Format(BLOGCATEGORIES_BY_PARENT_CATEGORY_ID_KEY, parentBlogCategoryId, showHidden, includeAllLevels);
@@ -121,6 +133,20 @@ namespace RANSUROTTO.BLOG.Services.Catalog
                 }
 
                 return categories;
+            });
+        }
+
+        public IList<BlogCategory> GetBlogCategoriesByBlogPostId(int blogPostId, bool showHidden = false)
+        {
+            if (blogPostId == 0)
+                return new List<BlogCategory>();
+
+            string key = string.Format(PRODUCTCATEGORIES_ALLBYPRODUCTID_KEY, showHidden, blogPostId, _workContext.CurrentCustomer.Id);
+            return _cacheManager.Get(key, () =>
+            {
+
+
+                return new List<BlogCategory>();
             });
         }
 

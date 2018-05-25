@@ -79,7 +79,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         public IList<int> SelectedCustomerRoleIds { get; set; }
 
 
-        public partial class ActivityLogModel : BaseEntityModel
+        public class ActivityLogModel : BaseEntityModel
         {
             [ResourceDisplayName("Admin.Customers.Customers.ActivityLog.ActivityLogType")]
             public string ActivityLogTypeName { get; set; }
@@ -87,6 +87,22 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
             public string Comment { get; set; }
             [ResourceDisplayName("Admin.Customers.Customers.ActivityLog.IpAddress")]
             public string IpAddress { get; set; }
+            [ResourceDisplayName("Admin.Customers.Customers.ActivityLog.CreatedOn")]
+            public override DateTime CreatedOn { get; set; }
+        }
+
+        public class BlogPostModel : BaseEntityModel
+        {
+            [ResourceDisplayName("Admin.Customers.Customers.BlogPost.Title")]
+            public string Title { get; set; }
+            [ResourceDisplayName("Admin.Customers.Customers.BlogPost.Published")]
+            public bool Published { get; set; }
+            [ResourceDisplayName("Admin.Customers.Customers.BlogPost.CreatedOn")]
+            public override DateTime CreatedOn { get; set; }
+            [ResourceDisplayName("Admin.Customers.Customers.BlogPost.UpdateOn")]
+            public DateTime UpdateOnUtc { get; set; }
+            [ResourceDisplayName("Admin.Customers.Customers.BlogPost.Deleted")]
+            public bool Deleted { get; set; }
         }
 
     }

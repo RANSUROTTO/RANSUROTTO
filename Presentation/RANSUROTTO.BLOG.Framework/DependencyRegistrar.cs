@@ -24,6 +24,7 @@ using RANSUROTTO.BLOG.Framework.Themes;
 using RANSUROTTO.BLOG.Framework.UI;
 using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Services.Authentication;
+using RANSUROTTO.BLOG.Services.Blogs;
 using RANSUROTTO.BLOG.Services.Catalog;
 using RANSUROTTO.BLOG.Services.Common;
 using RANSUROTTO.BLOG.Services.Configuration;
@@ -150,6 +151,13 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerRegistrationService>().As<ICustomerRegistrationService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerReportService>().As<ICustomerReportService>().InstancePerLifetimeScope();
+
+            builder.RegisterType<BlogService>().As<IBlogService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
+            builder.RegisterType<BlogPostTagService>().As<IBlogPostTagService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
 
             builder.RegisterType<GenericAttributeService>().As<IGenericAttributeService>().InstancePerLifetimeScope();
             builder.RegisterType<MaintenanceService>().As<IMaintenanceService>().InstancePerLifetimeScope();

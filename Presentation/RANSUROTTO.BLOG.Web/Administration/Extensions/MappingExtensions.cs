@@ -159,6 +159,25 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
 
         #endregion
 
+        #region Blog posts
+
+        public static BlogPostModel ToModel(this BlogPost entity)
+        {
+            return entity.MapTo<BlogPost, BlogPostModel>();
+        }
+
+        public static BlogPost ToEntity(this BlogPostModel model)
+        {
+            return model.MapTo<BlogPostModel, BlogPost>();
+        }
+
+        public static BlogPost ToEntity(this BlogPostModel model, BlogPost destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
         #region Blog tags
 
         public static BlogPostTagModel ToModel(this BlogPostTag entity)

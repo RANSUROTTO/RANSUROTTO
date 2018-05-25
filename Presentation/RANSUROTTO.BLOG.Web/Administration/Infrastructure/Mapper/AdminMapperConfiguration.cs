@@ -119,12 +119,22 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
 
                 #endregion
 
-                #region Blog tags
+                #region Blog posts
 
                 cfg.CreateMap<BlogPostTag, BlogPostTagModel>()
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
                 cfg.CreateMap<BlogPostTagModel, BlogPostTag>()
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
+
+                #endregion
+
+                #region Blog tags
+
+                cfg.CreateMap<BlogPost, BlogPostModel>()
+                    .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<BlogPostModel, BlogPost>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
 
                 #endregion

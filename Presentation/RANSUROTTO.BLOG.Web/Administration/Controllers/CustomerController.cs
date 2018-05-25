@@ -14,6 +14,7 @@ using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Framework.Mvc;
+using RANSUROTTO.BLOG.Services.Blogs;
 using RANSUROTTO.BLOG.Services.Common;
 using RANSUROTTO.BLOG.Services.Customers;
 using RANSUROTTO.BLOG.Services.Events;
@@ -32,6 +33,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly CustomerSettings _customerSettings;
         private readonly DateTimeSettings _dateTimeSettings;
         private readonly ICustomerService _customerService;
+        private readonly IBlogService _blogService;
         private readonly ICustomerActivityService _customerActivityService;
         private readonly ICustomerReportService _customerReportService;
         private readonly IGenericAttributeService _genericAttributeService;
@@ -46,11 +48,12 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, ICustomerService customerService, ICustomerActivityService customerActivityService, ICustomerReportService customerReportService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager, IEventPublisher eventPublisher)
+        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, ICustomerService customerService, IBlogService blogService, ICustomerActivityService customerActivityService, ICustomerReportService customerReportService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager, IEventPublisher eventPublisher)
         {
             _customerSettings = customerSettings;
             _dateTimeSettings = dateTimeSettings;
             _customerService = customerService;
+            _blogService = blogService;
             _customerActivityService = customerActivityService;
             _customerReportService = customerReportService;
             _genericAttributeService = genericAttributeService;
@@ -439,6 +442,44 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 return RedirectToAction("Edit", new { id = customer.Id });
             }
         }
+
+        #endregion
+
+        #region Blog posts
+
+        public virtual ActionResult ListBlogPost(DataSourceRequest command, int customerId)
+        {
+            var customerIds = new List<int> { customerId };
+            var blogPost = _blogService.GetAllBlogPosts(command.Page - 1, command.PageSize,
+                customerIds: customerIds, showHidden: true);
+            var gridModel = new DataSourceResult
+            {
+                Data = blogPost.Select(x =>
+                {
+                    var now = DateTime.UtcNow;
+                    var m = new CustomerModel.BlogPostModel
+                    {
+                        Id = x.Id,
+                        Title = x.Title,
+                        CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc),
+                        UpdateOnUtc = _dateTimeHelper.ConvertToUserTime(x.UpdateOnUtc, DateTimeKind.Utc),
+                        Published = (x.AvailableStartDateUtc == null || now > x.AvailableStartDateUtc)
+                            && (x.AvailableEndDateUtc == null || now < x.AvailableEndDateUtc),
+                        Deleted = x.Deleted
+                    };
+                    return m;
+                }),
+                Total = blogPost.TotalCount
+            };
+
+            return Json(gridModel);
+        }
+
+        #endregion
+
+        #region Blog comments
+
+
 
         #endregion
 
