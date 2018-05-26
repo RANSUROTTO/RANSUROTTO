@@ -14,6 +14,7 @@ using RANSUROTTO.BLOG.Framework.Localization;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Services.Blogs;
 using RANSUROTTO.BLOG.Services.Catalog;
+using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
 
@@ -31,13 +32,14 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedEntityService _localizedEntityService;
         private readonly ICustomerActivityService _customerActivityService;
+        private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ICacheManager _cacheManager;
 
         #endregion
 
         #region Constructor
 
-        public BlogController(IBlogService blogService, IBlogPostTagService blogPostTagService, ICategoryService categoryService, ILanguageService languageService, ILocalizationService localizationService, ILocalizedEntityService localizedEntityService, ICustomerActivityService customerActivityService, ICacheManager cacheManager)
+        public BlogController(IBlogService blogService, IBlogPostTagService blogPostTagService, ICategoryService categoryService, ILanguageService languageService, ILocalizationService localizationService, ILocalizedEntityService localizedEntityService, ICustomerActivityService customerActivityService, IDateTimeHelper dateTimeHelper, ICacheManager cacheManager)
         {
             _blogService = blogService;
             _blogPostTagService = blogPostTagService;
@@ -46,6 +48,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             _localizationService = localizationService;
             _localizedEntityService = localizedEntityService;
             _customerActivityService = customerActivityService;
+            _dateTimeHelper = dateTimeHelper;
             _cacheManager = cacheManager;
         }
 
@@ -93,6 +96,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             var blogPosts = _blogService.GetAllBlogPosts(command.Page - 1, command.PageSize, categoryIds: categoryIds,
                 keywords: model.SearchTitle, overridePublished: overridePublished, orderBy: BlogSortingEnum.CreatedOn);
 
+            var utcNow = DateTime.UtcNow;
             var gridModel = new DataSourceResult();
             gridModel.Data = blogPosts.Select(x =>
             {
@@ -100,6 +104,10 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 m.Body = "";
                 m.BodyOverview = "";
                 m.AuthorEmail = x.Author != null ? x.Author.Email : null;
+                m.CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc);
+                m.UpdatedOn = _dateTimeHelper.ConvertToUserTime(x.UpdatedOnUtc, DateTimeKind.Utc);
+                m.Published = (x.AvailableStartDateUtc == null || x.AvailableStartDateUtc < utcNow)
+                              && (x.AvailableEndDateUtc == null || x.AvailableEndDateUtc > utcNow);
                 return m;
             });
             gridModel.Total = blogPosts.TotalCount;
@@ -110,6 +118,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         public virtual ActionResult Create()
         {
             var model = new BlogPostModel();
+
+            AddLocales(_languageService, model.Locales);
+            PrepareCategoryMappingModel(model, null, true);
             model.AllowComments = true;
 
             return View(model);
@@ -123,7 +134,8 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
             var model = blogPost.ToModel();
             AddLocales(_languageService, model.Locales);
-            PrepareCategoryMappingModel(model, null.false);
+            PrepareCategoryMappingModel(model, null, false);
+
             return View(model);
         }
 
@@ -223,7 +235,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 throw new ArgumentNullException(nameof(model));
 
             if (!excludeProperties && product != null)
-                model.SelectedCategoryIds = _categoryService.GetAllBlogCategoriesByParentCategoryId(product.Id, true).Select(c => c.CategoryId).ToList();
+                model.SelectedCategoryIds = _categoryService.GetBlogCategoriesByBlogPostId(product.Id, true).Select(c => c.BlogCategoryId).ToList();
 
             var allCategories = SelectListHelper.GetBlogCategoryList(_categoryService, _cacheManager, true);
             foreach (var c in allCategories)

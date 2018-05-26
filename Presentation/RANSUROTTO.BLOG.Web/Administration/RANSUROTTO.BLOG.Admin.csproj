@@ -1439,6 +1439,8 @@
     <Content Include="Views\Blog\EditBlogPostTag.cshtml" />
     <Content Include="Views\Shared\_AdminPopupLayout.cshtml" />
     <Content Include="Views\Blog\_CreateOrUpdateProductTag.cshtml" />
+    <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Blog\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

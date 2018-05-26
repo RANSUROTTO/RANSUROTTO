@@ -55,6 +55,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
 
         private readonly IRepository<BlogPost> _blogPostRepository;
         private readonly IRepository<BlogCategory> _blogCategoryRepository;
+        private readonly IRepository<BlogPostBlogCategory> _blogPostBlogCategoryRepository;
         private readonly IWorkContext _workContext;
         private readonly IEventPublisher _eventPublisher;
         private readonly ICacheManager _cacheManager;
@@ -65,10 +66,11 @@ namespace RANSUROTTO.BLOG.Services.Catalog
 
         #region Constructor
 
-        public CategoryService(IRepository<BlogPost> blogPostRepository, IRepository<BlogCategory> blogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings)
+        public CategoryService(IRepository<BlogPost> blogPostRepository, IRepository<BlogCategory> blogCategoryRepository, IRepository<BlogPostBlogCategory> blogPostBlogCategoryRepository, IWorkContext workContext, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings)
         {
             _blogPostRepository = blogPostRepository;
             _blogCategoryRepository = blogCategoryRepository;
+            _blogPostBlogCategoryRepository = blogPostBlogCategoryRepository;
             _workContext = workContext;
             _eventPublisher = eventPublisher;
             _cacheManager = cacheManager;
@@ -80,7 +82,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
 
         #region Methods
 
-        public IPagedList<BlogCategory> GetAllBlogCategories(string blogCategoryName = "", int pageIndex = 0, int pageSize = Int32.MaxValue,
+        public virtual IPagedList<BlogCategory> GetAllBlogCategories(string blogCategoryName = "", int pageIndex = 0, int pageSize = Int32.MaxValue,
             bool showHidden = false)
         {
             if (_commonSettings.UseStoredProcedureForLoadingCategories &&
@@ -107,7 +109,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             }
         }
 
-        public IList<BlogCategory> GetAllBlogCategoriesByParentCategoryId(int parentBlogCategoryId, bool showHidden = false,
+        public virtual IList<BlogCategory> GetAllBlogCategoriesByParentCategoryId(int parentBlogCategoryId, bool showHidden = false,
             bool includeAllLevels = false)
         {
             string key = string.Format(BLOGCATEGORIES_BY_PARENT_CATEGORY_ID_KEY, parentBlogCategoryId, showHidden, includeAllLevels);
@@ -136,21 +138,28 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             });
         }
 
-        public IList<BlogCategory> GetBlogCategoriesByBlogPostId(int blogPostId, bool showHidden = false)
+        public virtual IList<BlogPostBlogCategory> GetBlogCategoriesByBlogPostId(int blogPostId, bool showHidden = false)
         {
             if (blogPostId == 0)
-                return new List<BlogCategory>();
+                return new List<BlogPostBlogCategory>();
 
             string key = string.Format(PRODUCTCATEGORIES_ALLBYPRODUCTID_KEY, showHidden, blogPostId, _workContext.CurrentCustomer.Id);
             return _cacheManager.Get(key, () =>
             {
+                var query = from bc in _blogPostBlogCategoryRepository.Table
+                            join c in _blogCategoryRepository.Table on bc.BlogCategoryId equals c.Id
+                            where bc.BlogCategoryId == blogPostId &&
+                                  !c.Deleted &&
+                                  (showHidden || c.Published)
+                            orderby bc.DisplayOrder, bc.Id
+                            select bc;
 
-
-                return new List<BlogCategory>();
+                var allBlogPostCategories = query.ToList();
+                return allBlogPostCategories;
             });
         }
 
-        public BlogCategory GetBlogCategoryById(int blogCategoryId)
+        public virtual BlogCategory GetBlogCategoryById(int blogCategoryId)
         {
             if (blogCategoryId == 0)
                 return null;
@@ -159,57 +168,57 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             return _cacheManager.Get(key, () => _blogCategoryRepository.GetById(blogCategoryId));
         }
 
-        public void InsertBlogCategory(BlogCategory blogCategory)
+        public virtual void InsertBlogCategory(BlogCategory category)
         {
-            if (blogCategory == null)
-                throw new ArgumentNullException(nameof(blogCategory));
+            if (category == null)
+                throw new ArgumentNullException(nameof(category));
 
-            _blogCategoryRepository.Insert(blogCategory);
+            _blogCategoryRepository.Insert(category);
 
             //cache
             _cacheManager.RemoveByPattern(BLOGCATEGORIES_PATTERN_KEY);
 
             //event notification
-            _eventPublisher.EntityInserted(blogCategory);
+            _eventPublisher.EntityInserted(category);
         }
 
-        public void UpdateBlogCategory(BlogCategory blogCategory)
+        public virtual void UpdateBlogCategory(BlogCategory category)
         {
-            if (blogCategory == null)
-                throw new ArgumentNullException(nameof(blogCategory));
+            if (category == null)
+                throw new ArgumentNullException(nameof(category));
 
             //验证类目层次
-            var parentCategory = GetBlogCategoryById(blogCategory.ParentCategoryId);
+            var parentCategory = GetBlogCategoryById(category.ParentCategoryId);
             while (parentCategory != null)
             {
-                if (blogCategory.Id == parentCategory.Id)
+                if (category.Id == parentCategory.Id)
                 {
-                    blogCategory.ParentCategoryId = 0;
+                    category.ParentCategoryId = 0;
                     break;
                 }
                 parentCategory = GetBlogCategoryById(parentCategory.ParentCategoryId);
             }
 
-            _blogCategoryRepository.Update(blogCategory);
+            _blogCategoryRepository.Update(category);
 
             //cache
             _cacheManager.RemoveByPattern(BLOGCATEGORIES_PATTERN_KEY);
 
             //event notification
-            _eventPublisher.EntityUpdated(blogCategory);
+            _eventPublisher.EntityUpdated(category);
         }
 
-        public void DeleteBlogCategory(BlogCategory blogCategory)
+        public virtual void DeleteBlogCategory(BlogCategory category)
         {
-            if (blogCategory == null)
-                throw new ArgumentNullException(nameof(blogCategory));
+            if (category == null)
+                throw new ArgumentNullException(nameof(category));
 
-            blogCategory.Deleted = true;
-            UpdateBlogCategory(blogCategory);
+            category.Deleted = true;
+            UpdateBlogCategory(category);
 
-            _eventPublisher.EntityDeleted(blogCategory);
+            _eventPublisher.EntityDeleted(category);
 
-            var subcategories = GetAllBlogCategoriesByParentCategoryId(blogCategory.Id, true);
+            var subcategories = GetAllBlogCategoriesByParentCategoryId(category.Id, true);
             foreach (var subcategory in subcategories)
             {
                 //将其子类目清除父类目标识

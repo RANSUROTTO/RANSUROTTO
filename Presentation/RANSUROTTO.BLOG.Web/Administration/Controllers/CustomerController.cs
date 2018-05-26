@@ -451,7 +451,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         {
             var customerIds = new List<int> { customerId };
             var blogPost = _blogService.GetAllBlogPosts(command.Page - 1, command.PageSize,
-                customerIds: customerIds, showHidden: true);
+                customerIds: customerIds, overridePublished: null);
             var gridModel = new DataSourceResult
             {
                 Data = blogPost.Select(x =>
@@ -462,7 +462,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                         Id = x.Id,
                         Title = x.Title,
                         CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc),
-                        UpdateOnUtc = _dateTimeHelper.ConvertToUserTime(x.UpdateOnUtc, DateTimeKind.Utc),
+                        UpdateOnUtc = _dateTimeHelper.ConvertToUserTime(x.UpdatedOnUtc, DateTimeKind.Utc),
                         Published = (x.AvailableStartDateUtc == null || now > x.AvailableStartDateUtc)
                             && (x.AvailableEndDateUtc == null || now < x.AvailableEndDateUtc),
                         Deleted = x.Deleted

@@ -33,6 +33,7 @@ using RANSUROTTO.BLOG.Services.Events;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Infrastructure;
 using RANSUROTTO.BLOG.Services.Installation;
+using RANSUROTTO.BLOG.Services.Interesting;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
 using RANSUROTTO.BLOG.Services.Messages;
@@ -156,6 +157,9 @@ namespace RANSUROTTO.BLOG.Framework
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
             builder.RegisterType<BlogPostTagService>().As<IBlogPostTagService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
+                .InstancePerLifetimeScope();
+            builder.RegisterType<IdeaService>().As<IIdeaService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
 

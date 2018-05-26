@@ -119,6 +119,7 @@
     <Compile Include="Domain\Blogs\BlogPostExtensions.cs" />
     <Compile Include="Domain\Blogs\BlogCategory.cs" />
     <Compile Include="Domain\Blogs\BlogPostTag.cs" />
+    <Compile Include="Domain\Blogs\BlogPostBlogCategory.cs" />
     <Compile Include="Domain\Blogs\Enum\BlogPostFormat.cs" />
     <Compile Include="Domain\Blogs\Enum\BlogSortingEnum.cs" />
     <Compile Include="Domain\Blogs\Setting\BlogSettings.cs" />

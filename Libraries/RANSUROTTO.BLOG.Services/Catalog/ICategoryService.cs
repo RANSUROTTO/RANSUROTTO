@@ -29,12 +29,12 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             bool showHidden = false, bool includeAllLevels = false);
 
         /// <summary>
-        /// 获取博客文章引用的博客类目列表
+        /// 获取博客文章引用的博客类目关联列表
         /// </summary>
         /// <param name="blogPostId">博客文章标识符</param>
         /// <param name="showHidden">指示是否获取隐藏的类目</param>
         /// <returns>博客类目列表</returns>
-        IList<BlogCategory> GetBlogCategoriesByBlogPostId(int blogPostId, bool showHidden = false);
+        IList<BlogPostBlogCategory> GetBlogCategoriesByBlogPostId(int blogPostId, bool showHidden = false);
 
         /// <summary>
         /// 通过标识符获取博客类目
@@ -46,20 +46,20 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         /// <summary>
         /// 添加博客类目
         /// </summary>
-        /// <param name="blogCategory">博客类目</param>
-        void InsertBlogCategory(BlogCategory blogCategory);
+        /// <param name="category">博客类目</param>
+        void InsertBlogCategory(BlogCategory category);
 
         /// <summary>
         /// 更新博客类目
         /// </summary>
-        /// <param name="blogCategory">博客类目</param>
-        void UpdateBlogCategory(BlogCategory blogCategory);
+        /// <param name="category">博客类目</param>
+        void UpdateBlogCategory(BlogCategory category);
 
         /// <summary>
         /// 删除博客类目
         /// </summary>
-        /// <param name="blogCategory">博客类目</param>
-        void DeleteBlogCategory(BlogCategory blogCategory);
+        /// <param name="category">博客类目</param>
+        void DeleteBlogCategory(BlogCategory category);
 
     }
 }

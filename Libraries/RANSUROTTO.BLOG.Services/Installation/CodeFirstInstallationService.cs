@@ -15,6 +15,7 @@ using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
 using RANSUROTTO.BLOG.Core.Domain.Logging.Setting;
+using RANSUROTTO.BLOG.Core.Domain.Media.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Messages;
 using RANSUROTTO.BLOG.Core.Domain.Security;
 using RANSUROTTO.BLOG.Core.Domain.Security.Setting;
@@ -226,7 +227,9 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 DefaultTheme = null,
                 Log404Errors = false,
                 RenderXuaCompatible = true,
-                XuaCompatibleValue = "IE=edge,chrome=1"
+                XuaCompatibleValue = "IE=edge,chrome=1",
+                UseStoredProcedureForLoadingCategories = false,
+                UseStoredProceduresIfSupported = false
             });
 
             settingService.SaveSetting(new SeoSettings
@@ -285,7 +288,9 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 CompanyEnabled = true,
                 DateOfBirthEnabled = true,
                 GenderEnabled = true,
-                PhoneEnabled = true
+                PhoneEnabled = true,
+                CompanyRequired = false,
+                PhoneRequired = false
             });
 
             settingService.SaveSetting(new DateTimeSettings
@@ -304,6 +309,13 @@ namespace RANSUROTTO.BLOG.Services.Installation
             settingService.SaveSetting(new LogSettings
             {
                 IgnoreLogWordlist = new List<string>()
+            });
+
+            settingService.SaveSetting(new MediaSettings
+            {
+                MaximumImageSize = 1980,
+                DefaultImageQuality = 80,
+                MultipleThumbDirectories = true
             });
 
         }

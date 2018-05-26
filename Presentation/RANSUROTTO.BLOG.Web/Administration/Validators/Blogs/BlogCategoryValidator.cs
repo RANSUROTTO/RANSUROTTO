@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using RANSUROTTO.BLOG.Core.Domain.Blogs;
+using RANSUROTTO.BLOG.Admin.Models.Blogs;
 using RANSUROTTO.BLOG.Framework.Validators;
 using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Admin.Validators.Blogs
 {
-    public class BlogCategoryValidator : BaseValidator<BlogCategory>
+    public class BlogCategoryValidator : BaseValidator<BlogCategoryModel>
     {
         public BlogCategoryValidator(ILocalizationService localizationService)
         {

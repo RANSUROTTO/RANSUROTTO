@@ -15,7 +15,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 
         private ICollection<BlogPostTag> _blogPostTags;
         private ICollection<BlogComment> _blogComments;
-        private ICollection<BlogCategory> _blogCategories;
+        private ICollection<BlogPostBlogCategory> _blogCategories;
 
         /// <summary>
         /// 获取或设置作者ID
@@ -60,7 +60,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// <summary>
         /// 获取或设置最后编辑结束的UTC时间
         /// </summary>
-        public DateTime UpdateOnUtc { get; set; }
+        public DateTime UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// 获取或设置该文章是否已被主人删除
@@ -87,11 +87,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         public virtual Customer Author { get; set; }
 
         /// <summary>
-        /// 获取或设置对应的类目列表
+        /// 获取或设置对应的类目关联列表
         /// </summary>
-        public virtual ICollection<BlogCategory> BlogCategories
+        public virtual ICollection<BlogPostBlogCategory> BlogCategories
         {
-            get { return _blogCategories ?? (_blogCategories = new List<BlogCategory>()); }
+            get { return _blogCategories ?? (_blogCategories = new List<BlogPostBlogCategory>()); }
             set { _blogCategories = value; }
         }
 
