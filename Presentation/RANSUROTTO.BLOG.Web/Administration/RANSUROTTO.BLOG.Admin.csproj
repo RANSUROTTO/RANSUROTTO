@@ -1441,6 +1441,7 @@
     <Content Include="Views\Blog\_CreateOrUpdateProductTag.cshtml" />
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Blog\List.cshtml" />
+    <Content Include="Views\Blog\_CreateOrUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

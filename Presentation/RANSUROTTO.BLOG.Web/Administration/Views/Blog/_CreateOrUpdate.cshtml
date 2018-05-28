@@ -1,0 +1,328 @@
+﻿@using System.Text
+@using RANSUROTTO.BLOG.Core.Infrastructure
+@using RANSUROTTO.BLOG.Framework.Events
+@using RANSUROTTO.BLOG.Services.Blogs
+@using RANSUROTTO.BLOG.Services.Events
+@model BlogPostModel
+
+@{
+    Layout = null;
+}
+
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+<script>
+    $(document).ready(function () {
+        bindBootstrapTabSelectEvent('blogpost-edit');
+    });
+</script>
+
+<div class="content">
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12 clearfix">
+                <div class="pull-left">
+                    @Html.Action("Mode", "Setting", new { modeName = "blogpost-advanced-mode" })
+                </div>
+            </div>
+        </div>
+        <div id="category-edit" class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                @Html.RenderBootstrapTabHeader("tab-info", @T("Admin.ContentManagement.Blog.Posts.Info"), true)
+                @Html.RenderBootstrapTabHeader("tab-seo", @T("Admin.Common.SEO"), customCssClass: "advanced-setting")
+            </ul>
+            <div class="tab-content">
+                @Html.RenderBootstrapTabContent("tab-info", @TabInfo(), true)
+                @Html.RenderBootstrapTabContent("tab-seo", @TabSeo())
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    //custom tabs
+    var eventMessage = new AdminTabStripCreated(this.Html, "blogpost-edit");
+    EngineContext.Current.Resolve<IEventPublisher>().Publish(eventMessage);
+    foreach (var eventBlock in eventMessage.BlocksToRender)
+    {
+        @eventBlock
+    }
+}
+
+@*save selected tab name*@
+<input type="hidden" id="selected-tab-name" name="selected-tab-name" value="@(Html.GetSelectedTabName())">
+
+@helper TabInfo()
+{
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @(Html.LocalizedEditor<BlogPostModel, BlogPostModelLocalizedModel>("blogpost-info-localized",
+                @<div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.CustomLabelFor(model => model.Locales[item].Title)
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.CustomEditorFor(model => model.Locales[item].Title)
+                                                        @Html.ValidationMessageFor(model => model.Locales[item].Title)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.CustomLabelFor(model => model.Locales[item].BodyOverview)
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.CustomTextAreaFor(model => model.Locales[item].BodyOverview)
+                                                        @Html.ValidationMessageFor(model => model.Locales[item].BodyOverview)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.CustomLabelFor(model => model.Locales[item].Body)
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.CustomTextAreaFor(model => model.Locales[item].Body)
+                                                        @Html.ValidationMessageFor(model => model.Locales[item].Body)
+                                                    </div>
+                                                </div>
+                                                @Html.HiddenFor(model => model.Locales[item].LanguageId)
+                                            </div>
+                ,
+                @<div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.CustomLabelFor(model => model.Title)
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.CustomEditorFor(model => model.Title)
+                                                        @Html.ValidationMessageFor(model => model.Title)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.CustomLabelFor(model => model.BodyOverview)
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.CustomTextAreaFor(model => model.BodyOverview)
+                                                        @Html.ValidationMessageFor(model => model.BodyOverview)
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.CustomLabelFor(model => model.Body)
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        @Html.CustomTextAreaFor(model => model.Body)
+                                                        @Html.ValidationMessageFor(model => model.Body)
+                                                    </div>
+                                                </div>
+                                            </div>))
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.SelectedCategoryIds)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.SelectedCategoryIds, new { SelectList = Model.AvailableCategories })
+                        <script>
+                            $(document).ready(function() {
+                                var categoryIdsInput = $('#@Html.FieldIdFor(model => model.SelectedCategoryIds)')
+                                    .data("kendoMultiSelect");
+                                categoryIdsInput.setOptions({
+                                    autoClose: false
+                                });
+                                @if (Model.AvailableCategories.Count == 0)
+                                {
+                                    <text>
+                                        categoryIdsInput.setOptions({
+                                            enable: false,
+                                            placeholder:
+                                                '@T("Admin.ContentManagement.Blog.Posts.Fields.Categories.NoCategoriesAvailable")'
+                                        });
+                                    </text>
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.BlogPostTags)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.BlogPostTags)
+                        @Html.ValidationMessageFor(model => model.BlogPostTags)
+                        @{
+                            var blogPostTags = EngineContext.Current.Resolve<IBlogPostTagService>().GetAllBlogPostTags();
+                            var blogPostTagsSb = new StringBuilder();
+                            blogPostTagsSb.Append("var initialBlogPostTags = [");
+                            for (int i = 0; i < blogPostTags.Count; i++)
+                            {
+                                var tag = blogPostTags[i];
+                                blogPostTagsSb.Append("'");
+                                blogPostTagsSb.Append(HttpUtility.JavaScriptStringEncode(tag.Name));
+                                blogPostTagsSb.Append("'");
+                                if (i != blogPostTags.Count - 1)
+                                {
+                                    blogPostTagsSb.Append(",");
+                                }
+                            }
+                            blogPostTagsSb.Append("]");
+                        }
+                        <script>
+                            //tags
+                            $(document).ready(function () {
+                                @Html.Raw(blogPostTagsSb.ToString())
+                                $("#@Html.FieldIdFor(model => model.BlogPostTags)").tagEditor({
+                                    autocomplete: {
+                                        delay: 0,
+                                        position: { collision: 'flip' },
+// ReSharper disable once UseOfImplicitGlobalInFunctionScope
+                                        source: initialProductTags
+                                    },
+                                    delimiter: ',',
+                                    placeholder: '@T("Admin.ContentManagement.Blog.Posts.Fields.BlogPostTags.Placeholder")'
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group advanced-setting">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.AvailableStartDateUtc)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.AvailableStartDateUtc)
+                        @Html.ValidationMessageFor(model => model.AvailableStartDateUtc)
+                    </div>
+                </div>
+                <div class="form-group advanced-setting">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.AvailableEndDateUtc)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.AvailableEndDateUtc)
+                        @Html.ValidationMessageFor(model => model.AvailableEndDateUtc)
+                    </div>
+                </div>
+                <div class="form-group advanced-setting">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.AllowComments)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.AllowComments)
+                        @Html.ValidationMessageFor(model => model.AllowComments)
+                    </div>
+                </div>
+                @if (Model.Id > 0)
+                {
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.Deleted)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomDisplayFor(model => model.Deleted)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.CreatedOn)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomDisplayFor(model => model.CreatedOn)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.UpdatedOn)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.CustomDisplayFor(model => model.UpdatedOn)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.CustomLabelFor(model => model.AuthorId)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.ActionLink(Model.AuthorEmail, "Edit", "Customer", new { id = Model.AuthorId }, new { })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@helper TabSeo()
+{
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @(Html.LocalizedEditor<BlogPostModel,BlogPostModelLocalizedModel>("blogpost-seo-localized",
+                    @<div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Locales[item].MetaKeywords)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.Locales[item].MetaKeywords)
+                                @Html.ValidationMessageFor(model => model.Locales[item].MetaKeywords)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Locales[item].MetaDescription)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomTextAreaFor(model => model.Locales[item].MetaDescription)
+                                @Html.ValidationMessageFor(model => model.Locales[item].MetaDescription)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.Locales[item].MetaTitle)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.Locales[item].MetaTitle)
+                                @Html.ValidationMessageFor(model => model.Locales[item].MetaTitle)
+                            </div>
+                        </div>
+                        @Html.HiddenFor(model => model.Locales[item].LanguageId)
+                    </div>
+    ,
+                    @<div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.MetaKeywords)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(x => x.MetaKeywords)
+                                @Html.ValidationMessageFor(model => model.MetaKeywords)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.MetaDescription)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomTextAreaFor(x => x.MetaDescription)
+                                @Html.ValidationMessageFor(model => model.MetaDescription)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.MetaTitle)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(x => x.MetaTitle)
+                                @Html.ValidationMessageFor(model => model.MetaTitle)
+                            </div>
+                        </div>
+                    </div>))
+            </div>
+        </div>
+    </div>
+}

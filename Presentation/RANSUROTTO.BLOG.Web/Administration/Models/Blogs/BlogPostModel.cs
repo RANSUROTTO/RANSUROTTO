@@ -7,7 +7,7 @@ using RANSUROTTO.BLOG.Framework.Mvc;
 
 namespace RANSUROTTO.BLOG.Admin.Models.Blogs
 {
-    public class BlogPostModel : BaseEntityModel, ILocalizedModel<BlogPostModelLocal>
+    public class BlogPostModel : BaseEntityModel, ILocalizedModel<BlogPostModelLocalizedModel>
     {
         public BlogPostModel()
         {
@@ -33,14 +33,28 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.AllowComments")]
         public bool AllowComments { get; set; }
 
+        [UIHint("DateTimeNullable")]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.AvailableStartDateUtc")]
         public DateTime? AvailableStartDateUtc { get; set; }
 
+        [UIHint("DateTimeNullable")]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.AvailableEndDateUtc")]
         public DateTime? AvailableEndDateUtc { get; set; }
 
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.CreatedOn")]
         public override DateTime CreatedOn { get; set; }
+
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.MetaKeywords")]
+        [AllowHtml]
+        public string MetaKeywords { get; set; }
+
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.MetaDescription")]
+        [AllowHtml]
+        public string MetaDescription { get; set; }
+
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.MetaTitle")]
+        [AllowHtml]
+        public string MetaTitle { get; set; }
 
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.UpdatedOn")]
         public DateTime UpdatedOn { get; set; }
@@ -53,8 +67,11 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
 
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.AuthorEmail")]
         public string AuthorEmail { get; set; }
+        
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.BlogPostTags")]
+        public string BlogPostTags { get; set; }
 
-        public IList<BlogPostModelLocal> Locales { get; set; }
+        public IList<BlogPostModelLocalizedModel> Locales { get; set; }
 
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.Categories")]
         [UIHint("MultiSelect")]
@@ -63,7 +80,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
 
     }
 
-    public class BlogPostModelLocal : ILocalizedModelLocal
+    public class BlogPostModelLocalizedModel : ILocalizedModelLocal
     {
         public int LanguageId { get; set; }
 
@@ -75,5 +92,18 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
 
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.Body")]
         public string Body { get; set; }
+
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.MetaKeywords")]
+        [AllowHtml]
+        public string MetaKeywords { get; set; }
+
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.MetaDescription")]
+        [AllowHtml]
+        public string MetaDescription { get; set; }
+
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.MetaTitle")]
+        [AllowHtml]
+        public string MetaTitle { get; set; }
+
     }
 }

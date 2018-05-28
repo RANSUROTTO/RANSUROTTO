@@ -58,6 +58,21 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         public DateTime? AvailableEndDateUtc { get; set; }
 
         /// <summary>
+        /// 获取或设置 Meta Keywords
+        /// </summary>
+        public string MetaKeywords { get; set; }
+
+        /// <summary>
+        /// 获取或设置 Meta Description
+        /// </summary>
+        public string MetaDescription { get; set; }
+
+        /// <summary>
+        /// 获取或设置 Meta Title
+        /// </summary>
+        public string MetaTitle { get; set; }
+
+        /// <summary>
         /// 获取或设置最后编辑结束的UTC时间
         /// </summary>
         public DateTime UpdatedOnUtc { get; set; }
