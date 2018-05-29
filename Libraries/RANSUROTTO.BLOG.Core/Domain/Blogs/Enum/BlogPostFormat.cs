@@ -14,7 +14,7 @@
         /// <summary>
         /// 富文本编辑器
         /// </summary>
-        RichTextEditor,
+        RichEditor,
 
         /// <summary>
         /// MarkDown

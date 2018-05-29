@@ -1443,6 +1443,7 @@
     <Content Include="Views\Blog\List.cshtml" />
     <Content Include="Views\Blog\_CreateOrUpdate.cshtml" />
     <Content Include="Views\Blog\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RichEditor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
