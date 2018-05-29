@@ -35,9 +35,9 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
         #region Fields
 
-        private readonly IRepository<BlogCategory> _blogCategoryRepository;
+        private readonly IRepository<Category> _blogCategoryRepository;
         private readonly IRepository<BlogPost> _blogPostRepository;
-        private readonly IRepository<BlogComment> _blogCommentRepository;
+        private readonly IRepository<Comment> _blogCommentRepository;
         private readonly IRepository<GenericAttribute> _genericAttributeRepository;
         private readonly IRepository<Setting> _settingRepository;
         private readonly IRepository<Language> _languageRepository;
@@ -56,7 +56,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
         #region Constructor
 
-        public CodeFirstInstallationService(IRepository<BlogCategory> blogCategoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<BlogComment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository, IRepository<CustomerRole> customerRoleRepository, IRepository<PermissionRecord> permissionRecordRepository, IRepository<EmailAccount> emailAccountRepository)
+        public CodeFirstInstallationService(IRepository<Category> blogCategoryRepository, IRepository<BlogPost> blogPostRepository, IRepository<Comment> blogCommentRepository, IRepository<GenericAttribute> genericAttributeRepository, IRepository<Setting> settingRepository, IRepository<Language> languageRepository, IRepository<LocaleStringResource> localeStringResourceRepository, IRepository<ActivityLogType> activityLogTypeRepository, IRepository<ActivityLog> activityLogRepository, IRepository<Log> logRepository, IRepository<Customer> customerRepository, IRepository<CustomerPassword> customerPasswordRepository, IRepository<ScheduleTask> scheduleTaskRepository, IRepository<CustomerRole> customerRoleRepository, IRepository<PermissionRecord> permissionRecordRepository, IRepository<EmailAccount> emailAccountRepository)
         {
             _blogCategoryRepository = blogCategoryRepository;
             _blogPostRepository = blogPostRepository;

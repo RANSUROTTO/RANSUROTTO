@@ -2,11 +2,11 @@
 
 namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
 {
-    public class BlogCategoryMap : CustomEntityTypeConfiguration<BlogCategory>
+    public class CategoryMap : CustomEntityTypeConfiguration<Category>
     {
-        public BlogCategoryMap()
+        public CategoryMap()
         {
-            this.ToTable("BlogCategory");
+            this.ToTable("Category");
 
             this.Property(p => p.Name).IsRequired().HasMaxLength(255);
             this.Property(p => p.AdminComment).HasMaxLength(1000);

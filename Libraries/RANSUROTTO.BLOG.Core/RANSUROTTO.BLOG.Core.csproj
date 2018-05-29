@@ -114,12 +114,12 @@
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Domain\Blogs\BlogComment.cs" />
+    <Compile Include="Domain\Blogs\Comment.cs" />
     <Compile Include="Domain\Blogs\BlogPost.cs" />
     <Compile Include="Domain\Blogs\BlogPostExtensions.cs" />
-    <Compile Include="Domain\Blogs\BlogCategory.cs" />
+    <Compile Include="Domain\Blogs\Category.cs" />
     <Compile Include="Domain\Blogs\BlogPostTag.cs" />
-    <Compile Include="Domain\Blogs\BlogPostBlogCategory.cs" />
+    <Compile Include="Domain\Blogs\BlogPostCategory.cs" />
     <Compile Include="Domain\Blogs\Enum\BlogPostFormat.cs" />
     <Compile Include="Domain\Blogs\Enum\BlogSortingEnum.cs" />
     <Compile Include="Domain\Blogs\Setting\BlogSettings.cs" />

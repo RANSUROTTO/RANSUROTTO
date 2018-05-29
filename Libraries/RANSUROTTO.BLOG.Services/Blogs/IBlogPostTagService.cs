@@ -20,5 +20,7 @@ namespace RANSUROTTO.BLOG.Services.Blogs
 
         int GetBlogPostCount(int blogPostTagId);
 
+        void UpdateBlogPostTags(BlogPost blogPost, string[] blogPostTags);
+
     }
 }

@@ -101,10 +101,10 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
 
                 #region Blog categories
 
-                cfg.CreateMap<BlogCategory, BlogCategoryModel>()
+                cfg.CreateMap<Category, CategoryModel>()
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-                cfg.CreateMap<BlogCategoryModel, BlogCategory>()
+                cfg.CreateMap<CategoryModel, Category>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
 
                 #endregion
@@ -121,20 +121,21 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
 
                 #region Blog posts
 
-                cfg.CreateMap<BlogPostTag, BlogPostTagModel>()
+                cfg.CreateMap<BlogPost, BlogPostModel>()
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
+                    .ForMember(dest => dest.Deleted, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-                cfg.CreateMap<BlogPostTagModel, BlogPostTag>()
+                cfg.CreateMap<BlogPostModel, BlogPost>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
 
                 #endregion
 
                 #region Blog tags
 
-                cfg.CreateMap<BlogPost, BlogPostModel>()
+                cfg.CreateMap<BlogPostTag, BlogPostTagModel>()
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-                cfg.CreateMap<BlogPostModel, BlogPost>()
+                cfg.CreateMap<BlogPostTagModel, BlogPostTag>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
 
                 #endregion

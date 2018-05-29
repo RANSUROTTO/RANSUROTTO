@@ -8,9 +8,9 @@ using RANSUROTTO.BLOG.Admin.Models.Blogs;
 using RANSUROTTO.BLOG.Core.Caching;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Blogs.Enum;
+using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Extensions;
 using RANSUROTTO.BLOG.Framework.Kendoui;
-using RANSUROTTO.BLOG.Framework.Localization;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Services.Blogs;
 using RANSUROTTO.BLOG.Services.Catalog;
@@ -126,6 +126,37 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+        public virtual ActionResult Create(BlogPostModel model, bool continueEditing)
+        {
+            if (ModelState.IsValid)
+            {
+                var blogPost = model.ToEntity();
+                blogPost.UpdatedOnUtc = DateTime.UtcNow;
+                _blogService.InsertBlogPost(blogPost);
+                //Locales
+                UpdateLocales(blogPost, model);
+                //Categories
+                SaveCategoryMappings(blogPost, model);
+                //Tags
+                _blogPostTagService.UpdateBlogPostTags(blogPost, ParseBlogPostTags(model.BlogPostTags));
+
+                //Activity log
+                _customerActivityService.InsertActivity("AddNewBlogPost", _localizationService.GetResource("ActivityLog.AddNewBlogPost"), blogPost.Title);
+
+                SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.Blog.Posts.Added"));
+
+                if (continueEditing)
+                {
+                    SaveSelectedTabName();
+                    return RedirectToAction("Edit", new { id = blogPost.Id });
+                }
+                return RedirectToAction("List");
+            }
+            PrepareCategoryMappingModel(model, null, true);
+            return View(model);
+        }
+
         public virtual ActionResult Edit(int id)
         {
             var blogPost = _blogService.GetBlogPostById(id);
@@ -136,6 +167,42 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             AddLocales(_languageService, model.Locales);
             PrepareCategoryMappingModel(model, null, false);
 
+            return View(model);
+        }
+
+        [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
+        public virtual ActionResult Edit(BlogPostModel model, bool continueEditing)
+        {
+            var blogPost = _blogService.GetBlogPostById(model.Id);
+
+            if (blogPost == null || blogPost.Deleted)
+                return RedirectToAction("List");
+
+            if (ModelState.IsValid)
+            {
+                blogPost = model.ToEntity(blogPost);
+                blogPost.UpdatedOnUtc = DateTime.UtcNow;
+                _blogService.UpdateBlogPost(blogPost);
+                //Locales
+                UpdateLocales(blogPost, model);
+                //Tags
+                _blogPostTagService.UpdateBlogPostTags(blogPost, ParseBlogPostTags(model.BlogPostTags));
+                //Categories
+                SaveCategoryMappings(blogPost, model);
+
+                //Activity log
+                _customerActivityService.InsertActivity("EditBlogPost", _localizationService.GetResource("ActivityLog.EditBlogPost"), blogPost.Title);
+
+                SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.Blog.Posts.Updated"));
+
+                if (continueEditing)
+                {
+                    SaveSelectedTabName();
+                    return RedirectToAction("Edit", new { id = blogPost.Id });
+                }
+                return RedirectToAction("List");
+            }
+            PrepareCategoryMappingModel(model, blogPost, true);
             return View(model);
         }
 
@@ -235,7 +302,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 throw new ArgumentNullException(nameof(model));
 
             if (!excludeProperties && product != null)
-                model.SelectedCategoryIds = _categoryService.GetBlogCategoriesByBlogPostId(product.Id, true).Select(c => c.BlogCategoryId).ToList();
+                model.SelectedCategoryIds = _categoryService.GetCategoriesByBlogPostId(product.Id, true).Select(c => c.BlogCategoryId).ToList();
 
             var allCategories = SelectListHelper.GetBlogCategoryList(_categoryService, _cacheManager, true);
             foreach (var c in allCategories)
@@ -243,6 +310,47 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 c.Selected = model.SelectedCategoryIds.Contains(int.Parse(c.Value));
                 model.AvailableCategories.Add(c);
             }
+        }
+
+        [NonAction]
+        protected virtual void SaveCategoryMappings(BlogPost blogPost, BlogPostModel model)
+        {
+            var existingBlogCategories = _categoryService.GetCategoriesByBlogPostId(blogPost.Id, true);
+
+            //删除未选中的
+            foreach (var existingBlogCategory in existingBlogCategories)
+                if (!model.SelectedCategoryIds.Contains(existingBlogCategory.Id))
+                    _categoryService.DeleteBlogPostCategory(existingBlogCategory);
+
+            //添加类目
+            foreach (var categoryId in model.SelectedCategoryIds)
+                if (existingBlogCategories.FindBlogPostCategory(blogPost.Id, categoryId) == null)
+                {
+                    var displayOrder = 1;
+                    var existingCategoryMapping = _categoryService.GetCategoriesByBlogPostId(categoryId, showHidden: true);
+                    if (existingCategoryMapping.Any())
+                        displayOrder = existingCategoryMapping.Max(x => x.DisplayOrder) + 1;
+                    _categoryService.InsertBlogPostCategory(new BlogPostCategory
+                    {
+                        BlogPostId = blogPost.Id,
+                        BlogCategoryId = categoryId,
+                        DisplayOrder = displayOrder
+                    });
+                }
+        }
+
+        [NonAction]
+        protected virtual string[] ParseBlogPostTags(string blogPostTags)
+        {
+            var result = new List<string>();
+            if (!string.IsNullOrWhiteSpace(blogPostTags))
+            {
+                string[] values = blogPostTags.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string val1 in values)
+                    if (!string.IsNullOrEmpty(val1.Trim()))
+                        result.Add(val1.Trim());
+            }
+            return result.ToArray();
         }
 
         [NonAction]
@@ -275,7 +383,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         protected virtual List<int> GetChildCategoryIds(int parentCategoryId)
         {
             var categoriesIds = new List<int>();
-            var categories = _categoryService.GetAllBlogCategoriesByParentCategoryId(parentCategoryId, true);
+            var categories = _categoryService.GetAllCategoriesByParentCategoryId(parentCategoryId, true);
             foreach (var category in categories)
             {
                 categoriesIds.Add(category.Id);

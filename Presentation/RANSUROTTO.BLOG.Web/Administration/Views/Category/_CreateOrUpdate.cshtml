@@ -1,7 +1,7 @@
 ﻿@using RANSUROTTO.BLOG.Core.Infrastructure
 @using RANSUROTTO.BLOG.Framework.Events
 @using RANSUROTTO.BLOG.Services.Events
-@model BlogCategoryModel
+@model CategoryModel
 
 @Html.ValidationSummary(false)
 @Html.HiddenFor(model => model.Id)
@@ -54,7 +54,7 @@
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    @(Html.LocalizedEditor<BlogCategoryModel, BlogCategoryLocalizedModel>("blogCategory-info-localized",
+                    @(Html.LocalizedEditor<CategoryModel, CategoryLocalizedModel>("blogCategory-info-localized",
                     @<div>
                         <div class="form-group">
                             <div class="col-md-3">
@@ -141,7 +141,7 @@
         <div class="panel-group">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    @(Html.LocalizedEditor<BlogCategoryModel, BlogCategoryLocalizedModel>("category-seo-localized",
+                    @(Html.LocalizedEditor<CategoryModel, CategoryLocalizedModel>("category-seo-localized",
                     @<div>
                         <div class="form-group">
                             <div class="col-md-3">

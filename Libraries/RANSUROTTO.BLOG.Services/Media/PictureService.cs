@@ -39,12 +39,14 @@ namespace RANSUROTTO.BLOG.Services.Media
 
         #region Constructor
 
-        public PictureService(IRepository<Picture> pictureRepository, IEventPublisher eventPublisher, IWebHelper webHelper, ILogger logger)
+        public PictureService(IRepository<Picture> pictureRepository, IEventPublisher eventPublisher, IWebHelper webHelper, ILogger logger, MediaSettings mediaSettings, ISettingService settingService)
         {
             _pictureRepository = pictureRepository;
             _eventPublisher = eventPublisher;
             _webHelper = webHelper;
             _logger = logger;
+            _mediaSettings = mediaSettings;
+            _settingService = settingService;
         }
 
         #endregion

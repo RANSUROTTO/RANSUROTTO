@@ -4,10 +4,10 @@ using RANSUROTTO.BLOG.Framework.Mvc;
 
 namespace RANSUROTTO.BLOG.Admin.Models.Blogs
 {
-    public class BlogCategoryListModel : BaseModel
+    public class CategoryListModel : BaseModel
     {
 
-        [ResourceDisplayName("Admin.ContentManagement.Blog.BlogCategorys.List.SearchCategoryName")]
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Categories.List.SearchCategoryName")]
         [AllowHtml]
         public string SearchCategoryName { get; set; }
 

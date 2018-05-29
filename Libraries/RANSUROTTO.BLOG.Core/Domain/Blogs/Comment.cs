@@ -6,7 +6,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
     /// <summary>
     /// ²©¿ÍÆÀÂÛ
     /// </summary>
-    public class BlogComment : BaseEntity
+    public class Comment : BaseEntity
     {
 
         /// <summary>

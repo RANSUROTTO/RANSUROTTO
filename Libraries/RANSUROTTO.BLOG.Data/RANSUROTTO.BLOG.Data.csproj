@@ -72,10 +72,10 @@
     <Compile Include="Context\IDbContext.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Initializers\CreateTablesIfNotExist.cs" />
-    <Compile Include="Mapping\Blogs\BlogCommentMap.cs" />
-    <Compile Include="Mapping\Blogs\BlogPostBlogCategoryMap.cs" />
+    <Compile Include="Mapping\Blogs\CommentMap.cs" />
+    <Compile Include="Mapping\Blogs\BlogPostCategoryMap.cs" />
     <Compile Include="Mapping\Blogs\BlogPostMap.cs" />
-    <Compile Include="Mapping\Blogs\BlogCategoryMap.cs" />
+    <Compile Include="Mapping\Blogs\CategoryMap.cs" />
     <Compile Include="Mapping\Blogs\BlogPostTagMap.cs" />
     <Compile Include="Mapping\Common\GenericAttributeMap.cs" />
     <Compile Include="Mapping\Configuration\SettingMap.cs" />

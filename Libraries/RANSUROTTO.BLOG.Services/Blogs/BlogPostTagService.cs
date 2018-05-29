@@ -32,6 +32,7 @@ namespace RANSUROTTO.BLOG.Services.Blogs
         #region Fields
 
         private readonly IRepository<BlogPostTag> _blogPostTagRepository;
+        private readonly IBlogService _blogService;
         private readonly IEventPublisher _eventPublisher;
         private readonly ICacheManager _cacheManager;
         private readonly IDataProvider _dataProvider;
@@ -41,9 +42,10 @@ namespace RANSUROTTO.BLOG.Services.Blogs
 
         #region Constructor
 
-        public BlogPostTagService(IRepository<BlogPostTag> blogPostTagRepository, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings)
+        public BlogPostTagService(IRepository<BlogPostTag> blogPostTagRepository, IBlogService blogService, IEventPublisher eventPublisher, ICacheManager cacheManager, IDataProvider dataProvider, CommonSettings commonSettings)
         {
             _blogPostTagRepository = blogPostTagRepository;
+            _blogService = blogService;
             _eventPublisher = eventPublisher;
             _cacheManager = cacheManager;
             _dataProvider = dataProvider;
@@ -122,6 +124,64 @@ namespace RANSUROTTO.BLOG.Services.Blogs
                 return dictionary[blogPostTagId];
 
             return 0;
+        }
+
+        public virtual void UpdateBlogPostTags(BlogPost blogPost, string[] blogPostTags)
+        {
+            if (blogPost == null)
+                throw new ArgumentNullException(nameof(blogPost));
+
+            var existingBlogPostTags = blogPost.BlogPostTags.ToList();
+            var blogPostTagsToRemove = new List<BlogPostTag>();
+
+            //筛选出需要删除的标签
+            foreach (var existingBlogPostTag in existingBlogPostTags)
+            {
+                var found = false;
+                foreach (var newProductTag in blogPostTags)
+                {
+                    if (existingBlogPostTag.Name.Equals(newProductTag, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    blogPostTagsToRemove.Add(existingBlogPostTag);
+                }
+            }
+
+            //删除标签
+            foreach (var blogPostTag in blogPostTagsToRemove)
+            {
+                blogPost.BlogPostTags.Remove(blogPostTag);
+                _blogService.UpdateBlogPost(blogPost);
+            }
+
+            //新增标签
+            foreach (var tagName in blogPostTags)
+            {
+                BlogPostTag blogPostTag;
+                var blogPostTag2 = GetBlogPostTagByName(tagName);
+                if (blogPostTag2 == null)
+                {
+                    blogPostTag = new BlogPostTag
+                    {
+                        Name = tagName
+                    };
+                    InsertBlogPostTag(blogPostTag);
+                }
+                else
+                {
+                    blogPostTag = blogPostTag2;
+                }
+                if (!blogPost.BlogPostTagExists(blogPostTag.Id))
+                {
+                    blogPost.BlogPostTags.Add(blogPostTag);
+                    _blogService.UpdateBlogPost(blogPost);
+                }
+            }
         }
 
         #endregion

@@ -2,7 +2,7 @@
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 {
-    public class BlogPostBlogCategory : BaseEntity
+    public class BlogPostCategory : BaseEntity
     {
 
         public int BlogPostId { get; set; }
@@ -13,7 +13,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 
         public virtual BlogPost BlogPost { get; set; }
 
-        public virtual BlogCategory BlogCategory { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

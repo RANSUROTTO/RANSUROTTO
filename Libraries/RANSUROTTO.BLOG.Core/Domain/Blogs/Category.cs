@@ -7,7 +7,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
     /// <summary>
     /// 博客类目
     /// </summary>
-    public class BlogCategory : BaseEntity, ILocalizedEntity
+    public class Category : BaseEntity, ILocalizedEntity
     {
 
         /// <summary>

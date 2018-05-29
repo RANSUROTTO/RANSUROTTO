@@ -2,11 +2,11 @@
 
 namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
 {
-    public class BlogCommentMap : CustomEntityTypeConfiguration<BlogComment>
+    public class CommentMap : CustomEntityTypeConfiguration<Comment>
     {
-        public BlogCommentMap()
+        public CommentMap()
         {
-            this.ToTable("BlogComment");
+            this.ToTable("Comment");
 
             this.HasRequired(p => p.BlogPost)
                 .WithMany(p => p.BlogComments)

@@ -17,7 +17,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         /// <param name="separator">分隔符</param>
         /// <param name="languageId">语言标识符</param>
         /// <returns>格式化后的字符串</returns>
-        public static string GetFormattedBreadCrumb(this BlogCategory category,
+        public static string GetFormattedBreadCrumb(this Category category,
             ICategoryService categoryService,
             string separator = ">>", int languageId = 0)
         {
@@ -42,13 +42,13 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         /// <param name="parentId">父类目标识符</param>
         /// <param name="ignoreCategoriesWithoutExistingParent">指示是否忽略没有父分类的类目</param>
         /// <returns>排序后的类目</returns>
-        public static IList<BlogCategory> SortBlogCategoriesForTree(this IList<BlogCategory> source, long parentId = 0,
+        public static IList<Category> SortBlogCategoriesForTree(this IList<Category> source, long parentId = 0,
             bool ignoreCategoriesWithoutExistingParent = false)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
 
-            var result = new List<BlogCategory>();
+            var result = new List<Category>();
 
             foreach (var cat in source.Where(c => c.ParentCategoryId == parentId).ToList())
             {
@@ -74,8 +74,8 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         /// <param name="separator">分隔符</param>
         /// <param name="languageId">语言标识符</param>
         /// <returns>格式化后的类目列表</returns>
-        public static string GetFormattedBreadCrumb(this BlogCategory category,
-            IList<BlogCategory> allCategories,
+        public static string GetFormattedBreadCrumb(this Category category,
+            IList<Category> allCategories,
             string separator = ">>", int languageId = 0)
         {
             string result = string.Empty;
@@ -99,14 +99,14 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         /// <param name="categoryService">类目业务实例</param>
         /// <param name="showHidden">指示是否显示隐藏项</param>
         /// <returns>格式化后的类目列表</returns>
-        public static IList<BlogCategory> GetCategoryBreadCrumb(this BlogCategory category,
+        public static IList<Category> GetCategoryBreadCrumb(this Category category,
             ICategoryService categoryService,
             bool showHidden = false)
         {
             if (category == null)
                 throw new ArgumentNullException(nameof(category));
 
-            var result = new List<BlogCategory>();
+            var result = new List<Category>();
 
             //用于防止循环引用
             var alreadyProcessedCategoryIds = new List<long>();
@@ -120,7 +120,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
 
                 alreadyProcessedCategoryIds.Add(category.Id);
 
-                category = categoryService.GetBlogCategoryById(category.ParentCategoryId);
+                category = categoryService.GetCategoryById(category.ParentCategoryId);
             }
             result.Reverse();
             return result;
@@ -133,14 +133,14 @@ namespace RANSUROTTO.BLOG.Services.Catalog
         /// <param name="allCategories">需被格式化操作的类目列表</param>
         /// <param name="showHidden">指示是否显示隐藏项</param>
         /// <returns>格式化后的类目列表</returns>
-        public static IList<BlogCategory> GetCategoryBreadCrumb(this BlogCategory category,
-            IList<BlogCategory> allCategories,
+        public static IList<Category> GetCategoryBreadCrumb(this Category category,
+            IList<Category> allCategories,
             bool showHidden = false)
         {
             if (category == null)
                 throw new ArgumentNullException(nameof(category));
 
-            var result = new List<BlogCategory>();
+            var result = new List<Category>();
 
             //用于防止循环引用
             var alreadyProcessedCategoryIds = new List<long>();
@@ -160,6 +160,16 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             }
             result.Reverse();
             return result;
+        }
+
+        public static BlogPostCategory FindBlogPostCategory(this IList<BlogPostCategory> source,
+            int blogPostId, int categoryId)
+        {
+            foreach (var blogPostBlogCategory in source)
+                if (blogPostBlogCategory.BlogPostId == blogPostId && blogPostBlogCategory.BlogCategoryId == categoryId)
+                    return blogPostBlogCategory;
+
+            return null;
         }
 
     }

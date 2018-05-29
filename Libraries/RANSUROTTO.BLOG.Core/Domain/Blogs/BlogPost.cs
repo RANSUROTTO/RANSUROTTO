@@ -14,8 +14,8 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
     {
 
         private ICollection<BlogPostTag> _blogPostTags;
-        private ICollection<BlogComment> _blogComments;
-        private ICollection<BlogPostBlogCategory> _blogCategories;
+        private ICollection<Comment> _blogComments;
+        private ICollection<BlogPostCategory> _blogCategories;
 
         /// <summary>
         /// 获取或设置作者ID
@@ -104,9 +104,9 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// <summary>
         /// 获取或设置对应的类目关联列表
         /// </summary>
-        public virtual ICollection<BlogPostBlogCategory> BlogCategories
+        public virtual ICollection<BlogPostCategory> BlogCategories
         {
-            get { return _blogCategories ?? (_blogCategories = new List<BlogPostBlogCategory>()); }
+            get { return _blogCategories ?? (_blogCategories = new List<BlogPostCategory>()); }
             set { _blogCategories = value; }
         }
 
@@ -122,9 +122,9 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// <summary>
         /// 获取或设置博文内评论列表
         /// </summary>
-        public virtual ICollection<BlogComment> BlogComments
+        public virtual ICollection<Comment> BlogComments
         {
-            get { return _blogComments ?? (_blogComments = new List<BlogComment>()); }
+            get { return _blogComments ?? (_blogComments = new List<Comment>()); }
             set { _blogComments = value; }
         }
 

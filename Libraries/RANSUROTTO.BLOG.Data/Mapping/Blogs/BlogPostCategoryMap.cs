@@ -2,13 +2,13 @@
 
 namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
 {
-    public class BlogPostBlogCategoryMap : CustomEntityTypeConfiguration<BlogPostBlogCategory>
+    public class BlogPostCategoryMap : CustomEntityTypeConfiguration<BlogPostCategory>
     {
-        public BlogPostBlogCategoryMap()
+        public BlogPostCategoryMap()
         {
-            this.ToTable("BlogPost_BlogCategory_Mapping");
+            this.ToTable("BlogPostCategory");
 
-            this.HasRequired(bc => bc.BlogCategory)
+            this.HasRequired(bc => bc.Category)
                 .WithMany()
                 .HasForeignKey(bc => bc.BlogCategoryId);
             this.HasRequired(bc => bc.BlogPost)

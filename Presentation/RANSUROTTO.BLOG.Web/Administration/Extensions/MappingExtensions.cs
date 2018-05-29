@@ -123,17 +123,17 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
 
         #region Blog categories
 
-        public static BlogCategoryModel ToModel(this BlogCategory entity)
+        public static CategoryModel ToModel(this Category entity)
         {
-            return entity.MapTo<BlogCategory, BlogCategoryModel>();
+            return entity.MapTo<Category, CategoryModel>();
         }
 
-        public static BlogCategory ToEntity(this BlogCategoryModel model)
+        public static Category ToEntity(this CategoryModel model)
         {
-            return model.MapTo<BlogCategoryModel, BlogCategory>();
+            return model.MapTo<CategoryModel, Category>();
         }
 
-        public static BlogCategory ToEntity(this BlogCategoryModel model, BlogCategory destination)
+        public static Category ToEntity(this CategoryModel model, Category destination)
         {
             return model.MapTo(destination);
         }

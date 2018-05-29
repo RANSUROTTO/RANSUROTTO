@@ -1,6 +1,6 @@
 ﻿@using RANSUROTTO.BLOG.Core.Domain.Common.Setting
 @using RANSUROTTO.BLOG.Core.Infrastructure
-@model BlogCategoryListModel
+@model CategoryListModel
 
 @{
     var defaultGridPageSize = EngineContext.Current.Resolve<AdminAreaSettings>().DefaultGridPageSize;
@@ -61,7 +61,7 @@
                                     type: "json",
                                     transport: {
                                         read: {
-                                            url: "@Html.Raw(Url.Action("List", "BlogCategory"))",
+                                            url: "@Html.Raw(Url.Action("List", "Category"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: additionalData

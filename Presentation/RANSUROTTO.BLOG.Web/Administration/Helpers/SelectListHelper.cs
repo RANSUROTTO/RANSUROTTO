@@ -32,7 +32,7 @@ namespace RANSUROTTO.BLOG.Admin.Helpers
             string cacheKey = string.Format("Ransurotto.pres.admin.categories.list-{0}", showHidden);
             var listItems = cacheManager.Get(cacheKey, () =>
             {
-                var categories = categoryService.GetAllBlogCategories(showHidden: showHidden);
+                var categories = categoryService.GetAllCategories(showHidden: showHidden);
                 return categories.Select(c => new SelectListItem
                 {
                     Text = c.GetFormattedBreadCrumb(categories),
