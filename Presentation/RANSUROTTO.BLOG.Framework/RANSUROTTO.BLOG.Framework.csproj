@@ -157,6 +157,7 @@
     <Compile Include="UI\NotifyType.cs" />
     <Compile Include="UI\PageHeadBuilder.cs" />
     <Compile Include="UI\ResourceLocation.cs" />
+    <Compile Include="UI\TinyMceHelper.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
     <Compile Include="Validators\ValidatorFactory.cs" />
     <Compile Include="ViewEngines\Razor\WebViewPage.cs" />

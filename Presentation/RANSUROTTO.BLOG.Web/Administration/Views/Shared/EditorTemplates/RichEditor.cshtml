@@ -1,12 +1,57 @@
-﻿@model string
+﻿@using RANSUROTTO.BLOG.Core.Helper
+@model string
 
 @{
+    Html.AddScriptParts("~/Content/tinymce/tinymce.min.js", true);
 
+    //ThinyMce language
+    var language = TinyMceHelper.GetThinyMceLnaguage();
 
-
-
-
+    //生成随机数
+    var random = CommonHelper.GenerateRandomInteger();
+    
 }
 
+<script>
+    $(document).ready(function() {
 
+        //default editor settings
+        var defaultEditorSettings@(random) =
+        {
+            selector: "#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)",
+            branding:false,
+            fontsize_formats: "8pt 9pt 10pt 11pt 12pt 14pt 26pt 36pt",
+            height: 400,
+            width: '100%',
+            relative_urls: false,   //禁止将相同域中的所有网址转换为相对网址
+            convert_urls: false,
+            entity_encoding: "raw",
+            mobile: {
+                theme: 'mobile'
+            },
+            @if (string.IsNullOrEmpty(language))
+            {
+                <text>
+                    //laguage
+                    language: "@language",
+                </text>
+            }
+            plugins:[
+                "advlist autolink autoresize directionality lists link image charmap preview anchor",
+                "searchreplace visualblocks code fullscreen textcolor",
+                "insertdatetime media table contextmenu paste"
+            ],
+            toolbar: "ltr rtl | insertfile undo redo | styleselect | fontselect | fontsizeselect | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        }
 
+        function getAdditionalEditorSettings@(random)(settings) {
+            return settings;
+        }
+
+        tinyMCE.init(getAdditionalEditorSettings@(random)(defaultEditorSettings@(random)));
+    });
+</script>
+
+@Html.TextArea(string.Empty, /* Name suffix */
+    ViewData.TemplateInfo.FormattedModelValue /* Initial value */
+)
