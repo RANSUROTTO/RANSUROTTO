@@ -24,6 +24,16 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs.Setting
         /// </summary>
         public bool BlogCommentsMustBeApproved { get; set; }
 
+        /// <summary>
+        /// 获取或设置富文本编辑器是否开启Javascript支持
+        /// </summary>
+        public bool RichEditorAllowJavaScript { get; set; }
+
+        /// <summary>
+        /// 获取或设置富文本编辑器的附加设置
+        /// </summary>
+        public string RichEditorAdditionalSettings { get; set; }
+
     }
 
 }
