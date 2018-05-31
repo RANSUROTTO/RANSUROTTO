@@ -111,9 +111,9 @@ namespace RANSUROTTO.BLOG.Services.Installation
             var japanLanguage = new Language
             {
                 Name = "日本語",
-                LanguageCulture = "ja",
-                UniqueSeoCode = "ja",
-                FlagImageFileName = "ja.png",
+                LanguageCulture = "jp",
+                UniqueSeoCode = "jp",
+                FlagImageFileName = "jp.png",
                 Published = true,
                 DisplayOrder = 2
             };
@@ -303,7 +303,8 @@ namespace RANSUROTTO.BLOG.Services.Installation
             {
                 AllowNotRegisteredUserToLeaveComments = false,
                 MaxNumberOfTags = 15,
-                BlogCommentsMustBeApproved = false
+                BlogCommentsMustBeApproved = false,
+                RichEditorAllowJavaScript = true
             });
 
             settingService.SaveSetting(new LogSettings

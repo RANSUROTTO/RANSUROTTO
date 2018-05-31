@@ -6,7 +6,9 @@
 @model BlogPostModel
 
 @{
-    Layout = null;
+    Html.AppendCssFileParts("~/Administration/Content/tagEditor/jquery.tag-editor.css");
+    Html.AppendScriptParts("~/Administration/Scripts/tagEditor/jquery.tag-editor.min.js");
+    Html.AppendScriptParts("~/Administration/Scripts/tagEditor/jquery.caret.min.js");
 }
 
 @Html.ValidationSummary(false)
@@ -83,7 +85,7 @@
                                 @Html.CustomLabelFor(model => model.Locales[item].Body)
                             </div>
                             <div class="col-md-9">
-                                @Html.CustomTextAreaFor(model => model.Locales[item].Body)
+                                @Html.CustomEditorFor(model => model.Locales[item].Body)
                                 @Html.ValidationMessageFor(model => model.Locales[item].Body)
                             </div>
                         </div>
@@ -114,7 +116,7 @@
                             @Html.CustomLabelFor(model => model.Body)
                         </div>
                         <div class="col-md-9">
-                            @Html.CustomTextAreaFor(model => model.Body)
+                            @Html.CustomEditorFor(model => model.Body)
                             @Html.ValidationMessageFor(model => model.Body)
                         </div>
                     </div>
@@ -180,7 +182,7 @@
                                         delay: 0,
                                         position: { collision: 'flip' },
 // ReSharper disable once UseOfImplicitGlobalInFunctionScope
-                                        source: initialProductTags
+                                        source: initialBlogPostTags
                                     },
                                     delimiter: ',',
                                     placeholder: '@T("Admin.ContentManagement.Blog.Posts.Fields.BlogPostTags.Placeholder")'

@@ -13,17 +13,22 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
         {
             SelectedCategoryIds = new List<int>();
             AvailableCategories = new List<SelectListItem>();
+            Locales = new List<BlogPostModelLocalizedModel>();
         }
 
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.AuthorId")]
         public int AuthorId { get; set; }
 
+        [AllowHtml]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.Title")]
         public string Title { get; set; }
 
+        [AllowHtml]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.BodyOverview")]
         public string BodyOverview { get; set; }
 
+        [AllowHtml]
+        [UIHint("RichEditor")]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.Body")]
         public string Body { get; set; }
 
@@ -67,7 +72,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
 
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.AuthorEmail")]
         public string AuthorEmail { get; set; }
-        
+
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.BlogPostTags")]
         public string BlogPostTags { get; set; }
 
@@ -84,12 +89,16 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
     {
         public int LanguageId { get; set; }
 
+        [AllowHtml]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.Title")]
         public string Title { get; set; }
 
+        [AllowHtml]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.BodyOverview")]
         public string BodyOverview { get; set; }
 
+        [AllowHtml]
+        [UIHint("RichEditor")]
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.Fields.Body")]
         public string Body { get; set; }
 

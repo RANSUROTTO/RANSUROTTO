@@ -1,4 +1,6 @@
-﻿@using RANSUROTTO.BLOG.Core.Helper
+﻿@using RANSUROTTO.BLOG.Core.Domain.Blogs.Setting
+@using RANSUROTTO.BLOG.Core.Helper
+@using RANSUROTTO.BLOG.Core.Infrastructure
 @model string
 
 @{
@@ -9,7 +11,11 @@
 
     //生成随机数
     var random = CommonHelper.GenerateRandomInteger();
-    
+
+    //获取设置
+    var allowJavaScript = EngineContext.Current.Resolve<BlogSettings>().RichEditorAllowJavaScript;
+    var additionalEditorSettings = EngineContext.Current.Resolve<BlogSettings>().RichEditorAdditionalSettings;
+
 }
 
 <script>
@@ -21,30 +27,40 @@
             selector: "#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)",
             branding:false,
             fontsize_formats: "8pt 9pt 10pt 11pt 12pt 14pt 26pt 36pt",
-            height: 400,
+            height: 800,
+            min_height:800,
             width: '100%',
             relative_urls: false,   //禁止将相同域中的所有网址转换为相对网址
             convert_urls: false,
             entity_encoding: "raw",
+            code_dialog_height:720,
+            code_dialog_width:1024,
             mobile: {
                 theme: 'mobile'
             },
-            @if (string.IsNullOrEmpty(language))
+            @if (allowJavaScript)
             {
                 <text>
-                    //laguage
-                    language: "@language",
+                valid_elements: "*[*]",
+                </text>
+            }
+            @if (!string.IsNullOrEmpty(language))
+            {
+                <text>
+                //laguage
+                language: "@language",
                 </text>
             }
             plugins:[
-                "advlist autolink autoresize directionality lists link image charmap preview anchor",
-                "searchreplace visualblocks code fullscreen textcolor",
-                "insertdatetime media table contextmenu paste"
+                "advlist autolink autoresize autosave directionality lists link image charmap preview anchor",
+                "searchreplace visualblocks code fullscreen textcolor bbcode colorpicker hr",
+                "insertdatetime media table contextmenu paste codesample toc"
             ],
-            toolbar: "ltr rtl | insertfile undo redo | styleselect | fontselect | fontsizeselect | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar: "ltr rtl | restoredraft | codesample | insertfile undo redo | styleselect | fontselect | fontsizeselect | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
         }
 
         function getAdditionalEditorSettings@(random)(settings) {
+            @Html.Raw(additionalEditorSettings)
             return settings;
         }
 
