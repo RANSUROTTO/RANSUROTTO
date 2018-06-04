@@ -11,7 +11,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         public CustomerListModel()
         {
             AvailableCustomerRoles = new List<SelectListItem>();
-            SearchCustomerRoleIds = new List<long>();
+            SearchCustomerRoleIds = new List<int>();
         }
 
         [ResourceDisplayName("Admin.Customers.Customers.List.SearchEmail")]
@@ -50,7 +50,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         public IList<SelectListItem> AvailableCustomerRoles { get; set; }
         [UIHint("MultiSelect")]
         [ResourceDisplayName("Admin.Customers.Customers.List.CustomerRoles")]
-        public IList<long> SearchCustomerRoleIds { get; set; }
+        public IList<int> SearchCustomerRoleIds { get; set; }
 
     }
 }

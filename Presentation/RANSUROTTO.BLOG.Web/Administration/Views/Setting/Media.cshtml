@@ -1,0 +1,93 @@
+﻿@model MediaSettingsModel
+
+@{
+    //页面标题
+    ViewBag.Title = T("Admin.Configuration.Settings.Media").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("Media settings");
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.Configuration.Settings.Media")
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="form-horizontal">
+            @Html.Action("Mode", "Setting")
+            @Html.ValidationSummary(false)
+
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.Media.BlockTitle.Common")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group advanced-setting">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.MaximumImageSize)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.MaximumImageSize)
+                                @Html.ValidationMessageFor(model => model.MaximumImageSize)
+                            </div>
+                        </div>
+                        <div class="form-group advanced-setting">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.MultipleThumbDirectories)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.MultipleThumbDirectories)
+                                @Html.ValidationMessageFor(model => model.MultipleThumbDirectories)
+                            </div>
+                        </div>
+                        <div class="form-group advanced-setting">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.DefaultImageQuality)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.DefaultImageQuality)
+                                @Html.ValidationMessageFor(model => model.DefaultImageQuality)
+                            </div>
+                        </div>
+                        <div class="form-group advanced-setting">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.DefaultPictureZoomEnabled)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.DefaultPictureZoomEnabled)
+                                @Html.ValidationMessageFor(model => model.DefaultPictureZoomEnabled)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default advanced-setting">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.Media.BlockTitle.Other")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.AvatarPictureSize)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.AvatarPictureSize)
+                                @Html.ValidationMessageFor(model => model.AvatarPictureSize)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

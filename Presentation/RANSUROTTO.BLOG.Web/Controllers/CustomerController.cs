@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using RANSUROTTO.BLOG.Core.Context;
+using RANSUROTTO.BLOG.Core.Domain;
 using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
@@ -29,13 +30,14 @@ namespace RANSUROTTO.BLOG.Web.Controllers
         private readonly IEventPublisher _eventPublisher;
         private readonly ILocalizationService _localizationService;
         private readonly CommonSettings _commonSettings;
+        private readonly BlogInformationSettings _blogInformationSettings;
         private readonly CustomerSettings _customerSettings;
 
         #endregion
 
         #region Constructor
 
-        public CustomerController(IWorkContext workContext, ICustomerService customerService, ICustomerRegistrationService customerRegistrationService, ICustomerActivityService customerActivityService, IAuthenticationService authenticationService, IEventPublisher eventPublisher, ILocalizationService localizationService, CommonSettings commonSettings, CustomerSettings customerSettings)
+        public CustomerController(IWorkContext workContext, ICustomerService customerService, ICustomerRegistrationService customerRegistrationService, ICustomerActivityService customerActivityService, IAuthenticationService authenticationService, IEventPublisher eventPublisher, ILocalizationService localizationService, CommonSettings commonSettings, BlogInformationSettings blogInformationSettings, CustomerSettings customerSettings)
         {
             _workContext = workContext;
             _customerService = customerService;
@@ -45,6 +47,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
             _eventPublisher = eventPublisher;
             _localizationService = localizationService;
             _commonSettings = commonSettings;
+            _blogInformationSettings = blogInformationSettings;
             _customerSettings = customerSettings;
         }
 
@@ -122,7 +125,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
             _authenticationService.SignOut();
 
-            if (_commonSettings.DisplayEuCookieLawWarning)
+            if (_blogInformationSettings.DisplayEuCookieLawWarning)
             {
                 //不在页面跳转到主页时显示警告
                 //可能是同一个人

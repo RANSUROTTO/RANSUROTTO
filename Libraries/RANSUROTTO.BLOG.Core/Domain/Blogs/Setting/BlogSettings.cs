@@ -10,13 +10,13 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs.Setting
     {
 
         /// <summary>
-        /// 获取或设置是否允许未游客进行评论
+        /// 获取或设置是否允许游客(匿名用户)进行评论
         /// </summary>
-        public bool AllowNotRegisteredUserToLeaveComments { get; set; }
+        public bool AllowGuestsToCreateComments { get; set; }
 
         /// <summary>
         /// 获取或设置博文可有最多标签个数
-        /// </summary>
+        /// </summary>  
         public int MaxNumberOfTags { get; set; }
 
         /// <summary>

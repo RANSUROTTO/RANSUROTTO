@@ -20,5 +20,9 @@ namespace RANSUROTTO.BLOG.Core.Domain.Media.Setting
         /// </summary>
         public bool MultipleThumbDirectories { get; set; }
 
+        public bool DefaultPictureZoomEnabled { get; set; }
+
+        public int AvatarPictureSize { get; set; }
+
     }
 }

@@ -222,7 +222,6 @@ namespace RANSUROTTO.BLOG.Services.Installation
             var settingService = EngineContext.Current.Resolve<ISettingService>();
             settingService.SaveSetting(new CommonSettings
             {
-                DisplayEuCookieLawWarning = true,
                 DisplayJavaScriptDisabledWarning = true,
                 DefaultTheme = null,
                 Log404Errors = false,
@@ -301,7 +300,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
             settingService.SaveSetting(new BlogSettings
             {
-                AllowNotRegisteredUserToLeaveComments = false,
+                AllowGuestsToCreateComments = false,
                 MaxNumberOfTags = 15,
                 BlogCommentsMustBeApproved = false,
                 RichEditorAllowJavaScript = true

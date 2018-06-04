@@ -1,0 +1,392 @@
+﻿@model GeneralCommonSettingsModel
+
+@{
+    //页面标题
+    ViewBag.Title = T("Admin.Configuration.Settings.GeneralCommon").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("General settings");
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.Configuration.Settings.GeneralCommon")
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="form-horizontal">
+            @Html.Action("Mode", "Setting")
+            @Html.ValidationSummary(false)
+
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.Common")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.BlogInformationSettings.BlogClosed)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.BlogInformationSettings.BlogClosed)
+                                @Html.ValidationMessageFor(model => model.BlogInformationSettings.BlogClosed)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.BlogInformationSettings.SitemapEnabled)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.BlogInformationSettings.SitemapEnabled)
+                                @Html.ValidationMessageFor(model => model.BlogInformationSettings.SitemapEnabled)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.BlogInformationSettings.DisplayEuCookieLawWarning)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.BlogInformationSettings.DisplayEuCookieLawWarning)
+                                @Html.ValidationMessageFor(model => model.BlogInformationSettings.DisplayEuCookieLawWarning)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.SocialMedia")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.BlogInformationSettings.GitHubLink)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.BlogInformationSettings.GitHubLink)
+                                @Html.ValidationMessageFor(model => model.BlogInformationSettings.GitHubLink)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.SEO")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.DefaultTitle)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.DefaultTitle)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.DefaultTitle)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.PageTitleSeoAdjustment)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDropDownListFor(model => model.SeoSettings.PageTitleSeoAdjustment, Model.SeoSettings.PageTitleSeoAdjustmentValues)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.PageTitleSeoAdjustment)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.PageTitleSeparator)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.PageTitleSeparator)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.PageTitleSeparator)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.DefaultMetaKeywords)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.DefaultMetaKeywords)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.DefaultMetaKeywords)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.DefaultMetaDescription)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.DefaultMetaDescription)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.DefaultMetaDescription)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.EnableJsBundling)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.EnableJsBundling)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.EnableJsBundling)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.EnableCssBundling)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.EnableCssBundling)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.EnableCssBundling)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.WwwRequirement)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomDropDownListFor(model => model.SeoSettings.WwwRequirement, Model.SeoSettings.WwwRequirementValues)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.WwwRequirement)
+                            </div>
+                        </div>
+                        <div class="form-group advanced-setting">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.ConvertNonWesternChars)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.ConvertNonWesternChars)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.ConvertNonWesternChars)
+                            </div>
+                        </div>
+                        <div class="form-group advanced-setting">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.CanonicalUrlsEnabled)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.CanonicalUrlsEnabled)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.CanonicalUrlsEnabled)
+                            </div>
+                        </div>
+                        <div class="form-group advanced-setting">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SeoSettings.CustomHeadTags)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SeoSettings.CustomHeadTags)
+                                @Html.ValidationMessageFor(model => model.SeoSettings.CustomHeadTags)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default advanced-setting">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.Security")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SecuritySettings.AdminAreaAllowedIpAddresses)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SecuritySettings.AdminAreaAllowedIpAddresses)
+                                @Html.ValidationMessageFor(model => model.SecuritySettings.AdminAreaAllowedIpAddresses)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SecuritySettings.ForceSslForAllPages)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SecuritySettings.ForceSslForAllPages)
+                                @Html.ValidationMessageFor(model => model.SecuritySettings.ForceSslForAllPages)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SecuritySettings.EnableXsrfProtectionForAdminArea)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SecuritySettings.EnableXsrfProtectionForAdminArea)
+                                @Html.ValidationMessageFor(model => model.SecuritySettings.EnableXsrfProtectionForAdminArea)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SecuritySettings.EnableXsrfProtectionForPublicArea)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SecuritySettings.EnableXsrfProtectionForPublicArea)
+                                @Html.ValidationMessageFor(model => model.SecuritySettings.EnableXsrfProtectionForPublicArea)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SecuritySettings.HoneypotEnabled)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.SecuritySettings.HoneypotEnabled)
+                                @Html.ValidationMessageFor(model => model.SecuritySettings.HoneypotEnabled)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.SecuritySettings.EncryptionKey)
+                            </div>
+                            <div class="col-md-9">
+                                <div class="input-group input-group-short">
+                                    @Html.CustomEditorFor(model => model.SecuritySettings.EncryptionKey)
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="changeencryptionkey" id="changeencryptionkey" class="btn btn-info">
+                                            @T("Admin.Common.Change")
+                                        </button>
+                                        @Html.ActionConfirmation("changeencryptionkey")
+                                    </span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.SecuritySettings.EncryptionKey)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default advanced-setting">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.Captcha")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CaptchaSettings.Enabled)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.CaptchaSettings.Enabled)
+                                @Html.ValidationMessageFor(model => model.CaptchaSettings.Enabled)
+                            </div>
+                        </div>
+                        <div class="form-group" id="ssCaptchaShowOnLoginPagepnl">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CaptchaSettings.ShowOnLoginPage)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.CaptchaSettings.ShowOnLoginPage)
+                                @Html.ValidationMessageFor(model => model.CaptchaSettings.ShowOnLoginPage)
+                            </div>
+                        </div>
+                        <div class="form-group" id="ssCaptchaShowOnRegistrationPagepnl">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CaptchaSettings.ShowOnRegistrationPage)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.CaptchaSettings.ShowOnRegistrationPage)
+                                @Html.ValidationMessageFor(model => model.CaptchaSettings.ShowOnRegistrationPage)
+                            </div>
+                        </div>
+                        <div class="form-group" id="ssCaptchaShowOnPublishBlogPostPagepnl">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CaptchaSettings.ShowOnPublishBlogPostPage)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.CaptchaSettings.ShowOnPublishBlogPostPage)
+                                @Html.ValidationMessageFor(model => model.CaptchaSettings.ShowOnPublishBlogPostPage)
+                            </div>
+                        </div>
+                        <div class="form-group" id="ssCaptchaShowOnPublishBlogCommentPagepnl">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.CaptchaSettings.ShowOnPublishBlogCommentPage)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.CaptchaSettings.ShowOnPublishBlogCommentPage)
+                                @Html.ValidationMessageFor(model => model.CaptchaSettings.ShowOnPublishBlogCommentPage)
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                        $(document).ready(function() {
+                            $("#@Html.FieldIdFor(model => model.CaptchaSettings.Enabled)").click(toggleReCaptcha);
+                            toggleReCaptcha();
+                        });
+
+                        function toggleReCaptcha() {
+                            if ($('#@Html.FieldIdFor(model => model.CaptchaSettings.Enabled)').is(':checked')) {
+                                $("#ssCaptchaShowOnLoginPagepnl").show();
+                                $("#ssCaptchaShowOnRegistrationPagepnl").show();
+                                $("#ssCaptchaShowOnPublishBlogPostPagepnl").show();
+                                $("#ssCaptchaShowOnPublishBlogCommentPagepnl").show();
+                            } else {
+                                $("#ssCaptchaShowOnLoginPagepnl").hide();
+                                $("#ssCaptchaShowOnRegistrationPagepnl").hide();
+                                $("#ssCaptchaShowOnPublishBlogPostPagepnl").hide();
+                                $("#ssCaptchaShowOnPublishBlogCommentPagepnl").hide();
+                            }
+                        }
+                        </script>
+                    </div>
+                </div>
+                <div class="panel panel-default advanced-setting">
+                    <div class="panel-heading">
+                        @T("Admin.Configuration.Settings.GeneralCommon.BlockTitle.Localization")
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LocalizationSettings.LoadAllLocaleRecordsOnStartup)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.LocalizationSettings.LoadAllLocaleRecordsOnStartup)
+                                @Html.ValidationMessageFor(model => model.LocalizationSettings.LoadAllLocaleRecordsOnStartup)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LocalizationSettings.LoadAllLocalizedPropertiesOnStartup)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.LocalizationSettings.LoadAllLocalizedPropertiesOnStartup)
+                                @Html.ValidationMessageFor(model => model.LocalizationSettings.LoadAllLocalizedPropertiesOnStartup)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LocalizationSettings.LoadAllUrlRecordsOnStartup)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.LocalizationSettings.LoadAllUrlRecordsOnStartup)
+                                @Html.ValidationMessageFor(model => model.LocalizationSettings.LoadAllUrlRecordsOnStartup)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LocalizationSettings.UseImagesForLanguageSelection)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.LocalizationSettings.UseImagesForLanguageSelection)
+                                @Html.ValidationMessageFor(model => model.LocalizationSettings.UseImagesForLanguageSelection)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LocalizationSettings.SeoFriendlyUrlsForLanguagesEnabled)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.LocalizationSettings.SeoFriendlyUrlsForLanguagesEnabled)
+                                @Html.ValidationMessageFor(model => model.LocalizationSettings.SeoFriendlyUrlsForLanguagesEnabled)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.CustomLabelFor(model => model.LocalizationSettings.AutomaticallyDetectLanguage)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.CustomEditorFor(model => model.LocalizationSettings.AutomaticallyDetectLanguage)
+                                @Html.ValidationMessageFor(model => model.LocalizationSettings.AutomaticallyDetectLanguage)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

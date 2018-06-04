@@ -5,6 +5,8 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common.Setting
     public class CommonSettings : ISettings
     {
 
+        public bool SitemapEnabled { get; set; }
+
         /// <summary>
         /// 获取或设置是否启用存储过程（如果可以使用的话，应使用）
         /// </summary>
@@ -14,12 +16,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Common.Setting
         /// 获取或设置是否使用存储过程来获取类目（这比LINQ要快）
         /// </summary>
         public bool UseStoredProcedureForLoadingCategories { get; set; }
-
-        /// <summary>
-        /// 获取或设置是否显示有关新的欧盟Cookie法(Cookie隐私保护)的警告
-        /// </summary>
-        public bool DisplayEuCookieLawWarning { get; set; }
-
+        
         /// <summary>
         /// 获取或设置Javascript被禁用时是否显示警告
         /// </summary>

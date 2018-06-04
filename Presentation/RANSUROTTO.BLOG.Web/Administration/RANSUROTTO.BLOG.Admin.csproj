@@ -1255,6 +1255,8 @@
     <Compile Include="Models\Messages\EmailAccountModel.cs" />
     <Compile Include="Models\Security\PermissionMappingModel.cs" />
     <Compile Include="Models\Security\PermissionRecordModel.cs" />
+    <Compile Include="Models\Settings\GeneralCommonSettingsModel.cs" />
+    <Compile Include="Models\Settings\MediaSettingsModel.cs" />
     <Compile Include="Models\Settings\ModeModel.cs" />
     <Compile Include="Models\Tasks\ScheduleTaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1444,6 +1446,8 @@
     <Content Include="Views\Blog\_CreateOrUpdate.cshtml" />
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\RichEditor.cshtml" />
+    <Content Include="Views\Setting\GeneralCommon.cshtml" />
+    <Content Include="Views\Setting\Media.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

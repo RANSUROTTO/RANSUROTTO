@@ -76,7 +76,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var defaultRoleIds = new List<long> { _customerService.GetCustomerRoleBySystemName(SystemCustomerRoleNames.Registered).Id };
+            var defaultRoleIds = new List<int> { _customerService.GetCustomerRoleBySystemName(SystemCustomerRoleNames.Registered).Id };
 
             var model = new CustomerListModel
             {

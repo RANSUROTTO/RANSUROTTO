@@ -121,6 +121,7 @@
     <Content Include="App_Data\browscap.xml" />
     <Content Include="App_Data\Install\MySQL.Indexs.sql" />
     <Content Include="App_Data\Install\MySQL.Procedures.sql" />
+    <Content Include="App_Data\Localization\defaultResources.langs.zh_cn.xml" />
     <Content Include="App_Data\Localization\Installation\installation.ar.xml" />
     <Content Include="App_Data\Localization\Installation\installation.bg.xml" />
     <Content Include="App_Data\Localization\Installation\installation.bn-bd.xml" />
@@ -553,6 +554,8 @@
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="App_Data\Localization\defaultResources.langs.jp" />
+    <Content Include="App_Data\Localization\defaultResources.langs.en" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

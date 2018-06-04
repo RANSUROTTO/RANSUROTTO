@@ -40,5 +40,7 @@ namespace RANSUROTTO.BLOG.Core.Domain.Security.Setting
         /// </summary>
         public bool EnableXsrfProtectionForPublicArea { get; set; }
 
+        public bool HoneypotEnabled { get; set; }
+
     }
 }
