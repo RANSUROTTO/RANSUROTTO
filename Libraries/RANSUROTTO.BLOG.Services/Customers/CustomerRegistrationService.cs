@@ -52,7 +52,7 @@ namespace RANSUROTTO.BLOG.Services.Customers
         public virtual CustomerLoginResults ValidateCustomer(string usernameOrEmail, string password)
         {
             Customer customer = null;
-            switch (_customerSettings.CurrentAuthenticationType)
+            switch (_customerSettings.CustomerAuthenticationType)
             {
                 case AuthenticationType.Email:
                     customer = _customerService.GetCustomerByEmail(usernameOrEmail);

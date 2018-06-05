@@ -74,7 +74,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
                     case CustomerLoginResults.Successful:
                         {
                             Customer customer = null;
-                            switch (_customerSettings.CurrentAuthenticationType)
+                            switch (_customerSettings.CustomerAuthenticationType)
                             {
                                 case AuthenticationType.Email:
                                     customer = _customerService.GetCustomerByEmail(model.LoginName);

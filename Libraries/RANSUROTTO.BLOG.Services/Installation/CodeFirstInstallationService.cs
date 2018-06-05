@@ -276,14 +276,14 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
             settingService.SaveSetting(new CustomerSettings
             {
-                CurrentAuthenticationType = AuthenticationType.UsernameOrEmail,
+                CustomerAuthenticationType = AuthenticationType.UsernameOrEmail,
                 HashedPasswordFormat = "SHA1",
                 FailedPasswordAllowedAttempts = 5,
                 FailedPasswordLockoutMinutes = 10,
                 UnduplicatedPasswordsNumber = 0,
                 DefaultPasswordFormat = PasswordFormat.Hashed,
                 OnlineCustomerMinutes = 60 * 24 * 7,
-                LastVisitedPage = true,
+                StoreLastVisitedPage = true,
                 CompanyEnabled = true,
                 DateOfBirthEnabled = true,
                 GenderEnabled = true,
@@ -294,7 +294,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
             settingService.SaveSetting(new DateTimeSettings
             {
-                DefaultStoreTimeZoneId = "",
+                DefaultTimeZoneId = "",
                 AllowCustomersToSetTimeZone = false
             });
 

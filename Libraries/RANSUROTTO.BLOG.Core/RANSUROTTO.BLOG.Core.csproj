@@ -131,6 +131,8 @@
     <Compile Include="Domain\Customers\AttributeName\SystemCustomerAttributeNames.cs" />
     <Compile Include="Domain\Customers\CustomerRole.cs" />
     <Compile Include="Domain\Customers\Enum\AuthenticationType.cs" />
+    <Compile Include="Domain\Customers\Enum\CustomerNameFormat.cs" />
+    <Compile Include="Domain\Customers\Enum\UserRegistrationType.cs" />
     <Compile Include="Domain\Customers\Service\ChangePasswordRequest.cs" />
     <Compile Include="Domain\Customers\Service\ChangePasswordResult.cs" />
     <Compile Include="Domain\Customers\Service\CustomerLoginResults.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="Domain\Customers\Service\SystemCustomerRoleNames.cs" />
     <Compile Include="Domain\Customers\Setting\CustomerSettings.cs" />
     <Compile Include="Configuration\IAttributeNames.cs" />
+    <Compile Include="Domain\Customers\Setting\ExternalAuthenticationSettings.cs" />
     <Compile Include="Domain\Interesting\Idea.cs" />
     <Compile Include="Domain\Localization\ILocalizedEntity.cs" />
     <Compile Include="Domain\Localization\Language.cs" />

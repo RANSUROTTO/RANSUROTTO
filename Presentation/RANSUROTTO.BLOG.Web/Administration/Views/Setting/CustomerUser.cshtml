@@ -1,0 +1,507 @@
+﻿@using RANSUROTTO.BLOG.Core.Infrastructure
+@using RANSUROTTO.BLOG.Framework.Events
+@using RANSUROTTO.BLOG.Services.Events
+@model CustomerUserSettingsModel
+
+@{
+    //页面标题
+    ViewBag.Title = T("Admin.Configuration.Settings.CustomerUser").Text;
+    //当前选中节点项系统名称
+    Html.SetActiveMenuItemSystemName("Customer and user settings");
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.Configuration.Settings.CustomerUser")
+        </h1>
+        <div class="pull-right">
+            <button type="submit" name="save" class="btn bg-blue">
+                <i class="fa fa-floppy-o"></i>
+                @T("Admin.Common.Save")
+            </button>
+        </div>
+    </div>
+    @Html.ValidationSummary(false)
+
+    <script>
+        $(document).ready(function () {
+            bindBootstrapTabSelectEvent('customersettings-edit');
+        });
+    </script>
+
+    <div class="content">
+        <div class="form-horizontal">
+            @Html.Action("Mode", "Setting")
+
+            <div id="customersettings-edit" class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    @Html.RenderBootstrapTabHeader("tab-customer", @T("Admin.Configuration.Settings.CustomerUser.CustomerSettings"), true)
+                    @Html.RenderBootstrapTabHeader("tab-customerformfields", @T("Admin.Configuration.Settings.CustomerUser.CustomerFormFields"))
+                </ul>
+                <div class="tab-content">
+                    @Html.RenderBootstrapTabContent("tab-customer", @TabCustomerSettings(), true)
+                    @Html.RenderBootstrapTabContent("tab-customerformfields", @TabCustomerFormFields())
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {
+        //custom tabs
+        var eventMessage = new AdminTabStripCreated(this.Html, "customersettings-edit");
+        EngineContext.Current.Resolve<IEventPublisher>().Publish(eventMessage);
+        foreach (var eventBlock in eventMessage.BlocksToRender)
+        {
+            @eventBlock
+        }
+    }
+
+    @*save selected tab name*@
+    <input type="hidden" id="selected-tab-name" name="selected-tab-name" value="@(Html.GetSelectedTabName())">
+}
+
+@helper TabCustomerSettings()
+{
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @T("Admin.Configuration.Settings.CustomerUser.BlockTitle.Common")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.UserRegistrationType)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomDropDownListFor(model => model.CustomerSettings.UserRegistrationType, Model.CustomerSettings.AvailableUserRegistrationTypes)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.UserRegistrationType)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.NotifyNewCustomerRegistration)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.NotifyNewCustomerRegistration)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.NotifyNewCustomerRegistration)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default advanced-setting">
+            <div class="panel-heading">
+                @T("Admin.Configuration.Settings.CustomerUser.BlockTitle.Password")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.PasswordMinLength)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.PasswordMinLength)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.PasswordMinLength)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.UnduplicatedPasswordsNumber)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.UnduplicatedPasswordsNumber)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.UnduplicatedPasswordsNumber)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.DefaultPasswordFormat)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomDropDownListFor(model => model.CustomerSettings.DefaultPasswordFormat, Model.CustomerSettings.AvailablePasswordFormats)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.DefaultPasswordFormat)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.FailedPasswordAllowedAttempts)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.FailedPasswordAllowedAttempts)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.FailedPasswordAllowedAttempts)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlFailedPasswordLockoutMinutes">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.FailedPasswordLockoutMinutes)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.FailedPasswordLockoutMinutes)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.FailedPasswordLockoutMinutes)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default advanced-setting">
+            <div class="panel-heading">
+                @T("Admin.Configuration.Settings.CustomerUser.BlockTitle.Account")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CustomerAuthenticationType)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomDropDownListFor(model => model.CustomerSettings.CustomerAuthenticationType, Model.CustomerSettings.AvailableCustomerAuthenticationTypes)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CustomerAuthenticationType)
+                    </div>
+                </div>
+                <div class="form-group advanced-setting">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.AllowUsersToChangeUsernames)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.AllowUsersToChangeUsernames)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.AllowUsersToChangeUsernames)
+                    </div>
+                </div>
+                <div class="form-group advanced-setting">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CustomerNameFormat)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomDropDownListFor(model => model.CustomerSettings.CustomerNameFormat, Model.CustomerSettings.AvailableCustomerNameFormats)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CustomerNameFormat)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.AllowCustomersToUploadAvatars)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.AllowCustomersToUploadAvatars)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.AllowCustomersToUploadAvatars)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlDefaultAvatarEnabled">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.DefaultAvatarEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.DefaultAvatarEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.DefaultAvatarEnabled)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.StoreLastVisitedPage)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.StoreLastVisitedPage)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.StoreLastVisitedPage)
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#@Html.FieldIdFor(model => model.CustomerSettings.AllowCustomersToUploadAvatars)").click(toggleAvatar);
+                });
+
+                function toggleAvatar() {
+                    if ($('#@Html.FieldIdFor(model => model.CustomerSettings.AllowCustomersToUploadAvatars)').is(':checked')) {
+                        $('#pnlDefaultAvatarEnabled').show();
+                    } else {
+                        $('#pnlDefaultAvatarEnabled').hide();
+                    }
+                }
+
+            </script>
+        </div>
+        <div class="panel panel-default advanced-setting">
+            <div class="panel-heading">
+                @T("Admin.Configuration.Settings.CustomerUser.BlockTitle.Profile")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.AllowViewingProfiles)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.AllowViewingProfiles)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.AllowViewingProfiles)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.ShowCustomersLocation)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.ShowCustomersLocation)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.ShowCustomersLocation)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.ShowCustomersJoinDate)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.ShowCustomersJoinDate)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.ShowCustomersJoinDate)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default advanced-setting">
+            <div class="panel-heading">
+                @T("Admin.Configuration.Settings.CustomerUser.BlockTitle.TimeZone")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.DateTimeSettings.AllowCustomersToSetTimeZone)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.DateTimeSettings.AllowCustomersToSetTimeZone)
+                        @Html.ValidationMessageFor(model => model.DateTimeSettings.AllowCustomersToSetTimeZone)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.DateTimeSettings.DefaultTimeZoneId)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomDropDownListFor(model => model.DateTimeSettings.DefaultTimeZoneId, Model.DateTimeSettings.AvailableTimeZones)
+                        @Html.ValidationMessageFor(model => model.DateTimeSettings.DefaultTimeZoneId)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default advanced-setting">
+            <div class="panel-heading">
+                @T("Admin.Configuration.Settings.CustomerUser.BlockTitle.ExternalAuthentication")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.ExternalAuthenticationSettings.AutoRegisterEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.ExternalAuthenticationSettings.AutoRegisterEnabled)
+                        @Html.ValidationMessageFor(model => model.ExternalAuthenticationSettings.AutoRegisterEnabled)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@helper TabCustomerFormFields()
+{
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("#@Html.FieldIdFor(model => model.CustomerSettings.DateOfBirthEnabled)").click(toggleCustomerRequiredFormField);
+            $("#@Html.FieldIdFor(model => model.CustomerSettings.DateOfBirthRequired)").click(toggleCustomerRequiredFormField);
+            $("#@Html.FieldIdFor(model => model.CustomerSettings.CountryEnabled)").click(toggleCustomerCountryFormField);
+            $("#@Html.FieldIdFor(model => model.CustomerSettings.StateProvinceEnabled)").click(toggleCustomerStateProvinceFormField);
+            $("#@Html.FieldIdFor(model => model.CustomerSettings.CompanyEnabled)").click(toggleCustomerRequiredFormField);
+            $("#@Html.FieldIdFor(model => model.CustomerSettings.CityEnabled)").click(toggleCustomerRequiredFormField);
+            $("#@Html.FieldIdFor(model => model.CustomerSettings.PhoneEnabled)").click(toggleCustomerRequiredFormField);
+
+            toggleCustomerCountryFormField();
+            toggleCustomerStateProvinceFormField();
+            toggleCustomerRequiredFormField();
+        });
+
+        function toggleCustomerCountryFormField() {
+            if ($('#@Html.FieldIdFor(model => model.CustomerSettings.CountryEnabled)').is(':checked')) {
+                $('#pnlCustomerCountryRequired').show();
+                $('#pnlCustomerStateProvinceEnabled').show();
+                toggleCustomerStateProvinceFormField();
+            } else {
+                $('#pnlCustomerCountryRequired').hide();
+                $('#pnlCustomerStateProvinceEnabled').hide();
+                toggleCustomerStateProvinceFormField();
+            }
+        }
+
+        function toggleCustomerStateProvinceFormField() {
+            if ($('#@Html.FieldIdFor(model => model.CustomerSettings.CountryEnabled)').is(':checked') &&
+                $('#@Html.FieldIdFor(model => model.CustomerSettings.StateProvinceEnabled)').is(':checked')) {
+                $('#pnlCustomerStateProvinceRequired').show();
+            } else {
+                $('#pnlCustomerStateProvinceRequired').hide();
+            }
+        }
+
+        function toggleCustomerRequiredFormField() {
+            if ($('#@Html.FieldIdFor(model => model.CustomerSettings.DateOfBirthEnabled)').is(':checked')) {
+                $('#pnlCustomerDateOfBirthRequired').show();
+            } else {
+                $('#pnlCustomerDateOfBirthRequired').hide();
+            }
+
+            if ($('#@Html.FieldIdFor(model => model.CustomerSettings.DateOfBirthEnabled)').is(':checked') &&
+                $('#@Html.FieldIdFor(model => model.CustomerSettings.DateOfBirthRequired)').is(':checked')) {
+                $('#pnlDateOfBirthMinimumAge').show();
+            } else {
+                $('#pnlDateOfBirthMinimumAge').hide();
+            }
+
+            if ($('#@Html.FieldIdFor(model => model.CustomerSettings.CompanyEnabled)').is(':checked')) {
+                $('#pnlCustomerCompanyRequired').show();
+            } else {
+                $('#pnlCustomerCompanyRequired').hide();
+            }
+
+            if ($('#@Html.FieldIdFor(model => model.CustomerSettings.CityEnabled)').is(':checked')) {
+                $('#pnlCustomerCityRequired').show();
+            } else {
+                $('#pnlCustomerCityRequired').hide();
+            }
+
+            if ($('#@Html.FieldIdFor(model => model.CustomerSettings.PhoneEnabled)').is(':checked')) {
+                $('#pnlCustomerPhoneRequired').show();
+            } else {
+                $('#pnlCustomerPhoneRequired').hide();
+            }
+        }
+
+    </script>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @T("Admin.Configuration.Settings.CustomerUser.BlockTitle.DefaultFields")
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.GenderEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.GenderEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.GenderEnabled)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.DateOfBirthEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.DateOfBirthEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.DateOfBirthEnabled)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlCustomerDateOfBirthRequired">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.DateOfBirthRequired)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.DateOfBirthRequired)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.DateOfBirthRequired)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CompanyEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.CompanyEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CompanyEnabled)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlCustomerCompanyRequired">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CompanyRequired)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.CompanyRequired)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CompanyRequired)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CityEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.CityEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CityEnabled)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlCustomerCityRequired">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CityRequired)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.CityRequired)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CityRequired)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CountryEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.CountryEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CountryEnabled)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlCustomerCountryRequired">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.CountryRequired)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.CountryRequired)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.CountryRequired)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlCustomerStateProvinceEnabled">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.StateProvinceEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.StateProvinceEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.StateProvinceEnabled)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlCustomerStateProvinceRequired">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.StateProvinceRequired)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.StateProvinceRequired)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.StateProvinceRequired)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.PhoneEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.PhoneEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.PhoneEnabled)
+                    </div>
+                </div>
+                <div class="form-group" id="pnlCustomerPhoneRequired">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.PhoneRequired)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.PhoneRequired)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.PhoneRequired)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.CustomLabelFor(model => model.CustomerSettings.AcceptPrivacyPolicyEnabled)
+                    </div>
+                    <div class="col-md-9">
+                        @Html.CustomEditorFor(model => model.CustomerSettings.AcceptPrivacyPolicyEnabled)
+                        @Html.ValidationMessageFor(model => model.CustomerSettings.AcceptPrivacyPolicyEnabled)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

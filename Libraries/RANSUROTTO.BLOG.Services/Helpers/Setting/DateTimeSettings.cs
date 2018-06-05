@@ -8,7 +8,7 @@ namespace RANSUROTTO.BLOG.Services.Helpers.Setting
         /// <summary>
         /// 获取或设置系统默认时区标识符
         /// </summary>
-        public string DefaultStoreTimeZoneId { get; set; }
+        public string DefaultTimeZoneId { get; set; }
 
         /// <summary>
         /// 获取或设置是否允许用户进行设置时区

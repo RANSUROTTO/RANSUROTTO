@@ -195,7 +195,7 @@ namespace RANSUROTTO.BLOG.Services.Configuration
         public virtual void SetSetting<T>(string key, T value, bool clearCache = true)
         {
             if (key == null)
-                throw new ArgumentNullException("key");
+                throw new ArgumentNullException(nameof(key));
 
             key = key.Trim().ToLowerInvariant();
             string valueStr = TypeDescriptor.GetConverter(typeof(T)).ConvertToInvariantString(value);

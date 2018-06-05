@@ -6,8 +6,11 @@ using RANSUROTTO.BLOG.Admin.Models.Interesting;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
 using RANSUROTTO.BLOG.Admin.Models.Messages;
+using RANSUROTTO.BLOG.Admin.Models.Settings;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
+using RANSUROTTO.BLOG.Core.Domain.Blogs.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Interesting;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
@@ -137,6 +140,18 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
                 cfg.CreateMap<BlogPostTagModel, BlogPostTag>()
                     .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
+
+                #endregion
+
+                #region Settings
+
+                cfg.CreateMap<CustomerSettings, CustomerUserSettingsModel.CustomerSettingsModel>()
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<CustomerUserSettingsModel.CustomerSettingsModel, CustomerSettings>();
+
+                cfg.CreateMap<BlogSettings, BlogSettingsModel>()
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                cfg.CreateMap<BlogSettingsModel, BlogSettings>();
 
                 #endregion
 

@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using RANSUROTTO.BLOG.Admin.Extensions;
 using RANSUROTTO.BLOG.Admin.Models.Settings;
 using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain;
+using RANSUROTTO.BLOG.Core.Domain.Blogs.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
+using RANSUROTTO.BLOG.Core.Domain.Configuration;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Enum;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Localization.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Media.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Security.Setting;
@@ -14,10 +19,15 @@ using RANSUROTTO.BLOG.Core.Domain.Seo.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Seo.Setting;
 using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Extensions;
+using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Framework.Localization;
+using RANSUROTTO.BLOG.Framework.Mvc;
+using RANSUROTTO.BLOG.Framework.Security;
 using RANSUROTTO.BLOG.Services.Common;
 using RANSUROTTO.BLOG.Services.Configuration;
 using RANSUROTTO.BLOG.Services.Customers;
+using RANSUROTTO.BLOG.Services.Helpers;
+using RANSUROTTO.BLOG.Services.Helpers.Setting;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
 using RANSUROTTO.BLOG.Services.Security;
@@ -30,26 +40,28 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Fields
 
         private readonly IGenericAttributeService _genericAttributeService;
-        private readonly IWorkContext _workContext;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerService _customerService;
         private readonly ICustomerActivityService _customerActivityService;
         private readonly IEncryptionService _encryptionService;
         private readonly ISettingService _settingService;
+        private readonly IWorkContext _workContext;
+        private readonly IDateTimeHelper _dateTimeHelper;
 
         #endregion
 
         #region Constructor
 
-        public SettingController(IGenericAttributeService genericAttributeService, IWorkContext workContext, ILocalizationService localizationService, ICustomerService customerService, ICustomerActivityService customerActivityService, IEncryptionService encryptionService, ISettingService settingService)
+        public SettingController(IGenericAttributeService genericAttributeService, ILocalizationService localizationService, ICustomerService customerService, ICustomerActivityService customerActivityService, IEncryptionService encryptionService, ISettingService settingService, IWorkContext workContext, IDateTimeHelper dateTimeHelper)
         {
             _genericAttributeService = genericAttributeService;
-            _workContext = workContext;
             _localizationService = localizationService;
             _customerService = customerService;
             _customerActivityService = customerActivityService;
             _encryptionService = encryptionService;
             _settingService = settingService;
+            _workContext = workContext;
+            _dateTimeHelper = dateTimeHelper;
         }
 
         #endregion
@@ -259,6 +271,76 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return RedirectToAction("GeneralCommon");
         }
 
+        public virtual ActionResult CustomerUser()
+        {
+            var customerSettings = _settingService.LoadSetting<CustomerSettings>();
+            var dateTimeSettings = _settingService.LoadSetting<DateTimeSettings>();
+            var externalAuthenticationSettings = _settingService.LoadSetting<ExternalAuthenticationSettings>();
+
+            var model = new CustomerUserSettingsModel();
+            model.CustomerSettings = customerSettings.ToModel();
+            model.CustomerSettings.AvailableCustomerAuthenticationTypes =
+                ((AuthenticationType)model.CustomerSettings.CustomerAuthenticationType).ToSelectList();
+            model.CustomerSettings.AvailableCustomerNameFormats =
+                ((CustomerNameFormat)model.CustomerSettings.CustomerNameFormat).ToSelectList();
+            model.CustomerSettings.AvailablePasswordFormats =
+                ((PasswordFormat)model.CustomerSettings.DefaultPasswordFormat).ToSelectList();
+            model.CustomerSettings.AvailableUserRegistrationTypes =
+                ((UserRegistrationType)model.CustomerSettings.UserRegistrationType).ToSelectList();
+
+            model.DateTimeSettings.AllowCustomersToSetTimeZone = dateTimeSettings.AllowCustomersToSetTimeZone;
+            model.DateTimeSettings.DefaultTimeZoneId = _dateTimeHelper.DefaultTimeZone.Id;
+
+            foreach (TimeZoneInfo timeZone in _dateTimeHelper.GetSystemTimeZones())
+            {
+                model.DateTimeSettings.AvailableTimeZones.Add(new SelectListItem
+                {
+                    Text = timeZone.DisplayName,
+                    Value = timeZone.Id,
+                    Selected = timeZone.Id.Equals(_dateTimeHelper.DefaultTimeZone.Id, StringComparison.InvariantCultureIgnoreCase)
+                });
+            }
+
+            model.ExternalAuthenticationSettings.AutoRegisterEnabled = externalAuthenticationSettings.AutoRegisterEnabled;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public virtual ActionResult CustomerUser(CustomerUserSettingsModel model)
+        {
+            var customerSettings = _settingService.LoadSetting<CustomerSettings>();
+            var dateTimeSettings = _settingService.LoadSetting<DateTimeSettings>();
+            var externalAuthenticationSettings = _settingService.LoadSetting<ExternalAuthenticationSettings>();
+
+            customerSettings = model.CustomerSettings.ToEntity(customerSettings);
+            _settingService.SaveSetting(customerSettings);
+
+            dateTimeSettings.DefaultTimeZoneId = model.DateTimeSettings.DefaultTimeZoneId;
+            dateTimeSettings.AllowCustomersToSetTimeZone = model.DateTimeSettings.AllowCustomersToSetTimeZone;
+            _settingService.SaveSetting(dateTimeSettings);
+
+            externalAuthenticationSettings.AutoRegisterEnabled = model.ExternalAuthenticationSettings.AutoRegisterEnabled;
+            _settingService.SaveSetting(externalAuthenticationSettings);
+
+            _customerActivityService.InsertActivity("EditSettings", _localizationService.GetResource("ActivityLog.EditSettings"));
+
+            SuccessNotification(_localizationService.GetResource("Admin.Configuration.Updated"));
+
+            return RedirectToAction("CustomerUser");
+        }
+
+        public virtual ActionResult Blog()
+        {
+            var blogSettings = _settingService.LoadSetting<BlogSettings>();
+            return View();
+        }
+
+        public virtual ActionResult Blog(BlogSettingsModel model)
+        {
+            return RedirectToAction("Blog");
+        }
+
         public virtual ActionResult Media()
         {
             var mediaSettings = _settingService.LoadSetting<MediaSettings>();
@@ -291,6 +373,95 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             SuccessNotification(_localizationService.GetResource("Admin.Configuration.Updated"));
 
             return RedirectToAction("Media");
+        }
+
+        public virtual ActionResult AllSettings()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AdminAntiForgery(true)]
+        public virtual ActionResult AllSettings(DataSourceRequest command, AllSettingsListModel model)
+        {
+            var query = _settingService.GetAllSettings().AsQueryable();
+
+            if (!string.IsNullOrEmpty(model.SearchSettingName))
+                query = query.Where(s => s.Name.ToLowerInvariant().Contains(model.SearchSettingName.ToLowerInvariant()));
+            if (!string.IsNullOrEmpty(model.SearchSettingValue))
+                query = query.Where(s => s.Value.ToLowerInvariant().Contains(model.SearchSettingValue.ToLowerInvariant()));
+
+            IPagedList<Setting> settings = new PagedList<Setting>(query, command.Page - 1, command.PageSize);
+
+            var gridModel = new DataSourceResult
+            {
+                Data = settings.ToList(),
+                Total = settings.TotalCount
+            };
+
+            return View(gridModel);
+        }
+
+        [HttpPost]
+        public virtual ActionResult SettingUpdate(SettingModel model)
+        {
+            if (model.Name != null)
+                model.Name = model.Name.Trim();
+            if (model.Value != null)
+                model.Value = model.Value.Trim();
+
+            if (!ModelState.IsValid)
+            {
+                return Json(new DataSourceResult { Errors = ModelState.SerializeErrors() });
+            }
+
+            var setting = _settingService.GetSettingById(model.Id);
+            if (setting == null)
+                return Content("没有指定ID对应的设置。");
+
+            if (!setting.Name.Equals(model.Name, StringComparison.InvariantCultureIgnoreCase))
+            {
+                _settingService.DeleteSetting(setting);
+            }
+
+            _settingService.SetSetting(model.Name, model.Value);
+
+            _customerActivityService.InsertActivity("EditSettings", _localizationService.GetResource("ActivityLog.EditSettings"));
+
+            return new NullJsonResult();
+        }
+
+        [HttpPost]
+        public virtual ActionResult SettingAdd([Bind(Exclude = "Id")] SettingModel model)
+        {
+            if (model.Name != null)
+                model.Name = model.Name.Trim();
+            if (model.Value != null)
+                model.Value = model.Value.Trim();
+
+            if (!ModelState.IsValid)
+            {
+                return Json(new DataSourceResult { Errors = ModelState.SerializeErrors() });
+            }
+
+            _settingService.SetSetting(model.Name, model.Value);
+
+            _customerActivityService.InsertActivity("AddNewSetting", _localizationService.GetResource("ActivityLog.AddNewSetting"), model.Name);
+
+            return new NullJsonResult();
+        }
+
+        [HttpPost]
+        public virtual ActionResult SettingDelete(int id)
+        {
+            var setting = _settingService.GetSettingById(id);
+            if (setting == null)
+                throw new ArgumentException("没有指定ID对应的设置。");
+            _settingService.DeleteSetting(setting);
+
+            _customerActivityService.InsertActivity("DeleteSetting", _localizationService.GetResource("ActivityLog.DeleteSetting"), setting.Name);
+
+            return new NullJsonResult();
         }
 
         #endregion

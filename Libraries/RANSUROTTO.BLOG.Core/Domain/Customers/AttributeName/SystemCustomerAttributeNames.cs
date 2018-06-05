@@ -40,6 +40,6 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.AttributeName
         /// <summary>
         /// 最后访问的页面
         /// </summary>
-        public static string LastVisitedPage => "LastVisitedPage";
+        public static string LastVisitedPage => "StoreLastVisitedPage";
     }
 }

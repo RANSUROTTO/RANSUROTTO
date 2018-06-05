@@ -4,8 +4,10 @@ using RANSUROTTO.BLOG.Admin.Models.Interesting;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
 using RANSUROTTO.BLOG.Admin.Models.Messages;
+using RANSUROTTO.BLOG.Admin.Models.Settings;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
+using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Interesting;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Logging;
@@ -191,6 +193,25 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
         }
 
         public static BlogPostTag ToEntity(this BlogPostTagModel model, BlogPostTag destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
+        #region Settings
+
+        public static CustomerUserSettingsModel.CustomerSettingsModel ToModel(this CustomerSettings entity)
+        {
+            return entity.MapTo<CustomerSettings, CustomerUserSettingsModel.CustomerSettingsModel>();
+        }
+
+        public static CustomerSettings ToEntity(this CustomerUserSettingsModel.CustomerSettingsModel model)
+        {
+            return model.MapTo<CustomerUserSettingsModel.CustomerSettingsModel, CustomerSettings>();
+        }
+
+        public static CustomerSettings ToEntity(this CustomerUserSettingsModel.CustomerSettingsModel model, CustomerSettings destination)
         {
             return model.MapTo(destination);
         }

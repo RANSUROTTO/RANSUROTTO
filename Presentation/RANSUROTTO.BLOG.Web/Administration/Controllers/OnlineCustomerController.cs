@@ -60,9 +60,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                     LastIpAddress = x.LastIpAddress,
                     //Location = _geoLookupService.LookupCountryName(x.LastIpAddress),
                     LastActivityDate = _dateTimeHelper.ConvertToUserTime(x.LastActivityDateUtc, DateTimeKind.Utc),
-                    LastVisitedPage = _customerSettings.LastVisitedPage ?
+                    LastVisitedPage = _customerSettings.StoreLastVisitedPage ?
                         x.GetAttribute<string>(SystemCustomerAttributeNames.LastVisitedPage) :
-                        _localizationService.GetResource("Admin.Customers.OnlineCustomers.Fields.LastVisitedPage.Disabled")
+                        _localizationService.GetResource("Admin.Customers.OnlineCustomers.Fields.StoreLastVisitedPage.Disabled")
                 }),
                 Total = customers.TotalCount
             };

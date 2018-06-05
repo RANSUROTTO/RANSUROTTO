@@ -34,6 +34,14 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs.Setting
         /// </summary>
         public string RichEditorAdditionalSettings { get; set; }
 
+        public bool RelativeDateTimeFormattingEnabled { get; set; }
+
+        public bool AllowCustomersToEditComments { get; set; }
+
+        public bool AllowCustomersToDeleteComments { get; set; }
+
+        public bool NotifyAboutNewNewsComments { get; set; }
+
     }
 
 }

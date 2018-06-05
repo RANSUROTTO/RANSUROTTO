@@ -183,8 +183,8 @@ namespace RANSUROTTO.BLOG.Service.Helpers
                 TimeZoneInfo timeZoneInfo = null;
                 try
                 {
-                    if (!String.IsNullOrEmpty(_dateTimeSettings.DefaultStoreTimeZoneId))
-                        timeZoneInfo = FindTimeZoneById(_dateTimeSettings.DefaultStoreTimeZoneId);
+                    if (!String.IsNullOrEmpty(_dateTimeSettings.DefaultTimeZoneId))
+                        timeZoneInfo = FindTimeZoneById(_dateTimeSettings.DefaultTimeZoneId);
                 }
                 catch (Exception exc)
                 {
@@ -204,7 +204,7 @@ namespace RANSUROTTO.BLOG.Service.Helpers
                     defaultTimeZoneId = value.Id;
                 }
 
-                _dateTimeSettings.DefaultStoreTimeZoneId = defaultTimeZoneId;
+                _dateTimeSettings.DefaultTimeZoneId = defaultTimeZoneId;
                 _settingService.SaveSetting(_dateTimeSettings);
             }
         }

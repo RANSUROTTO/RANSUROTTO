@@ -6,10 +6,30 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
     public class CustomerSettings : ISettings
     {
 
+        public UserRegistrationType UserRegistrationType { get; set; }
+
+        public bool NotifyNewCustomerRegistration { get; set; }
+
+        public int PasswordMinLength { get; set; }
+
+        public CustomerNameFormat CustomerNameFormat { get; set; }
+
+        public bool AllowCustomersToUploadAvatars { get; set; }
+
+        public bool DefaultAvatarEnabled { get; set; }
+
+        public bool AllowViewingProfiles { get; set; }
+
+        public bool ShowCustomersLocation { get; set; }
+
+        public bool ShowCustomersJoinDate { get; set; }
+
         /// <summary>
         /// 获取或设置当前使用的登录类型
         /// </summary>
-        public AuthenticationType CurrentAuthenticationType { get; set; }
+        public AuthenticationType CustomerAuthenticationType { get; set; }
+
+        public bool AllowUsersToChangeUsernames { get; set; }
 
         /// <summary>
         /// 获取或设置默认密码处理格式
@@ -44,12 +64,14 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
         /// <summary>
         /// 获取或设置是否开启记录用户最后访问页面的标识
         /// </summary>
-        public bool LastVisitedPage { get; set; }
+        public bool StoreLastVisitedPage { get; set; }
 
         /// <summary>
         /// 获取或设置用户"生日"属性开启状态
         /// </summary>
         public bool DateOfBirthEnabled { get; set; }
+
+        public bool DateOfBirthRequired { get; set; }
 
         /// <summary>
         /// 获取或设置用户"公司"属性开启状态
@@ -69,10 +91,24 @@ namespace RANSUROTTO.BLOG.Core.Domain.Customers.Setting
         /// </summary>
         public bool PhoneRequired { get; set; }
 
+        public bool CityEnabled { get; set; }
+
+        public bool CityRequired { get; set; }
+
+        public bool CountryEnabled { get; set; }
+
+        public bool CountryRequired { get; set; }
+
+        public bool StateProvinceEnabled { get; set; }
+
+        public bool StateProvinceRequired { get; set; }
+
         /// <summary>
         /// 获取或设置用户"性别"属性开启状态
         /// </summary>
         public bool GenderEnabled { get; set; }
+
+        public bool AcceptPrivacyPolicyEnabled { get; set; }
 
     }
 }
