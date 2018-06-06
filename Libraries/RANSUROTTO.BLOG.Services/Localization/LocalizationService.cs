@@ -292,10 +292,19 @@ namespace RANSUROTTO.BLOG.Services.Localization
                     if (!returnEmptyIfNotFound)
                         result = resourceKey;
                 }
+
+                //TODO 测试中...插入键值....
+                var resource = new LocaleStringResource
+                {
+                    LanguageId = languageId,
+                    ResourceName = resourceKey,
+                    ResourceValue = resourceKey
+                };
+                InsertLocaleStringResource(resource);
+
             }
             return result;
         }
-
 
         /// <summary>
         /// 将语言资源导出到xml

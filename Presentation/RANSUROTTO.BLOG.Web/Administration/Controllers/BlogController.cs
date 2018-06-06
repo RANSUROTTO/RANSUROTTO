@@ -206,6 +206,22 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public virtual ActionResult Delete(int id)
+        {
+            var blogPost = _blogService.GetBlogPostById(id);
+            if (blogPost == null)
+                return RedirectToAction("List");
+
+            _blogService.DeleteBlogPost(blogPost);
+
+            _customerActivityService.InsertActivity("DeleteBlogPost", _localizationService.GetResource("ActivityLog.EditBlogPost"), blogPost.Title);
+
+            SuccessNotification(_localizationService.GetResource("Admin.ContentManagement.Blog.Posts.Deleted"));
+
+            return RedirectToAction("List");
+        }
+
         #endregion
 
         #region Blog post tags
