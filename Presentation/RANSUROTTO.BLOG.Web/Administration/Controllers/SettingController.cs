@@ -333,11 +333,22 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         public virtual ActionResult Blog()
         {
             var blogSettings = _settingService.LoadSetting<BlogSettings>();
-            return View();
+            var model = blogSettings.ToModel();
+            return View(model);
         }
 
+        [HttpPost]
         public virtual ActionResult Blog(BlogSettingsModel model)
         {
+            var blogSettings = _settingService.LoadSetting<BlogSettings>();
+            blogSettings = model.ToEntity(blogSettings);
+
+            _settingService.SaveSetting(blogSettings);
+
+            _customerActivityService.InsertActivity("EditSettings", _localizationService.GetResource("ActivityLog.EditSettings"));
+
+            SuccessNotification(_localizationService.GetResource("Admin.Configuration.Updated"));
+
             return RedirectToAction("Blog");
         }
 

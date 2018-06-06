@@ -1455,6 +1455,7 @@
     <Content Include="Views\Setting\Media.cshtml" />
     <Content Include="Views\Setting\AllSettings.cshtml" />
     <Content Include="Views\Setting\CustomerUser.cshtml" />
+    <Content Include="Views\Setting\Blog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

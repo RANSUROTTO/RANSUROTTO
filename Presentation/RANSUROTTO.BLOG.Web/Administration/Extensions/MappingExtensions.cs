@@ -6,6 +6,7 @@ using RANSUROTTO.BLOG.Admin.Models.Logging;
 using RANSUROTTO.BLOG.Admin.Models.Messages;
 using RANSUROTTO.BLOG.Admin.Models.Settings;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
+using RANSUROTTO.BLOG.Core.Domain.Blogs.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Interesting;
@@ -212,6 +213,21 @@ namespace RANSUROTTO.BLOG.Admin.Extensions
         }
 
         public static CustomerSettings ToEntity(this CustomerUserSettingsModel.CustomerSettingsModel model, CustomerSettings destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        public static BlogSettingsModel ToModel(this BlogSettings entity)
+        {
+            return entity.MapTo<BlogSettings, BlogSettingsModel>();
+        }
+
+        public static BlogSettings ToEntity(this BlogSettingsModel model)
+        {
+            return model.MapTo<BlogSettingsModel, BlogSettings>();
+        }
+
+        public static BlogSettings ToEntity(this BlogSettingsModel model, BlogSettings destination)
         {
             return model.MapTo(destination);
         }
