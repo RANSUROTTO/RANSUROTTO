@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RANSUROTTO.BLOG.Core.Data;
+using RANSUROTTO.BLOG.Core.Domain;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Blogs.Setting;
 using RANSUROTTO.BLOG.Core.Domain.Common;
@@ -228,7 +229,8 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 RenderXuaCompatible = true,
                 XuaCompatibleValue = "IE=edge,chrome=1",
                 UseStoredProcedureForLoadingCategories = false,
-                UseStoredProceduresIfSupported = false
+                UseStoredProceduresIfSupported = false,
+                SitemapEnabled = true
             });
 
             settingService.SaveSetting(new SeoSettings
@@ -271,12 +273,19 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 EncryptionKey = CommonHelper.GenerateRandomDigitCode(16),
                 AdminAreaAllowedIpAddresses = new List<string>(),
                 EnableXsrfProtectionForAdminArea = true,
-                EnableXsrfProtectionForPublicArea = true
+                EnableXsrfProtectionForPublicArea = true,
+                HoneypotEnabled = false
             });
 
             settingService.SaveSetting(new CustomerSettings
             {
                 CustomerAuthenticationType = AuthenticationType.UsernameOrEmail,
+                CustomerNameFormat = CustomerNameFormat.ShowNickName,
+                UserRegistrationType = UserRegistrationType.Standard,
+                AllowUsersToChangeUsernames = false,
+                AcceptPrivacyPolicyEnabled = true,
+                AllowCustomersToUploadAvatars = true,
+                DefaultAvatarEnabled = true,
                 HashedPasswordFormat = "SHA1",
                 FailedPasswordAllowedAttempts = 5,
                 FailedPasswordLockoutMinutes = 10,
@@ -285,11 +294,23 @@ namespace RANSUROTTO.BLOG.Services.Installation
                 OnlineCustomerMinutes = 60 * 24 * 7,
                 StoreLastVisitedPage = true,
                 CompanyEnabled = true,
+                CompanyRequired = false,
                 DateOfBirthEnabled = true,
+                DateOfBirthRequired = true,
                 GenderEnabled = true,
                 PhoneEnabled = true,
-                CompanyRequired = false,
-                PhoneRequired = false
+                PhoneRequired = false,
+                CountryEnabled = true,
+                CountryRequired = false,
+                StateProvinceEnabled = true,
+                StateProvinceRequired = false,
+                CityEnabled = true,
+                CityRequired = false,
+                PasswordMinLength = 6,
+                AllowViewingProfiles = true,
+                ShowCustomersJoinDate = true,
+                ShowCustomersLocation = true,
+                NotifyNewCustomerRegistration = true
             });
 
             settingService.SaveSetting(new DateTimeSettings
@@ -300,10 +321,15 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
             settingService.SaveSetting(new BlogSettings
             {
-                AllowGuestsToCreateComments = false,
                 MaxNumberOfTags = 15,
+                AllowGuestsToCreateComments = false,
+                AllowCustomersToEditComments = true,
+                AllowCustomersToDeleteComments = true,
+                NotifyAboutNewNewsComments = true,
                 BlogCommentsMustBeApproved = false,
-                RichEditorAllowJavaScript = true
+                RelativeDateTimeFormattingEnabled = true,
+                RichEditorAllowJavaScript = true,
+                RichEditorAdditionalSettings = ""
             });
 
             settingService.SaveSetting(new LogSettings
@@ -315,7 +341,30 @@ namespace RANSUROTTO.BLOG.Services.Installation
             {
                 MaximumImageSize = 1980,
                 DefaultImageQuality = 80,
+                AvatarPictureSize = 200,
+                DefaultPictureZoomEnabled = true,
                 MultipleThumbDirectories = true
+            });
+
+            settingService.SaveSetting(new BlogInformationSettings
+            {
+                GitHubLink = "https://github.com/RANSUROTTO",
+                BlogClosed = false,
+                DisplayEuCookieLawWarning = true
+            });
+
+            settingService.SaveSetting(new CaptchaSettings
+            {
+                Enabled = false,
+                ShowOnLoginPage = true,
+                ShowOnRegistrationPage = true,
+                ShowOnPublishBlogPostPage = true,
+                ShowOnPublishBlogCommentPage = true
+            });
+
+            settingService.SaveSetting(new ExternalAuthenticationSettings
+            {
+                AutoRegisterEnabled = true
             });
 
         }
@@ -329,8 +378,123 @@ namespace RANSUROTTO.BLOG.Services.Installation
                     SystemKeyword = "AddNewCategory",
                     Enabled = true,
                     Name = "Add a new category"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditCategory",
+                    Enabled = true,
+                    Name = "Edit category"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "DeleteCategory",
+                    Enabled = true,
+                    Name = "Delete category"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditActivityLogTypes",
+                    Enabled = true,
+                    Name = "Edit activity log types"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "DeleteActivityLog",
+                    Enabled = true,
+                    Name = "Delete activity log"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "AddNewBlogPost",
+                    Enabled = true,
+                    Name = "Add a new blog post"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditBlogPost",
+                    Enabled = true,
+                    Name = "Edit blog post"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "DeleteBlogPost",
+                    Enabled = true,
+                    Name = "Delete blog post"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "AddNewCustomer",
+                    Enabled = true,
+                    Name = "Add a new customer"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditCustomer",
+                    Enabled = true,
+                    Name = "Edit customer"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "DeleteCustomer",
+                    Enabled = true,
+                    Name = "Delete customer"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "AddNewEmailAccount",
+                    Enabled = true,
+                    Name = "Add a new email account"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditEmailAccount",
+                    Enabled = true,
+                    Name = "Edit email account"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "DeleteEmailAccount",
+                    Enabled = true,
+                    Name = "Delete email account"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "DeleteIdea",
+                    Enabled = true,
+                    Name = "Delete idea"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "AddNewLanguage",
+                    Enabled = true,
+                    Name = "Add a new language"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditLanguage",
+                    Enabled = true,
+                    Name = "Edit language"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "DeleteLanguage",
+                    Enabled = true,
+                    Name = "Delete language"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditTask",
+                    Enabled = true,
+                    Name = "Edit task"
+                },
+                new ActivityLogType
+                {
+                    SystemKeyword = "EditSettings",
+                    Enabled = true,
+                    Name = "Edit settings"
                 }
             };
+
             _activityLogTypeRepository.Insert(activityLogTypes);
         }
 

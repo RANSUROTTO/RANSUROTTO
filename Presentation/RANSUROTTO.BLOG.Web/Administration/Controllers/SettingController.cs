@@ -410,7 +410,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 Total = settings.TotalCount
             };
 
-            return View(gridModel);
+            return Json(gridModel);
         }
 
         [HttpPost]

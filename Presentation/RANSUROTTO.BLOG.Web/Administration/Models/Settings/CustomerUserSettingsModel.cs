@@ -119,6 +119,11 @@ namespace RANSUROTTO.BLOG.Admin.Models.Settings
 
         public class DateTimeSettingsModel : BaseModel
         {
+            public DateTimeSettingsModel()
+            {
+                AvailableTimeZones = new List<SelectListItem>();
+            }
+
             [ResourceDisplayName("Admin.Configuration.Settings.CustomerUser.AllowCustomersToSetTimeZone")]
             public bool AllowCustomersToSetTimeZone { get; set; }
 
