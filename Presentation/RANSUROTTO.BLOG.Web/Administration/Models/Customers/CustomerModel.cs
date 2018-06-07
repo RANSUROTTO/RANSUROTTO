@@ -12,6 +12,12 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
     [Validator(typeof(CustomerValidator))]
     public class CustomerModel : BaseEntityModel
     {
+        public CustomerModel()
+        {
+            AvailableTimeZones = new List<SelectListItem>();
+            AvailableCustomerRoles = new List<SelectListItem>();
+            SelectedCustomerRoleIds = new List<int>();
+        }
 
         [ResourceDisplayName("Admin.Customers.Customers.Fields.Active")]
         public bool Active { get; set; }
@@ -77,7 +83,6 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
         [UIHint("MultiSelect")]
         [ResourceDisplayName("Admin.Customers.Customers.Fields.CustomerRoles")]
         public IList<int> SelectedCustomerRoleIds { get; set; }
-
 
         public class ActivityLogModel : BaseEntityModel
         {
