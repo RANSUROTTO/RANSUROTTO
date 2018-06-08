@@ -95,6 +95,8 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 #region Activity logs
 
                 cfg.CreateMap<ActivityLog, ActivityLogModel>()
+                    .ForMember(dest => dest.ActivityLogTypeName, mo => mo.MapFrom(src => src.ActivityLogType.Name))
+                    .ForMember(dest => dest.CustomerEmail, mo => mo.MapFrom(src => src.Customer.Email))
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
                 cfg.CreateMap<ActivityLogTypeModel, ActivityLogType>()
@@ -127,9 +129,13 @@ namespace RANSUROTTO.BLOG.Admin.Infrastructure.Mapper
                 cfg.CreateMap<BlogPost, BlogPostModel>()
                     .ForMember(dest => dest.TimeStamp, mo => mo.Ignore())
                     .ForMember(dest => dest.Deleted, mo => mo.Ignore())
-                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
+                    .ForMember(dest => dest.CustomProperties, mo => mo.Ignore())
+                    .ForMember(dest => dest.BlogPostTags, mo => mo.Ignore());
                 cfg.CreateMap<BlogPostModel, BlogPost>()
-                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore());
+                    .ForMember(dest => dest.AuthorId, mo => mo.Ignore())
+                    .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
+                    .ForMember(dest => dest.UpdatedOnUtc, mo => mo.Ignore())
+                    .ForMember(dest => dest.BlogPostTags, mo => mo.Ignore());
 
                 #endregion
 

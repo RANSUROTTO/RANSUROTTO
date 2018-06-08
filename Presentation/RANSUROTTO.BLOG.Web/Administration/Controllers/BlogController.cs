@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using RANSUROTTO.BLOG.Admin.Extensions;
 using RANSUROTTO.BLOG.Admin.Helpers;
 using RANSUROTTO.BLOG.Admin.Models.Blogs;
 using RANSUROTTO.BLOG.Core.Caching;
+using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Blogs.Enum;
 using RANSUROTTO.BLOG.Framework.Controllers;
@@ -32,6 +34,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedEntityService _localizedEntityService;
         private readonly ICustomerActivityService _customerActivityService;
+        private readonly IWorkContext _workContext;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ICacheManager _cacheManager;
 
@@ -39,7 +42,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public BlogController(IBlogService blogService, IBlogPostTagService blogPostTagService, ICategoryService categoryService, ILanguageService languageService, ILocalizationService localizationService, ILocalizedEntityService localizedEntityService, ICustomerActivityService customerActivityService, IDateTimeHelper dateTimeHelper, ICacheManager cacheManager)
+        public BlogController(IBlogService blogService, IBlogPostTagService blogPostTagService, ICategoryService categoryService, ILanguageService languageService, ILocalizationService localizationService, ILocalizedEntityService localizedEntityService, ICustomerActivityService customerActivityService, IWorkContext workContext, IDateTimeHelper dateTimeHelper, ICacheManager cacheManager)
         {
             _blogService = blogService;
             _blogPostTagService = blogPostTagService;
@@ -48,6 +51,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             _localizationService = localizationService;
             _localizedEntityService = localizedEntityService;
             _customerActivityService = customerActivityService;
+            _workContext = workContext;
             _dateTimeHelper = dateTimeHelper;
             _cacheManager = cacheManager;
         }
@@ -118,7 +122,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         public virtual ActionResult Create()
         {
             var model = new BlogPostModel();
-
+            PrepareBlogPostModel(model, null);
             AddLocales(_languageService, model.Locales);
             PrepareCategoryMappingModel(model, null, true);
             model.AllowComments = true;
@@ -133,6 +137,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             {
                 var blogPost = model.ToEntity();
                 blogPost.UpdatedOnUtc = DateTime.UtcNow;
+                blogPost.AuthorId = _workContext.CurrentCustomer.Id;
                 _blogService.InsertBlogPost(blogPost);
                 //Locales
                 UpdateLocales(blogPost, model);
@@ -164,8 +169,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 return RedirectToAction("List");
 
             var model = blogPost.ToModel();
+            PrepareBlogPostModel(model, blogPost);
             AddLocales(_languageService, model.Locales);
-            PrepareCategoryMappingModel(model, null, false);
+            PrepareCategoryMappingModel(model, blogPost, false);
 
             return View(model);
         }
@@ -312,13 +318,35 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Utilities
 
         [NonAction]
-        protected virtual void PrepareCategoryMappingModel(BlogPostModel model, BlogPost product, bool excludeProperties)
+        protected virtual void PrepareBlogPostModel(BlogPostModel model, BlogPost blogPost)
+        {
+            if (blogPost != null)
+            {
+                //Datetime
+                model.CreatedOn = _dateTimeHelper.ConvertToUserTime(blogPost.CreatedOnUtc, DateTimeKind.Utc);
+                model.UpdatedOn = _dateTimeHelper.ConvertToUserTime(blogPost.UpdatedOnUtc, DateTimeKind.Utc);
+
+                //Tags
+                var result = new StringBuilder();
+                for (int i = 0; i < blogPost.BlogPostTags.Count; i++)
+                {
+                    var bt = blogPost.BlogPostTags.ToList()[i];
+                    result.Append(bt.Name);
+                    if (i != blogPost.BlogPostTags.Count - 1)
+                        result.Append(", ");
+                }
+                model.BlogPostTags = result.ToString();
+            }
+        }
+
+        [NonAction]
+        protected virtual void PrepareCategoryMappingModel(BlogPostModel model, BlogPost blogPost, bool excludeProperties)
         {
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
 
-            if (!excludeProperties && product != null)
-                model.SelectedCategoryIds = _categoryService.GetCategoriesByBlogPostId(product.Id, true).Select(c => c.BlogCategoryId).ToList();
+            if (!excludeProperties && blogPost != null)
+                model.SelectedCategoryIds = _categoryService.GetCategoriesByBlogPostId(blogPost.Id, true).Select(c => c.BlogCategoryId).ToList();
 
             var allCategories = SelectListHelper.GetBlogCategoryList(_categoryService, _cacheManager, true);
             foreach (var c in allCategories)

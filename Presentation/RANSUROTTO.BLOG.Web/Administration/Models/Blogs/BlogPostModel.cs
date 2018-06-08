@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using FluentValidation.Attributes;
+using RANSUROTTO.BLOG.Admin.Validators.Blogs;
 using RANSUROTTO.BLOG.Framework.Localization;
 using RANSUROTTO.BLOG.Framework.Mvc;
 
 namespace RANSUROTTO.BLOG.Admin.Models.Blogs
 {
+    [Validator(typeof(BlogPostValidator))]
     public class BlogPostModel : BaseEntityModel, ILocalizedModel<BlogPostModelLocalizedModel>
     {
         public BlogPostModel()

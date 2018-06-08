@@ -100,6 +100,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             {
                 //不支持存储过程、采用LINQ
                 var query = _blogCategoryRepository.Table;
+                query = query.Where(c => !c.Deleted);
                 if (!showHidden)
                     query = query.Where(c => c.Published);
                 if (!string.IsNullOrWhiteSpace(blogCategoryName))

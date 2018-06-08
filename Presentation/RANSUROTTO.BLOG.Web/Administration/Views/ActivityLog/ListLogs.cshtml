@@ -12,76 +12,79 @@
     Html.SetActiveMenuItemSystemName("Activity log list");
 }
 
-@Html.AntiForgeryToken()
-<div class="content-header clearfix">
-    <h1 class="pull-left">
-        @T("Admin.Configuration.ActivityLog.ActivityLog")
-    </h1>
-    <div class="pull-right">
-        <a href="@Url.Action("ClearAll")" class="btn bg-red">
-            <i class="fa fa-trash-o"></i>
-            @T("Admin.Common.Clear")
-        </a>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-header clearfix">
+        <h1 class="pull-left">
+            @T("Admin.Configuration.ActivityLog.ActivityLog")
+        </h1>
+        <div class="pull-right">
+            <button type="submit" id="clearall" name="clearall" class="btn bg-red">
+                <i class="fa fa-trash-o"></i>
+                @T("Admin.System.ActivityLog.ClearLog")
+            </button>
+            @Html.ActionConfirmation("clearall")
+        </div>
     </div>
-</div>
 
-<div class="content">
-    <div class="form-horizontal">
-        <div class="panel-group">
-            <div class="panel panel-default panel-search">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    @Html.CustomLabelFor(model => model.CreatedOnFrom)
+    <div class="content">
+        <div class="form-horizontal">
+            <div class="panel-group">
+                <div class="panel panel-default panel-search">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.CreatedOnFrom)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.CreatedOnFrom)
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
-                                    @Html.CustomEditorFor(model => model.CreatedOnFrom)
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.CreatedOnTo)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.CreatedOnTo)
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    @Html.CustomLabelFor(model => model.CreatedOnTo)
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.IpAddress)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.IpAddress)
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
-                                    @Html.CustomEditorFor(model => model.CreatedOnTo)
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.ActivityLogTypeId)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomDropDownList("ActivityLogTypeId", Model.ActivityLogType)
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    @Html.CustomLabelFor(model => model.IpAddress)
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.CustomEditorFor(model => model.IpAddress)
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    @Html.CustomLabelFor(model => model.ActivityLogTypeId)
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.CustomDropDownList("ActivityLogTypeId", Model.ActivityLogType)
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <button type="button" id="search-log" class="btn btn-primary btn-search">
-                                        <i class="fa fa-search"></i>
-                                        @T("Admin.Common.Search")
-                                    </button>
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-4">
+                                        <button type="button" id="search-log" class="btn btn-primary btn-search">
+                                            <i class="fa fa-search"></i>
+                                            @T("Admin.Common.Search")
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div id="activityLog-grid"></div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="activityLog-grid"></div>
 
-                    <script>
+                        <script>
                         $(document).ready(function() {
                             $("#activityLog-grid").kendoGrid({
                                 dataSource: {
@@ -140,7 +143,7 @@
                                         field: "CustomerId",
                                         title: "@T("Admin.Configuration.ActivityLog.ActivityLog.Fields.Customer")",
                                         width: 100,
-                                        template: '<a href="@Url.Action("Edit","Customer")#=CustomerId#">#:CustomerEmail#</a>'
+                                        template: '<a href="/Admin/Customer/Edit/#=CustomerId#">#:CustomerEmail#</a>'
                                     },
                                     {
                                         field: "IpAddress",
@@ -166,8 +169,8 @@
                                 ]
                             });
                         });
-                    </script>
-                    <script type="text/javascript">
+                        </script>
+                        <script type="text/javascript">
                         $(document).ready(function() {
                             $('#search-log').click(function() {
                                 var grid = $('#activityLog-grid').data('kendoGrid');
@@ -187,10 +190,10 @@
                             addAntiForgeryToken(data);
                             return data;
                         }
-                    </script>
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+}

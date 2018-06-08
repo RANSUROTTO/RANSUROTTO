@@ -13,7 +13,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
                 .HasForeignKey(bc => bc.BlogCategoryId);
             this.HasRequired(bc => bc.BlogPost)
                 .WithMany(bc => bc.BlogCategories)
-                .HasForeignKey(bc => bc.BlogCategoryId);
+                .HasForeignKey(bc => bc.BlogPostId);
         }
     }
 }

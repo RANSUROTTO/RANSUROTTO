@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Admin.Extensions;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
+using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Services.Helpers;
@@ -97,6 +98,8 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return new NullJsonResult();
         }
 
+        [HttpPost, ActionName("ListLogs")]
+        [FormValueRequired("clearall")]
         public virtual ActionResult ClearAll()
         {
             _customerActivityService.ClearAllActivities();
