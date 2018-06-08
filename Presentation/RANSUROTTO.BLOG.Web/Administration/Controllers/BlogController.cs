@@ -363,7 +363,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
             //删除未选中的
             foreach (var existingBlogCategory in existingBlogCategories)
-                if (!model.SelectedCategoryIds.Contains(existingBlogCategory.Id))
+                if (!model.SelectedCategoryIds.Contains(existingBlogCategory.BlogCategoryId))
                     _categoryService.DeleteBlogPostCategory(existingBlogCategory);
 
             //添加类目

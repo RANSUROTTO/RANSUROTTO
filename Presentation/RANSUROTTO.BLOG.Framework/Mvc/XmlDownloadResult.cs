@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.IO;
+using System.Xml;
 using System.Text;
 using System.Web.Mvc;
 using RANSUROTTO.BLOG.Core.Common;
@@ -20,7 +21,7 @@ namespace RANSUROTTO.BLOG.Framework.Mvc
 
         #region Constructor
 
-        public XmlDownloadResult(string fileDownloadName, string xml)
+        public XmlDownloadResult(string xml, string fileDownloadName)
         {
             _fileDownloadName = fileDownloadName;
             _xml = xml;
@@ -36,12 +37,24 @@ namespace RANSUROTTO.BLOG.Framework.Mvc
             document.LoadXml(_xml);
             if (document.FirstChild is XmlDeclaration decl)
             {
-                decl.Encoding = "utf-8";
+                decl.Encoding = "UTF-8";
             }
-            context.HttpContext.Response.Charset = "utf-8";
+            context.HttpContext.Response.Charset = "UTF-8";
             context.HttpContext.Response.ContentType = MimeTypes.TextXml;
             context.HttpContext.Response.AddHeader("content-disposition", $"attachment; filename={_fileDownloadName}");
-            context.HttpContext.Response.BinaryWrite(Encoding.UTF8.GetBytes(document.InnerXml));
+            /*Format Write*/
+            using (StringWriter sw = new StringWriter())
+            {
+                using (XmlTextWriter xmlWriter = new XmlTextWriter(sw))
+                {
+                    xmlWriter.Indentation = 2;
+                    xmlWriter.Formatting = Formatting.Indented;
+                    document.WriteContentTo(xmlWriter);
+                }
+                context.HttpContext.Response.BinaryWrite(Encoding.UTF8.GetBytes(sw.ToString()));
+            }
+            /*Write*/
+            //context.HttpContext.Response.BinaryWrite(Encoding.UTF8.GetBytes(document.InnerXml));
             context.HttpContext.Response.End();
         }
 

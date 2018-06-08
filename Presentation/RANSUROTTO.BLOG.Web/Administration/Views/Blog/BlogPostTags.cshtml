@@ -99,7 +99,7 @@
                                         width: 150,
                                         headerAttributes: { style: "text-align:center" },
                                         attributes: { style: "text-align:center" },
-                                        template: "<button onclick=\"javascript:OpenWindow('@Url.Action("EditBlogPostTag","Blog")#=Id#?btnId=btnRefresh&formId=blogpost-tags-form', 800, 320, true); return false;\" class='btn btn-default'><i class=\"fa fa-pencil\"></i>@T("Admin.Common.Edit")</button>"
+                                        template: "<button onclick=\"javascript:OpenWindow('/Admin/Blog/EditBlogPostTag/#=Id#?btnId=btnRefresh&formId=blogpost-tags-form', 800, 320, true); return false;\" class='btn btn-default'><i class=\"fa fa-pencil\"></i>@T("Admin.Common.Edit")</button>"
                                     }, {
                                         command: { name: "destroy", text: "@T("Admin.Common.Delete")" },
                                         headerAttributes: { style: "text-align:center" },

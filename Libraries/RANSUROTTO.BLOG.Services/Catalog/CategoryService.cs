@@ -222,7 +222,7 @@ namespace RANSUROTTO.BLOG.Services.Catalog
             {
                 var query = from bc in _blogPostBlogCategoryRepository.Table
                             join c in _blogCategoryRepository.Table on bc.BlogCategoryId equals c.Id
-                            where bc.BlogCategoryId == blogPostId &&
+                            where bc.BlogPostId == blogPostId &&
                                   !c.Deleted &&
                                   (showHidden || c.Published)
                             orderby bc.DisplayOrder, bc.Id

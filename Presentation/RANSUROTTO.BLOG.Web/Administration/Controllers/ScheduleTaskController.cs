@@ -5,7 +5,6 @@ using RANSUROTTO.BLOG.Admin.Models.Tasks;
 using RANSUROTTO.BLOG.Core.Domain.Tasks;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Framework.Mvc;
-using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;

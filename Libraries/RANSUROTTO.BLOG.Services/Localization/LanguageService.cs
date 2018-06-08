@@ -93,8 +93,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
             if (languageId == 0)
                 return null;
 
-            string key = string.Format(LANGUAGES_BY_ID_KEY, languageId);
-            return _cacheManager.Get(key, () => _languageRepository.GetById(languageId));
+            return _languageRepository.GetById(languageId);
         }
 
         /// <summary>
@@ -104,7 +103,7 @@ namespace RANSUROTTO.BLOG.Services.Localization
         public virtual void InsertLanguage(Language language)
         {
             if (language == null)
-                throw new ArgumentNullException("language");
+                throw new ArgumentNullException(nameof(language));
 
             _languageRepository.Insert(language);
 

@@ -96,7 +96,7 @@
                                     type: "json",
                                     transport: {
                                         read: {
-                                            url: "@Html.Raw(Url.Action("List", "Log"))",
+                                            url: "@Html.Raw(Url.Action("LogList", "Log"))",
                                             type: "POST",
                                             dataType: "json",
                                             data: additionalData
@@ -189,6 +189,7 @@
                             //Search button
                             $('#search-log').click(function() {
                                 var grid = $('#log-grid').data('kendoGrid');
+                                grid.dataSource.page(1);
                                 $('.checkboxGroups').attr('checked', false).change();
                                 selectedIds = [];
                                 return false;
