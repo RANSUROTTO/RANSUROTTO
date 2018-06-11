@@ -1,0 +1,2166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Language Name="中文简体" SupportedVersion="1.0">
+  <LocaleResource Name="activitylog.addnewblogpost">
+    <Value>添加新的博客文章</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.addnewcategory">
+    <Value>添加新的博客类目</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.addnewcustomer">
+    <Value>添加新的用户</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.addnewcustomerrole">
+    <Value>添加新的用户角色</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.addnewemailaccount">
+    <Value>添加新的电子邮箱账户</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.addnewlanguage">
+    <Value>添加新的语言</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.addnewsetting">
+    <Value>添加新的设置</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.deleteactivitylog">
+    <Value>删除活动日志</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.deletecategory">
+    <Value>删除博客类目</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.deletecustomer">
+    <Value>删除用户</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.deletecustomerrole">
+    <Value>删除用户角色</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.deleteemailaccount">
+    <Value>删除电子邮箱账户</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.deletelanguage">
+    <Value>删除语言</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.deletesetting">
+    <Value>删除设置</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editactivitylogtypes">
+    <Value>编辑活动日志类型</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editblogpost">
+    <Value>编辑博客文章</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editcategory">
+    <Value>编辑博客类目</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editcustomer">
+    <Value>编辑用户</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editcustomerrole">
+    <Value>编辑用户角色</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editemailaccount">
+    <Value>编辑电子邮箱账户</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editlanguage">
+    <Value>编辑语言</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.editsettings">
+    <Value>编辑设置</Value>
+  </LocaleResource>
+  <LocaleResource Name="activitylog.edittask">
+    <Value>编辑计划任务</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.catalog.categories.fields.parent.none">
+    <Value>[无]</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.catalog.products.list.searchpublished.all">
+    <Value>全部</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.catalog.products.list.searchpublished.publishedonly">
+    <Value>仅已发布的</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.catalog.products.list.searchpublished.unpublishedonly">
+    <Value>仅未发布的</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.actionconfirmation">
+    <Value>确实要执行此操作吗？</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.addnew">
+    <Value>新增</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.addnewrecord">
+    <Value>添加新记录</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.all">
+    <Value>全部</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.areyousure">
+    <Value>你确定吗？</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.cancel">
+    <Value>取消</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.change">
+    <Value>更改</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.clear">
+    <Value>清空</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.delete">
+    <Value>删除</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.deleteconfirmation">
+    <Value>确实要删除此项吗？</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.edit">
+    <Value>编辑</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.export">
+    <Value>导出</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.exporttoexcel.all">
+    <Value>导出所有项到Excel文件</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.exporttoexcel.selected">
+    <Value>导出选中项到Excel文件</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.exporttoxml.all">
+    <Value>导出所有项到xml文件</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.exporttoxml.selected">
+    <Value>导出选中项到xml文件</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.hide">
+    <Value>隐藏</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.nocancel">
+    <Value>取消</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.save">
+    <Value>保存</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.savecontinue">
+    <Value>保存并继续编辑</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.search">
+    <Value>搜索</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.seo">
+    <Value>SEO</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.show">
+    <Value>显示</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.standard">
+    <Value>标准</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.update">
+    <Value>更新</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.view">
+    <Value>查看</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.wrongemail">
+    <Value>错误的电子邮箱</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.wrongusername">
+    <Value>错误的用户名</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.common.yes">
+    <Value>确认</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration">
+    <Value>配置</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.acl">
+    <Value>访问控制</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.acl.description">
+    <Value>访问控制列表是附加到客户角色的权限列表。 该列表指定用户对对象的访问权限。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog">
+    <Value>活动日志</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog">
+    <Value>活动日志</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.activitylogtype">
+    <Value>活动日志类型</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.activitylogtype.hint">
+    <Value>活动日志的类型</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.comment">
+    <Value>消息</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.createdonfrom">
+    <Value>开始时间</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.createdonfrom.hint">
+    <Value>开始时间</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.createdonto">
+    <Value>结束时间</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.createdonto.hint">
+    <Value>结束时间</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylog.fields.customer">
+    <Value>用户</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylogtype">
+    <Value>活动日志类型</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylogtype.fields.enabled">
+    <Value>已启用</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylogtype.fields.name">
+    <Value>名称</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.activitylog.activitylogtype.updated">
+    <Value>活动日志类型已被成功更新。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts">
+    <Value>电子邮箱账户</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.added">
+    <Value>新的电子邮件帐户已成功添加。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.addnew">
+    <Value>添加一个新的电子邮箱账户</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.backtolist">
+    <Value>返回电子邮件帐户列表</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.deleted">
+    <Value>电子邮件帐户已被成功删除。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.editemailaccountdetails">
+    <Value>编辑电子邮件帐户详细信息</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.displayname">
+    <Value>邮箱显示名称</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.displayname.hint">
+    <Value>这是您的系统对外发送电子邮箱时显示的友好名称，例如"您的关注博客"。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.email">
+    <Value>邮箱地址</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.email.hint">
+    <Value>这是您的系统对外发送电子邮箱的发件地址，例如"test@ransurotto.com"。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.enablessl">
+    <Value>SSL</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.enablessl.hint">
+    <Value>开启使用安全套接字层（SSL）来加密SMTP连接。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.host">
+    <Value>主机</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.host.hint">
+    <Value>这是邮件服务器的主机名或IP地址。您通常可以从ISP或Web主机中找到这一点。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.isdefaultemailaccount">
+    <Value>默认电子邮件帐户</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.markasdefaultemail">
+    <Value>标记为默认电子邮件帐户</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.password">
+    <Value>密码</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.password.change">
+    <Value>更改密码</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.password.hint">
+    <Value>这是您用来验证邮件服务器的密码。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.password.passwordchanged">
+    <Value>密码已成功更改。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.port">
+    <Value>端口</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.port.hint">
+    <Value>这是邮件服务器的SMTP端口。这通常是25号端口。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.sendtestemailto">
+    <Value>发送电子邮件至</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.sendtestemailto.hint">
+    <Value>发送测试电子邮件，以确保一切都被正确配置。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.usedefaultcredentials">
+    <Value>使用默认凭据</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.usedefaultcredentials.hint">
+    <Value>选中以使用默认凭据进行连接。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.username">
+    <Value>用户名</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.fields.username.hint">
+    <Value>这是您用来验证邮件服务器的用户名。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.sendtestemail">
+    <Value>发送测试电子邮件（通过点击“保存”按钮首先保存设置）</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.sendtestemail.button">
+    <Value>发送测试电子邮件</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.tips.onlysmtp">
+    <Value>admin.configuration.emailaccounts.tips.onlysmtp</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.EmailAccounts.SendTestEmail.Success">
+    <Value>电子邮件已成功发送。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.emailaccounts.updated">
+    <Value>电子邮件帐户已被成功更新。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.displayorder">
+    <Value>显示顺序</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.displayorder.hint">
+    <Value>该语言的显示顺序。 1表示列表的顶部。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.languageculture">
+    <Value>语言文化</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.languageculture.hint">
+    <Value>语言特定的文化代码。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.name">
+    <Value>admin.configuration.language.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.name.hint">
+    <Value>admin.configuration.language.fields.name.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.published">
+    <Value>admin.configuration.language.fields.published</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.published.hint">
+    <Value>admin.configuration.language.fields.published.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.rtl">
+    <Value>admin.configuration.language.fields.rtl</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.rtl.hint">
+    <Value>admin.configuration.language.fields.rtl.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.uniqueseocode">
+    <Value>admin.configuration.language.fields.uniqueseocode</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.language.fields.uniqueseocode.hint">
+    <Value>admin.configuration.language.fields.uniqueseocode.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages">
+    <Value>admin.configuration.languages</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages">
+    <Value>admin.configuration.languages</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.added">
+    <Value>admin.configuration.languages.added</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.addnew">
+    <Value>admin.configuration.languages.addnew</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.backtolist">
+    <Value>admin.configuration.languages.backtolist</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.deleted">
+    <Value>admin.configuration.languages.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.editlanguagedetails">
+    <Value>admin.configuration.languages.editlanguagedetails</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.export">
+    <Value>admin.configuration.languages.export</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.displayorder">
+    <Value>admin.configuration.languages.fields.displayorder</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.flagimage">
+    <Value>admin.configuration.languages.fields.flagimage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.flagimagefilename">
+    <Value>admin.configuration.languages.fields.flagimagefilename</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.flagimagefilename.hint">
+    <Value>admin.configuration.languages.fields.flagimagefilename.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.languageculture">
+    <Value>admin.configuration.languages.fields.languageculture</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.name">
+    <Value>admin.configuration.languages.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.published">
+    <Value>admin.configuration.languages.fields.published</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.import">
+    <Value>admin.configuration.languages.import</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.info">
+    <Value>admin.configuration.languages.info</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources">
+    <Value>admin.configuration.languages.resources</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.fields.name">
+    <Value>admin.configuration.languages.resources.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.fields.name.required">
+    <Value>admin.configuration.languages.resources.fields.name.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.fields.value">
+    <Value>admin.configuration.languages.resources.fields.value</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.fields.value.required">
+    <Value>admin.configuration.languages.resources.fields.value.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.savebeforeedit">
+    <Value>admin.configuration.languages.resources.savebeforeedit</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.searchresourcename">
+    <Value>admin.configuration.languages.resources.searchresourcename</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.searchresourcename.hint">
+    <Value>admin.configuration.languages.resources.searchresourcename.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.searchresourcevalue">
+    <Value>admin.configuration.languages.resources.searchresourcevalue</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.resources.searchresourcevalue.hint">
+    <Value>admin.configuration.languages.resources.searchresourcevalue.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.updated">
+    <Value>admin.configuration.languages.updated</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.xmlfile">
+    <Value>admin.configuration.languages.xmlfile</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.xmlfile.note1">
+    <Value>admin.configuration.languages.xmlfile.note1</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.xmlfile.note2">
+    <Value>admin.configuration.languages.xmlfile.note2</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings">
+    <Value>admin.configuration.settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings">
+    <Value>admin.configuration.settings</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings">
+    <Value>admin.configuration.settings.allsettings</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings">
+    <Value>admin.configuration.settings.allsettings</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings.fields.name">
+    <Value>admin.configuration.settings.allsettings.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings.fields.name.required">
+    <Value>admin.configuration.settings.allsettings.fields.name.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings.fields.value">
+    <Value>admin.configuration.settings.allsettings.fields.value</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingname">
+    <Value>admin.configuration.settings.allsettings.searchsettingname</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingname.hint">
+    <Value>admin.configuration.settings.allsettings.searchsettingname.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingvalue">
+    <Value>admin.configuration.settings.allsettings.searchsettingvalue</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingvalue.hint">
+    <Value>admin.configuration.settings.allsettings.searchsettingvalue.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog">
+    <Value>admin.configuration.settings.blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog">
+    <Value>admin.configuration.settings.blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstodeletecomments">
+    <Value>admin.configuration.settings.blog.allowcustomerstodeletecomments</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstodeletecomments.hint">
+    <Value>admin.configuration.settings.blog.allowcustomerstodeletecomments.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstoeditcomments">
+    <Value>admin.configuration.settings.blog.allowcustomerstoeditcomments</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstoeditcomments.hint">
+    <Value>admin.configuration.settings.blog.allowcustomerstoeditcomments.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.allowgueststocreatecomments">
+    <Value>admin.configuration.settings.blog.allowgueststocreatecomments</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.allowgueststocreatecomments.hint">
+    <Value>admin.configuration.settings.blog.allowgueststocreatecomments.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.blogcommentsmustbeapproved">
+    <Value>admin.configuration.settings.blog.blogcommentsmustbeapproved</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.blogcommentsmustbeapproved.hint">
+    <Value>admin.configuration.settings.blog.blogcommentsmustbeapproved.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.maxnumberoftags">
+    <Value>admin.configuration.settings.blog.maxnumberoftags</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.notifyaboutnewnewscomments">
+    <Value>admin.configuration.settings.blog.notifyaboutnewnewscomments</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.notifyaboutnewnewscomments.hint">
+    <Value>admin.configuration.settings.blog.notifyaboutnewnewscomments.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.relativedatetimeformattingenabled">
+    <Value>admin.configuration.settings.blog.relativedatetimeformattingenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.relativedatetimeformattingenabled.hint">
+    <Value>admin.configuration.settings.blog.relativedatetimeformattingenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.richeditoradditionalsettings">
+    <Value>admin.configuration.settings.blog.richeditoradditionalsettings</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.richeditoradditionalsettings.hint">
+    <Value>admin.configuration.settings.blog.richeditoradditionalsettings.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.richeditorallowjavascript">
+    <Value>admin.configuration.settings.blog.richeditorallowjavascript</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.richeditorallowjavascript.hint">
+    <Value>admin.configuration.settings.blog.richeditorallowjavascript.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser">
+    <Value>admin.configuration.settings.customeruser</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser">
+    <Value>admin.configuration.settings.customeruser</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.acceptprivacypolicyenabled">
+    <Value>admin.configuration.settings.customeruser.acceptprivacypolicyenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.acceptprivacypolicyenabled.hint">
+    <Value>admin.configuration.settings.customeruser.acceptprivacypolicyenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstosettimezone">
+    <Value>admin.configuration.settings.customeruser.allowcustomerstosettimezone</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstosettimezone.hint">
+    <Value>admin.configuration.settings.customeruser.allowcustomerstosettimezone.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstouploadavatars">
+    <Value>admin.configuration.settings.customeruser.allowcustomerstouploadavatars</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstouploadavatars.hint">
+    <Value>admin.configuration.settings.customeruser.allowcustomerstouploadavatars.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowuserstochangeusernames">
+    <Value>admin.configuration.settings.customeruser.allowuserstochangeusernames</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowuserstochangeusernames.hint">
+    <Value>admin.configuration.settings.customeruser.allowuserstochangeusernames.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowviewingprofiles">
+    <Value>admin.configuration.settings.customeruser.allowviewingprofiles</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.allowviewingprofiles.hint">
+    <Value>admin.configuration.settings.customeruser.allowviewingprofiles.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.account">
+    <Value>admin.configuration.settings.customeruser.blocktitle.account</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.common">
+    <Value>admin.configuration.settings.customeruser.blocktitle.common</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.defaultfields">
+    <Value>admin.configuration.settings.customeruser.blocktitle.defaultfields</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.externalauthentication">
+    <Value>admin.configuration.settings.customeruser.blocktitle.externalauthentication</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.password">
+    <Value>admin.configuration.settings.customeruser.blocktitle.password</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.profile">
+    <Value>admin.configuration.settings.customeruser.blocktitle.profile</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.timezone">
+    <Value>admin.configuration.settings.customeruser.blocktitle.timezone</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.cityenabled">
+    <Value>admin.configuration.settings.customeruser.cityenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.cityenabled.hint">
+    <Value>admin.configuration.settings.customeruser.cityenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.cityrequired">
+    <Value>admin.configuration.settings.customeruser.cityrequired</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.cityrequired.hint">
+    <Value>admin.configuration.settings.customeruser.cityrequired.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.companyenabled">
+    <Value>admin.configuration.settings.customeruser.companyenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.companyenabled.hint">
+    <Value>admin.configuration.settings.customeruser.companyenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.companyrequired">
+    <Value>admin.configuration.settings.customeruser.companyrequired</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.companyrequired.hint">
+    <Value>admin.configuration.settings.customeruser.companyrequired.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.countryenabled">
+    <Value>admin.configuration.settings.customeruser.countryenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.countryenabled.hint">
+    <Value>admin.configuration.settings.customeruser.countryenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.countryrequired">
+    <Value>admin.configuration.settings.customeruser.countryrequired</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.countryrequired.hint">
+    <Value>admin.configuration.settings.customeruser.countryrequired.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.customerauthenticationtype">
+    <Value>admin.configuration.settings.customeruser.customerauthenticationtype</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.customerauthenticationtype.hint">
+    <Value>admin.configuration.settings.customeruser.customerauthenticationtype.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.customerformfields">
+    <Value>admin.configuration.settings.customeruser.customerformfields</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.customernameformat">
+    <Value>admin.configuration.settings.customeruser.customernameformat</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.customernameformat.hint">
+    <Value>admin.configuration.settings.customeruser.customernameformat.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.customersettings">
+    <Value>admin.configuration.settings.customeruser.customersettings</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.dateofbirthenabled">
+    <Value>admin.configuration.settings.customeruser.dateofbirthenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.dateofbirthenabled.hint">
+    <Value>admin.configuration.settings.customeruser.dateofbirthenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.dateofbirthminimumage">
+    <Value>admin.configuration.settings.customeruser.dateofbirthminimumage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.dateofbirthrequired">
+    <Value>admin.configuration.settings.customeruser.dateofbirthrequired</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.dateofbirthrequired.hint">
+    <Value>admin.configuration.settings.customeruser.dateofbirthrequired.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.defaultavatarenabled">
+    <Value>admin.configuration.settings.customeruser.defaultavatarenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.defaultavatarenabled.hint">
+    <Value>admin.configuration.settings.customeruser.defaultavatarenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.defaultpasswordformat">
+    <Value>admin.configuration.settings.customeruser.defaultpasswordformat</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.defaultpasswordformat.hint">
+    <Value>admin.configuration.settings.customeruser.defaultpasswordformat.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.defaultstoretimezone">
+    <Value>admin.configuration.settings.customeruser.defaultstoretimezone</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.defaultstoretimezone.hint">
+    <Value>admin.configuration.settings.customeruser.defaultstoretimezone.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.externalauthenticationautoregisterenabled">
+    <Value>admin.configuration.settings.customeruser.externalauthenticationautoregisterenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.externalauthenticationautoregisterenabled.hint">
+    <Value>admin.configuration.settings.customeruser.externalauthenticationautoregisterenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.failedpasswordallowedattempts">
+    <Value>admin.configuration.settings.customeruser.failedpasswordallowedattempts</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.failedpasswordallowedattempts.hint">
+    <Value>admin.configuration.settings.customeruser.failedpasswordallowedattempts.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.failedpasswordlockoutminutes">
+    <Value>admin.configuration.settings.customeruser.failedpasswordlockoutminutes</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.failedpasswordlockoutminutes.hint">
+    <Value>admin.configuration.settings.customeruser.failedpasswordlockoutminutes.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.genderenabled">
+    <Value>admin.configuration.settings.customeruser.genderenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.genderenabled.hint">
+    <Value>admin.configuration.settings.customeruser.genderenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.notifynewcustomerregistration">
+    <Value>admin.configuration.settings.customeruser.notifynewcustomerregistration</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.notifynewcustomerregistration.hint">
+    <Value>admin.configuration.settings.customeruser.notifynewcustomerregistration.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.passwordminlength">
+    <Value>admin.configuration.settings.customeruser.passwordminlength</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.passwordminlength.hint">
+    <Value>admin.configuration.settings.customeruser.passwordminlength.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.phoneenabled">
+    <Value>admin.configuration.settings.customeruser.phoneenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.phoneenabled.hint">
+    <Value>admin.configuration.settings.customeruser.phoneenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.phonerequired">
+    <Value>admin.configuration.settings.customeruser.phonerequired</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.phonerequired.hint">
+    <Value>admin.configuration.settings.customeruser.phonerequired.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.showcustomersjoindate">
+    <Value>admin.configuration.settings.customeruser.showcustomersjoindate</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.showcustomersjoindate.hint">
+    <Value>admin.configuration.settings.customeruser.showcustomersjoindate.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.showcustomerslocation">
+    <Value>admin.configuration.settings.customeruser.showcustomerslocation</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.showcustomerslocation.hint">
+    <Value>admin.configuration.settings.customeruser.showcustomerslocation.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.stateprovinceenabled">
+    <Value>admin.configuration.settings.customeruser.stateprovinceenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.stateprovinceenabled.hint">
+    <Value>admin.configuration.settings.customeruser.stateprovinceenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.stateprovincerequired">
+    <Value>admin.configuration.settings.customeruser.stateprovincerequired</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.stateprovincerequired.hint">
+    <Value>admin.configuration.settings.customeruser.stateprovincerequired.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.storelastvisitedpage">
+    <Value>admin.configuration.settings.customeruser.storelastvisitedpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.storelastvisitedpage.hint">
+    <Value>admin.configuration.settings.customeruser.storelastvisitedpage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.unduplicatedpasswordsnumber">
+    <Value>admin.configuration.settings.customeruser.unduplicatedpasswordsnumber</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.unduplicatedpasswordsnumber.hint">
+    <Value>admin.configuration.settings.customeruser.unduplicatedpasswordsnumber.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.userregistrationtype">
+    <Value>admin.configuration.settings.customeruser.userregistrationtype</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.customeruser.userregistrationtype.hint">
+    <Value>admin.configuration.settings.customeruser.userregistrationtype.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon">
+    <Value>admin.configuration.settings.generalcommon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon">
+    <Value>admin.configuration.settings.generalcommon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.adminareaallowedipaddresses">
+    <Value>admin.configuration.settings.generalcommon.adminareaallowedipaddresses</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.adminareaallowedipaddresses.hint">
+    <Value>admin.configuration.settings.generalcommon.adminareaallowedipaddresses.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.automaticallydetectlanguage">
+    <Value>admin.configuration.settings.generalcommon.automaticallydetectlanguage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.automaticallydetectlanguage.hint">
+    <Value>admin.configuration.settings.generalcommon.automaticallydetectlanguage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blocktitle.captcha">
+    <Value>admin.configuration.settings.generalcommon.blocktitle.captcha</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blocktitle.common">
+    <Value>admin.configuration.settings.generalcommon.blocktitle.common</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blocktitle.localization">
+    <Value>admin.configuration.settings.generalcommon.blocktitle.localization</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blocktitle.security">
+    <Value>admin.configuration.settings.generalcommon.blocktitle.security</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blocktitle.seo">
+    <Value>admin.configuration.settings.generalcommon.blocktitle.seo</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blocktitle.socialmedia">
+    <Value>admin.configuration.settings.generalcommon.blocktitle.socialmedia</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blogclosed">
+    <Value>admin.configuration.settings.generalcommon.blogclosed</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.blogclosed.hint">
+    <Value>admin.configuration.settings.generalcommon.blogclosed.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.canonicalurlsenabled">
+    <Value>admin.configuration.settings.generalcommon.canonicalurlsenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.canonicalurlsenabled.hint">
+    <Value>admin.configuration.settings.generalcommon.canonicalurlsenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.captchaenabled">
+    <Value>admin.configuration.settings.generalcommon.captchaenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.captchaenabled.hint">
+    <Value>admin.configuration.settings.generalcommon.captchaenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.convertnonwesternchars">
+    <Value>admin.configuration.settings.generalcommon.convertnonwesternchars</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.convertnonwesternchars.hint">
+    <Value>admin.configuration.settings.generalcommon.convertnonwesternchars.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.customheadtags">
+    <Value>admin.configuration.settings.generalcommon.customheadtags</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.customheadtags.hint">
+    <Value>admin.configuration.settings.generalcommon.customheadtags.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.defaultmetadescription">
+    <Value>admin.configuration.settings.generalcommon.defaultmetadescription</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.defaultmetadescription.hint">
+    <Value>admin.configuration.settings.generalcommon.defaultmetadescription.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.defaultmetakeywords">
+    <Value>admin.configuration.settings.generalcommon.defaultmetakeywords</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.defaultmetakeywords.hint">
+    <Value>admin.configuration.settings.generalcommon.defaultmetakeywords.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.defaulttitle">
+    <Value>admin.configuration.settings.generalcommon.defaulttitle</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.defaulttitle.hint">
+    <Value>admin.configuration.settings.generalcommon.defaulttitle.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.displayeucookielawwarning">
+    <Value>admin.configuration.settings.generalcommon.displayeucookielawwarning</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.displayeucookielawwarning.hint">
+    <Value>admin.configuration.settings.generalcommon.displayeucookielawwarning.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablecssbundling">
+    <Value>admin.configuration.settings.generalcommon.enablecssbundling</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablecssbundling.hint">
+    <Value>admin.configuration.settings.generalcommon.enablecssbundling.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablejsbundling">
+    <Value>admin.configuration.settings.generalcommon.enablejsbundling</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablejsbundling.hint">
+    <Value>admin.configuration.settings.generalcommon.enablejsbundling.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablexsrfprotectionforadminarea">
+    <Value>admin.configuration.settings.generalcommon.enablexsrfprotectionforadminarea</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablexsrfprotectionforadminarea.hint">
+    <Value>admin.configuration.settings.generalcommon.enablexsrfprotectionforadminarea.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablexsrfprotectionforpublicarea">
+    <Value>admin.configuration.settings.generalcommon.enablexsrfprotectionforpublicarea</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.enablexsrfprotectionforpublicarea.hint">
+    <Value>admin.configuration.settings.generalcommon.enablexsrfprotectionforpublicarea.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.encryptionkey">
+    <Value>admin.configuration.settings.generalcommon.encryptionkey</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.encryptionkey.hint">
+    <Value>admin.configuration.settings.generalcommon.encryptionkey.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.forcesslforallpages">
+    <Value>admin.configuration.settings.generalcommon.forcesslforallpages</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.forcesslforallpages.hint">
+    <Value>admin.configuration.settings.generalcommon.forcesslforallpages.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.githublink">
+    <Value>admin.configuration.settings.generalcommon.githublink</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.githublink.hint">
+    <Value>admin.configuration.settings.generalcommon.githublink.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.honeypotenabled">
+    <Value>admin.configuration.settings.generalcommon.honeypotenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.honeypotenabled.hint">
+    <Value>admin.configuration.settings.generalcommon.honeypotenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.loadalllocalerecordsonstartup">
+    <Value>admin.configuration.settings.generalcommon.loadalllocalerecordsonstartup</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.loadalllocalerecordsonstartup.hint">
+    <Value>admin.configuration.settings.generalcommon.loadalllocalerecordsonstartup.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.loadalllocalizedpropertiesonstartup">
+    <Value>admin.configuration.settings.generalcommon.loadalllocalizedpropertiesonstartup</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.loadalllocalizedpropertiesonstartup.hint">
+    <Value>admin.configuration.settings.generalcommon.loadalllocalizedpropertiesonstartup.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.loadallurlrecordsonstartup">
+    <Value>admin.configuration.settings.generalcommon.loadallurlrecordsonstartup</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.loadallurlrecordsonstartup.hint">
+    <Value>admin.configuration.settings.generalcommon.loadallurlrecordsonstartup.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.pagetitleseoadjustment">
+    <Value>admin.configuration.settings.generalcommon.pagetitleseoadjustment</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.pagetitleseoadjustment.hint">
+    <Value>admin.configuration.settings.generalcommon.pagetitleseoadjustment.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.pagetitleseparator">
+    <Value>admin.configuration.settings.generalcommon.pagetitleseparator</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.pagetitleseparator.hint">
+    <Value>admin.configuration.settings.generalcommon.pagetitleseparator.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.seofriendlyurlsforlanguagesenabled">
+    <Value>admin.configuration.settings.generalcommon.seofriendlyurlsforlanguagesenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.seofriendlyurlsforlanguagesenabled.hint">
+    <Value>admin.configuration.settings.generalcommon.seofriendlyurlsforlanguagesenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonloginpage">
+    <Value>admin.configuration.settings.generalcommon.showonloginpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonloginpage.hint">
+    <Value>admin.configuration.settings.generalcommon.showonloginpage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogcommentpage">
+    <Value>admin.configuration.settings.generalcommon.showonpublishblogcommentpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogcommentpage.hint">
+    <Value>admin.configuration.settings.generalcommon.showonpublishblogcommentpage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogpostpage">
+    <Value>admin.configuration.settings.generalcommon.showonpublishblogpostpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogpostpage.hint">
+    <Value>admin.configuration.settings.generalcommon.showonpublishblogpostpage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonregistrationpage">
+    <Value>admin.configuration.settings.generalcommon.showonregistrationpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.showonregistrationpage.hint">
+    <Value>admin.configuration.settings.generalcommon.showonregistrationpage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.sitemapenabled">
+    <Value>admin.configuration.settings.generalcommon.sitemapenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.sitemapenabled.hint">
+    <Value>admin.configuration.settings.generalcommon.sitemapenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.useimagesforlanguageselection">
+    <Value>admin.configuration.settings.generalcommon.useimagesforlanguageselection</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.useimagesforlanguageselection.hint">
+    <Value>admin.configuration.settings.generalcommon.useimagesforlanguageselection.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.wwwrequirement">
+    <Value>admin.configuration.settings.generalcommon.wwwrequirement</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.generalcommon.wwwrequirement.hint">
+    <Value>admin.configuration.settings.generalcommon.wwwrequirement.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media">
+    <Value>admin.configuration.settings.media</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media">
+    <Value>admin.configuration.settings.media</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.avatarpicturesize">
+    <Value>admin.configuration.settings.media.avatarpicturesize</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.avatarpicturesize.hint">
+    <Value>admin.configuration.settings.media.avatarpicturesize.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.blocktitle.common">
+    <Value>admin.configuration.settings.media.blocktitle.common</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.blocktitle.other">
+    <Value>admin.configuration.settings.media.blocktitle.other</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.defaultimagequality">
+    <Value>admin.configuration.settings.media.defaultimagequality</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.defaultimagequality.hint">
+    <Value>admin.configuration.settings.media.defaultimagequality.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.defaultpicturezoomenabled">
+    <Value>admin.configuration.settings.media.defaultpicturezoomenabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.defaultpicturezoomenabled.hint">
+    <Value>admin.configuration.settings.media.defaultpicturezoomenabled.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.maximumimagesize">
+    <Value>admin.configuration.settings.media.maximumimagesize</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.maximumimagesize.hint">
+    <Value>admin.configuration.settings.media.maximumimagesize.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.multiplethumbdirectories">
+    <Value>admin.configuration.settings.media.multiplethumbdirectories</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.media.multiplethumbdirectories.hint">
+    <Value>admin.configuration.settings.media.multiplethumbdirectories.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.mode.advanced">
+    <Value>admin.configuration.settings.mode.advanced</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.mode.basic">
+    <Value>admin.configuration.settings.mode.basic</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.updated">
+    <Value>admin.configuration.updated</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement">
+    <Value>admin.contentmanagement</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement">
+    <Value>admin.contentmanagement</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog">
+    <Value>admin.contentmanagement.blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog">
+    <Value>admin.contentmanagement.blog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.blogposttags">
+    <Value>admin.contentmanagement.blog.blogposttags</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.blogposttags">
+    <Value>admin.contentmanagement.blog.blogposttags</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.blogposttags.fields.blogcount">
+    <Value>admin.contentmanagement.blog.blogposttags.fields.blogcount</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.blogposttags.fields.name">
+    <Value>admin.contentmanagement.blog.blogposttags.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.blogposttags.fields.name.hint">
+    <Value>admin.contentmanagement.blog.blogposttags.fields.name.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories">
+    <Value>admin.contentmanagement.blog.categories</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories">
+    <Value>admin.contentmanagement.blog.categories</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.added">
+    <Value>admin.contentmanagement.blog.categories.added</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.addnew">
+    <Value>admin.contentmanagement.blog.categories.addnew</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.backtolist">
+    <Value>admin.contentmanagement.blog.categories.backtolist</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.blogs">
+    <Value>admin.contentmanagement.blog.categories.blogs</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.deleted">
+    <Value>admin.contentmanagement.blog.categories.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.editcategorydetails">
+    <Value>admin.contentmanagement.blog.categories.editcategorydetails</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.admincomment">
+    <Value>admin.contentmanagement.blog.categories.fields.admincomment</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.admincomment.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.admincomment.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.deleted">
+    <Value>admin.contentmanagement.blog.categories.fields.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.description">
+    <Value>admin.contentmanagement.blog.categories.fields.description</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.description.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.description.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.displayorder">
+    <Value>admin.contentmanagement.blog.categories.fields.displayorder</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.displayorder.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.displayorder.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.metadescription">
+    <Value>admin.contentmanagement.blog.categories.fields.metadescription</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.metadescription.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.metadescription.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.metakeywords">
+    <Value>admin.contentmanagement.blog.categories.fields.metakeywords</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.metakeywords.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.metakeywords.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.metatitle">
+    <Value>admin.contentmanagement.blog.categories.fields.metatitle</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.metatitle.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.metatitle.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.name">
+    <Value>admin.contentmanagement.blog.categories.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.name.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.name.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.name.required">
+    <Value>admin.contentmanagement.blog.categories.fields.name.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.parent">
+    <Value>admin.contentmanagement.blog.categories.fields.parent</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.parent.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.parent.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.published">
+    <Value>admin.contentmanagement.blog.categories.fields.published</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.published.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.published.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.sename">
+    <Value>admin.contentmanagement.blog.categories.fields.sename</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.fields.sename.hint">
+    <Value>admin.contentmanagement.blog.categories.fields.sename.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.info">
+    <Value>admin.contentmanagement.blog.categories.info</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.list.searchcategoryname">
+    <Value>admin.contentmanagement.blog.categories.list.searchcategoryname</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.list.searchcategoryname.hint">
+    <Value>admin.contentmanagement.blog.categories.list.searchcategoryname.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.manage">
+    <Value>admin.contentmanagement.blog.categories.manage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.categories.updated">
+    <Value>admin.contentmanagement.blog.categories.updated</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.comments">
+    <Value>admin.contentmanagement.blog.comments</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.comments">
+    <Value>admin.contentmanagement.blog.comments</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.editblogposttagdetails">
+    <Value>admin.contentmanagement.blog.editblogposttagdetails</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts">
+    <Value>admin.contentmanagement.blog.posts</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts">
+    <Value>admin.contentmanagement.blog.posts</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.added">
+    <Value>admin.contentmanagement.blog.posts.added</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.addnew">
+    <Value>admin.contentmanagement.blog.posts.addnew</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.backtolist">
+    <Value>admin.contentmanagement.blog.posts.backtolist</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.deleted">
+    <Value>admin.contentmanagement.blog.posts.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.editblogpostdetails">
+    <Value>admin.contentmanagement.blog.posts.editblogpostdetails</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.allowcomments">
+    <Value>admin.contentmanagement.blog.posts.fields.allowcomments</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.allowcomments.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.allowcomments.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.authoremail">
+    <Value>admin.contentmanagement.blog.posts.fields.authoremail</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.authorid">
+    <Value>admin.contentmanagement.blog.posts.fields.authorid</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.authorid.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.authorid.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availableenddateutc">
+    <Value>admin.contentmanagement.blog.posts.fields.availableenddateutc</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availableenddateutc.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.availableenddateutc.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availablestartdateutc">
+    <Value>admin.contentmanagement.blog.posts.fields.availablestartdateutc</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availablestartdateutc.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.availablestartdateutc.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.blogposttags">
+    <Value>admin.contentmanagement.blog.posts.fields.blogposttags</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.blogposttags.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.blogposttags.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.blogposttags.placeholder">
+    <Value>admin.contentmanagement.blog.posts.fields.blogposttags.placeholder</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.body">
+    <Value>admin.contentmanagement.blog.posts.fields.body</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.body.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.body.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.body.required">
+    <Value>admin.contentmanagement.blog.posts.fields.body.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.bodyoverview">
+    <Value>admin.contentmanagement.blog.posts.fields.bodyoverview</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.bodyoverview.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.bodyoverview.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.categories">
+    <Value>admin.contentmanagement.blog.posts.fields.categories</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.categories.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.categories.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.createdon">
+    <Value>admin.contentmanagement.blog.posts.fields.createdon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.createdon.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.createdon.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.deleted">
+    <Value>admin.contentmanagement.blog.posts.fields.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.deleted.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.deleted.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.formatid">
+    <Value>admin.contentmanagement.blog.posts.fields.formatid</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metadescription">
+    <Value>admin.contentmanagement.blog.posts.fields.metadescription</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metadescription.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.metadescription.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metakeywords">
+    <Value>admin.contentmanagement.blog.posts.fields.metakeywords</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metakeywords.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.metakeywords.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metatitle">
+    <Value>admin.contentmanagement.blog.posts.fields.metatitle</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metatitle.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.metatitle.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.published">
+    <Value>admin.contentmanagement.blog.posts.fields.published</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.tags.nodots">
+    <Value>admin.contentmanagement.blog.posts.fields.tags.nodots</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.title">
+    <Value>admin.contentmanagement.blog.posts.fields.title</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.title.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.title.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.title.required">
+    <Value>admin.contentmanagement.blog.posts.fields.title.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.updatedon">
+    <Value>admin.contentmanagement.blog.posts.fields.updatedon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.fields.updatedon.hint">
+    <Value>admin.contentmanagement.blog.posts.fields.updatedon.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.info">
+    <Value>admin.contentmanagement.blog.posts.info</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchcategory">
+    <Value>admin.contentmanagement.blog.posts.list.searchcategory</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchcategory.hint">
+    <Value>admin.contentmanagement.blog.posts.list.searchcategory.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchincludesubcategories">
+    <Value>admin.contentmanagement.blog.posts.list.searchincludesubcategories</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchincludesubcategories.hint">
+    <Value>admin.contentmanagement.blog.posts.list.searchincludesubcategories.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchpublished">
+    <Value>admin.contentmanagement.blog.posts.list.searchpublished</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchpublished.hint">
+    <Value>admin.contentmanagement.blog.posts.list.searchpublished.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchtitle">
+    <Value>admin.contentmanagement.blog.posts.list.searchtitle</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchtitle.hint">
+    <Value>admin.contentmanagement.blog.posts.list.searchtitle.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.blog.posts.updated">
+    <Value>admin.contentmanagement.blog.posts.updated</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.idea">
+    <Value>admin.contentmanagement.idea</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.contentmanagement.idea">
+    <Value>admin.contentmanagement.idea</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers">
+    <Value>admin.customers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers">
+    <Value>admin.customers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles">
+    <Value>admin.customers.customerroles</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles">
+    <Value>admin.customers.customerroles</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.added">
+    <Value>admin.customers.customerroles.added</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.addnew">
+    <Value>admin.customers.customerroles.addnew</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.backtolist">
+    <Value>admin.customers.customerroles.backtolist</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.deleted">
+    <Value>admin.customers.customerroles.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.editcustomerroledetails">
+    <Value>admin.customers.customerroles.editcustomerroledetails</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.active">
+    <Value>admin.customers.customerroles.fields.active</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.active.hint">
+    <Value>admin.customers.customerroles.fields.active.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.issystemrole">
+    <Value>admin.customers.customerroles.fields.issystemrole</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.issystemrole.hint">
+    <Value>admin.customers.customerroles.fields.issystemrole.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.name">
+    <Value>admin.customers.customerroles.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.name.hint">
+    <Value>admin.customers.customerroles.fields.name.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.name.required">
+    <Value>admin.customers.customerroles.fields.name.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.systemname">
+    <Value>admin.customers.customerroles.fields.systemname</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.systemname.hint">
+    <Value>admin.customers.customerroles.fields.systemname.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.fields.systemname.required">
+    <Value>admin.customers.customerroles.fields.systemname.required</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customerroles.updated">
+    <Value>admin.customers.customerroles.updated</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers">
+    <Value>admin.customers.customers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers">
+    <Value>admin.customers.customers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.activitylog">
+    <Value>admin.customers.customers.activitylog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.activitylog.activitylogtype">
+    <Value>admin.customers.customers.activitylog.activitylogtype</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.activitylog.comment">
+    <Value>admin.customers.customers.activitylog.comment</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.activitylog.createdon">
+    <Value>admin.customers.customers.activitylog.createdon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.activitylog.ipaddress">
+    <Value>admin.customers.customers.activitylog.ipaddress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.activitylog.ipaddress.hint">
+    <Value>admin.customers.customers.activitylog.ipaddress.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.added">
+    <Value>admin.customers.customers.added</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.addnew">
+    <Value>admin.customers.customers.addnew</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.backtolist">
+    <Value>admin.customers.customers.backtolist</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.blogpost">
+    <Value>admin.customers.customers.blogpost</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.blogpost.createdon">
+    <Value>admin.customers.customers.blogpost.createdon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.blogpost.deleted">
+    <Value>admin.customers.customers.blogpost.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.blogpost.published">
+    <Value>admin.customers.customers.blogpost.published</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.blogpost.title">
+    <Value>admin.customers.customers.blogpost.title</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.blogpost.updateon">
+    <Value>admin.customers.customers.blogpost.updateon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.deleted">
+    <Value>admin.customers.customers.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.editcustomerdetails">
+    <Value>admin.customers.customers.editcustomerdetails</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.active">
+    <Value>admin.customers.customers.fields.active</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.active.hint">
+    <Value>admin.customers.customers.fields.active.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.admincomment">
+    <Value>admin.customers.customers.fields.admincomment</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.admincomment.hint">
+    <Value>admin.customers.customers.fields.admincomment.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.company">
+    <Value>admin.customers.customers.fields.company</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.company.hint">
+    <Value>admin.customers.customers.fields.company.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.createdon">
+    <Value>admin.customers.customers.fields.createdon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.customerroles">
+    <Value>admin.customers.customers.fields.customerroles</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.customerroles.hint">
+    <Value>admin.customers.customers.fields.customerroles.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.dateofbirth">
+    <Value>admin.customers.customers.fields.dateofbirth</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.dateofbirth.hint">
+    <Value>admin.customers.customers.fields.dateofbirth.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.email">
+    <Value>admin.customers.customers.fields.email</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.email.hint">
+    <Value>admin.customers.customers.fields.email.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.gender">
+    <Value>admin.customers.customers.fields.gender</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.gender.female">
+    <Value>admin.customers.customers.fields.gender.female</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.gender.hint">
+    <Value>admin.customers.customers.fields.gender.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.gender.male">
+    <Value>admin.customers.customers.fields.gender.male</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.ipaddress">
+    <Value>admin.customers.customers.fields.ipaddress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.ipaddress.hint">
+    <Value>admin.customers.customers.fields.ipaddress.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.lastactivitydate">
+    <Value>admin.customers.customers.fields.lastactivitydate</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.lastactivitydate.hint">
+    <Value>admin.customers.customers.fields.lastactivitydate.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.lastvisitedpage">
+    <Value>admin.customers.customers.fields.lastvisitedpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.name">
+    <Value>admin.customers.customers.fields.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.name.hint">
+    <Value>admin.customers.customers.fields.name.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.password">
+    <Value>admin.customers.customers.fields.password</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.password.change">
+    <Value>admin.customers.customers.fields.password.change</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.password.hint">
+    <Value>admin.customers.customers.fields.password.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.phone">
+    <Value>admin.customers.customers.fields.phone</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.phone.hint">
+    <Value>admin.customers.customers.fields.phone.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.timezoneid">
+    <Value>admin.customers.customers.fields.timezoneid</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.username">
+    <Value>admin.customers.customers.fields.username</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.username.hint">
+    <Value>admin.customers.customers.fields.username.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.guestsandregisteredroleserror">
+    <Value>admin.customers.customers.guestsandregisteredroleserror</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.info">
+    <Value>admin.customers.customers.info</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.customerroles">
+    <Value>admin.customers.customers.list.customerroles</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.customerroles.hint">
+    <Value>admin.customers.customers.list.customerroles.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchcompany">
+    <Value>admin.customers.customers.list.searchcompany</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchcompany.hint">
+    <Value>admin.customers.customers.list.searchcompany.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchdateofbirth">
+    <Value>admin.customers.customers.list.searchdateofbirth</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchdateofbirth.day">
+    <Value>admin.customers.customers.list.searchdateofbirth.day</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchdateofbirth.hint">
+    <Value>admin.customers.customers.list.searchdateofbirth.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchdateofbirth.month">
+    <Value>admin.customers.customers.list.searchdateofbirth.month</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchemail">
+    <Value>admin.customers.customers.list.searchemail</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchemail.hint">
+    <Value>admin.customers.customers.list.searchemail.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchipaddress">
+    <Value>admin.customers.customers.list.searchipaddress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchipaddress.hint">
+    <Value>admin.customers.customers.list.searchipaddress.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchname">
+    <Value>admin.customers.customers.list.searchname</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchname.hint">
+    <Value>admin.customers.customers.list.searchname.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchphone">
+    <Value>admin.customers.customers.list.searchphone</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchphone.hint">
+    <Value>admin.customers.customers.list.searchphone.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchusername">
+    <Value>admin.customers.customers.list.searchusername</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.list.searchusername.hint">
+    <Value>admin.customers.customers.list.searchusername.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.passwordchanged">
+    <Value>admin.customers.customers.passwordchanged</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.sendemail">
+    <Value>admin.customers.customers.sendemail</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.sendpm">
+    <Value>admin.customers.customers.sendpm</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.updated">
+    <Value>admin.customers.customers.updated</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.guest">
+    <Value>admin.customers.guest</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.onlinecustomers">
+    <Value>admin.customers.onlinecustomers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.onlinecustomers">
+    <Value>admin.customers.onlinecustomers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.onlinecustomers.fields.customerinfo">
+    <Value>admin.customers.onlinecustomers.fields.customerinfo</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.onlinecustomers.fields.ipaddress">
+    <Value>admin.customers.onlinecustomers.fields.ipaddress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.onlinecustomers.fields.lastactivitydate">
+    <Value>admin.customers.onlinecustomers.fields.lastactivitydate</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.onlinecustomers.fields.lastvisitedpage">
+    <Value>admin.customers.onlinecustomers.fields.lastvisitedpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.onlinecustomers.fields.location">
+    <Value>admin.customers.onlinecustomers.fields.location</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports">
+    <Value>admin.customers.reports</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports">
+    <Value>admin.customers.reports</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports.registeredcustomers">
+    <Value>admin.customers.reports.registeredcustomers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.customers">
+    <Value>admin.customers.reports.registeredcustomers.fields.customers</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period">
+    <Value>admin.customers.reports.registeredcustomers.fields.period</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.14days">
+    <Value>admin.customers.reports.registeredcustomers.fields.period.14days</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.7days">
+    <Value>admin.customers.reports.registeredcustomers.fields.period.7days</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.month">
+    <Value>admin.customers.reports.registeredcustomers.fields.period.month</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.year">
+    <Value>admin.customers.reports.registeredcustomers.fields.period.year</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.dashboard">
+    <Value>admin.dashboard</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.dashboard">
+    <Value>admin.dashboard</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.clearcache">
+    <Value>admin.header.clearcache</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.clearcache">
+    <Value>admin.header.clearcache</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.logout">
+    <Value>admin.header.logout</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.logout">
+    <Value>admin.header.logout</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.publicblog">
+    <Value>admin.header.publicblog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.publicblog">
+    <Value>admin.header.publicblog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.restartapplication">
+    <Value>admin.header.restartapplication</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.restartapplication">
+    <Value>admin.header.restartapplication</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.restartapplication.progress">
+    <Value>admin.header.restartapplication.progress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.header.restartapplication.progress">
+    <Value>admin.header.restartapplication.progress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.help">
+    <Value>admin.help</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.help">
+    <Value>admin.help</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.help.about">
+    <Value>admin.help.about</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.help.about">
+    <Value>admin.help.about</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.home">
+    <Value>admin.home</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.home">
+    <Value>admin.home</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.menu.search">
+    <Value>admin.menu.search</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.menu.search">
+    <Value>admin.menu.search</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.all">
+    <Value>admin.pager.all</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.display">
+    <Value>admin.pager.display</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.empty">
+    <Value>admin.pager.empty</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.first">
+    <Value>admin.pager.first</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.itemsperpage">
+    <Value>admin.pager.itemsperpage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.last">
+    <Value>admin.pager.last</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.morepages">
+    <Value>admin.pager.morepages</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.next">
+    <Value>admin.pager.next</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.of">
+    <Value>admin.pager.of</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.page">
+    <Value>admin.pager.page</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.previous">
+    <Value>admin.pager.previous</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pager.refresh">
+    <Value>admin.pager.refresh</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pagetitle">
+    <Value>admin.pagetitle</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.pagetitle">
+    <Value>admin.pagetitle</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system">
+    <Value>admin.system</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system">
+    <Value>admin.system</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.activitylog.clearlog">
+    <Value>admin.system.activitylog.clearlog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log">
+    <Value>admin.system.log</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log">
+    <Value>admin.system.log</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.backtolist">
+    <Value>admin.system.log.backtolist</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.cleared">
+    <Value>admin.system.log.cleared</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.clearlog">
+    <Value>admin.system.log.clearlog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.deleted">
+    <Value>admin.system.log.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.deleteselected">
+    <Value>admin.system.log.deleteselected</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.createdon">
+    <Value>admin.system.log.fields.createdon</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.customeremail">
+    <Value>admin.system.log.fields.customeremail</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.customerid">
+    <Value>admin.system.log.fields.customerid</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.customerid.hint">
+    <Value>admin.system.log.fields.customerid.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.deleted">
+    <Value>admin.system.log.fields.deleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.fullmessage">
+    <Value>admin.system.log.fields.fullmessage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.fullmessage.hint">
+    <Value>admin.system.log.fields.fullmessage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.ipaddress">
+    <Value>admin.system.log.fields.ipaddress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.ipaddress.hint">
+    <Value>admin.system.log.fields.ipaddress.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.loglevel">
+    <Value>admin.system.log.fields.loglevel</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.loglevel.hint">
+    <Value>admin.system.log.fields.loglevel.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.pageurl">
+    <Value>admin.system.log.fields.pageurl</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.pageurl.hint">
+    <Value>admin.system.log.fields.pageurl.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.private">
+    <Value>admin.system.log.fields.private</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.referrerurl">
+    <Value>admin.system.log.fields.referrerurl</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.referrerurl.hint">
+    <Value>admin.system.log.fields.referrerurl.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.shortmessage">
+    <Value>admin.system.log.fields.shortmessage</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.fields.shortmessage.hint">
+    <Value>admin.system.log.fields.shortmessage.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.createdonfrom">
+    <Value>admin.system.log.list.createdonfrom</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.createdonfrom.hint">
+    <Value>admin.system.log.list.createdonfrom.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.createdonto">
+    <Value>admin.system.log.list.createdonto</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.createdonto.hint">
+    <Value>admin.system.log.list.createdonto.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.loglevel">
+    <Value>admin.system.log.list.loglevel</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.loglevel.hint">
+    <Value>admin.system.log.list.loglevel.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.message">
+    <Value>admin.system.log.list.message</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.list.message.hint">
+    <Value>admin.system.log.list.message.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.view">
+    <Value>admin.system.log.view</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.log.viewlog">
+    <Value>admin.system.log.viewlog</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance">
+    <Value>admin.system.maintenance</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance">
+    <Value>admin.system.maintenance</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.backupcreated">
+    <Value>admin.system.maintenance.backupdatabase.backupcreated</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.backupdeleted">
+    <Value>admin.system.maintenance.backupdatabase.backupdeleted</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.backupnow">
+    <Value>admin.system.maintenance.backupdatabase.backupnow</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.databasebackups">
+    <Value>admin.system.maintenance.backupdatabase.databasebackups</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.delete">
+    <Value>admin.system.maintenance.backupdatabase.delete</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.download">
+    <Value>admin.system.maintenance.backupdatabase.download</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.filename">
+    <Value>admin.system.maintenance.backupdatabase.filename</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.filesize">
+    <Value>admin.system.maintenance.backupdatabase.filesize</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.progress">
+    <Value>admin.system.maintenance.backupdatabase.progress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.backupdatabase.restore">
+    <Value>admin.system.maintenance.backupdatabase.restore</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.enddate">
+    <Value>admin.system.maintenance.deleteexportedfiles.enddate</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.enddate.hint">
+    <Value>admin.system.maintenance.deleteexportedfiles.enddate.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.startdate">
+    <Value>admin.system.maintenance.deleteexportedfiles.startdate</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.startdate.hint">
+    <Value>admin.system.maintenance.deleteexportedfiles.startdate.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteexprotedfiles">
+    <Value>admin.system.maintenance.deleteexprotedfiles</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteguests">
+    <Value>admin.system.maintenance.deleteguests</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteguests.enddate">
+    <Value>admin.system.maintenance.deleteguests.enddate</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteguests.enddate.hint">
+    <Value>admin.system.maintenance.deleteguests.enddate.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteguests.onlywithoutaction">
+    <Value>admin.system.maintenance.deleteguests.onlywithoutaction</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteguests.onlywithoutaction.hint">
+    <Value>admin.system.maintenance.deleteguests.onlywithoutaction.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteguests.startdate">
+    <Value>admin.system.maintenance.deleteguests.startdate</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.maintenance.deleteguests.startdate.hint">
+    <Value>admin.system.maintenance.deleteguests.startdate.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks">
+    <Value>admin.system.scheduletasks</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks">
+    <Value>admin.system.scheduletasks</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.24days">
+    <Value>admin.system.scheduletasks.24days</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.enabled">
+    <Value>admin.system.scheduletasks.enabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.lastend">
+    <Value>admin.system.scheduletasks.lastend</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.laststart">
+    <Value>admin.system.scheduletasks.laststart</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.lastsuccess">
+    <Value>admin.system.scheduletasks.lastsuccess</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.name">
+    <Value>admin.system.scheduletasks.name</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.restartapplication">
+    <Value>admin.system.scheduletasks.restartapplication</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.runnow">
+    <Value>admin.system.scheduletasks.runnow</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.runnow.done">
+    <Value>admin.system.scheduletasks.runnow.done</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.runnow.progress">
+    <Value>admin.system.scheduletasks.runnow.progress</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.seconds">
+    <Value>admin.system.scheduletasks.seconds</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.scheduletasks.stoponerror">
+    <Value>admin.system.scheduletasks.stoponerror</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo">
+    <Value>admin.system.systeminfo</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.aspnetinfo">
+    <Value>admin.system.systeminfo.aspnetinfo</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.aspnetinfo.hint">
+    <Value>admin.system.systeminfo.aspnetinfo.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.currentusertime">
+    <Value>admin.system.systeminfo.currentusertime</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.currentusertime.hint">
+    <Value>admin.system.systeminfo.currentusertime.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.httphost">
+    <Value>admin.system.systeminfo.httphost</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.httphost.hint">
+    <Value>admin.system.systeminfo.httphost.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.isfulltrust">
+    <Value>admin.system.systeminfo.isfulltrust</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.isfulltrust.hint">
+    <Value>admin.system.systeminfo.isfulltrust.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.loadedassemblies">
+    <Value>admin.system.systeminfo.loadedassemblies</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.loadedassemblies.hint">
+    <Value>admin.system.systeminfo.loadedassemblies.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.operatingsystem">
+    <Value>admin.system.systeminfo.operatingsystem</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.operatingsystem.hint">
+    <Value>admin.system.systeminfo.operatingsystem.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.ransurottoversion">
+    <Value>admin.system.systeminfo.ransurottoversion</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.ransurottoversion.hint">
+    <Value>admin.system.systeminfo.ransurottoversion.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.serverlocaltime">
+    <Value>admin.system.systeminfo.serverlocaltime</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.serverlocaltime.hint">
+    <Value>admin.system.systeminfo.serverlocaltime.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.servertimezone">
+    <Value>admin.system.systeminfo.servertimezone</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.servertimezone.hint">
+    <Value>admin.system.systeminfo.servertimezone.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.servervariables">
+    <Value>admin.system.systeminfo.servervariables</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.servervariables.hint">
+    <Value>admin.system.systeminfo.servervariables.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.utctime">
+    <Value>admin.system.systeminfo.utctime</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.systeminfo.utctime.hint">
+    <Value>admin.system.systeminfo.utctime.hint</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.warnings">
+    <Value>admin.system.warnings</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.system.warnings">
+    <Value>admin.system.warnings</Value>
+  </LocaleResource>
+  <LocaleResource Name="common.wait...">
+    <Value>common.wait...</Value>
+  </LocaleResource>
+  <LocaleResource Name="common.wait...">
+    <Value>common.wait...</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.email">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.email</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.username">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.username</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.usernameoremail">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.usernameoremail</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showemails">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showemails</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.customernameformat.shownickname">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.customernameformat.shownickname</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showusernames">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showusernames</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.passwordformat.clear">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.passwordformat.clear</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.passwordformat.encrypted">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.passwordformat.encrypted</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.passwordformat.hashed">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.passwordformat.hashed</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.adminapproval">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.adminapproval</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.disabled">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.disabled</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.emailvalidation">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.emailvalidation</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.standard">
+    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.standard</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.debug">
+    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.debug</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.error">
+    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.error</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.fatal">
+    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.fatal</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.information">
+    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.information</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.warning">
+    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.warning</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.blognameafterpagename">
+    <Value>enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.blognameafterpagename</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.pagenameafterblogname">
+    <Value>enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.pagenameafterblogname</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.nomatter">
+    <Value>enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.nomatter</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withoutwww">
+    <Value>enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withoutwww</Value>
+  </LocaleResource>
+  <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withwww">
+    <Value>enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withwww</Value>
+  </LocaleResource>
+</Language>

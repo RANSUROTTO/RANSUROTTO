@@ -154,6 +154,7 @@
     <Content Include="App_Data\Localization\Installation\installation.ur.xml" />
     <Content Include="App_Data\Localization\Installation\installation.vi.xml" />
     <Content Include="App_Data\Localization\Installation\installation.zh.xml" />
+    <Content Include="App_Data\Localization\language_pack.xml" />
     <Content Include="Content\Images\default-avatar.jpg" />
     <Content Include="Content\Images\default-image.gif" />
     <Content Include="Content\Images\default-image.png" />
