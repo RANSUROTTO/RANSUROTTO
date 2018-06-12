@@ -318,173 +318,161 @@
   <LocaleResource Name="admin.configuration.emailaccounts.updated">
     <Value>电子邮件帐户已被成功更新。</Value>
   </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.displayorder">
+  <LocaleResource Name="admin.configuration.languages.fields.displayorder">
     <Value>显示顺序</Value>
   </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.displayorder.hint">
+  <LocaleResource Name="admin.configuration.languages.fields.displayorder.hint">
     <Value>该语言的显示顺序。 1表示列表的顶部。</Value>
   </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.languageculture">
+  <LocaleResource Name="admin.configuration.languages.fields.languageculture">
     <Value>语言文化</Value>
   </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.languageculture.hint">
+  <LocaleResource Name="admin.configuration.languages.fields.languageculture.hint">
     <Value>语言特定的文化代码。</Value>
   </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.name">
-    <Value>admin.configuration.language.fields.name</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.name.hint">
-    <Value>admin.configuration.language.fields.name.hint</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.published">
-    <Value>admin.configuration.language.fields.published</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.published.hint">
-    <Value>admin.configuration.language.fields.published.hint</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.rtl">
-    <Value>admin.configuration.language.fields.rtl</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.rtl.hint">
-    <Value>admin.configuration.language.fields.rtl.hint</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.uniqueseocode">
-    <Value>admin.configuration.language.fields.uniqueseocode</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.language.fields.uniqueseocode.hint">
-    <Value>admin.configuration.language.fields.uniqueseocode.hint</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages">
-    <Value>admin.configuration.languages</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages">
-    <Value>admin.configuration.languages</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.added">
-    <Value>admin.configuration.languages.added</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.addnew">
-    <Value>admin.configuration.languages.addnew</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.backtolist">
-    <Value>admin.configuration.languages.backtolist</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.deleted">
-    <Value>admin.configuration.languages.deleted</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.editlanguagedetails">
-    <Value>admin.configuration.languages.editlanguagedetails</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.export">
-    <Value>admin.configuration.languages.export</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.fields.displayorder">
-    <Value>admin.configuration.languages.fields.displayorder</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.fields.flagimage">
-    <Value>admin.configuration.languages.fields.flagimage</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.fields.flagimagefilename">
-    <Value>admin.configuration.languages.fields.flagimagefilename</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.fields.flagimagefilename.hint">
-    <Value>admin.configuration.languages.fields.flagimagefilename.hint</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.languages.fields.languageculture">
-    <Value>admin.configuration.languages.fields.languageculture</Value>
-  </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.fields.name">
-    <Value>admin.configuration.languages.fields.name</Value>
+    <Value>名称</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.name.hint">
+    <Value>语言的名称。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.name.required">
+    <Value>请提供语言名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.fields.published">
-    <Value>admin.configuration.languages.fields.published</Value>
+    <Value>已发布</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.published.hint">
+    <Value>确定此语言是否已发布，因此可由访问者选择。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.rtl">
+    <Value>从右到左</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.rtl.hint">
+    <Value>检查以启用对该语言从右到左支持。活动主题应支持RTL（具有适当的CSS样式文件）。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.uniqueseocode">
+    <Value>唯一SEO代码</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.uniqueseocode.hint">
+    <Value>独特的两个字母搜索引擎优化代码。它用于生成URL，比如当你有不止一种发表的语言时，"http://www.yourblog.com/cn/"搜索引擎优化友好的URL与多种语言的选择也应启用。</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Languages.Fields.UniqueSeoCode.Length">
+    <Value>两个字母的SEO代码应该是2个字符长度。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages">
+    <Value>语言</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.added">
+    <Value>新语言已成功添加。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.addnew">
+    <Value>添加一种新语言</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.backtolist">
+    <Value>返回语言列表</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.deleted">
+    <Value>该语言已被成功删除。</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.editlanguagedetails">
+    <Value>编辑语言详细</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.export">
+    <Value>导出资源</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.displayorder">
+    <Value>显示顺序</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.flagimage">
+    <Value>旗帜图像</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.flagimagefilename">
+    <Value>旗帜图像文件名</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.languages.fields.flagimagefilename.hint">
+    <Value>标志图像文件名称。 图像应该保存到\images\flags\目录中。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.import">
-    <Value>admin.configuration.languages.import</Value>
+    <Value>导入资源</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Languages.Imported">
+    <Value>资源已被导入。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.info">
-    <Value>admin.configuration.languages.info</Value>
+    <Value>信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources">
-    <Value>admin.configuration.languages.resources</Value>
+    <Value>语言资源</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.fields.name">
-    <Value>admin.configuration.languages.resources.fields.name</Value>
+    <Value>资源名称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.fields.name.required">
-    <Value>admin.configuration.languages.resources.fields.name.required</Value>
+    <Value>请提供资源名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.fields.value">
-    <Value>admin.configuration.languages.resources.fields.value</Value>
+    <Value>值</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.fields.value.required">
-    <Value>admin.configuration.languages.resources.fields.value.required</Value>
+    <Value>请提供资源值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.savebeforeedit">
-    <Value>admin.configuration.languages.resources.savebeforeedit</Value>
+    <Value>您需要保存语言，才能创建或编辑该语言的资源。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.searchresourcename">
-    <Value>admin.configuration.languages.resources.searchresourcename</Value>
+    <Value>资源名称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.searchresourcename.hint">
-    <Value>admin.configuration.languages.resources.searchresourcename.hint</Value>
+    <Value>通过特定的资源名称搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.searchresourcevalue">
-    <Value>admin.configuration.languages.resources.searchresourcevalue</Value>
+    <Value>值</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.resources.searchresourcevalue.hint">
-    <Value>admin.configuration.languages.resources.searchresourcevalue.hint</Value>
+    <Value>通过特定的资源值搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.updated">
-    <Value>admin.configuration.languages.updated</Value>
+    <Value>该语言已被成功更新。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.xmlfile">
-    <Value>admin.configuration.languages.xmlfile</Value>
+    <Value>XML文件</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.xmlfile.note1">
-    <Value>admin.configuration.languages.xmlfile.note1</Value>
+    <Value>注：可能需要几分钟。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.xmlfile.note2">
-    <Value>admin.configuration.languages.xmlfile.note2</Value>
+    <Value>注意：不要点击两次。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings">
-    <Value>admin.configuration.settings</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.settings">
-    <Value>admin.configuration.settings</Value>
+    <Value>设置</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings">
-    <Value>admin.configuration.settings.allsettings</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.settings.allsettings">
-    <Value>admin.configuration.settings.allsettings</Value>
+    <Value>所有设置（高级）</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings.fields.name">
-    <Value>admin.configuration.settings.allsettings.fields.name</Value>
+    <Value>设定名称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings.fields.name.required">
-    <Value>admin.configuration.settings.allsettings.fields.name.required</Value>
+    <Value>请提供设定名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings.fields.value">
-    <Value>admin.configuration.settings.allsettings.fields.value</Value>
+    <Value>值</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingname">
-    <Value>admin.configuration.settings.allsettings.searchsettingname</Value>
+    <Value>名称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingname.hint">
-    <Value>admin.configuration.settings.allsettings.searchsettingname.hint</Value>
+    <Value>按特定的设定名称搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingvalue">
-    <Value>admin.configuration.settings.allsettings.searchsettingvalue</Value>
+    <Value>值</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.allsettings.searchsettingvalue.hint">
-    <Value>admin.configuration.settings.allsettings.searchsettingvalue.hint</Value>
+    <Value>按特定的设定值搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog">
-    <Value>admin.configuration.settings.blog</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.settings.blog">
-    <Value>admin.configuration.settings.blog</Value>
+    <Value>博客设置</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstodeletecomments">
     <Value>admin.configuration.settings.blog.allowcustomerstodeletecomments</Value>
@@ -538,67 +526,64 @@
     <Value>admin.configuration.settings.blog.richeditorallowjavascript.hint</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser">
-    <Value>admin.configuration.settings.customeruser</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.configuration.settings.customeruser">
-    <Value>admin.configuration.settings.customeruser</Value>
+    <Value>用户设置</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.acceptprivacypolicyenabled">
-    <Value>admin.configuration.settings.customeruser.acceptprivacypolicyenabled</Value>
+    <Value>启用“接受隐私策略”选项</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.acceptprivacypolicyenabled.hint">
-    <Value>admin.configuration.settings.customeruser.acceptprivacypolicyenabled.hint</Value>
+    <Value>要求用户在注册过程中接受隐私政策。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstosettimezone">
-    <Value>admin.configuration.settings.customeruser.allowcustomerstosettimezone</Value>
+    <Value>允许用户选择时区</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstosettimezone.hint">
-    <Value>admin.configuration.settings.customeruser.allowcustomerstosettimezone.hint</Value>
+    <Value>检查允许用户选择时区。如果选中，则可以在公共页面上选择时区。如果不是，则将使用默认时区。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstouploadavatars">
-    <Value>admin.configuration.settings.customeruser.allowcustomerstouploadavatars</Value>
+    <Value>允许用户上传头像</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowcustomerstouploadavatars.hint">
-    <Value>admin.configuration.settings.customeruser.allowcustomerstouploadavatars.hint</Value>
+    <Value>指示是否允许用户上传头像的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowuserstochangeusernames">
-    <Value>admin.configuration.settings.customeruser.allowuserstochangeusernames</Value>
+    <Value>允许用户更改他们的用户名</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowuserstochangeusernames.hint">
-    <Value>admin.configuration.settings.customeruser.allowuserstochangeusernames.hint</Value>
+    <Value>指示是否允许客户更改用户名的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowviewingprofiles">
-    <Value>admin.configuration.settings.customeruser.allowviewingprofiles</Value>
+    <Value>允许用户查看其它用户资料</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.allowviewingprofiles.hint">
-    <Value>admin.configuration.settings.customeruser.allowviewingprofiles.hint</Value>
+    <Value>指示是否允许查看用户资料信息的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.account">
-    <Value>admin.configuration.settings.customeruser.blocktitle.account</Value>
+    <Value>账户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.common">
-    <Value>admin.configuration.settings.customeruser.blocktitle.common</Value>
+    <Value>常用</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.defaultfields">
-    <Value>admin.configuration.settings.customeruser.blocktitle.defaultfields</Value>
+    <Value>默认字段</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.externalauthentication">
-    <Value>admin.configuration.settings.customeruser.blocktitle.externalauthentication</Value>
+    <Value>外部认证</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.password">
-    <Value>admin.configuration.settings.customeruser.blocktitle.password</Value>
+    <Value>密码和安全</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.profile">
-    <Value>admin.configuration.settings.customeruser.blocktitle.profile</Value>
+    <Value>资料</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.blocktitle.timezone">
-    <Value>admin.configuration.settings.customeruser.blocktitle.timezone</Value>
+    <Value>时区</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.cityenabled">
-    <Value>admin.configuration.settings.customeruser.cityenabled</Value>
+    <Value>启用“城市”字段</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.cityenabled.hint">
-    <Value>admin.configuration.settings.customeruser.cityenabled.hint</Value>
+    <Value>设置“城市”字段是否已启用。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.cityrequired">
     <Value>admin.configuration.settings.customeruser.cityrequired</Value>
