@@ -586,7 +586,7 @@
     <Value>设置“城市”字段是否已启用。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.cityrequired">
-    <Value>admin.configuration.settings.customeruser.cityrequired</Value>
+    <Value>“城市”字段是必填的。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.cityrequired.hint">
     <Value>admin.configuration.settings.customeruser.cityrequired.hint</Value>
