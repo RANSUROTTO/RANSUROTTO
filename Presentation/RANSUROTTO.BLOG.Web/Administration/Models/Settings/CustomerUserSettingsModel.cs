@@ -127,10 +127,10 @@ namespace RANSUROTTO.BLOG.Admin.Models.Settings
             [ResourceDisplayName("Admin.Configuration.Settings.CustomerUser.AllowCustomersToSetTimeZone")]
             public bool AllowCustomersToSetTimeZone { get; set; }
 
-            [ResourceDisplayName("Admin.Configuration.Settings.CustomerUser.DefaultStoreTimeZone")]
+            [ResourceDisplayName("Admin.Configuration.Settings.CustomerUser.DefaultTimeZoneId")]
             public string DefaultTimeZoneId { get; set; }
 
-            [ResourceDisplayName("Admin.Configuration.Settings.CustomerUser.DefaultStoreTimeZone")]
+            [ResourceDisplayName("Admin.Configuration.Settings.CustomerUser.DefaultTimeZone")]
             public IList<SelectListItem> AvailableTimeZones { get; set; }
         }
 
