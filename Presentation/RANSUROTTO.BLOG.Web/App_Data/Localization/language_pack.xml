@@ -475,55 +475,58 @@
     <Value>博客设置</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstodeletecomments">
-    <Value>admin.configuration.settings.blog.allowcustomerstodeletecomments</Value>
+    <Value>允许删除评论</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstodeletecomments.hint">
-    <Value>admin.configuration.settings.blog.allowcustomerstodeletecomments.hint</Value>
+    <Value>指示用户是否可以删除自己的评论的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstoeditcomments">
-    <Value>admin.configuration.settings.blog.allowcustomerstoeditcomments</Value>
+    <Value>允许编辑评论</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.allowcustomerstoeditcomments.hint">
-    <Value>admin.configuration.settings.blog.allowcustomerstoeditcomments.hint</Value>
+    <Value>指示用户是否可以编辑自己的评论的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.allowgueststocreatecomments">
-    <Value>admin.configuration.settings.blog.allowgueststocreatecomments</Value>
+    <Value>允许游客评论</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.allowgueststocreatecomments.hint">
-    <Value>admin.configuration.settings.blog.allowgueststocreatecomments.hint</Value>
+    <Value>指示是否允许游客发表评论的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.blogcommentsmustbeapproved">
-    <Value>admin.configuration.settings.blog.blogcommentsmustbeapproved</Value>
+    <Value>评论需要得到审批</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.blogcommentsmustbeapproved.hint">
-    <Value>admin.configuration.settings.blog.blogcommentsmustbeapproved.hint</Value>
+    <Value>指示博客评论是否必须获得管理员的批准的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.maxnumberoftags">
-    <Value>admin.configuration.settings.blog.maxnumberoftags</Value>
+    <Value>最多标签数</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.configuration.settings.blog.maxnumberoftags">
+    <Value>指示博客文章可以设置最多标签数量的值，输入0为不限制。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.notifyaboutnewnewscomments">
-    <Value>admin.configuration.settings.blog.notifyaboutnewnewscomments</Value>
+    <Value>有新评论通知</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.notifyaboutnewnewscomments.hint">
-    <Value>admin.configuration.settings.blog.notifyaboutnewnewscomments.hint</Value>
+    <Value>指示有新评论发出时是否通知管理员的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.relativedatetimeformattingenabled">
-    <Value>admin.configuration.settings.blog.relativedatetimeformattingenabled</Value>
+    <Value>启用相对日期时间格式</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.relativedatetimeformattingenabled.hint">
-    <Value>admin.configuration.settings.blog.relativedatetimeformattingenabled.hint</Value>
+    <Value>选中以启用相对日期时间格式（例如2个小时前，一个月前）。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.richeditoradditionalsettings">
-    <Value>admin.configuration.settings.blog.richeditoradditionalsettings</Value>
+    <Value>额外富文本编辑器设置</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.richeditoradditionalsettings.hint">
-    <Value>admin.configuration.settings.blog.richeditoradditionalsettings.hint</Value>
+    <Value>额外富文本编辑器设置。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.richeditorallowjavascript">
-    <Value>admin.configuration.settings.blog.richeditorallowjavascript</Value>
+    <Value>允许富文本编辑器包含js</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.blog.richeditorallowjavascript.hint">
-    <Value>admin.configuration.settings.blog.richeditorallowjavascript.hint</Value>
+    <Value>启用以允许富文本编辑器内容加入Javascript脚本内容，这将不安全。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser">
     <Value>用户设置</Value>
@@ -616,13 +619,13 @@
     <Value>设置“国家”字段是否是必填的。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.customerauthenticationtype">
-    <Value>admin.configuration.settings.customeruser.customerauthenticationtype</Value>
+    <Value>用户验证（登录）方式</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.customerauthenticationtype.hint">
-    <Value>admin.configuration.settings.customeruser.customerauthenticationtype.hint</Value>
+    <Value>选择用户可用的身份验证（登录）的方式。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.customerformfields">
-    <Value>admin.configuration.settings.customeruser.customerformfields</Value>
+    <Value>用户表单字段</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.customernameformat">
     <Value>用户名称格式</Value>
@@ -931,28 +934,28 @@
     <Value>启用后，您的网址将为http://www.yourblog.com/cn/或http://www.yourblog.com/en/（适合搜索引擎优化）。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonloginpage">
-    <Value>admin.configuration.settings.generalcommon.showonloginpage</Value>
+    <Value>登录页面上显示</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonloginpage.hint">
-    <Value>admin.configuration.settings.generalcommon.showonloginpage.hint</Value>
+    <Value>选中以在登录页面上将显示验证码。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogcommentpage">
-    <Value>admin.configuration.settings.generalcommon.showonpublishblogcommentpage</Value>
+    <Value>发布评论页面上显示</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogcommentpage.hint">
-    <Value>admin.configuration.settings.generalcommon.showonpublishblogcommentpage.hint</Value>
+    <Value>选中以在发布评论页面上将显示验证码。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogpostpage">
-    <Value>admin.configuration.settings.generalcommon.showonpublishblogpostpage</Value>
+    <Value>发布文章页面上显示</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonpublishblogpostpage.hint">
-    <Value>admin.configuration.settings.generalcommon.showonpublishblogpostpage.hint</Value>
+    <Value>选中以在发布博客文章页面上将显示验证码。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonregistrationpage">
-    <Value>admin.configuration.settings.generalcommon.showonregistrationpage</Value>
+    <Value>注册页面上显示</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.showonregistrationpage.hint">
-    <Value>admin.configuration.settings.generalcommon.showonregistrationpage.hint</Value>
+    <Value>选中以在注册页面上将显示验证码。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.generalcommon.sitemapenabled">
     <Value>启用站点地图</Value>
@@ -1180,945 +1183,894 @@
     <Value>文章作者。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availableenddateutc">
-    <Value>admin.contentmanagement.blog.posts.fields.availableenddateutc</Value>
+    <Value>有效结束时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availableenddateutc.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.availableenddateutc.hint</Value>
+    <Value>该文章的可用的结束时间，不设置将不对其限制有效结束期。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availablestartdateutc">
-    <Value>admin.contentmanagement.blog.posts.fields.availablestartdateutc</Value>
+    <Value>有效开始时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.availablestartdateutc.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.availablestartdateutc.hint</Value>
+    <Value>该文章的可用的开始时间，不设置将不对其限制发布时间。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.blogposttags">
-    <Value>admin.contentmanagement.blog.posts.fields.blogposttags</Value>
+    <Value>文章标签</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.blogposttags.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.blogposttags.hint</Value>
+    <Value>博客文章标签是文章标识的关键字。 与特定标签相关联的文章越多，它将在标签云上显示的越大。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.blogposttags.placeholder">
-    <Value>admin.contentmanagement.blog.posts.fields.blogposttags.placeholder</Value>
+    <Value>输入标签...</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.body">
-    <Value>admin.contentmanagement.blog.posts.fields.body</Value>
+    <Value>内容</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.body.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.body.hint</Value>
+    <Value>该博客文章的正文。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.body.required">
-    <Value>admin.contentmanagement.blog.posts.fields.body.required</Value>
+    <Value>文章内容是必须的。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.bodyoverview">
-    <Value>admin.contentmanagement.blog.posts.fields.bodyoverview</Value>
+    <Value>正文概述</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.bodyoverview.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.bodyoverview.hint</Value>
+    <Value>博客帖子的简要概述。如果规定， 它将使用并替代在主博客页中的完整正文。支持HTML。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.categories">
-    <Value>admin.contentmanagement.blog.posts.fields.categories</Value>
+    <Value>分类</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.categories.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.categories.hint</Value>
+    <Value>选择类别。 您可以通过选择[内容管理>博客>类目]来管理文章类目。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.createdon">
-    <Value>admin.contentmanagement.blog.posts.fields.createdon</Value>
+    <Value>创建时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.createdon.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.createdon.hint</Value>
+    <Value>该文章创建的日期时间。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.deleted">
-    <Value>admin.contentmanagement.blog.posts.fields.deleted</Value>
+    <Value>已删除</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.deleted.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.deleted.hint</Value>
+    <Value>该文章已被主人或管理员删除。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.formatid">
-    <Value>admin.contentmanagement.blog.posts.fields.formatid</Value>
+    <Value>文章格式</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metadescription">
-    <Value>admin.contentmanagement.blog.posts.fields.metadescription</Value>
+    <Value>Meta描述</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metadescription.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.metadescription.hint</Value>
+    <Value>要添加到文章页标题中的Meta描述。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metakeywords">
-    <Value>admin.contentmanagement.blog.posts.fields.metakeywords</Value>
+    <Value>Meta关键词</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metakeywords.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.metakeywords.hint</Value>
+    <Value>要添加到文章页标题中的Meta关键词。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metatitle">
-    <Value>admin.contentmanagement.blog.posts.fields.metatitle</Value>
+    <Value>Meta标题</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.metatitle.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.metatitle.hint</Value>
+    <Value>重写页面标题。默认值是文章的标题。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.published">
-    <Value>admin.contentmanagement.blog.posts.fields.published</Value>
+    <Value>已发布</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.tags.nodots">
-    <Value>admin.contentmanagement.blog.posts.fields.tags.nodots</Value>
+    <Value>标签不支持点。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.title">
-    <Value>admin.contentmanagement.blog.posts.fields.title</Value>
+    <Value>文章标题</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.title.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.title.hint</Value>
+    <Value>该博客文章的标题。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.title.required">
-    <Value>admin.contentmanagement.blog.posts.fields.title.required</Value>
+    <Value>文章标题是必须的。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.updatedon">
-    <Value>admin.contentmanagement.blog.posts.fields.updatedon</Value>
+    <Value>最后更新时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.fields.updatedon.hint">
-    <Value>admin.contentmanagement.blog.posts.fields.updatedon.hint</Value>
+    <Value>该文章实体最后编辑的日期时间。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.info">
-    <Value>admin.contentmanagement.blog.posts.info</Value>
+    <Value>信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchcategory">
-    <Value>admin.contentmanagement.blog.posts.list.searchcategory</Value>
+    <Value>类目</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchcategory.hint">
-    <Value>admin.contentmanagement.blog.posts.list.searchcategory.hint</Value>
+    <Value>只从特定类别加载文章。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchincludesubcategories">
-    <Value>admin.contentmanagement.blog.posts.list.searchincludesubcategories</Value>
+    <Value>检索子类目</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchincludesubcategories.hint">
-    <Value>admin.contentmanagement.blog.posts.list.searchincludesubcategories.hint</Value>
+    <Value>检查以同时检索其子类别。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchpublished">
-    <Value>admin.contentmanagement.blog.posts.list.searchpublished</Value>
+    <Value>发布状态</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchpublished.hint">
-    <Value>admin.contentmanagement.blog.posts.list.searchpublished.hint</Value>
+    <Value>通过特定的有效状态进行搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchtitle">
-    <Value>admin.contentmanagement.blog.posts.list.searchtitle</Value>
+    <Value>文章标题</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.list.searchtitle.hint">
-    <Value>admin.contentmanagement.blog.posts.list.searchtitle.hint</Value>
+    <Value>通过特定的标题进行搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.posts.updated">
-    <Value>admin.contentmanagement.blog.posts.updated</Value>
+    <Value>博客文章已更新成功。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.idea">
-    <Value>admin.contentmanagement.idea</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.contentmanagement.idea">
-    <Value>admin.contentmanagement.idea</Value>
+    <Value>想法</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers">
-    <Value>admin.customers</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.customers">
-    <Value>admin.customers</Value>
+    <Value>用户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles">
-    <Value>admin.customers.customerroles</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.customers.customerroles">
-    <Value>admin.customers.customerroles</Value>
+    <Value>用户角色</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.added">
-    <Value>admin.customers.customerroles.added</Value>
+    <Value>新用户角色已成功添加。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.addnew">
-    <Value>admin.customers.customerroles.addnew</Value>
+    <Value>添加一个新的用户角色</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.backtolist">
-    <Value>admin.customers.customerroles.backtolist</Value>
+    <Value>返回用户角色列表</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.deleted">
-    <Value>admin.customers.customerroles.deleted</Value>
+    <Value>用户角色已被成功删除。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.editcustomerroledetails">
-    <Value>admin.customers.customerroles.editcustomerroledetails</Value>
+    <Value>编辑用户角色详细信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.active">
-    <Value>admin.customers.customerroles.fields.active</Value>
+    <Value>有效</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.active.hint">
-    <Value>admin.customers.customerroles.fields.active.hint</Value>
+    <Value>检查此角色是否激活。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.issystemrole">
-    <Value>admin.customers.customerroles.fields.issystemrole</Value>
+    <Value>系统角色</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.issystemrole.hint">
-    <Value>admin.customers.customerroles.fields.issystemrole.hint</Value>
+    <Value>指示它是否是系统角色的值。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.name">
-    <Value>admin.customers.customerroles.fields.name</Value>
+    <Value>名称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.name.hint">
-    <Value>admin.customers.customerroles.fields.name.hint</Value>
+    <Value>用户角色的名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.name.required">
-    <Value>admin.customers.customerroles.fields.name.required</Value>
+    <Value>请提供角色名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.systemname">
-    <Value>admin.customers.customerroles.fields.systemname</Value>
+    <Value>系统名称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.systemname.hint">
-    <Value>admin.customers.customerroles.fields.systemname.hint</Value>
+    <Value>用户角色的系统名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.fields.systemname.required">
-    <Value>admin.customers.customerroles.fields.systemname.required</Value>
+    <Value>请提供系统名称。</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Customers.CustomerRoles.Fields.SystemName.CantEditSystem">
+    <Value>无法编辑系统用户角色的系统名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customerroles.updated">
-    <Value>admin.customers.customerroles.updated</Value>
+    <Value>用户角色已被成功更新。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers">
-    <Value>admin.customers.customers</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.customers.customers">
-    <Value>admin.customers.customers</Value>
+    <Value>用户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.activitylog">
-    <Value>admin.customers.customers.activitylog</Value>
+    <Value>活动日志</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.activitylog.activitylogtype">
-    <Value>admin.customers.customers.activitylog.activitylogtype</Value>
+    <Value>活动日志类型</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.activitylog.comment">
-    <Value>admin.customers.customers.activitylog.comment</Value>
+    <Value>备注</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.activitylog.createdon">
-    <Value>admin.customers.customers.activitylog.createdon</Value>
+    <Value>创建时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.activitylog.ipaddress">
-    <Value>admin.customers.customers.activitylog.ipaddress</Value>
+    <Value>IP地址</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.activitylog.ipaddress.hint">
-    <Value>admin.customers.customers.activitylog.ipaddress.hint</Value>
+    <Value>用于搜索的IP地址。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.added">
-    <Value>admin.customers.customers.added</Value>
+    <Value>新用户已成功添加。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.addnew">
-    <Value>admin.customers.customers.addnew</Value>
+    <Value>添加一个新用户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.backtolist">
-    <Value>admin.customers.customers.backtolist</Value>
+    <Value>返回用户列表</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.blogpost">
-    <Value>admin.customers.customers.blogpost</Value>
+    <Value>博客文章</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.blogpost.createdon">
-    <Value>admin.customers.customers.blogpost.createdon</Value>
+    <Value>创建时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.blogpost.deleted">
-    <Value>admin.customers.customers.blogpost.deleted</Value>
+    <Value>已删除</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.blogpost.published">
-    <Value>admin.customers.customers.blogpost.published</Value>
+    <Value>已发布</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.blogpost.title">
-    <Value>admin.customers.customers.blogpost.title</Value>
+    <Value>文章标题</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.blogpost.updateon">
-    <Value>admin.customers.customers.blogpost.updateon</Value>
+    <Value>最后更新时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.deleted">
-    <Value>admin.customers.customers.deleted</Value>
+    <Value>已删除</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.editcustomerdetails">
-    <Value>admin.customers.customers.editcustomerdetails</Value>
+    <Value>编辑用户详细信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.active">
-    <Value>admin.customers.customers.fields.active</Value>
+    <Value>有效</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.active.hint">
-    <Value>admin.customers.customers.fields.active.hint</Value>
+    <Value>用户帐户是否有效？若要禁用/暂停客户的帐户，请取消选中此项。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.admincomment">
-    <Value>admin.customers.customers.fields.admincomment</Value>
+    <Value>管理员备注</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.admincomment.hint">
-    <Value>admin.customers.customers.fields.admincomment.hint</Value>
+    <Value>管理员备注。供内部使用。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.company">
-    <Value>admin.customers.customers.fields.company</Value>
+    <Value>公司</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.company.hint">
-    <Value>admin.customers.customers.fields.company.hint</Value>
+    <Value>公司名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.createdon">
-    <Value>admin.customers.customers.fields.createdon</Value>
+    <Value>创建时间</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.createdon.hint">
+    <Value>创建该用户时记录的日期。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.customerroles">
-    <Value>admin.customers.customers.fields.customerroles</Value>
+    <Value>用户角色</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.customerroles.hint">
-    <Value>admin.customers.customers.fields.customerroles.hint</Value>
+    <Value>选择此用户的用户角色。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.dateofbirth">
-    <Value>admin.customers.customers.fields.dateofbirth</Value>
+    <Value>出生日期</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.dateofbirth.hint">
-    <Value>admin.customers.customers.fields.dateofbirth.hint</Value>
+    <Value>用户的出生日期。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.email">
-    <Value>admin.customers.customers.fields.email</Value>
+    <Value>电子邮件</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.email.hint">
-    <Value>admin.customers.customers.fields.email.hint</Value>
+    <Value>用户的电子邮件。</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Customers.Customers.Fields.Email.Required">
+    <Value>请提供电子邮件。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.gender">
-    <Value>admin.customers.customers.fields.gender</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.customers.customers.fields.gender.female">
-    <Value>admin.customers.customers.fields.gender.female</Value>
+    <Value>性别</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.gender.hint">
-    <Value>admin.customers.customers.fields.gender.hint</Value>
+    <Value>用户的性别</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.gender.female">
+    <Value>女性</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.gender.male">
-    <Value>admin.customers.customers.fields.gender.male</Value>
+    <Value>男性</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.ipaddress">
-    <Value>admin.customers.customers.fields.ipaddress</Value>
+    <Value>IP地址</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.ipaddress.hint">
-    <Value>admin.customers.customers.fields.ipaddress.hint</Value>
+    <Value>最后活动的IP地址。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.lastactivitydate">
-    <Value>admin.customers.customers.fields.lastactivitydate</Value>
+    <Value>最后活动时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.lastactivitydate.hint">
-    <Value>admin.customers.customers.fields.lastactivitydate.hint</Value>
+    <Value>最后一次活动时间。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.lastvisitedpage">
-    <Value>admin.customers.customers.fields.lastvisitedpage</Value>
+    <Value>最后访问页面</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Customers.Customers.Fields.LastVisitedPage.Hint">
+    <Value>最后访问页面（公共区域）。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.name">
-    <Value>admin.customers.customers.fields.name</Value>
+    <Value>昵称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.name.hint">
-    <Value>admin.customers.customers.fields.name.hint</Value>
+    <Value>用户的昵称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.password">
-    <Value>admin.customers.customers.fields.password</Value>
+    <Value>密码</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.password.change">
-    <Value>admin.customers.customers.fields.password.change</Value>
+    <Value>更改密码</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.password.hint">
-    <Value>admin.customers.customers.fields.password.hint</Value>
+    <Value>用户的密码。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.phone">
-    <Value>admin.customers.customers.fields.phone</Value>
+    <Value>电话</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.phone.hint">
-    <Value>admin.customers.customers.fields.phone.hint</Value>
+    <Value>用户的电话号码。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.timezoneid">
-    <Value>admin.customers.customers.fields.timezoneid</Value>
+    <Value>时区</Value>
+  </LocaleResource>
+  <LocaleResource Name="admin.customers.customers.fields.timezoneid.hint">
+    <Value>用户的时区。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.username">
-    <Value>admin.customers.customers.fields.username</Value>
+    <Value>用户名</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.fields.username.hint">
-    <Value>admin.customers.customers.fields.username.hint</Value>
+    <Value>用户的用户名。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.guestsandregisteredroleserror">
-    <Value>admin.customers.customers.guestsandregisteredroleserror</Value>
+    <Value>用户不能同时处于“游客”和“注册用户”的客户角色中。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.info">
-    <Value>admin.customers.customers.info</Value>
+    <Value>信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.customerroles">
-    <Value>admin.customers.customers.list.customerroles</Value>
+    <Value>用户角色</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.customerroles.hint">
-    <Value>admin.customers.customers.list.customerroles.hint</Value>
+    <Value>通过用户角色过滤。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchcompany">
-    <Value>admin.customers.customers.list.searchcompany</Value>
+    <Value>公司</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchcompany.hint">
-    <Value>admin.customers.customers.list.searchcompany.hint</Value>
+    <Value>通过公司搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchdateofbirth">
-    <Value>admin.customers.customers.list.searchdateofbirth</Value>
+    <Value>生日</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchdateofbirth.day">
-    <Value>admin.customers.customers.list.searchdateofbirth.day</Value>
+    <Value>日</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchdateofbirth.hint">
-    <Value>admin.customers.customers.list.searchdateofbirth.hint</Value>
+    <Value>按出生日期过滤。不选择任何值将加载所有记录。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchdateofbirth.month">
-    <Value>admin.customers.customers.list.searchdateofbirth.month</Value>
+    <Value>月</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchemail">
-    <Value>admin.customers.customers.list.searchemail</Value>
+    <Value>电子邮箱</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchemail.hint">
-    <Value>admin.customers.customers.list.searchemail.hint</Value>
+    <Value>通过一个特定的电子邮件搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchipaddress">
-    <Value>admin.customers.customers.list.searchipaddress</Value>
+    <Value>IP地址</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchipaddress.hint">
-    <Value>admin.customers.customers.list.searchipaddress.hint</Value>
+    <Value>通过IP地址搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchname">
-    <Value>admin.customers.customers.list.searchname</Value>
+    <Value>昵称</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchname.hint">
-    <Value>admin.customers.customers.list.searchname.hint</Value>
+    <Value>通过昵称搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchphone">
-    <Value>admin.customers.customers.list.searchphone</Value>
+    <Value>电话</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchphone.hint">
-    <Value>admin.customers.customers.list.searchphone.hint</Value>
+    <Value>通过电话号码搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchusername">
-    <Value>admin.customers.customers.list.searchusername</Value>
+    <Value>用户名</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.list.searchusername.hint">
-    <Value>admin.customers.customers.list.searchusername.hint</Value>
+    <Value>通过一个特定的用户名搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.passwordchanged">
-    <Value>admin.customers.customers.passwordchanged</Value>
+    <Value>密码已成功更改。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.sendemail">
-    <Value>admin.customers.customers.sendemail</Value>
+    <Value>发送电子邮件</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.sendpm">
-    <Value>admin.customers.customers.sendpm</Value>
+    <Value>发送私密消息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.customers.updated">
-    <Value>admin.customers.customers.updated</Value>
+    <Value>用户已被成功更新。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.guest">
-    <Value>admin.customers.guest</Value>
+    <Value>游客</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.onlinecustomers">
-    <Value>admin.customers.onlinecustomers</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.customers.onlinecustomers">
-    <Value>admin.customers.onlinecustomers</Value>
+    <Value>在线用户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.onlinecustomers.fields.customerinfo">
-    <Value>admin.customers.onlinecustomers.fields.customerinfo</Value>
+    <Value>用户信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.onlinecustomers.fields.ipaddress">
-    <Value>admin.customers.onlinecustomers.fields.ipaddress</Value>
+    <Value>IP地址</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.onlinecustomers.fields.lastactivitydate">
-    <Value>admin.customers.onlinecustomers.fields.lastactivitydate</Value>
+    <Value>最后活动时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.onlinecustomers.fields.lastvisitedpage">
-    <Value>admin.customers.onlinecustomers.fields.lastvisitedpage</Value>
+    <Value>最后访问页面</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.onlinecustomers.fields.location">
-    <Value>admin.customers.onlinecustomers.fields.location</Value>
+    <Value>地理位置</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports">
-    <Value>admin.customers.reports</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.customers.reports">
-    <Value>admin.customers.reports</Value>
+    <Value>用户报表</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports.registeredcustomers">
-    <Value>admin.customers.reports.registeredcustomers</Value>
+    <Value>注册用户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.customers">
-    <Value>admin.customers.reports.registeredcustomers.fields.customers</Value>
+    <Value>数量</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period">
-    <Value>admin.customers.reports.registeredcustomers.fields.period</Value>
+    <Value>时期</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.14days">
-    <Value>admin.customers.reports.registeredcustomers.fields.period.14days</Value>
+    <Value>最近14天</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.7days">
-    <Value>admin.customers.reports.registeredcustomers.fields.period.7days</Value>
+    <Value>最近7天</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.month">
-    <Value>admin.customers.reports.registeredcustomers.fields.period.month</Value>
+    <Value>最近一个月</Value>
   </LocaleResource>
   <LocaleResource Name="admin.customers.reports.registeredcustomers.fields.period.year">
-    <Value>admin.customers.reports.registeredcustomers.fields.period.year</Value>
+    <Value>最近一年</Value>
   </LocaleResource>
   <LocaleResource Name="admin.dashboard">
-    <Value>admin.dashboard</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.dashboard">
-    <Value>admin.dashboard</Value>
+    <Value>后台首页</Value>
   </LocaleResource>
   <LocaleResource Name="admin.header.clearcache">
-    <Value>admin.header.clearcache</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.header.clearcache">
-    <Value>admin.header.clearcache</Value>
+    <Value>清空缓存</Value>
   </LocaleResource>
   <LocaleResource Name="admin.header.logout">
-    <Value>admin.header.logout</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.header.logout">
-    <Value>admin.header.logout</Value>
+    <Value>退出登录</Value>
   </LocaleResource>
   <LocaleResource Name="admin.header.publicblog">
-    <Value>admin.header.publicblog</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.header.publicblog">
-    <Value>admin.header.publicblog</Value>
+    <Value>公共博客</Value>
   </LocaleResource>
   <LocaleResource Name="admin.header.restartapplication">
-    <Value>admin.header.restartapplication</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.header.restartapplication">
-    <Value>admin.header.restartapplication</Value>
+    <Value>重启应用程序</Value>
   </LocaleResource>
   <LocaleResource Name="admin.header.restartapplication.progress">
-    <Value>admin.header.restartapplication.progress</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.header.restartapplication.progress">
-    <Value>admin.header.restartapplication.progress</Value>
+    <Value>重新启动应用程序...</Value>
   </LocaleResource>
   <LocaleResource Name="admin.help">
-    <Value>admin.help</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.help">
-    <Value>admin.help</Value>
+    <Value>帮助</Value>
   </LocaleResource>
   <LocaleResource Name="admin.help.about">
-    <Value>admin.help.about</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.help.about">
-    <Value>admin.help.about</Value>
+    <Value>关于</Value>
   </LocaleResource>
   <LocaleResource Name="admin.home">
-    <Value>admin.home</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.home">
-    <Value>admin.home</Value>
+    <Value>家</Value>
   </LocaleResource>
   <LocaleResource Name="admin.menu.search">
-    <Value>admin.menu.search</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.menu.search">
-    <Value>admin.menu.search</Value>
+    <Value>搜索</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.all">
-    <Value>admin.pager.all</Value>
+    <Value>全部</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.display">
-    <Value>admin.pager.display</Value>
+    <Value>当前显示第 {0} 项至 {1} 项, 共 {2} 项</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.empty">
-    <Value>admin.pager.empty</Value>
+    <Value>没有数据可以显示 QwQ</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.first">
-    <Value>admin.pager.first</Value>
+    <Value>转到第一页</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.itemsperpage">
-    <Value>admin.pager.itemsperpage</Value>
+    <Value>每页显示条数</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.last">
-    <Value>admin.pager.last</Value>
+    <Value>转到最后一页</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.morepages">
-    <Value>admin.pager.morepages</Value>
+    <Value>更多</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.next">
-    <Value>admin.pager.next</Value>
+    <Value>下一页</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.of">
-    <Value>admin.pager.of</Value>
+    <Value>of {0}</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.page">
-    <Value>admin.pager.page</Value>
+    <Value>页</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.previous">
-    <Value>admin.pager.previous</Value>
+    <Value>上一页</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pager.refresh">
-    <Value>admin.pager.refresh</Value>
+    <Value>刷新</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pagetitle">
-    <Value>admin.pagetitle</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.pagetitle">
-    <Value>admin.pagetitle</Value>
+    <Value>RANSUROTTO.BLOG后台管理</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system">
-    <Value>admin.system</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.system">
-    <Value>admin.system</Value>
+    <Value>系统</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.activitylog.clearlog">
-    <Value>admin.system.activitylog.clearlog</Value>
+    <Value>清空活动日志</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log">
-    <Value>admin.system.log</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.system.log">
-    <Value>admin.system.log</Value>
+    <Value>日志</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.backtolist">
-    <Value>admin.system.log.backtolist</Value>
+    <Value>返回系统日志列表</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.cleared">
-    <Value>admin.system.log.cleared</Value>
+    <Value>日志已成功清空。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.clearlog">
-    <Value>admin.system.log.clearlog</Value>
+    <Value>清空日志</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.deleted">
-    <Value>admin.system.log.deleted</Value>
+    <Value>日志已被成功删除。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.deleteselected">
-    <Value>admin.system.log.deleteselected</Value>
+    <Value>删除选中项</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.createdon">
-    <Value>admin.system.log.fields.createdon</Value>
+    <Value>创建时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.customeremail">
-    <Value>admin.system.log.fields.customeremail</Value>
+    <Value>用户电子邮箱</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.customerid">
-    <Value>admin.system.log.fields.customerid</Value>
+    <Value>用户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.customerid.hint">
-    <Value>admin.system.log.fields.customerid.hint</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.system.log.fields.deleted">
-    <Value>admin.system.log.fields.deleted</Value>
+    <Value>引起异常的用户的名称。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.fullmessage">
-    <Value>admin.system.log.fields.fullmessage</Value>
+    <Value>完整信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.fullmessage.hint">
-    <Value>admin.system.log.fields.fullmessage.hint</Value>
+    <Value>日志条目的详细信息。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.ipaddress">
-    <Value>admin.system.log.fields.ipaddress</Value>
+    <Value>IP地址</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.ipaddress.hint">
-    <Value>admin.system.log.fields.ipaddress.hint</Value>
+    <Value>导致异常的机器的IP地址。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.loglevel">
-    <Value>admin.system.log.fields.loglevel</Value>
+    <Value>日志等级</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.loglevel.hint">
-    <Value>admin.system.log.fields.loglevel.hint</Value>
+    <Value>日志条目的级别。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.pageurl">
-    <Value>admin.system.log.fields.pageurl</Value>
+    <Value>页面路径</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.pageurl.hint">
-    <Value>admin.system.log.fields.pageurl.hint</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.system.log.fields.private">
-    <Value>admin.system.log.fields.private</Value>
+    <Value>引发异常的页面。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.referrerurl">
-    <Value>admin.system.log.fields.referrerurl</Value>
+    <Value>引用路径</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.referrerurl.hint">
-    <Value>admin.system.log.fields.referrerurl.hint</Value>
+    <Value>引用路径。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.shortmessage">
-    <Value>admin.system.log.fields.shortmessage</Value>
+    <Value>简短信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.fields.shortmessage.hint">
-    <Value>admin.system.log.fields.shortmessage.hint</Value>
+    <Value>日志条目的简短信息。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.createdonfrom">
-    <Value>admin.system.log.list.createdonfrom</Value>
+    <Value>开始时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.createdonfrom.hint">
-    <Value>admin.system.log.list.createdonfrom.hint</Value>
+    <Value>从创建开始时间搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.createdonto">
-    <Value>admin.system.log.list.createdonto</Value>
+    <Value>结束时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.createdonto.hint">
-    <Value>admin.system.log.list.createdonto.hint</Value>
+    <Value>从创建结束时间搜索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.loglevel">
-    <Value>admin.system.log.list.loglevel</Value>
+    <Value>日志等级</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.loglevel.hint">
-    <Value>admin.system.log.list.loglevel.hint</Value>
+    <Value>选择一个日志级别检索。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.message">
-    <Value>admin.system.log.list.message</Value>
+    <Value>信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.list.message.hint">
-    <Value>admin.system.log.list.message.hint</Value>
+    <Value>信息。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.view">
-    <Value>admin.system.log.view</Value>
+    <Value>查看</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.log.viewlog">
-    <Value>admin.system.log.viewlog</Value>
+    <Value>查看日志条目详情</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance">
-    <Value>admin.system.maintenance</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.system.maintenance">
-    <Value>admin.system.maintenance</Value>
+    <Value>维护</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.backupcreated">
-    <Value>admin.system.maintenance.backupdatabase.backupcreated</Value>
+    <Value>创建备份</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.backupdeleted">
-    <Value>admin.system.maintenance.backupdatabase.backupdeleted</Value>
+    <Value>删除备份文件“{0}”</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.backupnow">
-    <Value>admin.system.maintenance.backupdatabase.backupnow</Value>
+    <Value>现在备份</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.databasebackups">
-    <Value>admin.system.maintenance.backupdatabase.databasebackups</Value>
+    <Value>数据库备份</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.delete">
-    <Value>admin.system.maintenance.backupdatabase.delete</Value>
+    <Value>删除</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.download">
-    <Value>admin.system.maintenance.backupdatabase.download</Value>
+    <Value>下载</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.filename">
-    <Value>admin.system.maintenance.backupdatabase.filename</Value>
+    <Value>文件名</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.filesize">
-    <Value>admin.system.maintenance.backupdatabase.filesize</Value>
+    <Value>文件大小</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.progress">
-    <Value>admin.system.maintenance.backupdatabase.progress</Value>
+    <Value>处理数据库备份…</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.backupdatabase.restore">
-    <Value>admin.system.maintenance.backupdatabase.restore</Value>
+    <Value>恢复</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.enddate">
-    <Value>admin.system.maintenance.deleteexportedfiles.enddate</Value>
+    <Value>结束时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.enddate.hint">
-    <Value>admin.system.maintenance.deleteexportedfiles.enddate.hint</Value>
+    <Value>搜索结束日期前的项。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.startdate">
-    <Value>admin.system.maintenance.deleteexportedfiles.startdate</Value>
+    <Value>开始时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteexportedfiles.startdate.hint">
-    <Value>admin.system.maintenance.deleteexportedfiles.startdate.hint</Value>
+    <Value>搜索开始日期前的项。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteexprotedfiles">
-    <Value>admin.system.maintenance.deleteexprotedfiles</Value>
+    <Value>删除导出文件</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteguests">
-    <Value>admin.system.maintenance.deleteguests</Value>
+    <Value>删除游客用户</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteguests.enddate">
-    <Value>admin.system.maintenance.deleteguests.enddate</Value>
+    <Value>结束时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteguests.enddate.hint">
-    <Value>admin.system.maintenance.deleteguests.enddate.hint</Value>
+    <Value>搜索结束日期前的项。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteguests.onlywithoutaction">
-    <Value>admin.system.maintenance.deleteguests.onlywithoutaction</Value>
+    <Value>仅没有活动的游客</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteguests.onlywithoutaction.hint">
-    <Value>admin.system.maintenance.deleteguests.onlywithoutaction.hint</Value>
+    <Value>只删除在系统中没有留下活跃数据的用户。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteguests.startdate">
-    <Value>admin.system.maintenance.deleteguests.startdate</Value>
+    <Value>开始时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.maintenance.deleteguests.startdate.hint">
-    <Value>admin.system.maintenance.deleteguests.startdate.hint</Value>
+    <Value>搜索开始日期前的项。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks">
-    <Value>admin.system.scheduletasks</Value>
-  </LocaleResource>
-  <LocaleResource Name="admin.system.scheduletasks">
-    <Value>admin.system.scheduletasks</Value>
+    <Value>计划任务</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.24days">
-    <Value>admin.system.scheduletasks.24days</Value>
+    <Value>任务期限不得超过24天。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.enabled">
-    <Value>admin.system.scheduletasks.enabled</Value>
+    <Value>启用</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.lastend">
-    <Value>admin.system.scheduletasks.lastend</Value>
+    <Value>最后运行结束时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.laststart">
-    <Value>admin.system.scheduletasks.laststart</Value>
+    <Value>最后运行开始时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.lastsuccess">
-    <Value>admin.system.scheduletasks.lastsuccess</Value>
+    <Value>最后运行成功时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.name">
-    <Value>admin.system.scheduletasks.name</Value>
+    <Value>名称</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.System.ScheduleTasks.Name.Required">
+    <Value>名称是必填的。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.restartapplication">
-    <Value>admin.system.scheduletasks.restartapplication</Value>
+    <Value>一旦任务被修改，请不要忘记重新启动应用程序。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.runnow">
-    <Value>admin.system.scheduletasks.runnow</Value>
+    <Value>现在运行</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.runnow.done">
-    <Value>admin.system.scheduletasks.runnow.done</Value>
+    <Value>计划任务运行完成</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.runnow.progress">
-    <Value>admin.system.scheduletasks.runnow.progress</Value>
+    <Value>运行计划任务</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.seconds">
-    <Value>admin.system.scheduletasks.seconds</Value>
+    <Value>秒（周期）</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.stoponerror">
-    <Value>admin.system.scheduletasks.stoponerror</Value>
+    <Value>遇到错误停止</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo">
-    <Value>admin.system.systeminfo</Value>
+    <Value>系统信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.aspnetinfo">
-    <Value>admin.system.systeminfo.aspnetinfo</Value>
+    <Value>ASP.NET信息</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.aspnetinfo.hint">
-    <Value>admin.system.systeminfo.aspnetinfo.hint</Value>
+    <Value>ASP.NET信息。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.currentusertime">
-    <Value>admin.system.systeminfo.currentusertime</Value>
+    <Value>当前用户时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.currentusertime.hint">
-    <Value>admin.system.systeminfo.currentusertime.hint</Value>
+    <Value>当前用户时间（基于指定的日期时间和时区设置）。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.httphost">
-    <Value>admin.system.systeminfo.httphost</Value>
+    <Value>HTTP_HOST</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.httphost.hint">
-    <Value>admin.system.systeminfo.httphost.hint</Value>
+    <Value>网络地址主机。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.isfulltrust">
-    <Value>admin.system.systeminfo.isfulltrust</Value>
+    <Value>完全信任级别</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.isfulltrust.hint">
-    <Value>admin.system.systeminfo.isfulltrust.hint</Value>
+    <Value>完全信任级别。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.loadedassemblies">
-    <Value>admin.system.systeminfo.loadedassemblies</Value>
+    <Value>已加载的程序集</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.loadedassemblies.hint">
-    <Value>admin.system.systeminfo.loadedassemblies.hint</Value>
+    <Value>已加载的程序集列表。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.operatingsystem">
-    <Value>admin.system.systeminfo.operatingsystem</Value>
+    <Value>操作系统</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.operatingsystem.hint">
-    <Value>admin.system.systeminfo.operatingsystem.hint</Value>
+    <Value>操作系统。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.ransurottoversion">
-    <Value>admin.system.systeminfo.ransurottoversion</Value>
+    <Value>RANSUROTTO.BLOG版本</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.ransurottoversion.hint">
-    <Value>admin.system.systeminfo.ransurottoversion.hint</Value>
+    <Value>RANSUROTTO.BLOG版本。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.serverlocaltime">
-    <Value>admin.system.systeminfo.serverlocaltime</Value>
+    <Value>服务器本地时间</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.serverlocaltime.hint">
-    <Value>admin.system.systeminfo.serverlocaltime.hint</Value>
+    <Value>服务器本地时间。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.servertimezone">
-    <Value>admin.system.systeminfo.servertimezone</Value>
+    <Value>服务器时区</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.servertimezone.hint">
-    <Value>admin.system.systeminfo.servertimezone.hint</Value>
+    <Value>服务器时区。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.servervariables">
-    <Value>admin.system.systeminfo.servervariables</Value>
+    <Value>服务器变量</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.servervariables.hint">
-    <Value>admin.system.systeminfo.servervariables.hint</Value>
+    <Value>服务器变量列表。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.utctime">
-    <Value>admin.system.systeminfo.utctime</Value>
+    <Value>时间协调时间（UTC）</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.systeminfo.utctime.hint">
-    <Value>admin.system.systeminfo.utctime.hint</Value>
+    <Value>格林威治标准时间(GMT/UTC)。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.warnings">
     <Value>警告</Value>
   </LocaleResource>
   <LocaleResource Name="common.wait...">
-    <Value>common.wait...</Value>
+    <Value>等待...</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.email">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.email</Value>
+    <Value>电子邮箱</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.username">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.username</Value>
+    <Value>用户名</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.usernameoremail">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.authenticationtype.usernameoremail</Value>
+    <Value>电子邮箱/用户名</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showemails">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showemails</Value>
+    <Value>显示电子邮箱</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.customernameformat.shownickname">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.customernameformat.shownickname</Value>
+    <Value>显示昵称</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showusernames">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.customernameformat.showusernames</Value>
+    <Value>显示用户名</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.passwordformat.clear">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.passwordformat.clear</Value>
+    <Value>无</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.passwordformat.encrypted">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.passwordformat.encrypted</Value>
+    <Value>加密</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.passwordformat.hashed">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.passwordformat.hashed</Value>
+    <Value>哈希</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.adminapproval">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.adminapproval</Value>
+    <Value>需要得到管理员批准</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.disabled">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.disabled</Value>
+    <Value>禁用注册</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.emailvalidation">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.emailvalidation</Value>
+    <Value>注册后需要进行电子邮件验证</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.standard">
-    <Value>enums.ransurotto.blog.core.domain.customers.enum.userregistrationtype.standard</Value>
+    <Value>标准帐户注册方式</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.debug">
-    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.debug</Value>
+    <Value>调试</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.error">
-    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.error</Value>
+    <Value>错误</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.fatal">
-    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.fatal</Value>
+    <Value>致命</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.information">
-    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.information</Value>
+    <Value>信息</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.logging.enum.loglevel.warning">
-    <Value>enums.ransurotto.blog.core.domain.logging.enum.loglevel.warning</Value>
+    <Value>警告</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.blognameafterpagename">
-    <Value>enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.blognameafterpagename</Value>
+    <Value>博客名称在页面名称的前面</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.pagenameafterblogname">
-    <Value>enums.ransurotto.blog.core.domain.seo.enum.pagetitleseoadjustment.pagenameafterblogname</Value>
+    <Value>博客名称在页面名称的后面</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.nomatter">
-    <Value>enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.nomatter</Value>
+    <Value>无关紧要</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withoutwww">
-    <Value>enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withoutwww</Value>
+    <Value>页面不应该有WWW前缀</Value>
   </LocaleResource>
   <LocaleResource Name="enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withwww">
-    <Value>enums.ransurotto.blog.core.domain.seo.enum.wwwrequirement.withwww</Value>
+    <Value>页面应该要有WWW前缀</Value>
   </LocaleResource>
 </Language>
