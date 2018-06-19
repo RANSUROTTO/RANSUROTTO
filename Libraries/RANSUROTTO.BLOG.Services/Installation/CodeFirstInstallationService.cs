@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain;
@@ -28,6 +29,7 @@ using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Services.Configuration;
 using RANSUROTTO.BLOG.Services.Customers;
 using RANSUROTTO.BLOG.Services.Helpers.Setting;
+using RANSUROTTO.BLOG.Services.Localization;
 
 namespace RANSUROTTO.BLOG.Services.Installation
 {
@@ -135,7 +137,16 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
         protected virtual void InstallLocaleResources()
         {
+            //'English' language
+            var language = _languageRepository.Table.Single(l => l.Name == "中文简体");
 
+            //save resources
+            foreach (var filePath in Directory.EnumerateFiles(CommonHelper.MapPath("~/App_Data/Localization/"), "*.langs.zh_cn.xml", SearchOption.TopDirectoryOnly))
+            {
+                var localesXml = File.ReadAllText(filePath);
+                var localizationService = EngineContext.Current.Resolve<ILocalizationService>();
+                localizationService.ImportResourcesFromXml(language, localesXml);
+            }
 
         }
 
