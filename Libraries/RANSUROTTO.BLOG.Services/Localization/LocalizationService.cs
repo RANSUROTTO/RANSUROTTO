@@ -382,7 +382,9 @@ namespace RANSUROTTO.BLOG.Services.Localization
                     {
                         LanguageId = language.Id,
                         ResourceName = name,
-                        ResourceValue = value
+                        ResourceValue = value,
+                        CreatedOnUtc = DateTime.UtcNow,
+                        Guid = Guid.NewGuid()
                     });
                 }
             }

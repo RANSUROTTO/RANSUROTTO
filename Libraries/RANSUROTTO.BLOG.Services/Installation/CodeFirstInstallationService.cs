@@ -137,10 +137,8 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
         protected virtual void InstallLocaleResources()
         {
-            //'English' language
-            var language = _languageRepository.Table.Single(l => l.Name == "中文简体");
-
-            //save resources
+            var language = _languageRepository.Table.First(l => l.Name == "中文简体");
+            
             foreach (var filePath in Directory.EnumerateFiles(CommonHelper.MapPath("~/App_Data/Localization/"), "*.langs.zh_cn.xml", SearchOption.TopDirectoryOnly))
             {
                 var localesXml = File.ReadAllText(filePath);
@@ -267,7 +265,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
 
             settingService.SaveSetting(new LocalizationSettings
             {
-                DefaultAdminLanguageId = _languageRepository.Table.Single(l => l.Name == "English").Id,
+                DefaultAdminLanguageId = _languageRepository.Table.First(l => l.Name == "中文简体").Id,
                 UseImagesForLanguageSelection = false,
                 SeoFriendlyUrlsForLanguagesEnabled = false,
                 AutomaticallyDetectLanguage = true,
