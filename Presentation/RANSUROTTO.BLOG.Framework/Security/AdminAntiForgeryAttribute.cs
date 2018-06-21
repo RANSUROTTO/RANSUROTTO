@@ -34,7 +34,7 @@ namespace RANSUROTTO.BLOG.Framework.Security
             if (!string.Equals(filterContext.HttpContext.Request.HttpMethod, "POST", StringComparison.OrdinalIgnoreCase))
                 return;
 
-            if (!DataSettingsHelper.DatabaseIsInstalled())
+            if (!DataSettingsHelper.DatabaseIsInstalled()) 
                 return;
 
             var securitySettings = EngineContext.Current.Resolve<SecuritySettings>();
