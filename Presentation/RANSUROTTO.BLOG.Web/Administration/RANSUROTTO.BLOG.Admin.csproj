@@ -1475,6 +1475,7 @@
     <Content Include="Views\Setting\AllSettings.cshtml" />
     <Content Include="Views\Setting\CustomerUser.cshtml" />
     <Content Include="Views\Setting\Blog.cshtml" />
+    <Content Include="Views\Jbimages\Upload.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1488,7 +1489,6 @@
     <Folder Include="Content\Roxy_Fileman\tmp\" />
     <Folder Include="Infrastructure\Cache\" />
     <Folder Include="Models\Configuration\" />
-    <Folder Include="Views\Jbimages\" />
     <Folder Include="Views\Picture\" />
     <Folder Include="Views\Preferences\" />
   </ItemGroup>
