@@ -627,6 +627,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\tinymce\plugins\jbimages\css\" />
+    <Folder Include="Content\tinymce\plugins\jbimages\img\" />
+    <Folder Include="Content\tinymce\plugins\jbimages\js\" />
+    <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
     <Folder Include="Themes\DefaultClean\Content\" />
     <Folder Include="Themes\DefaultClean\Views\Shared\" />
     <Folder Include="Validators\Customer\" />

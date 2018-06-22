@@ -12,6 +12,8 @@ namespace RANSUROTTO.BLOG.Services.Security
         /*Admin area permission*/
         public static readonly PermissionRecord AccessAdminPanel
             = new PermissionRecord { Name = "Access admin area", SystemName = "AccessAdminPanel", Category = "Standard" };
+        public static readonly PermissionRecord HtmlEditorManagePictures
+            = new PermissionRecord { Name = "Admin area. HTML Editor. Manage pictures", SystemName = "HtmlEditor.ManagePictures", Category = "Configuration" };
 
         /*Public area permission*/
         public static readonly PermissionRecord PublicAllowNavigation

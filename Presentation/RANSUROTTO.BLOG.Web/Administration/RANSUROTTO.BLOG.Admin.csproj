@@ -698,6 +698,23 @@
     <Content Include="Content\tinymce\plugins\image\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\importcss\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\css\dialog-v4.css" />
+    <Content Include="Content\tinymce\plugins\jbimages\css\dialog.css" />
+    <Content Include="Content\tinymce\plugins\jbimages\dialog-v4.htm" />
+    <Content Include="Content\tinymce\plugins\jbimages\editor_plugin.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\editor_plugin_src.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\img\jbimages-bw.gif" />
+    <Content Include="Content\tinymce\plugins\jbimages\img\spinner.gif" />
+    <Content Include="Content\tinymce\plugins\jbimages\js\dialog-v4.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\js\dialog.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\en.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\en_dlg.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\fr.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\fr_dlg.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\ru.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\langs\ru_dlg.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\plugin.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\layer\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\legacyoutput\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\link\plugin.min.js" />
@@ -1197,6 +1214,7 @@
     <Content Include="Scripts\tagEditor\jquery.tag-editor.js" />
     <Content Include="Scripts\tagEditor\jquery.tag-editor.min.js" />
     <Content Include="Scripts\typeahead\typeahead.bundle.min.js" />
+    <Content Include="Content\tinymce\plugins\jbimages\readme" />
     <None Include="sitemap.config">
       <SubType>Designer</SubType>
     </None>
@@ -1215,6 +1233,7 @@
     <Compile Include="Controllers\EmailAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IdeaController.cs" />
+    <Compile Include="Controllers\JbimagesController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\OnlineCustomerController.cs" />
@@ -1467,12 +1486,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\fonts\ionicons\" />
     <Folder Include="Content\Roxy_Fileman\tmp\" />
-    <Folder Include="Content\tinymce\plugins\jbimages\css\" />
-    <Folder Include="Content\tinymce\plugins\jbimages\img\" />
-    <Folder Include="Content\tinymce\plugins\jbimages\js\" />
-    <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
     <Folder Include="Infrastructure\Cache\" />
     <Folder Include="Models\Configuration\" />
+    <Folder Include="Views\Jbimages\" />
     <Folder Include="Views\Picture\" />
     <Folder Include="Views\Preferences\" />
   </ItemGroup>
