@@ -68,6 +68,7 @@
       <HintPath>..\..\..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -1239,6 +1240,7 @@
     <Compile Include="Controllers\OnlineCustomerController.cs" />
     <Compile Include="Controllers\PictureController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
+    <Compile Include="Controllers\RoxyFilemanController.cs" />
     <Compile Include="Controllers\ScheduleTaskController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
@@ -1491,6 +1493,7 @@
     <Folder Include="Models\Configuration\" />
     <Folder Include="Views\Picture\" />
     <Folder Include="Views\Preferences\" />
+    <Folder Include="Views\RoxyFileman\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">
