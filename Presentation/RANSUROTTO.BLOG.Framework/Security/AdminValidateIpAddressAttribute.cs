@@ -41,7 +41,6 @@ namespace RANSUROTTO.BLOG.Framework.Security
 
             if (!ok)
             {
-                //TODO 拒绝访问页面路径需要配置清晰
                 var urlHelper = new UrlHelper(filterContext.RequestContext);
                 var accessDeniedPageUrl = urlHelper.Action("AccessDenied", "Security");
 

@@ -183,25 +183,12 @@ namespace RANSUROTTO.BLOG.Framework.Controllers
 
         #region Locale
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TLocalizedModelLocal"></typeparam>
-        /// <param name="languageService"></param>
-        /// <param name="locales"></param>
         protected virtual void AddLocales<TLocalizedModelLocal>(ILanguageService languageService,
             IList<TLocalizedModelLocal> locales) where TLocalizedModelLocal : ILocalizedModelLocal
         {
             AddLocales(languageService, locales, null);
         }
 
-        /// <summary>
-        /// TODO
-        /// </summary>
-        /// <typeparam name="TLocalizedModelLocal"></typeparam>
-        /// <param name="languageService"></param>
-        /// <param name="locales"></param>
-        /// <param name="configure"></param>
         protected virtual void AddLocales<TLocalizedModelLocal>(ILanguageService languageService,
             IList<TLocalizedModelLocal> locales, Action<TLocalizedModelLocal, int> configure)
             where TLocalizedModelLocal : ILocalizedModelLocal

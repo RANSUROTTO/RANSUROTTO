@@ -1478,6 +1478,7 @@
     <Content Include="Views\Setting\CustomerUser.cshtml" />
     <Content Include="Views\Setting\Blog.cshtml" />
     <Content Include="Views\Jbimages\Upload.cshtml" />
+    <Content Include="Views\Security\AccessDenied.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -53,5 +53,6 @@ namespace RANSUROTTO.BLOG.Framework.Themes
                 this._themeIsCached = false;
             }
         }
+
     }
 }

@@ -3,6 +3,7 @@ using System.Web;
 using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Framework.UI;
+using RANSUROTTO.BLOG.Services.Security;
 using RANSUROTTO.BLOG.Web.Models.Common;
 
 namespace RANSUROTTO.BLOG.Web.Factories
@@ -16,17 +17,19 @@ namespace RANSUROTTO.BLOG.Web.Factories
         private readonly HttpContextBase _httpContext;
         private readonly IWebHelper _webHelper;
         private readonly IPageHeadBuilder _pageHeadBuilder;
+        private readonly IPermissionService _permissionService;
 
         #endregion
 
         #region Constructor
 
-        public CommonModelFactory(IWorkContext workContext, HttpContextBase httpContext, IWebHelper webHelper, IPageHeadBuilder pageHeadBuilder)
+        public CommonModelFactory(IWorkContext workContext, HttpContextBase httpContext, IWebHelper webHelper, IPageHeadBuilder pageHeadBuilder, IPermissionService permissionService)
         {
             _workContext = workContext;
             _httpContext = httpContext;
             _webHelper = webHelper;
             _pageHeadBuilder = pageHeadBuilder;
+            _permissionService = permissionService;
         }
 
         #endregion
@@ -53,8 +56,7 @@ namespace RANSUROTTO.BLOG.Web.Factories
 
             var model = new AdminHeaderLinksModel
             {
-                //TODO 利用权限验证当前用户是否可以看到进入后台管理员区域链接的设置
-                DisplayAdminLink = true,
+                DisplayAdminLink = _permissionService.Authorize(StandardPermissionProvider.AccessAdminPanel),
                 EditPageUrl = _pageHeadBuilder.GetEditPageUrl()
             };
 

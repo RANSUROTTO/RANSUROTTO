@@ -71,7 +71,6 @@ namespace RANSUROTTO.BLOG.Framework.Themes
         /// </summary>
         private void LoadConfigurations()
         {
-            //TODO:Use IFileStorage?
             foreach (string themeName in Directory.GetDirectories(_basePath))
             {
                 var configuration = CreateThemeConfiguration(themeName);

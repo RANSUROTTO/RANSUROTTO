@@ -14,7 +14,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
     [HttpsRequirement(SslRequirement.NoMatter)]
     [AdminValidateIpAddress]
     [AdminAntiForgery]
-    //TODO 需要加入管理员身份验证特性
+    [AdminAuthorize]
     public abstract class BaseAdminController : BaseController
     {
 
@@ -52,7 +52,6 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         /// </summary>
         protected virtual ActionResult AccessDeniedView()
         {
-            //TODO 拒绝访问页面路径需要配置清晰
             return RedirectToAction("AccessDenied", "Security", new { pageUrl = this.Request.RawUrl });
         }
 

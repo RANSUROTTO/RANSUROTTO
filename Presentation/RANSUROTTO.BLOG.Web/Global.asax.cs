@@ -15,6 +15,7 @@ using RANSUROTTO.BLOG.Framework.Themes;
 using RANSUROTTO.BLOG.Framework.Validators;
 using RANSUROTTO.BLOG.Services.Logging;
 using RANSUROTTO.BLOG.Services.Tasks;
+using RANSUROTTO.BLOG.Web.Controllers;
 
 namespace RANSUROTTO.BLOG.Web
 {
@@ -129,8 +130,7 @@ namespace RANSUROTTO.BLOG.Web
             LogException(exception);
 
             //process 404 HTTP errors
-            //TODO 未完成
-            /*var httpException = exception as HttpException;
+            var httpException = exception as HttpException;
             if (httpException != null && httpException.GetHttpCode() == 404)
             {
                 var webHelper = EngineContext.Current.Resolve<IWebHelper>();
@@ -149,7 +149,7 @@ namespace RANSUROTTO.BLOG.Web
 
                     errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
                 }
-            }*/
+            }
         }
 
         /// <summary>

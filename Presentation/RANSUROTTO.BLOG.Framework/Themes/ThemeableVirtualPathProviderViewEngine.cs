@@ -141,7 +141,6 @@ namespace RANSUROTTO.BLOG.Framework.Themes
             if (!string.IsNullOrEmpty(areaName) && areaName.Equals("admin", StringComparison.InvariantCultureIgnoreCase))
             {
                 var newLocations = areaLocations.ToList();
-                //TODO 配置你的关联WEB项目位置
                 newLocations.Insert(0, "~/Administration/Views/{1}/{0}.cshtml");
                 newLocations.Insert(0, "~/Administration/Views/Shared/{0}.cshtml");
                 areaLocations = newLocations.ToArray();

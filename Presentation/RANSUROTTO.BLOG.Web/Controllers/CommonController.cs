@@ -49,6 +49,15 @@ namespace RANSUROTTO.BLOG.Web.Controllers
             return PartialView(model);
         }
 
+        public virtual ActionResult PageNotFound()
+        {
+            this.Response.StatusCode = 404;
+            this.Response.TrySkipIisCustomErrors = true;
+            this.Response.ContentType = "text/html";
+
+            return View();
+        }
+
         #endregion
 
     }

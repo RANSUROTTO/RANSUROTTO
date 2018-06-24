@@ -619,6 +619,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Customer\Login.cshtml" />
     <Content Include="Themes\DefaultClean\theme.config" />
+    <Content Include="Views\Common\PageNotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

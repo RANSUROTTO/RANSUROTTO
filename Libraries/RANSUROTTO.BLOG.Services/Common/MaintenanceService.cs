@@ -60,7 +60,7 @@ namespace RANSUROTTO.BLOG.Services.Common
         {
             CheckBackupSupported();
 
-            //TODO 这里应该考虑各种数据库拥有不同的备份形式。目前此处实现为 SQL Server 数据库备份功能
+            //这里应该考虑各种数据库拥有不同的备份形式。目前此处实现为 SQL Server 数据库备份功能
             var fileName = string.Format(
                 "{0}database_{1:yyyy-MM-dd-HH-mm-ss}_{2}.bak",
                 GetBackupDirectoryPath(), DateTime.Now, CommonHelper.GenerateRandomDigitCode(10));
@@ -85,7 +85,7 @@ namespace RANSUROTTO.BLOG.Services.Common
                 InitialCatalog = "master"
             };
 
-            //TODO 这里应该考虑各种数据库拥有不同的恢复备份形式。目前此处实现为 SQL Server 数据库恢复备份功能
+            //这里应该考虑各种数据库拥有不同的恢复备份形式。目前此处实现为 SQL Server 数据库恢复备份功能
             using (var sqlConnectiononn = new SqlConnection(conn.ToString()))
             {
                 var commandText = string.Format(

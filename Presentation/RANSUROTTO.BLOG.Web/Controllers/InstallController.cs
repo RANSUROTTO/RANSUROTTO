@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Threading;
 using System.Data.SqlClient;
@@ -12,6 +13,7 @@ using RANSUROTTO.BLOG.Framework.Security;
 using RANSUROTTO.BLOG.Web.Models.Install;
 using RANSUROTTO.BLOG.Core.Infrastructure;
 using RANSUROTTO.BLOG.Services.Installation;
+using RANSUROTTO.BLOG.Services.Security;
 using RANSUROTTO.BLOG.Web.Infrastructure.Installation;
 
 namespace RANSUROTTO.BLOG.Web.Controllers
@@ -231,7 +233,14 @@ namespace RANSUROTTO.BLOG.Web.Controllers
 
                     //TODO 安装插件
 
-                    //TODO 添加权限
+                    //安装权限
+                    var permissionProviders = new List<Type>();
+                    permissionProviders.Add(typeof(StandardPermissionProvider));
+                    foreach (var providerType in permissionProviders)
+                    {
+                        dynamic provider = Activator.CreateInstance(providerType);
+                        EngineContext.Current.Resolve<IPermissionService>().InstallPermissions(provider);
+                    }
 
                     //清空缓存
                     DataSettingsHelper.ResetCache();
