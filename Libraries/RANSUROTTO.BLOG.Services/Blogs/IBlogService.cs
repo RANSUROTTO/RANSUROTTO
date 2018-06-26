@@ -21,14 +21,15 @@ namespace RANSUROTTO.BLOG.Services.Blogs
         /// <param name="keywords"></param>
         /// <param name="overridePublished">
         /// null:全部
-        /// true:只查询已发布的
-        /// false:查询未发布或已结束发布的
+        /// true:只查询公开可见的
+        /// false:查询未发布或已可见的
         /// </param>
+        /// <param name="showDeleted">显示已删除的</param>
         /// <param name="orderBy"></param>
         /// <returns></returns>
         IPagedList<BlogPost> GetAllBlogPosts(int pageIndex = 0, int pageSize = int.MaxValue,
             IList<int> categoryIds = null, IList<int> customerIds = null, IList<int> tagIds = null,
-            string keywords = null, bool? overridePublished = true, BlogSortingEnum orderBy = BlogSortingEnum.Position);
+            string keywords = null, bool? overridePublished = true, bool? showDeleted = false, BlogSortingEnum orderBy = BlogSortingEnum.Position);
 
         BlogPost GetBlogPostById(int blogPostId);
 

@@ -98,7 +98,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 overridePublished = false;
 
             var blogPosts = _blogService.GetAllBlogPosts(command.Page - 1, command.PageSize, categoryIds: categoryIds,
-                keywords: model.SearchTitle, overridePublished: overridePublished, orderBy: BlogSortingEnum.CreatedOn);
+                keywords: model.SearchTitle, overridePublished: overridePublished, showDeleted: model.ShowDeleted, orderBy: BlogSortingEnum.CreatedOnDesc);
 
             var utcNow = DateTime.UtcNow;
             var gridModel = new DataSourceResult();

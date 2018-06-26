@@ -18,6 +18,10 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
                 .WithMany()
                 .HasForeignKey(p => p.AuthorId);
 
+            this.HasOptional(p => p.Cover)
+                .WithMany()
+                .HasForeignKey(p => p.CoverId);
+
             this.HasMany(p => p.BlogComments)
                 .WithRequired(p => p.BlogPost)
                 .HasForeignKey(p => p.BlogPostId);

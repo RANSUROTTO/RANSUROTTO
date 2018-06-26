@@ -19,7 +19,12 @@
         /// <summary>
         /// 创建时间降序
         /// </summary>
-        CreatedOn
+        CreatedOnDesc,
+
+        /// <summary>
+        /// 创建时间升序
+        /// </summary>
+        CreateOnAsc
 
     }
 }

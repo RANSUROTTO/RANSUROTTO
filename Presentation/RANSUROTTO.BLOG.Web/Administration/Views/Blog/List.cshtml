@@ -71,6 +71,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.ShowDeleted)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.ShowDeleted)
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-7 col-md-offset-5">
@@ -226,7 +236,8 @@
                                     SearchTitle: $('#@Html.FieldIdFor(model => model.SearchTitle)').val(),
                                     SearchPublishedId: $('#SearchPublishedId').val(),
                                     SearchCategoryId: $('#SearchCategoryId').val(),
-                                    SearchIncludeSubCategories: $('#@Html.FieldIdFor(model => model.SearchIncludeSubCategories)').is(':checked')
+                                    SearchIncludeSubCategories: $('#@Html.FieldIdFor(model => model.SearchIncludeSubCategories)').is(':checked'),
+                                    ShowDeleted: $('#@Html.FieldIdFor(model => model.ShowDeleted)').is(':checked')
                                 };
                                 addAntiForgeryToken(data);
                                 return data;

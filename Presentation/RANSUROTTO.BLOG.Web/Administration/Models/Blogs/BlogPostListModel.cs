@@ -25,6 +25,9 @@ namespace RANSUROTTO.BLOG.Admin.Models.Blogs
         [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.List.SearchPublished")]
         public int SearchPublishedId { get; set; }
 
+        [ResourceDisplayName("Admin.ContentManagement.Blog.Posts.List.ShowDeleted")]
+        public bool ShowDeleted { get; set; }
+
         public IList<SelectListItem> AvailableCategories { get; set; }
         public IList<SelectListItem> AvailablePublishedOptions { get; set; }
 

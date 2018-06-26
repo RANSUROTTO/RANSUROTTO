@@ -4,6 +4,7 @@ using RANSUROTTO.BLOG.Core.Data;
 using RANSUROTTO.BLOG.Core.Domain.Blogs.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
+using RANSUROTTO.BLOG.Core.Domain.Media;
 
 namespace RANSUROTTO.BLOG.Core.Domain.Blogs
 {
@@ -21,6 +22,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// 获取或设置作者ID
         /// </summary>
         public int AuthorId { get; set; }
+
+        /// <summary>
+        /// 获取或设置封面图片ID
+        /// </summary>
+        public int? CoverId { get; set; }
 
         /// <summary>
         /// 获取或设置标题
@@ -100,6 +106,11 @@ namespace RANSUROTTO.BLOG.Core.Domain.Blogs
         /// 获取或设置博文作者
         /// </summary>
         public virtual Customer Author { get; set; }
+
+        /// <summary>
+        /// 获取或设置封面
+        /// </summary>
+        public virtual Picture Cover { get; set; }
 
         /// <summary>
         /// 获取或设置对应的类目关联列表

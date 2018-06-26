@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using RANSUROTTO.BLOG.Core.Caching;
-using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Data;
+using System.Collections.Generic;
+using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Domain.Blogs;
 using RANSUROTTO.BLOG.Core.Domain.Blogs.Enum;
 using RANSUROTTO.BLOG.Core.Domain.Common.Setting;
@@ -45,7 +44,7 @@ namespace RANSUROTTO.BLOG.Services.Blogs
 
         public virtual IPagedList<BlogPost> GetAllBlogPosts(int pageIndex = 0, int pageSize = Int32.MaxValue,
             IList<int> categoryIds = null, IList<int> customerIds = null, IList<int> tagIds = null,
-            string keywords = null, bool? overridePublished = true, BlogSortingEnum orderBy = BlogSortingEnum.Position)
+            string keywords = null, bool? overridePublished = true, bool? showDeleted = false, BlogSortingEnum orderBy = BlogSortingEnum.Position)
         {
             //验证categoryIds和customerIds、tagIds
             if (categoryIds != null && categoryIds.Contains(0))
@@ -68,7 +67,6 @@ namespace RANSUROTTO.BLOG.Services.Blogs
                 #region Search blog posts
 
                 var query = _blogPostRepository.Table;
-                query = query.Where(q => !q.Deleted);
 
                 var nowUtc = DateTime.UtcNow;
 
@@ -87,6 +85,12 @@ namespace RANSUROTTO.BLOG.Services.Blogs
                             (p.AvailableEndDateUtc.HasValue && p.AvailableEndDateUtc < nowUtc)
                         );
                     }
+                }
+
+                if (showDeleted.HasValue)
+                {
+                    if (!showDeleted.Value)
+                        query = query.Where(p => !p.Deleted);
                 }
 
                 if (!string.IsNullOrWhiteSpace(keywords))
@@ -127,7 +131,10 @@ namespace RANSUROTTO.BLOG.Services.Blogs
                     case BlogSortingEnum.TitleAsc:
                         query = query.OrderBy(p => p.Title);
                         break;
-                    case BlogSortingEnum.CreatedOn:
+                    case BlogSortingEnum.CreateOnAsc:
+                        query = query.OrderBy(p => p.CreatedOnUtc);
+                        break;
+                    case BlogSortingEnum.CreatedOnDesc:
                         query = query.OrderByDescending(p => p.CreatedOnUtc);
                         break;
                     default:
