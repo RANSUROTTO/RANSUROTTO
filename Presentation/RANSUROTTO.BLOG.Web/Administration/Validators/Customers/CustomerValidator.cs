@@ -6,6 +6,7 @@ using RANSUROTTO.BLOG.Framework.Validators;
 using RANSUROTTO.BLOG.Core.Domain.Customers;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Service;
 using RANSUROTTO.BLOG.Core.Domain.Customers.Setting;
+using RANSUROTTO.BLOG.Data.Context;
 using RANSUROTTO.BLOG.Services.Customers;
 using RANSUROTTO.BLOG.Services.Localization;
 
@@ -16,7 +17,8 @@ namespace RANSUROTTO.BLOG.Admin.Validators.Customers
 
         public CustomerValidator(ILocalizationService localizationService,
             ICustomerService customerService,
-            CustomerSettings customerSettings)
+            CustomerSettings customerSettings,
+            IDbContext dbContext)
         {
             RuleFor(x => x.Email)
                 .NotEmpty()
@@ -48,6 +50,7 @@ namespace RANSUROTTO.BLOG.Admin.Validators.Customers
                     .When(x => IsRegisteredCustomerRoleChecked(x, customerService));
             }
 
+            SetDatabaseValidationRules<Customer>(dbContext);
         }
 
         /// <summary>

@@ -3,12 +3,14 @@ using System.Globalization;
 using RANSUROTTO.BLOG.Framework.Validators;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
+using RANSUROTTO.BLOG.Core.Domain.Localization;
+using RANSUROTTO.BLOG.Data.Context;
 
 namespace RANSUROTTO.BLOG.Admin.Validators.Localization
 {
     public class LanguageValidator : BaseValidator<LanguageModel>
     {
-        public LanguageValidator(ILocalizationService localizationService)
+        public LanguageValidator(ILocalizationService localizationService, IDbContext dbContext)
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage(localizationService.GetResource("Admin.Configuration.Languages.Fields.Name.Required"));
             RuleFor(x => x.LanguageCulture).Must(x =>
@@ -29,6 +31,8 @@ namespace RANSUROTTO.BLOG.Admin.Validators.Localization
 
             RuleFor(x => x.UniqueSeoCode).NotEmpty().WithMessage(localizationService.GetResource("Admin.Configuration.Languages.Fields.UniqueSeoCode.Required"));
             RuleFor(x => x.UniqueSeoCode).Length(2).WithMessage(localizationService.GetResource("Admin.Configuration.Languages.Fields.UniqueSeoCode.Length"));
+
+            SetDatabaseValidationRules<Language>(dbContext);
         }
     }
 }
