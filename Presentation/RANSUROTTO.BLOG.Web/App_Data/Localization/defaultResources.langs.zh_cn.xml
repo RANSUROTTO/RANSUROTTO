@@ -1036,7 +1036,7 @@
     <Value>内容管理</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog">
-    <Value>博客文章</Value>
+    <Value>博客管理</Value>
   </LocaleResource>
   <LocaleResource Name="admin.contentmanagement.blog.blogposttags">
     <Value>博客标签</Value>
