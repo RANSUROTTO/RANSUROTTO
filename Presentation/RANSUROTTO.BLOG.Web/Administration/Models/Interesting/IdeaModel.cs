@@ -12,9 +12,6 @@ namespace RANSUROTTO.BLOG.Admin.Models.Interesting
         [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.Body")]
         public string Body { get; set; }
 
-        [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.Deleted")]
-        public bool Deleted { get; set; }
-
         [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.Private")]
         public bool Private { get; set; }
 
@@ -24,10 +21,13 @@ namespace RANSUROTTO.BLOG.Admin.Models.Interesting
         [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.UpdatedOn")]
         public DateTime? UpdatedOn { get; set; }
 
+        [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.Deleted")]
+        public bool Deleted { get; set; }
+
         [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.CustomerId")]
         public int CustomerId { get; set; }
 
-        [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.CustomerEmail")]
+        [ResourceDisplayName("Admin.ContentManagement.Idea.Fields.CustomerId")]
         public string CustomerEmail { get; set; }
 
     }

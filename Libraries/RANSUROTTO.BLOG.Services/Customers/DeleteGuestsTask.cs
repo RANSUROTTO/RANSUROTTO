@@ -20,7 +20,8 @@ namespace RANSUROTTO.BLOG.Services.Customers
 
         public virtual void Execute()
         {
-            throw new System.NotImplementedException();
+            //TODO 未实现删除游客计划任务
+            //throw new System.NotImplementedException();
         }
 
     }

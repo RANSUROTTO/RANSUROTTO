@@ -339,6 +339,15 @@
   <LocaleResource Name="admin.configuration.languages.fields.name.required">
     <Value>请提供语言名称。</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Languages.Fields.LanguageCulture.Validation">
+    <Value>请提供一个正确可用的语言文化。</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Languages.Fields.UniqueSeoCode.Required">
+    <Value>请提供语言SEO代码。</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Languages.Fields.UniqueSeoCode.Length">
+    <Value>提供的语言SEO代码长度不符合要求。</Value>
+  </LocaleResource>
   <LocaleResource Name="admin.configuration.languages.fields.published">
     <Value>已发布</Value>
   </LocaleResource>
@@ -1910,6 +1919,9 @@
   </LocaleResource>
   <LocaleResource Name="Admin.System.ScheduleTasks.Name.Required">
     <Value>名称是必填的。</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.System.ScheduleTasks.Seconds.Positive">
+    <Value>提供的时间秒数范围不正确。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system.scheduletasks.restartapplication">
     <Value>一旦任务被修改，请不要忘记重新启动应用程序。</Value>

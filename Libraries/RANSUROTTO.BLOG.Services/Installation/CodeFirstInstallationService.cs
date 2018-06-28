@@ -138,7 +138,7 @@ namespace RANSUROTTO.BLOG.Services.Installation
         protected virtual void InstallLocaleResources()
         {
             var language = _languageRepository.Table.First(l => l.Name == "中文简体");
-            
+
             foreach (var filePath in Directory.EnumerateFiles(CommonHelper.MapPath("~/App_Data/Localization/"), "*.langs.zh_cn.xml", SearchOption.TopDirectoryOnly))
             {
                 var localesXml = File.ReadAllText(filePath);
@@ -530,6 +530,14 @@ namespace RANSUROTTO.BLOG.Services.Installation
         {
             var tasks = new List<ScheduleTask>
             {
+                new ScheduleTask
+                {
+                    Name = "Keep alive",
+                    Seconds = 300,
+                    Type = "RANSUROTTO.BLOG.Services.Common.KeepAliveTask, RANSUROTTO.BLOG.Services",
+                    Enabled = true,
+                    StopOnError = false,
+                },
                 new ScheduleTask
                 {
                     Name = "Clear Cache",

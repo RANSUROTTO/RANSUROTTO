@@ -71,6 +71,7 @@
     <Compile Include="Common\GenericAttributeService.cs" />
     <Compile Include="Common\IGenericAttributeService.cs" />
     <Compile Include="Common\IMaintenanceService.cs" />
+    <Compile Include="Common\KeepAliveTask.cs" />
     <Compile Include="Common\MaintenanceService.cs" />
     <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="Configuration\SettingExtensions.cs" />

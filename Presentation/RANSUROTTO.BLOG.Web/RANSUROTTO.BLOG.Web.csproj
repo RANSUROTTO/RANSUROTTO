@@ -586,6 +586,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstallController.cs" />
+    <Compile Include="Controllers\KeepAliveController.cs" />
     <Compile Include="Factories\CommonModelFactory.cs" />
     <Compile Include="Factories\ICommonModelFactory.cs" />
     <Compile Include="Global.asax.cs">
@@ -636,6 +637,7 @@
     <Folder Include="Themes\DefaultClean\Views\Shared\" />
     <Folder Include="Validators\Customer\" />
     <Folder Include="Views\BasePublic\" />
+    <Folder Include="Views\KeepAlive\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\RANSUROTTO.BLOG.Core\RANSUROTTO.BLOG.Core.csproj">
