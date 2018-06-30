@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Presentation/RANSUROTTO.BLOG.Web/App_Data/db.config
+/Presentation/RANSUROTTO.BLOG.Web/Properties/PublishProfiles

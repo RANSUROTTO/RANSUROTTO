@@ -556,6 +556,7 @@
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="App_Data\Localization\defaultResources.langs.jp.xml" />
     <Content Include="App_Data\Localization\defaultResources.langs.en.xml" />
+    <None Include="Properties\PublishProfiles\RANSUROTTO_Publisher_profie.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
