@@ -67,12 +67,6 @@
   <LocaleResource Name="DataProviderRequired">
     <Value>Vyberte poskytovatele dat (data provider)</Value>
   </LocaleResource>
-  <LocaleResource Name="Documentation1">
-    <Value>Potřebujete-li informace o tom, jak používat nopCommerce (v angličtině), navštivte</Value>
-  </LocaleResource>
-  <LocaleResource Name="Documentation2">
-    <Value>sekci documentation na nopCommerce.com</Value>
-  </LocaleResource>
   <LocaleResource Name="Example">
     <Value>Příklad</Value>
   </LocaleResource>
@@ -132,9 +126,6 @@
   </LocaleResource>
   <LocaleResource Name="Title">
     <Value>Instalace nopCommerce</Value>
-  </LocaleResource>
-  <LocaleResource Name="Tooltip1">
-    <Value>nopCommerce je významné řešení pro on-line elektronické obchodování postavené na platformě ASP.NET. Tento průvodce Vás provede instalačí a konfigurací nopCommerce</Value>
   </LocaleResource>
   <LocaleResource Name="Tooltip2">
     <Value>Abyste úspěšně dokončili instalaci a nastavení musíte mít k dispozici informace o databázovém serveru a databázi (připojovací řetězec - "connection string"). Pokud budete potřebovat, zeptejte se Vašeho poskytovatele internetových služeb (ISP) Pokud instalujete na místní počítač nebo server, pravděpodobně získáte požaované informace u vašeho systémového administrátora.</Value>

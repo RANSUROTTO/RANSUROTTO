@@ -65,12 +65,6 @@
   <LocaleResource Name="DataProviderRequired">
     <Value>ডাটা প্রোভাইডার উল্লেখ করুন</Value>
   </LocaleResource>
-  <LocaleResource Name="Documentation1">
-    <Value>nopCommerce কিভাবে ব্যাবহার করতে হয় তা জানতে ভিজিট করুন</Value>
-  </LocaleResource>
-  <LocaleResource Name="Documentation2">
-    <Value>nopCommerce.com এ ডকুমেন্টেশন অংশ</Value>
-  </LocaleResource>
   <LocaleResource Name="Example">
     <Value>উদাহরণ</Value>
   </LocaleResource>
@@ -130,9 +124,6 @@
   </LocaleResource>
   <LocaleResource Name="Title">
     <Value>nopCommerce ইনস্টলেশন</Value>
-  </LocaleResource>
-  <LocaleResource Name="Tooltip1">
-    <Value>nopCommerce একটি শীর্ষস্থানীয় ASP.NET অনলাইন দোকানগুলোর ই-কমার্স সমাধান। nopCommerce কনফিগার করার সম্পূর্ণ প্রক্রিয়াতে এই উইজার্ডটি আপনাকে সাহায্য করবে </Value>
   </LocaleResource>
   <LocaleResource Name="Tooltip2">
     <Value>এই উইজার্ডটি সম্পূর্ণ করতে আপনার ডাটাবেস সার্ভার সংক্রান্ত কিছু তথ্য ("কানেকশন স্ট্রিং") আপনাকে জানতে হবে। প্রয়োজন হলে আপনার ISP-র সাথে যোগাযোগ করুন। যদি আপনি এটি আপনার লোকাল ম্যাশিন অথবা সার্ভারে ইন্সটল করেন তাহলে আপনার সিস্টেম অ্যাডমিন থেকে কিছু তথ্য প্রয়োজন হতে পারে।</Value>

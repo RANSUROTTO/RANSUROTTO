@@ -65,12 +65,6 @@
   <LocaleResource Name="DataProviderRequired">
     <Value>Sélectionnez le fournisseur de données</Value>
   </LocaleResource>
-  <LocaleResource Name="Documentation1">
-    <Value>Si vous avez besoin d'informations sur la façon d'utiliser nopCommerce, visitez le site</Value>
-  </LocaleResource>
-  <LocaleResource Name="Documentation2">
-    <Value>la section de documentation sur nopCommerce.com</Value>
-  </LocaleResource>
   <LocaleResource Name="Example">
     <Value>exemple</Value>
   </LocaleResource>
@@ -130,9 +124,6 @@
   </LocaleResource>
   <LocaleResource Name="Title">
     <Value>l'installation nopCommerce</Value>
-  </LocaleResource>
-  <LocaleResource Name="Tooltip1">
-    <Value>nopCommerce est le leader ASP.NET boutique en ligne solution e-commerce. Cet assistant va vous guider à travers le processus de configuration nopCommerce</Value>
   </LocaleResource>
   <LocaleResource Name="Tooltip2">
     <Value>Pour compléter cet assistant, vous devez connaître certaines informations concernant votre serveur de base de données ("chaîne de connexion"). S'il vous plaît contactez votre FAI si nécessaire. Si vous installez sur une machine locale ou serveur que vous pourriez avoir besoin d'informations à partir de votre système d'administration</Value>

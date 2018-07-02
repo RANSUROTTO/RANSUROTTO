@@ -65,12 +65,6 @@
   <LocaleResource Name="DataProviderRequired">
     <Value>اختر مزود المعلومات</Value>
   </LocaleResource>
-  <LocaleResource Name="Documentation1">
-    <Value>إذا كنت تحتاج دليل استخدام موقع nopCommerce, قم بزيارة</Value>
-  </LocaleResource>
-  <LocaleResource Name="Documentation2">
-    <Value>قيم بزيارة قسم التوثيق على nopCommerce.com </Value>
-  </LocaleResource>
   <LocaleResource Name="Example">
     <Value>مثلاُ</Value>
   </LocaleResource>
@@ -130,12 +124,6 @@
   </LocaleResource>
   <LocaleResource Name="Title">
     <Value>nopCommerce تنصيب</Value>
-  </LocaleResource>
-  <LocaleResource Name="Tooltip1">
-    <Value>nopCommerce هو مشروع متجر للتسوق عبر الانترنت. هذه الخطوات سوف تساعدك لتنصيب وتثبيت متجر nopCommerce.</Value>
-  </LocaleResource>
-  <LocaleResource Name="Tooltip2">
-    <Value>لمتابعة خطوات التثبيت يجب ان تعرف المعلومات التالية حول قاعدة البيانات وخادم SQL مثل سلسلة الاتصال (Conncetion String). الرجاء الاتصال بمزود الخدمة إذا دعت الحاجة لذلك. إذا كنت تريد ان تقوم بتثبيت على جهازك (خادم محلي)، قد تحتاج إلى المعلومات من مدير الخادم لديك (Admin)</Value>
   </LocaleResource>
   <LocaleResource Name="WindowsAuthentication">
     <Value>استخدم مصادقة وندوز (Windows Authentication) </Value>
