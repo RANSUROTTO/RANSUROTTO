@@ -36,6 +36,7 @@ using RANSUROTTO.BLOG.Services.Installation;
 using RANSUROTTO.BLOG.Services.Interesting;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Media;
 using RANSUROTTO.BLOG.Services.Messages;
 using RANSUROTTO.BLOG.Services.Security;
 using RANSUROTTO.BLOG.Services.Tasks;
@@ -147,6 +148,8 @@ namespace RANSUROTTO.BLOG.Framework
             builder.RegisterType<LanguageService>().As<ILanguageService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("ransurotto_cache_static"))
                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<PictureService>().As<IPictureService>().InstancePerLifetimeScope();
 
             builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerLifetimeScope();
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
