@@ -657,6 +657,10 @@
       <Project>{8c72beb7-97f8-4c6d-a744-cf98445d29f1}</Project>
       <Name>RANSUROTTO.BLOG.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="Administration\RANSUROTTO.BLOG.Admin.csproj">
+      <Project>{045fff90-dad1-43b3-a4eb-418633e7e8e0}</Project>
+      <Name>RANSUROTTO.BLOG.Admin</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

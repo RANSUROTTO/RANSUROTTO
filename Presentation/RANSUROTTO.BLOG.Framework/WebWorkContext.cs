@@ -25,7 +25,7 @@ namespace RANSUROTTO.BLOG.Framework
 
         #region Constants
 
-        private const string CustomerCookieName = "Ransurotto.customer";
+        private const string CustomerCookieName = "RANSUROTTO.CUSTOMER";
 
         #endregion
 
