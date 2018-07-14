@@ -4,12 +4,12 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using RANSUROTTO.BLOG.Admin.Extensions;
 using RANSUROTTO.BLOG.Admin.Models.Logging;
-using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -21,16 +21,18 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly ICustomerActivityService _customerActivityService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ILocalizationService _localizationService;
+        private readonly IPermissionService _permissionService;
 
         #endregion
 
         #region Constructor
 
-        public ActivityLogController(ICustomerActivityService customerActivityService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService)
+        public ActivityLogController(ICustomerActivityService customerActivityService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IPermissionService permissionService)
         {
             _customerActivityService = customerActivityService;
             _dateTimeHelper = dateTimeHelper;
             _localizationService = localizationService;
+            _permissionService = permissionService;
         }
 
         #endregion
@@ -39,6 +41,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult ListLogs()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
+                return AccessDeniedView();
+
             var model = new ActivityLogListModel();
 
             model.ActivityLogType.Add(new SelectListItem
@@ -62,6 +67,8 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult ListLogs(DataSourceRequest command, ActivityLogListModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
+                return AccessDeniedKendoGridJson();
 
             DateTime? startDateValue = (model.CreatedOnFrom == null) ? null
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.CreatedOnFrom.Value, _dateTimeHelper.CurrentTimeZone);
@@ -86,6 +93,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult AcivityLogDelete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
+                return AccessDeniedView();
+
             var activityLog = _customerActivityService.GetActivityById(id);
             if (activityLog == null)
             {
@@ -98,10 +108,11 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return new NullJsonResult();
         }
 
-        [HttpPost, ActionName("ListLogs")]
-        [FormValueRequired("clearall")]
         public virtual ActionResult ClearAll()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
+                return AccessDeniedView();
+
             _customerActivityService.ClearAllActivities();
 
             _customerActivityService.InsertActivity("DeleteActivityLog", _localizationService.GetResource("ActivityLog.DeleteActivityLog"));
@@ -115,6 +126,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult ListTypes()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
+                return AccessDeniedView();
+
             var model = _customerActivityService
                 .GetAllActivityTypes()
                 .Select(x => x.ToModel())
@@ -126,6 +140,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult SaveTypes(FormCollection form)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageActivityLog))
+                return AccessDeniedView();
+
             _customerActivityService.InsertActivity("EditActivityLogTypes", _localizationService.GetResource("ActivityLog.EditActivityLogTypes"));
 
             string formKey = "checkbox_activity_types";

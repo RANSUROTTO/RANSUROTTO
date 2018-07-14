@@ -9,6 +9,7 @@ using RANSUROTTO.BLOG.Framework.Kendoui;
 using RANSUROTTO.BLOG.Services.Customers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -18,6 +19,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Fields
 
         private readonly ICustomerService _customerService;
+        private readonly IPermissionService _permissionService;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerActivityService _customerActivityService;
 
@@ -25,9 +27,10 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public CustomerRoleController(ICustomerService customerService, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
+        public CustomerRoleController(ICustomerService customerService, IPermissionService permissionService, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
         {
             _customerService = customerService;
+            _permissionService = permissionService;
             _localizationService = localizationService;
             _customerActivityService = customerActivityService;
         }
@@ -43,12 +46,18 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             return View();
         }
 
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest command)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedKendoGridJson();
+
             var customerRoles = _customerService.GetAllCustomerRoles(true);
             var gridModel = new DataSourceResult
             {
@@ -61,6 +70,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Create()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var model = new CustomerRoleModel
             {
                 //设置默认启用
@@ -73,6 +85,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Create(CustomerRoleModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             if (ModelState.IsValid)
             {
                 var customerRole = model.ToEntity();
@@ -88,6 +103,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Edit(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var customerRole = _customerService.GetCustomerRoleById(id);
             if (customerRole == null)
                 return RedirectToAction("List");
@@ -100,6 +118,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Edit(CustomerRoleModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var customerRole = _customerService.GetCustomerRoleById(model.Id);
             if (customerRole == null)
                 return RedirectToAction("List");
@@ -136,6 +157,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var customerRole = _customerService.GetCustomerRoleById(id);
             if (customerRole == null)
                 return RedirectToAction("List");

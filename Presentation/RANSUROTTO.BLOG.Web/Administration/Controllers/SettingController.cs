@@ -39,6 +39,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Fields
 
+        private readonly IPermissionService _permissionService;
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerService _customerService;
@@ -52,8 +53,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public SettingController(IGenericAttributeService genericAttributeService, ILocalizationService localizationService, ICustomerService customerService, ICustomerActivityService customerActivityService, IEncryptionService encryptionService, ISettingService settingService, IWorkContext workContext, IDateTimeHelper dateTimeHelper)
+        public SettingController(IPermissionService permissionService, IGenericAttributeService genericAttributeService, ILocalizationService localizationService, ICustomerService customerService, ICustomerActivityService customerActivityService, IEncryptionService encryptionService, ISettingService settingService, IWorkContext workContext, IDateTimeHelper dateTimeHelper)
         {
+            _permissionService = permissionService;
             _genericAttributeService = genericAttributeService;
             _localizationService = localizationService;
             _customerService = customerService;
@@ -81,6 +83,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult GeneralCommon()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             this.Server.ScriptTimeout = 300;
 
             var model = new GeneralCommonSettingsModel();
@@ -150,6 +155,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("save")]
         public virtual ActionResult GeneralCommon(GeneralCommonSettingsModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             //blog information settings
             var blogInformationSettings = _settingService.LoadSetting<BlogInformationSettings>();
             var commonSettings = _settingService.LoadSetting<CommonSettings>();
@@ -230,6 +238,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("changeencryptionkey")]
         public virtual ActionResult ChangeEncryptionKey(GeneralCommonSettingsModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             this.Server.ScriptTimeout = 300;
 
             var securitySettings = _settingService.LoadSetting<SecuritySettings>();
@@ -273,6 +284,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult CustomerUser()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             var customerSettings = _settingService.LoadSetting<CustomerSettings>();
             var dateTimeSettings = _settingService.LoadSetting<DateTimeSettings>();
             var externalAuthenticationSettings = _settingService.LoadSetting<ExternalAuthenticationSettings>();
@@ -309,6 +323,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult CustomerUser(CustomerUserSettingsModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             var customerSettings = _settingService.LoadSetting<CustomerSettings>();
             var dateTimeSettings = _settingService.LoadSetting<DateTimeSettings>();
             var externalAuthenticationSettings = _settingService.LoadSetting<ExternalAuthenticationSettings>();
@@ -332,6 +349,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Blog()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             var blogSettings = _settingService.LoadSetting<BlogSettings>();
             var model = blogSettings.ToModel();
             return View(model);
@@ -340,6 +360,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Blog(BlogSettingsModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             var blogSettings = _settingService.LoadSetting<BlogSettings>();
             blogSettings = model.ToEntity(blogSettings);
 
@@ -354,6 +377,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Media()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             var mediaSettings = _settingService.LoadSetting<MediaSettings>();
             var model = new MediaSettingsModel
             {
@@ -370,6 +396,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("save")]
         public virtual ActionResult Media(MediaSettingsModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             var mediaSettings = _settingService.LoadSetting<MediaSettings>();
 
             mediaSettings.MaximumImageSize = mediaSettings.MaximumImageSize;
@@ -388,6 +417,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult AllSettings()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             return View();
         }
 
@@ -395,6 +427,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [AdminAntiForgery(true)]
         public virtual ActionResult AllSettings(DataSourceRequest command, AllSettingsListModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedKendoGridJson();
+
             var query = _settingService.GetAllSettings().AsQueryable();
 
             if (!string.IsNullOrEmpty(model.SearchSettingName))
@@ -416,6 +451,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult SettingUpdate(SettingModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             if (model.Name != null)
                 model.Name = model.Name.Trim();
             if (model.Value != null)
@@ -445,6 +483,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult SettingAdd([Bind(Exclude = "Id")] SettingModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             if (model.Name != null)
                 model.Name = model.Name.Trim();
             if (model.Value != null)
@@ -465,6 +506,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult SettingDelete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSettings))
+                return AccessDeniedView();
+
             var setting = _settingService.GetSettingById(id);
             if (setting == null)
                 throw new ArgumentException("没有指定ID对应的设置。");

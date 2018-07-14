@@ -8,6 +8,7 @@ using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Interesting;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -17,6 +18,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Fields
 
         private readonly IIdeaService _ideaService;
+        private readonly IPermissionService _permissionService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerActivityService _customerActivityService;
@@ -25,9 +27,10 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public IdeaController(IIdeaService ideaService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
+        public IdeaController(IIdeaService ideaService, IPermissionService permissionService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
         {
             _ideaService = ideaService;
+            _permissionService = permissionService;
             _dateTimeHelper = dateTimeHelper;
             _localizationService = localizationService;
             _customerActivityService = customerActivityService;
@@ -44,6 +47,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageIdea))
+                return AccessDeniedView();
+
             var model = new IdeaListModel();
             return View(model);
         }
@@ -51,6 +57,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest command, IdeaListModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageIdea))
+                return AccessDeniedKendoGridJson();
+
             DateTime? createOnFromValue = (model.CreatedOnFrom == null) ? null
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.CreatedOnFrom.Value, _dateTimeHelper.CurrentTimeZone);
             DateTime? createOnToValue = (model.CreatedOnTo == null) ? null
@@ -85,6 +94,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult View(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageIdea))
+                return AccessDeniedView();
+
             var idea = _ideaService.GetIdeaById(id);
             if (idea == null)
                 return RedirectToAction("List");
@@ -102,6 +114,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageIdea))
+                return AccessDeniedView();
+
             var idea = _ideaService.GetIdeaById(id);
             if (idea == null)
                 return RedirectToAction("List");

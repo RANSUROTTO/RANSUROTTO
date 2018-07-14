@@ -8,6 +8,7 @@ using RANSUROTTO.BLOG.Framework.Mvc;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 using RANSUROTTO.BLOG.Services.Tasks;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
@@ -18,6 +19,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Fields
 
         private readonly IScheduleTaskService _scheduleTaskService;
+        private readonly IPermissionService _permissionService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerActivityService _customerActivityService;
@@ -26,9 +28,10 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public ScheduleTaskController(IScheduleTaskService scheduleTaskService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
+        public ScheduleTaskController(IScheduleTaskService scheduleTaskService, IPermissionService permissionService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
         {
             _scheduleTaskService = scheduleTaskService;
+            _permissionService = permissionService;
             _dateTimeHelper = dateTimeHelper;
             _localizationService = localizationService;
             _customerActivityService = customerActivityService;
@@ -45,12 +48,18 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageScheduleTasks))
+                return AccessDeniedView();
+
             return View();
         }
 
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest command)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageScheduleTasks))
+                return AccessDeniedKendoGridJson();
+
             var models = _scheduleTaskService.GetAllTasks(true)
                 .Select(PrepareScheduleTaskModel)
                 .ToList();
@@ -66,6 +75,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult TaskUpdate(ScheduleTaskModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageScheduleTasks))
+                return AccessDeniedView();
+
             if (!ModelState.IsValid)
             {
                 return Json(new DataSourceResult { Errors = ModelState.SerializeErrors() });
@@ -88,6 +100,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult RunNow(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageScheduleTasks))
+                return AccessDeniedView();
+
             try
             {
                 var scheduleTask = _scheduleTaskService.GetTaskById(id);

@@ -19,6 +19,7 @@ using RANSUROTTO.BLOG.Services.Catalog;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -34,6 +35,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly ILocalizationService _localizationService;
         private readonly ILocalizedEntityService _localizedEntityService;
         private readonly ICustomerActivityService _customerActivityService;
+        private readonly IPermissionService _permissionService;
         private readonly IWorkContext _workContext;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ICacheManager _cacheManager;
@@ -42,7 +44,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public BlogController(IBlogService blogService, IBlogPostTagService blogPostTagService, ICategoryService categoryService, ILanguageService languageService, ILocalizationService localizationService, ILocalizedEntityService localizedEntityService, ICustomerActivityService customerActivityService, IWorkContext workContext, IDateTimeHelper dateTimeHelper, ICacheManager cacheManager)
+        public BlogController(IBlogService blogService, IBlogPostTagService blogPostTagService, ICategoryService categoryService, ILanguageService languageService, ILocalizationService localizationService, ILocalizedEntityService localizedEntityService, ICustomerActivityService customerActivityService, IPermissionService permissionService, IWorkContext workContext, IDateTimeHelper dateTimeHelper, ICacheManager cacheManager)
         {
             _blogService = blogService;
             _blogPostTagService = blogPostTagService;
@@ -51,6 +53,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             _localizationService = localizationService;
             _localizedEntityService = localizedEntityService;
             _customerActivityService = customerActivityService;
+            _permissionService = permissionService;
             _workContext = workContext;
             _dateTimeHelper = dateTimeHelper;
             _cacheManager = cacheManager;
@@ -68,6 +71,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpGet]
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogposts))
+                return AccessDeniedView();
+
             var model = new BlogPostListModel();
 
             /*可用类目搜索项*/
@@ -87,6 +93,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest command, BlogPostListModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogposts))
+                return AccessDeniedKendoGridJson();
+
             var categoryIds = new List<int> { model.SearchCategoryId };
             if (model.SearchIncludeSubCategories && model.SearchCategoryId > 0)
                 categoryIds.AddRange(GetChildCategoryIds(model.SearchCategoryId));
@@ -121,6 +130,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Create()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogposts))
+                return AccessDeniedView();
+
             var model = new BlogPostModel();
             PrepareBlogPostModel(model, null);
             AddLocales(_languageService, model.Locales);
@@ -133,6 +145,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Create(BlogPostModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogposts))
+                return AccessDeniedView();
+
             if (ModelState.IsValid)
             {
                 var blogPost = model.ToEntity();
@@ -164,6 +179,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Edit(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogposts))
+                return AccessDeniedView();
+
             var blogPost = _blogService.GetBlogPostById(id);
             if (blogPost == null)
                 return RedirectToAction("List");
@@ -179,6 +197,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Edit(BlogPostModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogposts))
+                return AccessDeniedView();
+
             var blogPost = _blogService.GetBlogPostById(model.Id);
 
             if (blogPost == null || blogPost.Deleted)
@@ -215,6 +236,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogposts))
+                return AccessDeniedView();
+
             var blogPost = _blogService.GetBlogPostById(id);
             if (blogPost == null)
                 return RedirectToAction("List");
@@ -234,12 +258,18 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult BlogPostTags()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogTags))
+                return AccessDeniedView();
+
             return View();
         }
 
         [HttpPost]
         public virtual ActionResult BlogPostTags(DataSourceRequest command)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogTags))
+                return AccessDeniedKendoGridJson();
+
             var tags = _blogPostTagService.GetAllBlogPostTags()
                 .OrderByDescending(t => _blogPostTagService.GetBlogPostCount(t.Id))
                 .Select(t => new BlogPostTagModel
@@ -261,6 +291,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult EditBlogPostTag(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogTags))
+                return AccessDeniedView();
+
             var blogPostTag = _blogPostTagService.GetBlogPostTagById(id);
             if (blogPostTag == null)
                 return RedirectToAction("List");
@@ -283,6 +316,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult EditBlogPostTag(string btnId, string formId, BlogPostTagModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogTags))
+                return AccessDeniedView();
+
             var blogPostTag = _blogPostTagService.GetBlogPostTagById(model.Id);
             if (blogPostTag == null)
                 return RedirectToAction("List");
@@ -304,6 +340,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult BlogPostTagDelete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageBlogTags))
+                return AccessDeniedView();
+
             var blogPostTag = _blogPostTagService.GetBlogPostTagById(id);
             if (blogPostTag == null)
                 throw new ArgumentException("未找到具有指定ID的博客文章标签");

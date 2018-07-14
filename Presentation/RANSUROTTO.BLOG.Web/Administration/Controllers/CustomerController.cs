@@ -22,6 +22,7 @@ using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Helpers.Setting;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -38,6 +39,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly ICustomerReportService _customerReportService;
         private readonly IGenericAttributeService _genericAttributeService;
         private readonly ICustomerRegistrationService _customerRegistrationService;
+        private readonly IPermissionService _permissionService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly ILocalizationService _localizationService;
         private readonly IWorkContext _workContext;
@@ -48,7 +50,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, ICustomerService customerService, IBlogService blogService, ICustomerActivityService customerActivityService, ICustomerReportService customerReportService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager, IEventPublisher eventPublisher)
+        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, ICustomerService customerService, IBlogService blogService, ICustomerActivityService customerActivityService, ICustomerReportService customerReportService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IPermissionService permissionService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager, IEventPublisher eventPublisher)
         {
             _customerSettings = customerSettings;
             _dateTimeSettings = dateTimeSettings;
@@ -58,6 +60,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             _customerReportService = customerReportService;
             _genericAttributeService = genericAttributeService;
             _customerRegistrationService = customerRegistrationService;
+            _permissionService = permissionService;
             _dateTimeHelper = dateTimeHelper;
             _localizationService = localizationService;
             _workContext = workContext;
@@ -76,7 +79,13 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
-            var defaultRoleIds = new List<int> { _customerService.GetCustomerRoleBySystemName(SystemCustomerRoleNames.Registered).Id };
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
+            var defaultRoleIds = new List<int>
+            {
+                _customerService.GetCustomerRoleBySystemName(SystemCustomerRoleNames.Registered).Id
+            };
 
             var model = new CustomerListModel
             {
@@ -104,6 +113,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         public virtual ActionResult CustomerList(DataSourceRequest command, CustomerListModel model,
             [ModelBinder(typeof(CommaSeparatedModelBinder))] int[] searchCustomerRoleIds)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedKendoGridJson();
+
             var searchDayOfBirth = 0;
             int searchMonthOfBirth = 0;
 
@@ -136,6 +148,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Create()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var model = new CustomerModel();
             PrepareCustomerModel(model, null, false);
             //设置默认可用
@@ -148,6 +163,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Create(CustomerModel model, bool continueEditing, FormCollection form)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             if (!string.IsNullOrWhiteSpace(model.Email))
             {
                 var cust2 = _customerService.GetCustomerByEmail(model.Email);
@@ -250,6 +268,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Edit(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var customer = _customerService.GetCustomerById(id);
             if (customer == null || customer.Deleted)
                 return RedirectToAction("List");
@@ -264,6 +285,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Edit(CustomerModel model, bool continueEditing, FormCollection form)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var customer = _customerService.GetCustomerById(model.Id);
             if (customer == null || customer.Deleted)
                 return RedirectToAction("List");
@@ -378,6 +402,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("changepassword")]
         public virtual ActionResult ChangePassword(CustomerModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var customer = _customerService.GetCustomerById(model.Id);
             if (customer == null)
                 return RedirectToAction("List");
@@ -409,6 +436,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             var customer = _customerService.GetCustomerById(id);
             if (customer == null)
                 return RedirectToAction("List");
@@ -449,6 +479,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult ListBlogPost(DataSourceRequest command, int customerId)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedKendoGridJson();
+
             var customerIds = new List<int> { customerId };
             var blogPost = _blogService.GetAllBlogPosts(command.Page - 1, command.PageSize,
                 customerIds: customerIds, overridePublished: null);
@@ -488,6 +521,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult ListActivityLog(DataSourceRequest command, int customerId)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedKendoGridJson();
+
             var activityLog = _customerActivityService.GetAllActivities(null, null, customerId, 0, command.Page - 1, command.PageSize);
             var gridModel = new DataSourceResult
             {
@@ -515,18 +551,27 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Reports()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             return View();
         }
 
         [ChildActionOnly]
         public virtual ActionResult ReportRegisteredCustomers()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             return PartialView();
         }
 
         [HttpPost]
         public virtual ActionResult ReportRegisteredCustomersList(DataSourceRequest command)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedKendoGridJson();
+
             var model = GetReportRegisteredCustomersModel();
             var gridModel = new DataSourceResult
             {

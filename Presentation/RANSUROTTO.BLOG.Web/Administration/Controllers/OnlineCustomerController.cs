@@ -9,6 +9,7 @@ using RANSUROTTO.BLOG.Services.Common;
 using RANSUROTTO.BLOG.Services.Customers;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -18,6 +19,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Fields
 
         private readonly ICustomerService _customerService;
+        private readonly IPermissionService _permissionService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly CustomerSettings _customerSettings;
         private readonly ILocalizationService _localizationService;
@@ -26,9 +28,10 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public OnlineCustomerController(ICustomerService customerService, IDateTimeHelper dateTimeHelper, CustomerSettings customerSettings, ILocalizationService localizationService)
+        public OnlineCustomerController(ICustomerService customerService, IPermissionService permissionService, IDateTimeHelper dateTimeHelper, CustomerSettings customerSettings, ILocalizationService localizationService)
         {
             _customerService = customerService;
+            _permissionService = permissionService;
             _dateTimeHelper = dateTimeHelper;
             _customerSettings = customerSettings;
             _localizationService = localizationService;
@@ -40,12 +43,18 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedView();
+
             return View();
         }
 
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest command)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedKendoGridJson();
+
             var customers = _customerService.GetOnlineCustomers(
                     DateTime.UtcNow.AddMinutes(-_customerSettings.OnlineCustomerMinutes),
                     null,

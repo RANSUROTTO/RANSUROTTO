@@ -12,6 +12,7 @@ using RANSUROTTO.BLOG.Core.Domain.Logging.Enum;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -21,6 +22,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Fields
 
         private readonly ILogger _logger;
+        private readonly IPermissionService _permissionService;
         private readonly IWorkContext _workContext;
         private readonly ILocalizationService _localizationService;
         private readonly IDateTimeHelper _dateTimeHelper;
@@ -29,9 +31,10 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public LogController(ILogger logger, IWorkContext workContext, ILocalizationService localizationService, IDateTimeHelper dateTimeHelper)
+        public LogController(ILogger logger, IPermissionService permissionService, IWorkContext workContext, ILocalizationService localizationService, IDateTimeHelper dateTimeHelper)
         {
             _logger = logger;
+            _permissionService = permissionService;
             _workContext = workContext;
             _localizationService = localizationService;
             _dateTimeHelper = dateTimeHelper;
@@ -48,6 +51,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSystemLog))
+                return AccessDeniedView();
+
             var model = new LogListModel();
             model.AvailableLogLevels = LogLevel.Debug.ToSelectList(false).ToList();
             model.AvailableLogLevels.Insert(0, new SelectListItem { Text = _localizationService.GetResource("Admin.Common.All"), Value = "0" });
@@ -58,6 +64,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult LogList(DataSourceRequest command, LogListModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSystemLog))
+                return AccessDeniedKendoGridJson();
+
             DateTime? createdOnFromValue = (model.CreatedOnFrom == null) ? null
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.CreatedOnFrom.Value, _dateTimeHelper.CurrentTimeZone);
 
@@ -95,6 +104,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult View(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSystemLog))
+                return AccessDeniedView();
+
             var log = _logger.GetLogById(id);
             if (log == null)
                 return RedirectToAction("List");
@@ -123,6 +135,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSystemLog))
+                return AccessDeniedView();
+
             var log = _logger.GetLogById(id);
             if (log == null)
                 return RedirectToAction("List");
@@ -136,6 +151,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult DeleteSelected(ICollection<int> selectedIds)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSystemLog))
+                return AccessDeniedView();
+
             if (selectedIds != null)
             {
                 _logger.DeleteLogs(_logger.GetLogByIds(selectedIds.ToArray()).ToList());
@@ -149,6 +167,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("clearall")]
         public virtual ActionResult ClearAll()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageSystemLog))
+                return AccessDeniedView();
+
             _logger.ClearLog();
 
             SuccessNotification(_localizationService.GetResource("Admin.System.Log.Cleared"));

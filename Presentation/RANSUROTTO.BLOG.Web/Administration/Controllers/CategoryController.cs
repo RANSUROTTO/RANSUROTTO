@@ -13,6 +13,7 @@ using RANSUROTTO.BLOG.Services.Catalog;
 using RANSUROTTO.BLOG.Services.Customers;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -29,12 +30,13 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly ICustomerActivityService _customerActivityService;
         private readonly IWorkContext _workContext;
         private readonly ICacheManager _cacheManager;
+        private readonly IPermissionService _permissionService;
 
         #endregion
 
         #region Constructor
 
-        public CategoryController(ICategoryService categoryService, ICustomerService customerService, ILanguageService languageService, ILocalizedEntityService localizedEntityService, ILocalizationService localizationService, ICustomerActivityService customerActivityService, IWorkContext workContext, ICacheManager cacheManager)
+        public CategoryController(ICategoryService categoryService, ICustomerService customerService, ILanguageService languageService, ILocalizedEntityService localizedEntityService, ILocalizationService localizationService, ICustomerActivityService customerActivityService, IWorkContext workContext, ICacheManager cacheManager, IPermissionService permissionService)
         {
             _categoryService = categoryService;
             _customerService = customerService;
@@ -44,6 +46,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             _customerActivityService = customerActivityService;
             _workContext = workContext;
             _cacheManager = cacheManager;
+            _permissionService = permissionService;
         }
 
         #endregion
@@ -57,6 +60,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return AccessDeniedView();
+
             var model = new CategoryListModel();
             return View(model);
         }
@@ -64,6 +70,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest command, CategoryListModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return AccessDeniedKendoGridJson();
+
             var blogCategories = _categoryService.GetAllCategories(model.SearchCategoryName,
                 command.Page - 1, command.PageSize, true);
 
@@ -87,6 +96,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Create()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return AccessDeniedView();
+
             var model = new CategoryModel();
             //locales
             AddLocales(_languageService, model.Locales);
@@ -101,6 +113,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Create(CategoryModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return AccessDeniedView();
+
             if (ModelState.IsValid)
             {
                 var category = model.ToEntity();
@@ -128,6 +143,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Edit(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return AccessDeniedView();
+
             var category = _categoryService.GetCategoryById(id);
             if (category == null || category.Deleted)
                 return RedirectToAction("List");
@@ -152,6 +170,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Edit(CategoryModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return AccessDeniedView();
+
             var category = _categoryService.GetCategoryById(model.Id);
             if (category == null || category.Deleted)
                 return RedirectToAction("List");
@@ -183,6 +204,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCategories))
+                return AccessDeniedView();
+
             var category = _categoryService.GetCategoryById(id);
             if (category == null)
                 return RedirectToAction("List");

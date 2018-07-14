@@ -14,6 +14,7 @@ using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Core.Domain.Localization;
 using RANSUROTTO.BLOG.Admin.Models.Localization;
 using RANSUROTTO.BLOG.Core.Helper;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -23,6 +24,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         #region Fields
 
         private readonly ILanguageService _languageService;
+        private readonly IPermissionService _permissionService;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerActivityService _customerActivityService;
 
@@ -30,9 +32,10 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public LanguageController(ILanguageService languageService, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
+        public LanguageController(ILanguageService languageService, IPermissionService permissionService, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
         {
             _languageService = languageService;
+            _permissionService = permissionService;
             _localizationService = localizationService;
             _customerActivityService = customerActivityService;
         }
@@ -48,12 +51,18 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             return View();
         }
 
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest command)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedKendoGridJson();
+
             var languages = _languageService.GetAllLanguages(true);
             var gridModel = new DataSourceResult
             {
@@ -66,6 +75,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Create()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             var model = new LanguageModel
             {
                 Published = true
@@ -76,6 +88,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Create(LanguageModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             if (ModelState.IsValid)
             {
                 var language = model.ToEntity();
@@ -98,6 +113,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Edit(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             var language = _languageService.GetLanguageById(id);
             if (language == null)
                 return RedirectToAction("List");
@@ -110,6 +128,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Edit(LanguageModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             var language = _languageService.GetLanguageById(model.Id);
             if (language == null)
                 return RedirectToAction("List");
@@ -145,6 +166,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             var language = _languageService.GetLanguageById(id);
             if (language == null)
                 return RedirectToAction("List");
@@ -169,6 +193,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual JsonResult GetAvailableFlagFileNames()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return Json("Access denied");
+
             var flagNames = Directory
                 .EnumerateFiles(CommonHelper.MapPath("~/Content/Images/flags/"), "*.png", SearchOption.TopDirectoryOnly)
                 .Select(Path.GetFileName)
@@ -192,6 +219,8 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         public virtual ActionResult Resources(int languageId, DataSourceRequest command,
             LanguageResourcesListModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedKendoGridJson();
 
             var query = _localizationService
                 .GetAllResourceValues(languageId)
@@ -224,6 +253,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult ResourceUpdate(LanguageResourceModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             if (model.Name != null)
                 model.Name = model.Name.Trim();
             if (model.Value != null)
@@ -255,6 +287,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult ResourceAdd(int languageId, [Bind(Exclude = "Id")] LanguageResourceModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             if (model.Name != null)
                 model.Name = model.Name.Trim();
             if (model.Value != null)
@@ -284,6 +319,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult ResourceDelete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             var resource = _localizationService.GetLocaleStringResourceById(id);
             if (resource == null)
                 throw new ArgumentException("未找到具有指定ID的资源");
@@ -299,6 +337,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult ExportXml(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             var language = _languageService.GetLanguageById(id);
             if (language == null)
                 return RedirectToAction("List");
@@ -318,6 +359,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult ImportXml(int id, FormCollection form)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageLanguages))
+                return AccessDeniedView();
+
             var language = _languageService.GetLanguageById(id);
             if (language == null)
                 return RedirectToAction("List");

@@ -12,6 +12,7 @@ using RANSUROTTO.BLOG.Services.Configuration;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
 using RANSUROTTO.BLOG.Services.Messages;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -20,10 +21,11 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Fields
 
+        private readonly IEmailSender _emailSender;
         private readonly ISettingService _settingService;
         private readonly EmailAccountSettings _emailAccountSettings;
-        private readonly IEmailSender _emailSender;
         private readonly IEmailAccountService _emailAccountService;
+        private readonly IPermissionService _permissionService;
         private readonly ILocalizationService _localizationService;
         private readonly ICustomerActivityService _customerActivityService;
 
@@ -31,12 +33,13 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public EmailAccountController(ISettingService settingService, EmailAccountSettings emailAccountSettings, IEmailSender emailSender, IEmailAccountService emailAccountService, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
+        public EmailAccountController(IEmailSender emailSender, ISettingService settingService, EmailAccountSettings emailAccountSettings, IEmailAccountService emailAccountService, IPermissionService permissionService, ILocalizationService localizationService, ICustomerActivityService customerActivityService)
         {
+            _emailSender = emailSender;
             _settingService = settingService;
             _emailAccountSettings = emailAccountSettings;
-            _emailSender = emailSender;
             _emailAccountService = emailAccountService;
+            _permissionService = permissionService;
             _localizationService = localizationService;
             _customerActivityService = customerActivityService;
         }
@@ -52,12 +55,18 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult List()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             return View();
         }
 
         [HttpPost]
         public virtual ActionResult List(DataSourceRequest request)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedKendoGridJson();
+
             var emailAccountModels = _emailAccountService.GetAllEmailAccounts()
                 .Select(x => x.ToModel())
                 .ToList();
@@ -75,6 +84,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult MarkAsDefaultEmail(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             var defaultEmailAccount = _emailAccountService.GetEmailAccountById(id);
             if (defaultEmailAccount != null)
             {
@@ -86,6 +98,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Create()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             var model = new EmailAccountModel { Port = 25 };
             return View(model);
         }
@@ -93,6 +108,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual ActionResult Create(EmailAccountModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             if (ModelState.IsValid)
             {
                 var emailAccount = model.ToEntity();
@@ -111,6 +129,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Edit(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             var emailAccount = _emailAccountService.GetEmailAccountById(id);
             if (emailAccount == null)
                 return RedirectToAction("List");
@@ -122,6 +143,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("save", "save-continue")]
         public virtual ActionResult Edit(EmailAccountModel model, bool continueEditing)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             var emailAccount = _emailAccountService.GetEmailAccountById(model.Id);
             if (emailAccount == null)
                 return RedirectToAction("List");
@@ -144,6 +168,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("changepassword")]
         public virtual ActionResult ChangePassword(EmailAccountModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             var emailAccount = _emailAccountService.GetEmailAccountById(model.Id);
             if (emailAccount == null)
                 return RedirectToAction("List");
@@ -160,6 +187,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("sendtestemail")]
         public virtual ActionResult SendTestEmail(EmailAccountModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             var emailAccount = _emailAccountService.GetEmailAccountById(model.Id);
             if (emailAccount == null)
                 return RedirectToAction("List");
@@ -191,6 +221,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Delete(int id)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageEmailAccounts))
+                return AccessDeniedView();
+
             var emailAccount = _emailAccountService.GetEmailAccountById(id);
             if (emailAccount == null)
                 return RedirectToAction("List");
