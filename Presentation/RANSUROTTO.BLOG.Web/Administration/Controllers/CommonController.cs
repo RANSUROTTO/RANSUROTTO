@@ -12,10 +12,10 @@ using RANSUROTTO.BLOG.Core.Context;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Framework.Controllers;
 using RANSUROTTO.BLOG.Framework.Kendoui;
-using RANSUROTTO.BLOG.Service.Helpers;
 using RANSUROTTO.BLOG.Services.Common;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Localization;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -28,6 +28,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly HttpContextBase _httpContext;
         private readonly IWorkContext _workContext;
         private readonly IWebHelper _webHelper;
+        private readonly IPermissionService _permissionService;
         private readonly ILocalizationService _localizationService;
         private readonly ILanguageService _languageService;
         private readonly IMaintenanceService _maintenanceService;
@@ -36,12 +37,13 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public CommonController(IDateTimeHelper dateTimeHelper, HttpContextBase httpContext, IWorkContext workContext, IWebHelper webHelper, ILocalizationService localizationService, ILanguageService languageService, IMaintenanceService maintenanceService)
+        public CommonController(IDateTimeHelper dateTimeHelper, HttpContextBase httpContext, IWorkContext workContext, IWebHelper webHelper, IPermissionService permissionService, ILocalizationService localizationService, ILanguageService languageService, IMaintenanceService maintenanceService)
         {
             _dateTimeHelper = dateTimeHelper;
             _httpContext = httpContext;
             _workContext = workContext;
             _webHelper = webHelper;
+            _permissionService = permissionService;
             _localizationService = localizationService;
             _languageService = languageService;
             _maintenanceService = maintenanceService;
@@ -53,6 +55,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult SystemInfo()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageMaintenance))
+                return AccessDeniedView();
+
             var model = new SystemInfoModel();
             model.RansurottoVersion = RansurottoVersion.CurrentVersion;
 
@@ -122,41 +127,19 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View(model);
         }
 
-        public virtual ActionResult LanguageSelector()
-        {
-            var model = new LanguageSelectorModel();
-            model.CurrentLanguage = _workContext.WorkingLanguage.ToModel();
-            model.AvailableLanguages = _languageService
-                .GetAllLanguages()
-                .Select(l => l.ToModel())
-                .ToList();
-
-            return PartialView(model);
-        }
-
-        public virtual ActionResult SetLanguage(int langid, string returnUrl = "")
-        {
-            var language = _languageService.GetLanguageById(langid);
-            if (language != null)
-            {
-                _workContext.WorkingLanguage = language;
-            }
-
-            if (string.IsNullOrEmpty(returnUrl))
-                returnUrl = Url.Action("Index", "Home", new { area = "Admin" });
-            if (!Url.IsLocalUrl(returnUrl))
-                return RedirectToAction("Index", "Home", new { area = "Admin" });
-
-            return Redirect(returnUrl);
-        }
-
         public virtual ActionResult Warnings()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageMaintenance))
+                return AccessDeniedView();
+
             return View();
         }
 
         public virtual ActionResult Maintenance()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageMaintenance))
+                return AccessDeniedView();
+
             var model = new MaintenanceModel();
             model.DeleteGuests = new MaintenanceModel.DeleteGuestsModel
             {
@@ -174,6 +157,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("delete-guests")]
         public virtual ActionResult MaintenanceDeleteGuests(MaintenanceModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageMaintenance))
+                return AccessDeniedView();
+
             DateTime? startDateValue = (model.DeleteGuests.StartDate == null) ? null
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.DeleteGuests.StartDate.Value, _dateTimeHelper.CurrentTimeZone);
 
@@ -188,6 +174,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult BackupFiles(DataSourceRequest command)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageMaintenance))
+                return AccessDeniedView();
+
             var backupFiles = _maintenanceService.GetAllBackupFiles().ToList();
 
             var gridModel = new DataSourceResult
@@ -207,6 +196,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("backup-database")]
         public virtual ActionResult BackupDatabase(MaintenanceModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageMaintenance))
+                return AccessDeniedView();
+
             try
             {
                 _maintenanceService.BackupDatabase();
@@ -224,6 +216,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [FormValueRequired("backupFileName", "action")]
         public virtual ActionResult BackupAction(MaintenanceModel model)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageMaintenance))
+                return AccessDeniedView();
+
             var action = this.Request.Form["action"];
 
             var fileName = this.Request.Form["backupFileName"];
@@ -253,6 +248,34 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             }
 
             return View(model);
+        }
+
+        public virtual ActionResult LanguageSelector()
+        {
+            var model = new LanguageSelectorModel();
+            model.CurrentLanguage = _workContext.WorkingLanguage.ToModel();
+            model.AvailableLanguages = _languageService
+                .GetAllLanguages()
+                .Select(l => l.ToModel())
+                .ToList();
+
+            return PartialView(model);
+        }
+
+        public virtual ActionResult SetLanguage(int langid, string returnUrl = "")
+        {
+            var language = _languageService.GetLanguageById(langid);
+            if (language != null)
+            {
+                _workContext.WorkingLanguage = language;
+            }
+
+            if (string.IsNullOrEmpty(returnUrl))
+                returnUrl = Url.Action("Index", "Home", new { area = "Admin" });
+            if (!Url.IsLocalUrl(returnUrl))
+                return RedirectToAction("Index", "Home", new { area = "Admin" });
+
+            return Redirect(returnUrl);
         }
 
         #endregion

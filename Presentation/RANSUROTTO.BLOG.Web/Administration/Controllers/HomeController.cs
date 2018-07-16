@@ -10,6 +10,5 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             return View();
         }
 
-
     }
 }

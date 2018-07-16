@@ -56,6 +56,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual ActionResult Permissions()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageAcl))
+                return AccessDeniedView();
+
             var model = new PermissionMappingModel();
 
             var permissionRecords = _permissionService.GetAllPermissionRecords();
@@ -96,6 +99,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         [HttpPost]
         public virtual ActionResult Permissions(FormCollection form)
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageAcl))
+                return AccessDeniedKendoGridJson();
+
             var permissionRecords = _permissionService.GetAllPermissionRecords();
             var customerRoles = _customerService.GetAllCustomerRoles(true);
 

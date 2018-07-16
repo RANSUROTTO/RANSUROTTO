@@ -4,6 +4,7 @@ using System.IO;
 using System.Web.Mvc;
 using RANSUROTTO.BLOG.Core.Helper;
 using RANSUROTTO.BLOG.Framework.Security;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -11,9 +12,23 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
     public class JbimagesController : BaseAdminController
     {
 
+        private readonly IPermissionService _permissionService;
+
+        public JbimagesController(IPermissionService permissionService)
+        {
+            _permissionService = permissionService;
+        }
+
         [HttpPost]
         public virtual ActionResult Upload()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.HtmlEditorManagePictures))
+            {
+                ViewData["resultCode"] = "failed";
+                ViewData["result"] = "No access to this functionality";
+                return View();
+            }
+
             if (Request.Files.Count == 0)
                 throw new Exception("No file uploaded");
 

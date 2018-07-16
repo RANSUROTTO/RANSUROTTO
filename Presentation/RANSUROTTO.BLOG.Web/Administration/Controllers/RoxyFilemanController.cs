@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Framework.Security;
+using RANSUROTTO.BLOG.Services.Security;
 
 namespace RANSUROTTO.BLOG.Admin.Controllers
 {
@@ -24,6 +25,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         Dictionary<string, string> _settings = null;
         Dictionary<string, string> _lang = null;
 
+        private readonly IPermissionService _permissionService;
         private readonly HttpContextBase _context;
         private readonly HttpResponseBase _r;
 
@@ -31,10 +33,11 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public RoxyFilemanController(HttpContextBase context)
+        public RoxyFilemanController(IPermissionService permissionService, HttpContextBase context, HttpResponseBase r)
         {
-            this._context = context;
-            this._r = this._context.Response;
+            _permissionService = permissionService;
+            _context = context;
+            _r = r;
         }
 
         #endregion
@@ -43,6 +46,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         public virtual void ProcessRequest()
         {
+            if (!_permissionService.Authorize(StandardPermissionProvider.HtmlEditorManagePictures))
+                _r.Write(GetErrorRes("You don't have required permission"));
+
             string action = "DIRLIST";
 
             try
