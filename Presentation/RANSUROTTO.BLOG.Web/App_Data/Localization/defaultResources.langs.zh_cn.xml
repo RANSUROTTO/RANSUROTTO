@@ -1729,7 +1729,7 @@
     <Value>刷新</Value>
   </LocaleResource>
   <LocaleResource Name="admin.pagetitle">
-    <Value>RANSUROTTO.BLOG后台管理</Value>
+    <Value>RANSUROTTO后台管理</Value>
   </LocaleResource>
   <LocaleResource Name="admin.system">
     <Value>系统</Value>

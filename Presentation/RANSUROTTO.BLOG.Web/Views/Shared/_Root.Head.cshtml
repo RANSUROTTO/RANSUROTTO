@@ -4,6 +4,17 @@
 @using RANSUROTTO.BLOG.Framework.UI
 @{
 
+    //防狼术
+    Html.AddHeadCustomParts("<meta http-equiv=\"Cache-Control\" content=\"no-siteapp\" />");
+    //Add to homescreen for Chrome on Android
+    Html.AddHeadCustomParts("<meta name=\"mobile-web-app-capable\" content=\"yes\" />");
+    //Add to homescreen for Safari on iOS
+    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />");
+    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />");
+    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-title\" content=\"blog\" />");
+    //Tile icon for Win8 (144x144 + tile color)
+    Html.AddHeadCustomParts("<meta name=\"msapplication-TileColor\" content=\"#0e90d2\" />");
+
     var commonSettings = EngineContext.Current.Resolve<CommonSettings>();
     if (commonSettings.RenderXuaCompatible)
     {
@@ -16,17 +27,11 @@
         Html.AppendHeadCustomParts(seoSettings.CustomHeadTags);
     }
 
-    Html.AddPageCssClassParts("no-js");
-    //防狼术
-    Html.AddHeadCustomParts("<meta http-equiv=\"Cache-Control\" content=\"no-siteapp\" />");
-    //Add to homescreen for Chrome on Android
-    Html.AddHeadCustomParts("<meta name=\"mobile-web-app-capable\" content=\"yes\" />");
-    //Add to homescreen for Safari on iOS
-    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />");
-    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />");
-    Html.AddHeadCustomParts("<meta name=\"apple-mobile-web-app-title\" content=\"blog\" />");
-    //Tile icon for Win8 (144x144 + tile color)
-    Html.AddHeadCustomParts("<meta name=\"msapplication-TileColor\" content=\"#0e90d2\" />");
+    //Javascript
+    Html.AppendScriptParts("~/Scripts/jquery-migrate-1.2.1.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery.validate.unobtrusive.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery.validate.min.js");
+    Html.AppendScriptParts("~/Scripts/jquery-1.10.2.min.js");
 
 }
 
@@ -37,6 +42,7 @@
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta name="keywords" content="@(Html.MetaKeywords())" />
     <meta name="description" content="@(Html.MetaDescription())" />
+    <meta name="generator" content="ransurotto" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @Html.HeadCustom()
     <!-- Head Css Files -->
@@ -48,7 +54,6 @@
     @*Favicon - favicon.ico文件上传到根目录*@
     @Html.Action("Favicon", "Common")
     <!--Powered by ransurotto - http://www.ransurotto.com-->
-
 </head>
 <body>
     @RenderBody()

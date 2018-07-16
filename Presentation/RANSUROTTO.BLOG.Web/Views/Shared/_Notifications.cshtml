@@ -1,17 +1,34 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    //success messages
+    var successMessages = new List<string>();
+    if (TempData[string.Format("ransurotto.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(TempData[string.Format("ransurotto.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+    if (ViewData[string.Format("ransurotto.notifications.{0}", NotifyType.Success)] != null)
+    {
+        successMessages.AddRange(ViewData[string.Format("ransurotto.notifications.{0}", NotifyType.Success)] as IList<string>);
+    }
+
+    //error messages
+    var errorMessages = new List<string>();
+    if (TempData[string.Format("ransurotto.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(TempData[string.Format("ransurotto.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+    if (ViewData[string.Format("ransurotto.notifications.{0}", NotifyType.Error)] != null)
+    {
+        errorMessages.AddRange(ViewData[string.Format("ransurotto.notifications.{0}", NotifyType.Error)] as IList<string>);
+    }
+
+    //warning messages
+    var warningMessages = new List<string>();
+    if (TempData[string.Format("ransurotto.notifications.{0}", NotifyType.Warning)] != null)
+    {
+        warningMessages.AddRange(TempData[string.Format("ransurotto.notifications.{0}", NotifyType.Warning)] as IList<string>);
+    }
+    if (ViewData[string.Format("ransurotto.notifications.{0}", NotifyType.Warning)] != null)
+    {
+        warningMessages.AddRange(ViewData[string.Format("ransurotto.notifications.{0}", NotifyType.Warning)] as IList<string>);
+    }
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_Notifications</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>

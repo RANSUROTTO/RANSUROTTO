@@ -154,6 +154,15 @@
     <Content Include="App_Data\Localization\Installation\installation.ur.xml" />
     <Content Include="App_Data\Localization\Installation\installation.vi.xml" />
     <Content Include="App_Data\Localization\Installation\installation.zh.xml" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fontAwesome\css\font-awesome-4.6.3.css" />
+    <Content Include="Content\fontAwesome\css\font-awesome-4.6.3.min.css" />
+    <Content Include="Content\fontAwesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Images\default-avatar.jpg" />
     <Content Include="Content\Images\default-image.gif" />
     <Content Include="Content\Images\default-image.png" />
@@ -556,28 +565,32 @@
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="App_Data\Localization\defaultResources.langs.jp.xml" />
     <Content Include="App_Data\Localization\defaultResources.langs.en.xml" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fontAwesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fontAwesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fontAwesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fontAwesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fontAwesome\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\RANSUROTTO_Publisher_profie.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\npm.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.js" />
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.custom.js" />
-    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
-    <Content Include="Scripts\jquery.magnific-popup.js" />
-    <Content Include="Scripts\jquery.magnific-popup.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\public.accordion.js" />
-    <Content Include="Scripts\public.ajaxcart.js" />
-    <Content Include="Scripts\public.common.js" />
-    <Content Include="Scripts\public.onepagecheckout.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\selectivizr.min.js" />
-    <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -618,10 +631,10 @@
     <Content Include="Views\Common\Favicon.cshtml" />
     <Content Include="Views\Common\JavaScriptDisabledWarning.cshtml" />
     <Content Include="Views\Common\AdminHeaderLinks.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Customer\Login.cshtml" />
     <Content Include="Themes\DefaultClean\theme.config" />
     <Content Include="Views\Common\PageNotFound.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
