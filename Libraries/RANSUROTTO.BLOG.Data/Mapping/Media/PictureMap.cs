@@ -7,6 +7,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Media
         public PictureMap()
         {
             this.ToTable("Picture");
+            this.Property(p => p.PictureBinary).IsMaxLength();
             this.Property(p => p.MimeType).IsRequired().HasMaxLength(40);
             this.Property(p => p.SeoFilename).HasMaxLength(300);
         }

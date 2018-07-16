@@ -119,8 +119,8 @@
   <ItemGroup>
     <Content Include="App_Data\browscap.crawlersonly.xml" />
     <Content Include="App_Data\browscap.xml" />
-    <Content Include="App_Data\Install\MySQL.Indexs.sql" />
-    <Content Include="App_Data\Install\MySQL.Procedures.sql" />
+    <Content Include="App_Data\Install\SqlServer.Indexs.sql" />
+    <Content Include="App_Data\Install\SqlServer.Procedures.sql" />
     <Content Include="App_Data\Localization\defaultResources.langs.zh_cn.xml" />
     <Content Include="App_Data\Localization\Installation\installation.ar.xml" />
     <Content Include="App_Data\Localization\Installation\installation.bg.xml" />

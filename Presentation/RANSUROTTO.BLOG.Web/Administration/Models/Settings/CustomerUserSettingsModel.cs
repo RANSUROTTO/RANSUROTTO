@@ -132,6 +132,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Settings
 
             [ResourceDisplayName("Admin.Configuration.Settings.CustomerUser.DefaultTimeZone")]
             public IList<SelectListItem> AvailableTimeZones { get; set; }
+
         }
 
         public class ExternalAuthenticationSettingsModel : BaseModel

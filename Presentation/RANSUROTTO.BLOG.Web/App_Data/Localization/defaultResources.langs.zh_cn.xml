@@ -673,9 +673,15 @@
     <Value>选择默认密码格式。 请记住，此设置仅适用于新注册的客户。</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.CustomerUser.DefaultTimeZone">
-    <Value>系统默认时区</Value>
+    <Value>默认时区</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.CustomerUser.DefaultTimeZone.hint">
+    <Value>用于显示日期的默认时区。</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Settings.CustomerUser.DefaultTimeZoneId">
+    <Value>默认时区</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.Configuration.Settings.CustomerUser.DefaultTimeZoneId.hint">
     <Value>用于显示日期的默认时区。</Value>
   </LocaleResource>
   <LocaleResource Name="admin.configuration.settings.customeruser.externalauthenticationautoregisterenabled">

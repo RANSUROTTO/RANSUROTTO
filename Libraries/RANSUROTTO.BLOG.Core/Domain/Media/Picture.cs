@@ -28,5 +28,10 @@ namespace RANSUROTTO.BLOG.Core.Domain.Media
         /// </summary>
         public string TitleAttribute { get; set; }
 
+        /// <summary>
+        /// 获取或设置图片的二进制值
+        /// </summary>
+        public byte[] PictureBinary { get; set; }
+
     }
 }
