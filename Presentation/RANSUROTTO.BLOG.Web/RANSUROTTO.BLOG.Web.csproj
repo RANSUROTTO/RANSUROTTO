@@ -591,6 +591,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Themes\DefaultClean\Content\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -635,6 +636,9 @@
     <Content Include="Themes\DefaultClean\theme.config" />
     <Content Include="Views\Common\PageNotFound.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\Head.cshtml" />
+    <Content Include="Themes\DefaultClean\Views\Shared\Head.cshtml" />
+    <Content Include="Themes\DefaultClean\Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -647,8 +651,6 @@
     <Folder Include="Content\tinymce\plugins\jbimages\img\" />
     <Folder Include="Content\tinymce\plugins\jbimages\js\" />
     <Folder Include="Content\tinymce\plugins\jbimages\langs\" />
-    <Folder Include="Themes\DefaultClean\Content\" />
-    <Folder Include="Themes\DefaultClean\Views\Shared\" />
     <Folder Include="Validators\Customer\" />
     <Folder Include="Views\BasePublic\" />
     <Folder Include="Views\KeepAlive\" />

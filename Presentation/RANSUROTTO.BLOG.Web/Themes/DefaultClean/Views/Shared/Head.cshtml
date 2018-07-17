@@ -1,0 +1,18 @@
+﻿@using RANSUROTTO.BLOG.Core.Context
+@using RANSUROTTO.BLOG.Core.Infrastructure
+@using RANSUROTTO.BLOG.Framework.Themes
+@using RANSUROTTO.BLOG.Framework.UI
+@{
+    var supportRtl = EngineContext.Current.Resolve<IWorkContext>().WorkingLanguage.Rtl;
+    var themeName = EngineContext.Current.Resolve<IThemeContext>().WorkingThemeName;
+
+    if (supportRtl)
+    {
+
+    }
+    else
+    {
+        Html.AppendCssFileParts(string.Format("~/Themes/{0}/Content/styles.css", themeName));
+    }
+
+}

@@ -130,9 +130,9 @@ namespace RANSUROTTO.BLOG.Framework.Themes
         {
             searchedLocations = _emptyLocations;
 
-            if (String.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             string areaName = GetAreaName(controllerContext.RouteData);

@@ -1,0 +1,63 @@
+﻿/*********** CSS RESET **********/
+
+* {
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+    *, *:before, *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+html {
+    margin: 0;
+    -webkit-text-size-adjust: none;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a img {
+    border: none;
+}
+
+a:active {
+    outline: none;
+}
+
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="text"],
+input[type="password"],
+textarea {
+    border-radius: 0;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    -webkit-appearance: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 1000px #fff;
+}
+
+script {
+    display: none !important;
+}
