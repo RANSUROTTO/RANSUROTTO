@@ -20,6 +20,7 @@ using RANSUROTTO.BLOG.Services.Customers;
 using RANSUROTTO.BLOG.Services.Events;
 using RANSUROTTO.BLOG.Services.Helpers;
 using RANSUROTTO.BLOG.Services.Helpers.Setting;
+using RANSUROTTO.BLOG.Services.Interesting;
 using RANSUROTTO.BLOG.Services.Localization;
 using RANSUROTTO.BLOG.Services.Logging;
 using RANSUROTTO.BLOG.Services.Security;
@@ -35,6 +36,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
         private readonly DateTimeSettings _dateTimeSettings;
         private readonly ICustomerService _customerService;
         private readonly IBlogService _blogService;
+        private readonly IIdeaService _ideaService;
         private readonly ICustomerActivityService _customerActivityService;
         private readonly ICustomerReportService _customerReportService;
         private readonly IGenericAttributeService _genericAttributeService;
@@ -50,12 +52,13 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #region Constructor
 
-        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, ICustomerService customerService, IBlogService blogService, ICustomerActivityService customerActivityService, ICustomerReportService customerReportService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IPermissionService permissionService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager, IEventPublisher eventPublisher)
+        public CustomerController(CustomerSettings customerSettings, DateTimeSettings dateTimeSettings, ICustomerService customerService, IBlogService blogService, IIdeaService ideaService, ICustomerActivityService customerActivityService, ICustomerReportService customerReportService, IGenericAttributeService genericAttributeService, ICustomerRegistrationService customerRegistrationService, IPermissionService permissionService, IDateTimeHelper dateTimeHelper, ILocalizationService localizationService, IWorkContext workContext, ICacheManager cacheManager, IEventPublisher eventPublisher)
         {
             _customerSettings = customerSettings;
             _dateTimeSettings = dateTimeSettings;
             _customerService = customerService;
             _blogService = blogService;
+            _ideaService = ideaService;
             _customerActivityService = customerActivityService;
             _customerReportService = customerReportService;
             _genericAttributeService = genericAttributeService;
@@ -475,6 +478,40 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
 
         #endregion
 
+        #region Ideas
+
+        public virtual ActionResult ListIdea(DataSourceRequest command, int customerId)
+        {
+            if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
+                return AccessDeniedKendoGridJson();
+
+            var customerIds = new[] { customerId };
+            var ideas = _ideaService.GetAllIdeas(customerIds, null, null, command.Page - 1, command.PageSize);
+
+            var gridModel = new DataSourceResult
+            {
+                Data = ideas.Select(x =>
+                {
+                    var ideaModel = new CustomerModel.IdeaModel
+                    {
+                        Id = x.Id,
+                        Body = x.Body,
+                        CreatedOn = _dateTimeHelper.ConvertToUserTime(x.CreatedOnUtc, DateTimeKind.Utc),
+                        UpdatedOn = x.UpdatedOnUtc.HasValue ?
+                            (DateTime?)_dateTimeHelper.ConvertToUserTime(x.UpdatedOnUtc.Value, DateTimeKind.Utc)
+                            : null,
+                        Deleted = x.Deleted,
+                        Private = x.Private
+                    };
+                    return ideaModel;
+                }),
+                Total = ideas.TotalCount
+            };
+            return Json(gridModel);
+        }
+
+        #endregion
+
         #region Blog posts
 
         public virtual ActionResult ListBlogPost(DataSourceRequest command, int customerId)
@@ -483,11 +520,11 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 return AccessDeniedKendoGridJson();
 
             var customerIds = new List<int> { customerId };
-            var blogPost = _blogService.GetAllBlogPosts(command.Page - 1, command.PageSize,
+            var blogPosts = _blogService.GetAllBlogPosts(command.Page - 1, command.PageSize,
                 customerIds: customerIds, overridePublished: null);
             var gridModel = new DataSourceResult
             {
-                Data = blogPost.Select(x =>
+                Data = blogPosts.Select(x =>
                 {
                     var now = DateTime.UtcNow;
                     var m = new CustomerModel.BlogPostModel
@@ -502,7 +539,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                     };
                     return m;
                 }),
-                Total = blogPost.TotalCount
+                Total = blogPosts.TotalCount
             };
 
             return Json(gridModel);

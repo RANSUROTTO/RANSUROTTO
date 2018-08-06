@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RANSUROTTO.BLOG.Core.Common;
 using RANSUROTTO.BLOG.Core.Domain.Interesting;
 
@@ -6,16 +7,17 @@ namespace RANSUROTTO.BLOG.Services.Interesting
 {
     public interface IIdeaService
     {
-
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="customerIds"></param>
         /// <param name="createFromUtc"></param>
         /// <param name="createToUtc"></param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        IPagedList<Idea> GetAllIdeas(DateTime? createFromUtc = null, DateTime? createToUtc = null,
+        IPagedList<Idea> GetAllIdeas(IList<int> customerIds,
+            DateTime? createFromUtc = null, DateTime? createToUtc = null,
             int pageIndex = 0, int pageSize = int.MaxValue);
 
         /// <summary>

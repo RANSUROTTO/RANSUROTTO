@@ -110,5 +110,26 @@ namespace RANSUROTTO.BLOG.Admin.Models.Customers
             public bool Deleted { get; set; }
         }
 
+        public class IdeaModel : BaseEntityModel
+        {
+
+            [AllowHtml]
+            [ResourceDisplayName("Admin.Customers.Customers.Idea.Body")]
+            public string Body { get; set; }
+
+            [ResourceDisplayName("Admin.Customers.Customers.Idea.CreatedOn")]
+            public bool Private { get; set; }
+
+            [ResourceDisplayName("Admin.Customers.Customers.Idea.Deleted")]
+            public bool Deleted { get; set; }
+
+            [ResourceDisplayName("Admin.Customers.Customers.Idea.CreatedOn")]
+            public override DateTime CreatedOn { get; set; }
+
+            [ResourceDisplayName("Admin.Customers.Customers.Idea.UpdatedOn")]
+            public DateTime? UpdatedOn { get; set; }
+
+        }
+
     }
 }

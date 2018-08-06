@@ -65,7 +65,7 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             DateTime? createOnToValue = (model.CreatedOnTo == null) ? null
                 : (DateTime?)_dateTimeHelper.ConvertToUtcTime(model.CreatedOnTo.Value, _dateTimeHelper.CurrentTimeZone);
 
-            var ideas = _ideaService.GetAllIdeas(createOnFromValue, createOnToValue, command.Page - 1,
+            var ideas = _ideaService.GetAllIdeas(null, createOnFromValue, createOnToValue, command.Page - 1,
                 command.PageSize);
 
             var gridModel = new DataSourceResult
