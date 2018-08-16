@@ -49,12 +49,10 @@
         }
         //default editor settings
         var defaultEditorSettings@(random) =
-        {
+            {
             selector: "#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)",
-            branding:false,
+            branding: false,
             fontsize_formats: "8pt 9pt 10pt 11pt 12pt 14pt 26pt 36pt",
-            height: 800,
-            min_height:800,
             width: '100%',
             relative_urls: false,   //禁止将相同域中的所有网址转换为相对网址
             convert_urls: false,
@@ -90,6 +88,33 @@
                 "insertdatetime media table contextmenu paste codesample toc@(allowJbimages ? " jbimages" : null)"
             ],
             toolbar: "ltr rtl | restoredraft | codesample | insertfile undo redo | styleselect | fontselect | fontsizeselect | bold italic | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image@(allowJbimages ? " jbimages" : null)",
+                setup: function (ed) {
+
+                /*覆盖tab按键*/
+                ed.on('keydown', function(event) {
+                    if (event.keyCode == 9) {
+                        if (event.shiftKey) {
+                            //ed.execCommand('Outdent');
+                        }
+                        else {
+                            tinyMCE.execCommand('mceInsertContent', false, '&emsp;');
+                            //ed.execCommand('Indent');
+                        }
+                        event.preventDefault();
+                        return false;
+                    }
+                    return true;
+                });
+
+                /*设置高度*/
+                ed.on('init', function (args) {
+                    var id = ed.id;
+                    var height = 25;
+
+                    document.getElementById(id + '_ifr').style.height = height + 'px';
+                });
+
+            }
         }
 
         function getAdditionalEditorSettings@(random)(settings) {
@@ -98,7 +123,9 @@
         }
 
         tinyMCE.init(getAdditionalEditorSettings@(random)(defaultEditorSettings@(random)));
+
     });
+
 </script>
 
 @Html.TextArea(string.Empty, /* Name suffix */

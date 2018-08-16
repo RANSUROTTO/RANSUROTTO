@@ -229,6 +229,8 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
                 }
                 return RedirectToAction("List");
             }
+            PrepareBlogPostModel(model, blogPost);
+            AddLocales(_languageService, model.Locales);
             PrepareCategoryMappingModel(model, blogPost, true);
             return View(model);
         }
@@ -443,9 +445,9 @@ namespace RANSUROTTO.BLOG.Admin.Controllers
             {
                 _localizedEntityService.SaveLocalizedValue(blogPost, p => p.Title, localized.Title,
                     localized.LanguageId);
-                _localizedEntityService.SaveLocalizedValue(blogPost, p => p.Title, localized.BodyOverview,
+                _localizedEntityService.SaveLocalizedValue(blogPost, p => p.BodyOverview, localized.BodyOverview,
                     localized.LanguageId);
-                _localizedEntityService.SaveLocalizedValue(blogPost, p => p.Title, localized.Body,
+                _localizedEntityService.SaveLocalizedValue(blogPost, p => p.Body, localized.Body,
                     localized.LanguageId);
             }
         }
