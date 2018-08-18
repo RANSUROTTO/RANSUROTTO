@@ -650,6 +650,7 @@
     <Content Include="Content\styles.css" />
     <Content Include="Content\styles.rtl.css" />
     <Content Include="Content\tagEditor\jquery.tag-editor.css" />
+    <Content Include="Content\tinymce-content.css" />
     <Content Include="Content\tinymce\langs\ar.js" />
     <Content Include="Content\tinymce\langs\de_AT.js" />
     <Content Include="Content\tinymce\langs\de_DE.js" />
@@ -740,6 +741,8 @@
     <Content Include="Content\tinymce\plugins\visualblocks\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\visualchars\plugin.min.js" />
     <Content Include="Content\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Content\tinymce\prism.css" />
+    <Content Include="Content\tinymce\prism.js" />
     <Content Include="Content\tinymce\skins\lightgray\content.inline.min.css" />
     <Content Include="Content\tinymce\skins\lightgray\content.min.css" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
