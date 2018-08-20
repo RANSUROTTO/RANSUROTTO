@@ -97,7 +97,8 @@
                 setup: function (ed) {
 
                 /*覆盖tab按键*/
-                ed.on('keydown', function (event) {
+                    ed.on('keydown', function (event) {
+                        console.log(event.target.ownerDocument);
                     if (event.keyCode == 9) {
                         if (event.shiftKey) {
                             //ed.execCommand('Outdent');
