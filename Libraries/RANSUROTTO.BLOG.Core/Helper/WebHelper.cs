@@ -86,6 +86,11 @@ namespace RANSUROTTO.BLOG.Core.Helper
                         string lastIp = xff.Split(',').FirstOrDefault();
                         result = lastIp;
                     }
+
+                    if (string.IsNullOrEmpty(result) && _httpContext.Request.UserHostAddress != null)
+                    {
+                        result = _httpContext.Request.UserHostAddress;
+                    }
                 }
             }
             catch (Exception)
