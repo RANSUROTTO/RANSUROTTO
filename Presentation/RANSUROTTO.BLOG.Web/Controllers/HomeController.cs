@@ -9,6 +9,7 @@ namespace RANSUROTTO.BLOG.Web.Controllers
         {
             return View();
         }
+        
 
     }
 }

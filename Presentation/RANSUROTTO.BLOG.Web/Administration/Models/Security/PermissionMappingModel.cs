@@ -10,6 +10,7 @@ namespace RANSUROTTO.BLOG.Admin.Models.Security
         {
             AvailablePermissions = new List<PermissionRecordModel>();
             AvailableCustomerRoles = new List<CustomerRoleModel>();
+            Allowed = new Dictionary<string, IDictionary<long, bool>>();
         }
 
         public IList<PermissionRecordModel> AvailablePermissions { get; set; }

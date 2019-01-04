@@ -1,63 +1,55 @@
-﻿/*********** CSS RESET **********/
-
-* {
-    margin: 0;
-    outline: none;
-    padding: 0;
-    text-decoration: none;
-}
-
-    *, *:before, *:after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
+﻿
+@media(max-width:700px) {
+    #site-header {
+        font-size: 16px !important
     }
 
-html {
-    margin: 0;
-    -webkit-text-size-adjust: none;
+    .header-description, .header-description .scene {
+        height: 450px !important
+    }
+
+    .scene img {
+        min-height: 450px !important
+    }
 }
 
-ol, ul {
-    list-style: none;
+
+/*Home description block style*/
+
+.header-description {
+    height: 650px;
+    position: relative;
+    background-image: url('/Content/Image/header.jpg');
+    width: 100%;
+    background-size: cover;
+    background-position: center 0;
+    background-repeat: no-repeat
 }
 
-a img {
-    border: none;
+#site-header {
+    top: 180px;
+    font-weight: 700;
+    font-family: kilsonburg,"Avenir Next",Helvetica,Arial,"Lantinghei SC","Microsoft YaHei",sans-serif;
+    font-size: 34px;
+    text-shadow: 0 1px 1px #47456d;
+    margin-bottom: 130px;
+    -ms-animation: show-site-title 1s ease-out;
+    -o-animation: show-site-title 1s ease-out;
+    -moz-animation: show-site-title 1s ease-out;
+    -webkit-animation: show-site-title 1s ease-out;
+    animation: show-site-title 1s ease-out;
 }
 
-a:active {
-    outline: none;
-}
+    #site-header a {
+        color: #fff;
+        font-weight: 400
+    }
 
-input[type="button"]::-moz-focus-inner,
-input[type="submit"]::-moz-focus-inner,
-input[type="reset"]::-moz-focus-inner,
-input[type="file"] > input[type="button"]::-moz-focus-inner {
-    margin: 0;
-    border: 0;
-    padding: 0;
-}
-
-input[type="button"],
-input[type="submit"],
-input[type="reset"],
-input[type="text"],
-input[type="password"],
-textarea {
-    border-radius: 0;
-}
-
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-    -webkit-appearance: none;
-}
-
-input:-webkit-autofill {
-    -webkit-box-shadow: inset 0 0 0 1000px #fff;
-}
-
-script {
-    display: none !important;
+.typed-cursor {
+    -ms-opacity: 1;
+    opacity: 1;
+    -webkit-animation: blink .7s infinite;
+    -ms-animation: blink .7s infinite;
+    animation: blink .7s infinite;
+    color: #fff
 }

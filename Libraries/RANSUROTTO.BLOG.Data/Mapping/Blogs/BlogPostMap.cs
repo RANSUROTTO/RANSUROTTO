@@ -27,7 +27,7 @@ namespace RANSUROTTO.BLOG.Data.Mapping.Blogs
                 .HasForeignKey(p => p.BlogPostId);
 
             this.HasMany(p => p.BlogPostTags)
-                .WithMany()
+                .WithMany(p => p.BlogPosts)
                 .Map(p => p.ToTable("BlogPost_BlogPostTag_Mapping"));
 
             this.Ignore(p => p.Format);

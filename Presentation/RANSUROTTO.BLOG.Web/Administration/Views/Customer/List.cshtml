@@ -67,110 +67,112 @@
     </div>
 
     <div class="content">
-    <div class="form-horizontal">
-    <div class="panel-group">
+        <div class="form-horizontal">
+            <div class="panel-group">
 
-    <div class="panel panel-default panel-search">
-        <div class="panel-body">
-            <div class="row">
-                @*Left*@
-                <div class="col-md-5">
-                    <div class="col-md-4">
-                        @Html.CustomLabelFor(model => model.SearchEmail)
-                    </div>
-                    <div class="col-md-8">
-                        @Html.CustomEditorFor(model => model.SearchEmail)
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            @Html.CustomLabelFor(model => model.SearchUsername)
-                        </div>
-                        <div class="col-md-8">
-                            @Html.CustomEditorFor(model => model.SearchUsername)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            @Html.CustomLabelFor(model => model.SearchName)
-                        </div>
-                        <div class="col-md-8">
-                            @Html.CustomEditorFor(model => model.SearchName)
-                        </div>
-                    </div>
-                    @if (Model.DateOfBirthEnabled)
-                    {
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                @Html.CustomLabelFor(model => model.SearchDayOfBirth)
-                            </div>
-                            <div class="col-md-8">
-                                @{
-                                    var monthOfBirthValues = new List<SelectListItem>();
-                                    monthOfBirthValues.Add(new SelectListItem { Text = T("Admin.Customers.Customers.List.SearchDateOfBirth.Month").Text, Value = "0" });
-                                    for (int i = 1; i <= 12; i++)
-                                    {
-                                        monthOfBirthValues.Add(new SelectListItem { Text = i.ToString(CultureInfo.InvariantCulture), Value = i.ToString(CultureInfo.InvariantCulture) });
-                                    }
-
-                                    var dayOfBirthValues = new List<SelectListItem>();
-                                    dayOfBirthValues.Add(new SelectListItem { Text = T("Admin.Customers.Customers.List.SearchDateOfBirth.Day").Text, Value = "0" });
-                                    for (int i = 1; i <= 31; i++)
-                                    {
-                                        dayOfBirthValues.Add(new SelectListItem { Text = i.ToString(CultureInfo.InvariantCulture), Value = i.ToString(CultureInfo.InvariantCulture) });
-                                    }
-                                }
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        @Html.CustomDropDownListFor(model => model.SearchMonthOfBirth, monthOfBirthValues)
+                <div class="panel panel-default panel-search">
+                    <div class="panel-body">
+                        <div class="row">
+                            @*Left*@
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.SearchEmail)
                                     </div>
-                                    <div class="col-md-6">
-                                        @Html.CustomDropDownListFor(model => model.SearchDayOfBirth, dayOfBirthValues)
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.SearchEmail)
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    }
-                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.SearchUsername)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.SearchUsername)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.SearchName)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.SearchName)
+                                    </div>
+                                </div>
+                                @if (Model.DateOfBirthEnabled)
+                                {
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            @Html.CustomLabelFor(model => model.SearchDayOfBirth)
+                                        </div>
+                                        <div class="col-md-8">
+                                            @{
+                                                var monthOfBirthValues = new List<SelectListItem>();
+                                                monthOfBirthValues.Add(new SelectListItem { Text = T("Admin.Customers.Customers.List.SearchDateOfBirth.Month").Text, Value = "0" });
+                                                for (int i = 1; i <= 12; i++)
+                                                {
+                                                    monthOfBirthValues.Add(new SelectListItem { Text = i.ToString(CultureInfo.InvariantCulture), Value = i.ToString(CultureInfo.InvariantCulture) });
+                                                }
 
-                @*Right*@
-                <div class="col-md-7">
-                    @if (Model.CompanyEnabled)
-                    {
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                @Html.CustomLabelFor(model => model.SearchCompany)
+                                                var dayOfBirthValues = new List<SelectListItem>();
+                                                dayOfBirthValues.Add(new SelectListItem { Text = T("Admin.Customers.Customers.List.SearchDateOfBirth.Day").Text, Value = "0" });
+                                                for (int i = 1; i <= 31; i++)
+                                                {
+                                                    dayOfBirthValues.Add(new SelectListItem { Text = i.ToString(CultureInfo.InvariantCulture), Value = i.ToString(CultureInfo.InvariantCulture) });
+                                                }
+                                            }
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @Html.CustomDropDownListFor(model => model.SearchMonthOfBirth, monthOfBirthValues)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.CustomDropDownListFor(model => model.SearchDayOfBirth, dayOfBirthValues)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
-                            <div class="col-md-8">
-                                @Html.CustomEditorFor(model => model.SearchCompany)
-                            </div>
-                        </div>
-                    }
-                    @if (Model.PhoneEnabled)
-                    {
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                @Html.CustomLabelFor(model => model.SearchPhone)
-                            </div>
-                            <div class="col-md-8">
-                                @Html.CustomEditorFor(model => model.SearchPhone)
-                            </div>
-                        </div>
-                    }
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            @Html.CustomLabelFor(model => model.SearchIpAddress)
-                        </div>
-                        <div class="col-md-8">
-                            @Html.CustomEditorFor(model => model.SearchIpAddress)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-4">
-                            @Html.CustomLabelFor(model => model.SearchCustomerRoleIds)
-                        </div>
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.SearchCustomerRoleIds, new { SelectList = Model.AvailableCustomerRoles })
-                            <script>
+
+                            @*Right*@
+                            <div class="col-md-7">
+                                @if (Model.CompanyEnabled)
+                                {
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            @Html.CustomLabelFor(model => model.SearchCompany)
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.CustomEditorFor(model => model.SearchCompany)
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.PhoneEnabled)
+                                {
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            @Html.CustomLabelFor(model => model.SearchPhone)
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.CustomEditorFor(model => model.SearchPhone)
+                                        </div>
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.SearchIpAddress)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.CustomEditorFor(model => model.SearchIpAddress)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.CustomLabelFor(model => model.SearchCustomerRoleIds)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.SearchCustomerRoleIds, new { SelectList = Model.AvailableCustomerRoles })
+                                        <script>
                                 $(document).ready(function() {
                                     var rolesIdsInput = $('#@Html.FieldIdFor(model => model.SearchCustomerRoleIds)')
                                         .data("kendoMultiSelect");
@@ -191,27 +193,27 @@
                                         </text>
                                     }
                                 });
-                            </script>
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7 col-md-offset-5">
+                                <button type="button" id="search-customers" class="btn btn-primary btn-search">
+                                    <i class="fa fa-search"></i>
+                                    @T("Admin.Common.Search")
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7 col-md-offset-5">
-                    <button type="button" id="search-customers" class="btn btn-primary btn-search">
-                        <i class="fa fa-search"></i>
-                        @T("Admin.Common.Search")
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="panel panel-default">
-    <div class="panel-body">
-    <div id="customers-grid"></div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div id="customers-grid"></div>
 
-    <script>
+                        <script>
         $(document).ready(function() {
             $("#customers-grid").kendoGrid({
                 dataSource: {
@@ -320,9 +322,9 @@
                 ]
             });
         });
-    </script>
+                        </script>
 
-    <script type="text/javascript">
+                        <script type="text/javascript">
         var selectedIds = [];
 
         $(document).ready(function() {
@@ -412,13 +414,13 @@
             addAntiForgeryToken(data);
             return data;
         }
-    </script>
+                        </script>
 
-    </div>
-    </div>
+                    </div>
+                </div>
 
-    </div>
-    </div>
+            </div>
+        </div>
     </div>
 
 }

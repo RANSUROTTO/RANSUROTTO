@@ -602,6 +602,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstallController.cs" />
     <Compile Include="Controllers\KeepAliveController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Factories\CommonModelFactory.cs" />
     <Compile Include="Factories\ICommonModelFactory.cs" />
     <Compile Include="Global.asax.cs">
@@ -639,6 +640,7 @@
     <Content Include="Views\Shared\Head.cshtml" />
     <Content Include="Themes\DefaultClean\Views\Shared\Head.cshtml" />
     <Content Include="Themes\DefaultClean\Views\Web.config" />
+    <Content Include="Views\Topic\HomeDescriptionBlock.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
